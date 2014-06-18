@@ -16,7 +16,7 @@ namespace Renderer
     class Object
     {
     public:
-        Transform * Transform;
+        Transform * transform;
         
         Object();
         ~Object();

@@ -12,11 +12,11 @@ namespace Renderer
 {
     Object::Object()
     {
-        this->Transform = new Transform();
+        this->transform = new Transform();
     }
     
     Object::~Object()
     {
-        delete this->Transform;
+        delete this->transform;
     }
 }
