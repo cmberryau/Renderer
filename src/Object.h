@@ -15,11 +15,11 @@ namespace Renderer
 {
     class Object
     {
-    public:
-        Transform * transform;
-        
-        Object();
-        ~Object();
+        public:
+            Transform * transform;
+            
+            Object();
+            ~Object();
     };
 }
 

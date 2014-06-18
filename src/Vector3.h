@@ -9,13 +9,16 @@
 #ifndef _vector3_h
 #define _vector3_h
 
-class Vector3
+namespace Renderer
 {
-    public:
-        Vector3(float x, float y, float z);
-        
-    protected:
-        float x, y, z;
-};
+    class Vector3
+    {
+        public:
+            Vector3(float x, float y, float z);
+            
+        protected:
+            float x, y, z;
+    };
+}
 
 #endif // #ifndef _vector3_h

@@ -166,13 +166,13 @@
 		87C7B47719516CFC004C5914 /* Cross Platform Code */ = {
 			isa = PBXGroup;
 			children = (
-				87C7B47819516CFC004C5914 /* main.cpp */,
-				87C7B47919516CFC004C5914 /* Object.cpp */,
 				87C7B47A19516CFC004C5914 /* Object.h */,
-				87C7B47B19516CFC004C5914 /* Transform.cpp */,
+				87C7B47919516CFC004C5914 /* Object.cpp */,
 				87C7B47C19516CFC004C5914 /* Transform.h */,
-				87C7B47D19516CFC004C5914 /* Vector3.cpp */,
+				87C7B47B19516CFC004C5914 /* Transform.cpp */,
 				87C7B47E19516CFC004C5914 /* Vector3.h */,
+				87C7B47D19516CFC004C5914 /* Vector3.cpp */,
+				87C7B47819516CFC004C5914 /* main.cpp */,
 			);
 			name = "Cross Platform Code";
 			path = ../../src;
