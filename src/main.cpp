@@ -17,11 +17,49 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
-void render()
+#include "utility/LoadShaders.h"
+
+#define BUFFER_OFFSET(x)  ((const void*) (x))
+
+GLuint vertex_array_objects[1];
+const GLuint num_verts = 3;
+
+void CreateTestVAO()
+{
+    GLuint vertex_buffers[1];
+    
+    glGenVertexArrays(1, vertex_array_objects);
+    glBindVertexArray(vertex_array_objects[0]);
+    
+    GLfloat vertices[3][2] = {
+        { -0.90, -0.90 },
+        { 0.85, -0.90 },
+        { -0.90, 0.85 }
+    };
+    
+    glGenBuffers(1, vertex_buffers);
+    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffers[0]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    ShaderInfo  shaders[] = {
+        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
+        { GL_NONE, NULL }
+    };
+    
+    GLuint program = LoadShaders(shaders);
+    glUseProgram(program);
+    glVertexAttribPointer(0, 2, GL_FLOAT,
+                          GL_FALSE, 0, BUFFER_OFFSET(0));
+    glEnableVertexAttribArray(0);
+}
+
+void Render()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     
-    
+    glBindVertexArray(vertex_array_objects[0]);
+    glDrawArrays(GL_TRIANGLES, 0, num_verts);
     
     glFlush();
 }
@@ -59,6 +97,8 @@ int main(int argc, const char * argv[])
     
     fprintf(stdout, "OpenGL version: %d.%d", major_version, minor_version);
     
+    CreateTestVAO();
+    
     SDL_Event event;
     while(true)
     {
@@ -69,7 +109,7 @@ int main(int argc, const char * argv[])
                 break;
             }
             
-            render();
+            Render();
         }
         
         SDL_GL_SwapWindow(window);
