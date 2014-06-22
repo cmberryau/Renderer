@@ -24,6 +24,11 @@
 GLuint vertex_array_objects[1];
 const GLuint num_verts = 3;
 
+void InitGL()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+
 void CreateTestVAO()
 {
     GLuint vertex_buffers[1];
@@ -72,7 +77,8 @@ int main(int argc, const char * argv[])
         return -1;
     }
     
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+                        SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
     
@@ -97,6 +103,7 @@ int main(int argc, const char * argv[])
     
     fprintf(stdout, "OpenGL version: %d.%d", major_version, minor_version);
     
+    InitGL();
     CreateTestVAO();
     
     SDL_Event event;
