@@ -74,7 +74,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -85,7 +86,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,14 +120,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\math\Matrix.cpp" />
+    <ClCompile Include="..\..\src\math\Transform.cpp" />
+    <ClCompile Include="..\..\src\math\Vector.cpp" />
     <ClCompile Include="..\..\src\Object.cpp" />
-    <ClCompile Include="..\..\src\Transform.cpp" />
-    <ClCompile Include="..\..\src\Vector3.cpp" />
+    <ClCompile Include="..\..\src\utility\LoadShaders.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\math\Matrix.h" />
+    <ClInclude Include="..\..\src\math\Transform.h" />
+    <ClInclude Include="..\..\src\math\Vector.h" />
     <ClInclude Include="..\..\src\Object.h" />
-    <ClInclude Include="..\..\src\Transform.h" />
-    <ClInclude Include="..\..\src\Vector3.h" />
+    <ClInclude Include="..\..\src\utility\LoadShaders.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

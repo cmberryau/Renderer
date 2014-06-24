@@ -6,23 +6,27 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#ifdef _WINDOWS
-    #include <windows.h>
-#endif
-
 #include <iostream>
 
-#define GL_GLEXT_PROTOTYPES 1
+#ifdef _WIN32
+    #include <windows.h>
+	#include <gl\glew.h>
+#else
+	#define GL_GLEXT_PROTOTYPES 1
+#endif
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
 #include "utility/LoadShaders.h"
+#include "math/Matrix.h"
 
 #define BUFFER_OFFSET(x)  ((const void*) (x))
 
 GLuint vertex_array_objects[1];
 const GLuint num_verts = 3;
+
+GLint model_matrix_uniform;
 
 void CreateTestVAO()
 {
@@ -42,8 +46,8 @@ void CreateTestVAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
+        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
         { GL_NONE, NULL }
     };
     
@@ -51,6 +55,9 @@ void CreateTestVAO()
     glUseProgram(program);
     glVertexAttribPointer(0, 2, GL_FLOAT,
                           GL_FALSE, 0, BUFFER_OFFSET(0));
+
+	glGetUniformLocation(program, "model_matrix");
+
     glEnableVertexAttribArray(0);
 }
 
@@ -64,17 +71,17 @@ void Render()
     glFlush();
 }
 
-int main(int argc, const char * argv[])
+int main(int argc, char ** argv)
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
-        fprintf(stdout, "SDL_Init failed!");
+        fprintf(stdout, "SDL_Init failed!\n");
         return -1;
     }
     
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
     
     SDL_Window * window = SDL_CreateWindow("Renderer",
                                            SDL_WINDOWPOS_CENTERED,
@@ -86,19 +93,27 @@ int main(int argc, const char * argv[])
     
     if(gl_context == NULL)
     {
-        fprintf(stdout, "SDL_GL_CreateContext failed!");
+        fprintf(stdout, "SDL_GL_CreateContext failed!\n");
     }
-    
+ 
+	glewExperimental = GL_TRUE;
+
+	if (glewInit() != GLEW_OK)
+	{
+		fprintf(stdout, "glewInit failed!\n");
+		return -1;
+	}
+
     GLint major_version = -1;
     GLint minor_version = -1;
     
     glGetIntegerv(GL_MAJOR_VERSION, &major_version);
     glGetIntegerv(GL_MINOR_VERSION, &minor_version);
     
-    fprintf(stdout, "OpenGL version: %d.%d", major_version, minor_version);
+    fprintf(stdout, "OpenGL version: %d.%d\n", major_version, minor_version);
     
     CreateTestVAO();
-    
+
     SDL_Event event;
     while(true)
     {

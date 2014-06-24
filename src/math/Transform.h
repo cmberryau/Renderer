@@ -9,21 +9,16 @@
 #ifndef _transform_h
 #define _transform_h
 
-#include "Vector3.h"
+#include "Vector.h"
 
 namespace Renderer
 {
     class Transform
     {
         public:
-            Vector3 * position;
-            Vector3 * rotation;
-            Vector3 * scale;
-        
-            Transform(Vector3 * position);
             Transform();
             ~Transform();
     };
 }
 
-#endif // #ifndef _transform_h
+#endif // _transform_h

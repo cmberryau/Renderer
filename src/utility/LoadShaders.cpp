@@ -7,6 +7,10 @@
 #include <cstdlib>
 #include <iostream>
 
+#ifdef _WIN32
+	#include <gl\glew.h>
+#endif 
+
 #define GLEW_STATIC
 #include <SDL2/SDL_opengl.h>
 #include "LoadShaders.h"
