@@ -1,19 +1,22 @@
 //
-//  Vector3.cpp
+//  Transform.cpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#include "Vector3.h"
+#include "Transform.h"
 
 namespace Renderer
 {
-    Vector3::Vector3(float x, float y, float z)
+    Transform::Transform()
     {
-        this->x = x;
-        this->y = y;
-        this->z = z;
+
+    }
+
+    Transform::~Transform()
+    {
+
     }
 }
