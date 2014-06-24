@@ -34,7 +34,7 @@ namespace Renderer
 	
 	template <typename T> class Vector3 : public Vector <T, 3>
 	{
-		public:
+        public:
 			Vector3(){};
 			Vector3(T x, T y, T z);
 	};

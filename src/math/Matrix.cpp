@@ -15,9 +15,9 @@ namespace Renderer
 											  T e20, T e21, T e22, T e23,
 											  T e30, T e31, T e32, T e33)
 	{
-		elements[0].x = e00; elements[0].y = e10; elements[0].z = e20; elements[0].w = e30;
-		elements[1].x = e01; elements[1].y = e11; elements[1].z = e21; elements[1].w = e31;
-		elements[2].x = e02; elements[2].y = e12; elements[2].z = e22; elements[2].w = e32;
-		elements[3].x = e03; elements[3].y = e13; elements[3].z = e23; elements[3].w = e33;
+        this->elements[0].x = e00; this->elements[0].y = e10; this->elements[0].z = e20; this->elements[0].w = e30;
+		this->elements[1].x = e01; this->elements[1].y = e11; this->elements[1].z = e21; this->elements[1].w = e31;
+		this->elements[2].x = e02; this->elements[2].y = e12; this->elements[2].z = e22; this->elements[2].w = e32;
+		this->elements[3].x = e03; this->elements[3].y = e13; this->elements[3].z = e23; this->elements[3].w = e33;
 	}
 }

@@ -13,6 +13,9 @@
 		876EA3F419524A2C00AD06B5 /* triangles.vert in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F219524A2C00AD06B5 /* triangles.vert */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
+		87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A0B741195A1261003F53C6 /* Matrix.cpp */; };
+		87A0B748195A1261003F53C6 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A0B743195A1261003F53C6 /* Transform.cpp */; };
+		87A0B749195A1261003F53C6 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A0B745195A1261003F53C6 /* Vector.cpp */; };
 		87BC838B19452C3E00D97C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC838A19452C3E00D97C8E /* Cocoa.framework */; };
 		87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839319452C3E00D97C8E /* InfoPlist.strings */; };
 		87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839919452C3E00D97C8E /* Credits.rtf */; };
@@ -23,8 +26,6 @@
 		87BC83B519452C3E00D97C8E /* RendererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BC83B419452C3E00D97C8E /* RendererTests.m */; };
 		87C7B47F19516CFC004C5914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47819516CFC004C5914 /* main.cpp */; };
 		87C7B48019516CFC004C5914 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47919516CFC004C5914 /* Object.cpp */; };
-		87C7B48119516CFC004C5914 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47B19516CFC004C5914 /* Transform.cpp */; };
-		87C7B48219516CFC004C5914 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47D19516CFC004C5914 /* Vector3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,12 @@
 		876EA3F219524A2C00AD06B5 /* triangles.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = triangles.vert; path = shaders/triangles.vert; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		8787B0DD194DBEF900F894CA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		87A0B741195A1261003F53C6 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix.cpp; path = math/Matrix.cpp; sourceTree = "<group>"; };
+		87A0B742195A1261003F53C6 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix.h; path = math/Matrix.h; sourceTree = "<group>"; };
+		87A0B743195A1261003F53C6 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = math/Transform.cpp; sourceTree = "<group>"; };
+		87A0B744195A1261003F53C6 /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transform.h; path = math/Transform.h; sourceTree = "<group>"; };
+		87A0B745195A1261003F53C6 /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector.cpp; path = math/Vector.cpp; sourceTree = "<group>"; };
+		87A0B746195A1261003F53C6 /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector.h; path = math/Vector.h; sourceTree = "<group>"; };
 		87BC838719452C3E00D97C8E /* Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BC838A19452C3E00D97C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		87BC838D19452C3E00D97C8E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -62,10 +69,6 @@
 		87C7B47819516CFC004C5914 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		87C7B47919516CFC004C5914 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		87C7B47A19516CFC004C5914 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
-		87C7B47B19516CFC004C5914 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transform.cpp; sourceTree = "<group>"; };
-		87C7B47C19516CFC004C5914 /* Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transform.h; sourceTree = "<group>"; };
-		87C7B47D19516CFC004C5914 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
-		87C7B47E19516CFC004C5914 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,12 @@
 		87A0B74019599156003F53C6 /* math */ = {
 			isa = PBXGroup;
 			children = (
+				87A0B741195A1261003F53C6 /* Matrix.cpp */,
+				87A0B742195A1261003F53C6 /* Matrix.h */,
+				87A0B743195A1261003F53C6 /* Transform.cpp */,
+				87A0B744195A1261003F53C6 /* Transform.h */,
+				87A0B745195A1261003F53C6 /* Vector.cpp */,
+				87A0B746195A1261003F53C6 /* Vector.h */,
 			);
 			name = math;
 			sourceTree = "<group>";
@@ -204,10 +213,6 @@
 				876EA3EB19523D1A00AD06B5 /* utility */,
 				87C7B47A19516CFC004C5914 /* Object.h */,
 				87C7B47919516CFC004C5914 /* Object.cpp */,
-				87C7B47C19516CFC004C5914 /* Transform.h */,
-				87C7B47B19516CFC004C5914 /* Transform.cpp */,
-				87C7B47E19516CFC004C5914 /* Vector3.h */,
-				87C7B47D19516CFC004C5914 /* Vector3.cpp */,
 				87C7B47819516CFC004C5914 /* main.cpp */,
 			);
 			name = "Cross Platform Code";
@@ -314,9 +319,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87C7B48119516CFC004C5914 /* Transform.cpp in Sources */,
+				87A0B748195A1261003F53C6 /* Transform.cpp in Sources */,
+				87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */,
+				87A0B749195A1261003F53C6 /* Vector.cpp in Sources */,
 				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
-				87C7B48219516CFC004C5914 /* Vector3.cpp in Sources */,
 				87C7B48019516CFC004C5914 /* Object.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 			);

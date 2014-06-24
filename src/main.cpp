@@ -26,14 +26,12 @@
 GLuint vertex_array_objects[1];
 const GLuint num_verts = 3;
 
-<<<<<<< HEAD
 void InitGL()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
-=======
+
 GLint model_matrix_uniform;
->>>>>>> FETCH_HEAD
 
 void CreateTestVAO()
 {
@@ -53,8 +51,8 @@ void CreateTestVAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
+        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
         { GL_NONE, NULL }
     };
     
@@ -86,16 +84,9 @@ int main(int argc, char ** argv)
         return -1;
     }
     
-<<<<<<< HEAD
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
-                        SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-=======
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
->>>>>>> FETCH_HEAD
     
     SDL_Window * window = SDL_CreateWindow("Renderer",
                                            SDL_WINDOWPOS_CENTERED,
@@ -110,6 +101,8 @@ int main(int argc, char ** argv)
         fprintf(stdout, "SDL_GL_CreateContext failed!\n");
     }
  
+#ifdef _WIN32
+    
 	glewExperimental = GL_TRUE;
 
 	if (glewInit() != GLEW_OK)
@@ -117,6 +110,8 @@ int main(int argc, char ** argv)
 		fprintf(stdout, "glewInit failed!\n");
 		return -1;
 	}
+    
+#endif
 
     GLint major_version = -1;
     GLint minor_version = -1;
