@@ -109,6 +109,13 @@
 			name = shaders;
 			sourceTree = "<group>";
 		};
+		87A0B74019599156003F53C6 /* math */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = math;
+			sourceTree = "<group>";
+		};
 		87BC837E19452C3E00D97C8E = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +199,7 @@
 		87C7B47719516CFC004C5914 /* Cross Platform Code */ = {
 			isa = PBXGroup;
 			children = (
+				87A0B74019599156003F53C6 /* math */,
 				876EA3F019524A1B00AD06B5 /* shaders */,
 				876EA3EB19523D1A00AD06B5 /* utility */,
 				87C7B47A19516CFC004C5914 /* Object.h */,
