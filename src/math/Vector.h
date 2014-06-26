@@ -16,6 +16,17 @@ namespace Renderer
 		public:
 			Vector(){};
 
+			Vector(T value)
+			{
+				for (int i = 0; i < length; i++)
+				{
+					elements[i] = value;
+				}
+			}
+
+			T & operator[](int n) { return elements[n]; }
+			operator const T * () const { return &elements[0]; }
+
         protected:
 			T elements[length];
     };
@@ -58,3 +69,27 @@ namespace Renderer
 }
 
 #endif // _vector_h
+
+namespace Renderer
+{
+	template <typename T> Vector2<T>::Vector2(T x, T y)
+	{
+		this->elements[0] = x;
+		this->elements[1] = y;
+	}
+
+	template <typename T> Vector3<T>::Vector3(T x, T y, T z)
+	{
+		this->elements[0] = x;
+		this->elements[1] = y;
+		this->elements[2] = z;
+	}
+
+	template <typename T> Vector4<T>::Vector4(T x, T y, T z, T w)
+	{
+		this->elements[0] = x;
+		this->elements[1] = y;
+		this->elements[2] = z;
+		this->elements[3] = w;
+	}
+}

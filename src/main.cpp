@@ -51,8 +51,8 @@ void CreateTestVAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
+        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
         { GL_NONE, NULL }
     };
     
@@ -125,12 +125,10 @@ int main(int argc, char ** argv)
     
     InitGL();
     CreateTestVAO();
+    
+	Matrix4f projection_matrix = Matrix4f::identity();
+	projection_matrix.Print();
 
-    double blabla = 21.8916287l;
-    uint blopblop = 0;
-    
-    memcpy((void*)&blopblop, (void*)&blabla, sizeof(blabla));
-    
     SDL_Event event;
     while(true)
     {
@@ -140,9 +138,8 @@ int main(int argc, char ** argv)
             {
                 break;
             }
-            
-            Matrix4f transform_matrix = Matrix4f::identity();
-            glUniformMatrix4fv(model_matrix_uniform, 4, GL_FALSE, NULL);
+
+			glUniformMatrix4fv(model_matrix_uniform, 4, GL_FALSE, projection_matrix);
                                
             Render();
         }
