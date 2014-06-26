@@ -76,6 +76,8 @@ void Render()
     glFlush();
 }
 
+using namespace Renderer;
+
 int main(int argc, char ** argv)
 {
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -124,6 +126,11 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
 
+    double blabla = 21.8916287l;
+    uint blopblop = 0;
+    
+    memcpy((void*)&blopblop, (void*)&blabla, sizeof(blabla));
+    
     SDL_Event event;
     while(true)
     {
@@ -134,6 +141,9 @@ int main(int argc, char ** argv)
                 break;
             }
             
+            Matrix4f transform_matrix = Matrix4f::identity();
+            glUniformMatrix4fv(model_matrix_uniform, 4, GL_FALSE, NULL);
+                               
             Render();
         }
         
