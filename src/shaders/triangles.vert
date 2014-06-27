@@ -13,5 +13,5 @@ void main()
     else
         vs_fs_color = vec4(0.0, 1.0, 0.0, 1.0);
     
-    gl_Position = position;
+    gl_Position = position * model_matrix;
 }
