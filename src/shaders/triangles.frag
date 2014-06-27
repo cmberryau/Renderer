@@ -1,8 +1,10 @@
 #version 410 core
 
-out vec4 fColor;
+in vec4 vs_fs_color;
+
+out vec4 final_color;
 
 void main() 
 {
-    fColor = vec4(0.0, 0.0, 1.0, 1.0); 
+    final_color = vs_fs_color;
 }

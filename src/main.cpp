@@ -23,6 +23,8 @@
 
 #define BUFFER_OFFSET(x)  ((const void*) (x))
 
+using namespace Renderer;
+
 GLuint vertex_array_objects[1];
 const GLuint num_verts = 3;
 
@@ -31,7 +33,8 @@ void InitGL()
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
-GLint model_matrix_uniform;
+GLuint program;
+GLint model_matrix_uniform = -1;
 
 void CreateTestVAO()
 {
@@ -51,17 +54,19 @@ void CreateTestVAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
+        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
         { GL_NONE, NULL }
     };
     
-    GLuint program = LoadShaders(shaders);
+    program = LoadShaders(shaders);
+    
     glUseProgram(program);
+    
     glVertexAttribPointer(0, 2, GL_FLOAT,
                           GL_FALSE, 0, BUFFER_OFFSET(0));
 
-	glGetUniformLocation(program, "model_matrix");
+	model_matrix_uniform = glGetUniformLocation(program, "model_matrix");
 
     glEnableVertexAttribArray(0);
 }
@@ -75,8 +80,6 @@ void Render()
     
     glFlush();
 }
-
-using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
@@ -114,7 +117,7 @@ int main(int argc, char ** argv)
 	}
     
 #endif
-
+    
     GLint major_version = -1;
     GLint minor_version = -1;
     
@@ -126,9 +129,11 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
     
-	Matrix4f projection_matrix = Matrix4f::identity();
-	projection_matrix.Print();
-
+  	Matrix4f projection_matrix = Matrix4f::identity();
+    
+    glUseProgram(program);
+    glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, projection_matrix);
+    
     SDL_Event event;
     while(true)
     {
@@ -138,8 +143,6 @@ int main(int argc, char ** argv)
             {
                 break;
             }
-
-			glUniformMatrix4fv(model_matrix_uniform, 4, GL_FALSE, projection_matrix);
                                
             Render();
         }

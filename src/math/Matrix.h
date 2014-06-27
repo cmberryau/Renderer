@@ -19,8 +19,6 @@ namespace Renderer
 	class Matrix
 	{
 		public:
-			operator const T * () const { return &elements[0][0]; }
-
 			Matrix(){};
 
 			Matrix(T value)
@@ -46,6 +44,8 @@ namespace Renderer
 					printf("\n");
 				}
 			}
+        
+   			operator const T * () const { return &elements[0][0]; }
         
 		protected:
             void assign(const Matrix &that);
@@ -102,7 +102,7 @@ namespace Renderer
 	template <typename T>
 	Matrix4<T>::Matrix4(const Matrix4<T> & that)
 	{
-		assign(that);
+		
 	}
 
 	template <typename T>
