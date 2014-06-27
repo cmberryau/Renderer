@@ -14,21 +14,23 @@ namespace Renderer
     template <typename T, const int length> class Vector
     {
 		public:
-			Vector(){};
+        
+        Vector(){};
 
-			Vector(T value)
-			{
-				for (int i = 0; i < length; i++)
-				{
-					elements[i] = value;
-				}
-			}
+        Vector(T value)
+        {
+            for (int i = 0; i < length; i++)
+            {
+                elements[i] = value;
+            }
+        }
 
-			T & operator[](int n) { return elements[n]; }
-			operator const T * () const { return &elements[0]; }
+        T & operator[](int n) { return elements[n]; }
+        operator const T * () const { return &elements[0]; }
 
         protected:
-			T elements[length];
+        
+        T elements[length];
     };
 
 	template <typename T> class Vector2 : public Vector <T, 2>
@@ -48,6 +50,7 @@ namespace Renderer
 	template <typename T> class Vector3 : public Vector <T, 3>
 	{
         public:
+        
         Vector3(){};
         Vector3(T x, T y, T z)
         {
@@ -62,6 +65,7 @@ namespace Renderer
 	template <typename T> class Vector4 : public Vector <T, 4>
 	{
 		public:
+        
         Vector4(){};
         Vector4(T x, T y, T z, T w)
         {

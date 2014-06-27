@@ -129,10 +129,25 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
     
-  	Matrix4f projection_matrix = Matrix4f::identity();
+  	Matrix4f projection_matrix = Matrix4f::translate(0.0f, 1.0f, 0.0f);
+    //Matrix4f projection_matrix = Matrix4f::identity();
     
+    GLfloat values[16] = {
+        1.0f, 0.0f, 0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f, 1.0f
+    };
+    
+    const GLfloat * projection_floats = projection_matrix;
+    for(int i=0;i<4*4;i++)
+    {
+        printf("%f\n", projection_floats[i]);
+    }
+    
+    //projection_matrix.Print();
     glUseProgram(program);
-    glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, projection_matrix);
+    glUniformMatrix4fv(model_matrix_uniform, 1, GL_TRUE, projection_matrix);
     
     SDL_Event event;
     while(true)

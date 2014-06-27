@@ -31,6 +31,13 @@ namespace Renderer
         {
             assign(that);
         }
+        Matrix(const Vector<T, h> &vector)
+        {
+            for(int i=0; i<w; i++)
+            {
+                elements[i] = vector;
+            }
+        }
 
         static Matrix<T, w, h> identity()
         {
@@ -50,10 +57,11 @@ namespace Renderer
             {
                 for (int j = 0; j < w; j++)
                 {
-                    printf("[%f]", elements[i][j]);
+                    printf("m%d%d[%f] ", i, j, elements[j][i]);
                 }
                 printf("\n");
             }
+            printf("\n");
         }
     
         operator const T * () const { return &elements[0][0]; }
@@ -81,9 +89,25 @@ namespace Renderer
         {
             this->assign(that);
         }
-        Matrix4(const Matrix<T, 4, 4> & that) : Matrix<T, 4, 4> (that)
+        Matrix4(const Matrix<T, 4, 4> & that) : Matrix<T, 4, 4> (that){}
+        Matrix4(const Vector4<T> & vector) : Matrix<T, 4, 4> (vector){}
+        Matrix4(const Vector4<T> & v00,
+                const Vector4<T> & v01,
+                const Vector4<T> & v02,
+                const Vector4<T> & v03)
         {
-            
+            this->elements[0] = v00;
+            this->elements[1] = v01;
+            this->elements[2] = v02;
+            this->elements[3] = v03;
+        }
+        
+        static Matrix4<T> translate(T x, T y, T z)
+        {
+            return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
+                              Vector4<T>(0.0, 1.0, 0.0, 0.0),
+                              Vector4<T>(0.0, 0.0, 1.0, 0.0),
+                              Vector4<T>(x, y, z, 1.0f));
         }
 	};
 	
