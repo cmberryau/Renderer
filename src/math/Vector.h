@@ -11,7 +11,13 @@
 
 namespace Renderer
 {
-    template <typename T, const int length> class Vector
+	// 
+	// Renderer::Vector<typename T, const int length>
+	//
+	// Generic vector implementation
+	//
+    template <typename T, const int length> 
+	class Vector
     {
 		public:        
 		// constructors
@@ -35,7 +41,13 @@ namespace Renderer
         T elements[length];
     };
 
-	template <typename T> class Vector2 : public Vector <T, 2>
+	// 
+	// Renderer::Vector2<typename T>
+	//
+	// Generic 2 element vector implementation
+	//
+	template <typename T> 
+	class Vector2 : public Vector <T, 2>
 	{
 		public:
 		// constructors
@@ -47,9 +59,16 @@ namespace Renderer
         }
 	};
 
+	// defined types for usage
 	typedef Vector2<float> Vector2f;
 	
-	template <typename T> class Vector3 : public Vector <T, 3>
+	// 
+	// Renderer::Vector3<typename T>
+	//
+	// Generic 3 element vector implementation
+	//
+	template <typename T> class 
+	Vector3 : public Vector <T, 3>
 	{
         public:
         // constructors
@@ -62,9 +81,16 @@ namespace Renderer
         }
 	};
 
+	// defined types for usage
 	typedef Vector3<float> Vector3f;
 
-	template <typename T> class Vector4 : public Vector <T, 4>
+	// 
+	// Renderer::Vector4<typename T>
+	//
+	// Generic 4 element vector implementation
+	//
+	template <typename T> class 
+	Vector4 : public Vector <T, 4>
 	{
 		public:
 		// constructors
@@ -78,6 +104,7 @@ namespace Renderer
         }
 	};
 
+	// defined types for usage
 	typedef Vector4<float> Vector4f;
 }
 

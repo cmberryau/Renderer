@@ -14,11 +14,17 @@
 
 namespace Renderer
 {
-	template<typename T, const int w, const int h> 
+	// 
+	// Renderer::Matrix<typename T, const int w, const int h> 
+	//
+	// Generic column-major matrix implementation, column
+	// major picked to keep in line with OpenGL and DirectX
+	//
+	template<typename T, const int w, const int h>
 	class Matrix
 	{
 		public:
-        
+		// constructors
         Matrix(){};
         Matrix(T value)
         {
@@ -39,7 +45,8 @@ namespace Renderer
             }
         }
 
-        static Matrix<T, w, h> identity()
+		// member functions
+        static Matrix<T, w, h> Identity()
         {
             Matrix<T, w, h> matrix(0);
             
@@ -51,6 +58,7 @@ namespace Renderer
             return matrix;
         }
 
+		// debug member functions
         void Print()
         {
             for(int i = 0; i < h; i++)
@@ -64,6 +72,7 @@ namespace Renderer
             printf("\n");
         }
     
+		// operators
         operator const T * () const { return &elements[0][0]; }
         
 		protected:
@@ -79,11 +88,16 @@ namespace Renderer
         Vector<T, h> elements[w];
 	};
 
+	// 
+	// Renderer::Matrix4<typename T>
+	//
+	// Generic 4 x 4 element matrix implementation
+	//
 	template<typename T> 
 	class Matrix4 : public Matrix <T, 4, 4>
 	{
 		public:
-        
+		// constructors
         Matrix4(){};
         Matrix4(const Matrix4<T> & that)
         {
@@ -102,15 +116,17 @@ namespace Renderer
             this->elements[3] = v03;
         }
         
-        static Matrix4<T> translate(T x, T y, T z)
+		// member funcitons
+        static Matrix4<T> Translate(T x, T y, T z)
         {
             return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
                               Vector4<T>(0.0, 1.0, 0.0, 0.0),
                               Vector4<T>(0.0, 0.0, 1.0, 0.0),
-                              Vector4<T>(x, y, z, 1.0f));
+                              Vector4<T>(  x,   y,   z, 1.0f));
         }
 	};
 	
+	// defined types for usage
 	typedef Matrix4<float> Matrix4f;
 }
 
