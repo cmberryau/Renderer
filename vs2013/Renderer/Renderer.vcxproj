@@ -120,6 +120,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\math\Math.cpp" />
     <ClCompile Include="..\..\src\math\Matrix.cpp" />
     <ClCompile Include="..\..\src\math\Transform.cpp" />
     <ClCompile Include="..\..\src\math\Vector.cpp" />
@@ -127,6 +128,7 @@
     <ClCompile Include="..\..\src\utility\LoadShaders.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\math\Math.h" />
     <ClInclude Include="..\..\src\math\Matrix.h" />
     <ClInclude Include="..\..\src\math\Transform.h" />
     <ClInclude Include="..\..\src\math\Vector.h" />

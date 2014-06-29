@@ -45,7 +45,7 @@ namespace Renderer
             }
         }
 
-		// member functions
+		// static member functions
         static Matrix<T, w, h> Identity()
         {
             Matrix<T, w, h> matrix(0);
@@ -58,7 +58,7 @@ namespace Renderer
             return matrix;
         }
 
-		// debug member functions
+		// member functions
         void Print()
         {
             for(int i = 0; i < h; i++)
@@ -115,8 +115,8 @@ namespace Renderer
             this->elements[2] = v02;
             this->elements[3] = v03;
         }
-        
-		// member funcitons
+
+		// static member funcitons
         static Matrix4<T> Translate(T x, T y, T z)
         {
             return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
@@ -124,6 +124,39 @@ namespace Renderer
                               Vector4<T>(0.0, 0.0, 1.0, 0.0),
                               Vector4<T>(  x,   y,   z, 1.0f));
         }
+
+		static Matrix4<T> Orthographic(T left, T right, T bottom, T top, T zfar, T znear)
+		{
+			Matrix4<T> matrix = Matrix4<T>(0);
+
+			matrix.elements[0][0] = 2 / (right - left);
+			matrix.elements[1][1] = 2 / (top - bottom);
+			matrix.elements[2][2] = 2 / (zfar - znear);
+			matrix.elements[3][3] = 1;
+
+			matrix.elements[3][0] = -(right + left) / (right - left);
+			matrix.elements[3][1] = -(top + bottom) / (top - bottom);
+			matrix.elements[3][2] = -(zfar + znear) / (zfar - znear);
+
+			return matrix;
+		}
+
+		static Matrix4<T> Perspective(T left, T right, T bottom, T top, T znear, T zfar)
+		{
+			Matrix4<T> matrix = Matrix4<T>(0);
+
+			matrix.elements[0][0] = (2 * znear) / (right - left);
+			matrix.elements[1][1] = (2 * znear) / (top - bottom);
+
+			matrix.elements[2][0] = -(right + left) / (right - left);
+			matrix.elements[2][1] = -(top + bottom) / (top - bottom);
+			matrix.elements[2][2] = -(zfar + znear) / (zfar - znear);
+			matrix.elements[2][3] = -1;
+
+			matrix.elements[3][2] = -(2 * (zfar * znear)) / (zfar - znear);
+
+			return matrix;
+		}
 	};
 	
 	// defined types for usage

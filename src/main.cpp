@@ -34,7 +34,8 @@ void InitGL()
 }
 
 GLuint program;
-GLint model_matrix_uniform = -1;
+GLint model_matrix_uniform;
+GLint projection_matrix_uniform;
 
 void CreateTestVAO()
 {
@@ -44,9 +45,9 @@ void CreateTestVAO()
     glBindVertexArray(vertex_array_objects[0]);
     
     GLfloat vertices[3][2] = {
-        { -0.90, -0.90 },
-        { 0.85, -0.90 },
-        { -0.90, 0.85 }
+        { 0.00, 0.00 },
+        { 100.00, 0.00 },
+        { 0.00,  100.00 }
     };
     
     glGenBuffers(1, vertex_buffers);
@@ -67,6 +68,7 @@ void CreateTestVAO()
                           GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	model_matrix_uniform = glGetUniformLocation(program, "model_matrix");
+	projection_matrix_uniform = glGetUniformLocation(program, "projection_matrix");
 
     glEnableVertexAttribArray(0);
 }
@@ -129,10 +131,13 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
     
-  	Matrix4f tranlation_matrix = Matrix4f::translate(0.0f, 0.5f, 0.0f);
-    
+  	Matrix4f tranlation_matrix = Matrix4f::Translate(0.0f, 0.0f, 0.0f);
+	Matrix4f projection_matrix = Matrix4f::Orthographic(0.0f, 640.0f, 0.0f, 480.0f, 10.0f, -1.0f);
+	//Matrix4f projection_matrix = Matrix4f::Perspective(0.0f, 640.0f, 0.0f, 480.0f, 10.0f, -1.0f);
+
     glUseProgram(program);
 	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, tranlation_matrix);
+	glUniformMatrix4fv(projection_matrix_uniform, 1, GL_FALSE, projection_matrix);
     
     SDL_Event event;
     while(true)

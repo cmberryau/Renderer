@@ -45,6 +45,9 @@
     <ClCompile Include="..\..\src\math\Vector.cpp">
       <Filter>Source Files\math</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\math\Math.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Object.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Matrix.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Math.h">
       <Filter>Header Files\math</Filter>
     </ClInclude>
   </ItemGroup>
