@@ -26,6 +26,7 @@
 		87BC83B519452C3E00D97C8E /* RendererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BC83B419452C3E00D97C8E /* RendererTests.m */; };
 		87C7B47F19516CFC004C5914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47819516CFC004C5914 /* main.cpp */; };
 		87C7B48019516CFC004C5914 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47919516CFC004C5914 /* Object.cpp */; };
+		87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC709E1960B3F7001EDA7D /* Math.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		87C7B47819516CFC004C5914 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		87C7B47919516CFC004C5914 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		87C7B47A19516CFC004C5914 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		87CC709D1960B3F1001EDA7D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Math.h; path = math/Math.h; sourceTree = "<group>"; };
+		87CC709E1960B3F7001EDA7D /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Math.cpp; path = math/Math.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 		87A0B74019599156003F53C6 /* math */ = {
 			isa = PBXGroup;
 			children = (
+				87CC709E1960B3F7001EDA7D /* Math.cpp */,
+				87CC709D1960B3F1001EDA7D /* Math.h */,
 				87A0B741195A1261003F53C6 /* Matrix.cpp */,
 				87A0B742195A1261003F53C6 /* Matrix.h */,
 				87A0B743195A1261003F53C6 /* Transform.cpp */,
@@ -320,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87A0B748195A1261003F53C6 /* Transform.cpp in Sources */,
+				87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */,
 				87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */,
 				87A0B749195A1261003F53C6 /* Vector.cpp in Sources */,
 				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
