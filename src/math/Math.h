@@ -9,26 +9,31 @@
 #ifndef _math_h
 #define _math_h
 
-#define M_PI_4 0.785398163397448309616
-
 #include <math.h>
+
+#ifndef M_PI
+#define M_PI       3.14159265358979323846
+#endif
 
 namespace Renderer
 {
-	template <typename T> class
-	Math
+	template <typename T>
+	class Math
 	{
 		public:
 			// static member functions
 			static T Rad2Deg(T rad)
 			{
-				return rad * (180.0 / M_PI);
+				return rad * (180.0 / (T)M_PI);
 			}
+
 			static T Deg2Rad(T deg)
 			{
-				return deg / (180.0 / M_PI);
+				return deg / (180.0 / (T)M_PI);
 			}
 	};
+
+	typedef Math<float> Mathf;
 }
 
 #endif  // _math_h

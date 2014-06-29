@@ -10,6 +10,7 @@
 #define _matrix_h
 
 #include <stdio.h>
+
 #include "Math.h"
 #include "Vector.h"
 
@@ -118,7 +119,7 @@ namespace Renderer
 			}
 
 			// static member funcitons
-			static Matrix4<T> Translate(T x, T y, T z)
+			static inline Matrix4<T> Translate(T x, T y, T z)
 			{
 				return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
 								  Vector4<T>(0.0, 1.0, 0.0, 0.0),
@@ -126,9 +127,9 @@ namespace Renderer
 								  Vector4<T>(  x,   y,   z, 1.0f));
 			}
 
-			static Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
+			static inline Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
 			{
-				Matrix4<T> matrix = Matrix4<T>::Identity();
+				Matrix4<T> matrix = Matrix4<T>(0);
 
 				matrix.elements[0][0] = 2 / (right - left);
 				matrix.elements[1][1] = 2 / (top - bottom);
@@ -143,7 +144,7 @@ namespace Renderer
 				return matrix;
 			}
 
-			static Matrix4<T> Frustrum(T left, T right, T bottom, T top, T znear, T zfar)
+			static inline Matrix4<T> Frustrum(T left, T right, T bottom, T top, T znear, T zfar)
 			{
 				Matrix4<T> matrix = Matrix4<T>(0);
 
@@ -151,20 +152,20 @@ namespace Renderer
 				matrix.elements[1][1] = (2 * znear) / (top - bottom);
 
 				// used only for asymmetric frustrums?
-				matrix.elements[2][0] = (right + left) / (right - left);
-				matrix.elements[2][1] = (top + bottom) / (top - bottom);
+				//matrix.elements[2][0] = -(right + left) / (right - left);
+				//matrix.elements[2][1] = -(top + bottom) / (top - bottom);
 
-				matrix.elements[2][2] = -(zfar + znear) / (zfar - znear);
-				matrix.elements[2][3] = -1;
+				matrix.elements[2][2] = (zfar + znear) / (zfar - znear);
+				matrix.elements[2][3] = 1;
 
 				matrix.elements[3][2] = -(2 * zfar * znear) / (zfar - znear);
 
 				return matrix;
 			}
 
-			static Matrix4<T> Perspective(float vertical_fov, float aspect_ratio, float znear, float zfar)
+			static inline Matrix4<T> Perspective(float vertical_fov, float aspect_ratio, float znear, float zfar)
 			{
-				float top = znear * tan(Math<float>::Deg2Rad(0.5f * vertical_fov));
+				float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
 				float right = top * aspect_ratio;
 
 				return Matrix4<T>::Frustrum(-right, right, -top, top, znear, zfar);
