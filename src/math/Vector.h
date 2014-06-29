@@ -20,25 +20,25 @@ namespace Renderer
 	class Vector
     {
 		public:        
-		// constructors
-        Vector(){};
-        Vector(T value)
-        {
-            for (int i = 0; i < length; i++)
-            {
-                elements[i] = value;
-            }
-        }
+			// constructors
+			Vector(){};
+			Vector(T value)
+			{
+				for (int i = 0; i < length; i++)
+				{
+					elements[i] = value;
+				}
+			}
 
-		// operators
-		// [] operator allows array subscript style access
-        T & operator[](int n) { return elements[n]; }
-		// allows casting to an array
-        operator const T * () const { return &elements[0]; }
+			// operators
+			// [] operator allows array subscript style access
+			T & operator[](int n) { return elements[n]; }
+			// allows casting to an array
+			operator const T * () const { return &elements[0]; }
 
         protected:        
-		// the actual elements of the vector
-        T elements[length];
+			// the actual elements of the vector
+			T elements[length];
     };
 
 	// 
@@ -50,13 +50,13 @@ namespace Renderer
 	class Vector2 : public Vector <T, 2>
 	{
 		public:
-		// constructors
-        Vector2(){};
-        Vector2(T x, T y)
-        {
-            this->elements[0] = x;
-            this->elements[1] = y;
-        }
+			// constructors
+			Vector2(){};
+			Vector2(T x, T y)
+			{
+				this->elements[0] = x;
+				this->elements[1] = y;
+			}
 	};
 
 	// defined types for usage
@@ -71,14 +71,14 @@ namespace Renderer
 	Vector3 : public Vector <T, 3>
 	{
         public:
-        // constructors
-        Vector3(){};
-        Vector3(T x, T y, T z)
-        {
-            this->elements[0] = x;
-            this->elements[1] = y;
-            this->elemernts[2] = z;
-        }
+			// constructors
+			Vector3(){};
+			Vector3(T x, T y, T z)
+			{
+				this->elements[0] = x;
+				this->elements[1] = y;
+				this->elemernts[2] = z;
+			}
 	};
 
 	// defined types for usage
@@ -93,15 +93,15 @@ namespace Renderer
 	Vector4 : public Vector <T, 4>
 	{
 		public:
-		// constructors
-        Vector4(){};
-        Vector4(T x, T y, T z, T w)
-        {
-            this->elements[0] = x;
-            this->elements[1] = y;
-            this->elements[2] = z;
-            this->elements[3] = w;
-        }
+			// constructors
+			Vector4(){};
+			Vector4(T x, T y, T z, T w)
+			{
+				this->elements[0] = x;
+				this->elements[1] = y;
+				this->elements[2] = z;
+				this->elements[3] = w;
+			}
 	};
 
 	// defined types for usage

@@ -44,10 +44,10 @@ void CreateTestVAO()
     glGenVertexArrays(1, vertex_array_objects);
     glBindVertexArray(vertex_array_objects[0]);
     
-    GLfloat vertices[3][2] = {
-        { 0.00, 0.00 },
-        { 100.00, 0.00 },
-        { 0.00,  100.00 }
+    GLfloat vertices[3][3] = {
+        { 0.00, 0.00, 0.0 },
+		{ 1.00, 0.0, 0.0 },
+		{ 0.00, 1.0, 0.0 }
     };
     
     glGenBuffers(1, vertex_buffers);
@@ -64,7 +64,7 @@ void CreateTestVAO()
     
     glUseProgram(program);
     
-    glVertexAttribPointer(0, 2, GL_FLOAT,
+    glVertexAttribPointer(0, 3, GL_FLOAT,
                           GL_FALSE, 0, BUFFER_OFFSET(0));
 
 	model_matrix_uniform = glGetUniformLocation(program, "model_matrix");
@@ -132,8 +132,9 @@ int main(int argc, char ** argv)
     CreateTestVAO();
     
   	Matrix4f tranlation_matrix = Matrix4f::Translate(0.0f, 0.0f, 0.0f);
-	Matrix4f projection_matrix = Matrix4f::Orthographic(0.0f, 640.0f, 0.0f, 480.0f, 10.0f, -1.0f);
-	//Matrix4f projection_matrix = Matrix4f::Perspective(0.0f, 640.0f, 0.0f, 480.0f, 10.0f, -1.0f);
+	Matrix4f projection_matrix = Matrix4f::Orthographic(0.0f, 640.0f, 0.0f, 480.0f, 0.0f, 10.0f);
+	//Matrix4f projection_matrix = Matrix4f::Frustrum(-1.0f, 1.0f, -0.75f, 0.75f, 1.0f, 500.0f);
+	//Matrix4f projection_matrix = Matrix4f::Perspective(50.0f, 1.6f, 1.0f, 500.0f);
 
     glUseProgram(program);
 	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, tranlation_matrix);

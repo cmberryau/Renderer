@@ -10,6 +10,7 @@
 #define _matrix_h
 
 #include <stdio.h>
+#include "Math.h"
 #include "Vector.h"
 
 namespace Renderer
@@ -24,68 +25,68 @@ namespace Renderer
 	class Matrix
 	{
 		public:
-		// constructors
-        Matrix(){};
-        Matrix(T value)
-        {
-            for (int i = 0; i < w; i++)
-            {
-                elements[i] = value;
-            }
-        }
-        Matrix(const Matrix &that)
-        {
-            assign(that);
-        }
-        Matrix(const Vector<T, h> &vector)
-        {
-            for(int i=0; i<w; i++)
-            {
-                elements[i] = vector;
-            }
-        }
+			// constructors
+			Matrix(){};
+			Matrix(T value)
+			{
+				for (int i = 0; i < w; i++)
+				{
+					elements[i] = value;
+				}
+			}
+			Matrix(const Matrix &that)
+			{
+				assign(that);
+			}
+			Matrix(const Vector<T, h> &vector)
+			{
+				for(int i=0; i<w; i++)
+				{
+					elements[i] = vector;
+				}
+			}
 
-		// static member functions
-        static Matrix<T, w, h> Identity()
-        {
-            Matrix<T, w, h> matrix(0);
+			// static member functions
+			static Matrix<T, w, h> Identity()
+			{
+				Matrix<T, w, h> matrix(0);
             
-            for (int i=0; i<w; i++)
-            {
-                matrix.elements[i][i] = 1;
-            }
+				for (int i=0; i<w; i++)
+				{
+					matrix.elements[i][i] = 1;
+				}
             
-            return matrix;
-        }
+				return matrix;
+			}
 
-		// member functions
-        void Print()
-        {
-            for(int i = 0; i < h; i++)
-            {
-                for (int j = 0; j < w; j++)
-                {
-                    printf("m%d%d[%f] ", i, j, elements[j][i]);
-                }
-                printf("\n");
-            }
-            printf("\n");
-        }
+			// member functions
+			void Print()
+			{
+				for(int i = 0; i < h; i++)
+				{
+					for (int j = 0; j < w; j++)
+					{
+						printf("m%d%d[%f] ", i, j, elements[j][i]);
+					}
+					printf("\n");
+				}
+				printf("\n");
+			}
     
-		// operators
-        operator const T * () const { return &elements[0][0]; }
+			// operators
+			operator const T * () const { return &elements[0][0]; }
         
 		protected:
         
-        void assign(const Matrix &that)
-        {
-            for (int n=0; n<w; n++)
-            {
-                elements[n] = that.elements[n];
-            }
-        }
+			void assign(const Matrix &that)
+			{
+				for (int n=0; n<w; n++)
+				{
+					elements[n] = that.elements[n];
+				}
+			}
     
-        Vector<T, h> elements[w];
+			Vector<T, h> elements[w];
 	};
 
 	// 
@@ -97,66 +98,77 @@ namespace Renderer
 	class Matrix4 : public Matrix <T, 4, 4>
 	{
 		public:
-		// constructors
-        Matrix4(){};
-        Matrix4(const Matrix4<T> & that)
-        {
-            this->assign(that);
-        }
-        Matrix4(const Matrix<T, 4, 4> & that) : Matrix<T, 4, 4> (that){}
-        Matrix4(const Vector4<T> & vector) : Matrix<T, 4, 4> (vector){}
-        Matrix4(const Vector4<T> & v00,
-                const Vector4<T> & v01,
-                const Vector4<T> & v02,
-                const Vector4<T> & v03)
-        {
-            this->elements[0] = v00;
-            this->elements[1] = v01;
-            this->elements[2] = v02;
-            this->elements[3] = v03;
-        }
+			// constructors
+			Matrix4(){};
+			Matrix4(const Matrix4<T> & that)
+			{
+				this->assign(that);
+			}
+			Matrix4(const Matrix<T, 4, 4> & that) : Matrix<T, 4, 4> (that){}
+			Matrix4(const Vector4<T> & vector) : Matrix<T, 4, 4> (vector){}
+			Matrix4(const Vector4<T> & v00,
+					const Vector4<T> & v01,
+					const Vector4<T> & v02,
+					const Vector4<T> & v03)
+			{
+				this->elements[0] = v00;
+				this->elements[1] = v01;
+				this->elements[2] = v02;
+				this->elements[3] = v03;
+			}
 
-		// static member funcitons
-        static Matrix4<T> Translate(T x, T y, T z)
-        {
-            return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
-                              Vector4<T>(0.0, 1.0, 0.0, 0.0),
-                              Vector4<T>(0.0, 0.0, 1.0, 0.0),
-                              Vector4<T>(  x,   y,   z, 1.0f));
-        }
+			// static member funcitons
+			static Matrix4<T> Translate(T x, T y, T z)
+			{
+				return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
+								  Vector4<T>(0.0, 1.0, 0.0, 0.0),
+								  Vector4<T>(0.0, 0.0, 1.0, 0.0),
+								  Vector4<T>(  x,   y,   z, 1.0f));
+			}
 
-		static Matrix4<T> Orthographic(T left, T right, T bottom, T top, T zfar, T znear)
-		{
-			Matrix4<T> matrix = Matrix4<T>(0);
+			static Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
+			{
+				Matrix4<T> matrix = Matrix4<T>::Identity();
 
-			matrix.elements[0][0] = 2 / (right - left);
-			matrix.elements[1][1] = 2 / (top - bottom);
-			matrix.elements[2][2] = 2 / (zfar - znear);
-			matrix.elements[3][3] = 1;
+				matrix.elements[0][0] = 2 / (right - left);
+				matrix.elements[1][1] = 2 / (top - bottom);
+				matrix.elements[2][2] = 2 / (zfar - znear);
 
-			matrix.elements[3][0] = -(right + left) / (right - left);
-			matrix.elements[3][1] = -(top + bottom) / (top - bottom);
-			matrix.elements[3][2] = -(zfar + znear) / (zfar - znear);
+				matrix.elements[3][0] = -(right + left) / (right - left);
+				matrix.elements[3][1] = -(top + bottom) / (top - bottom);
+				matrix.elements[3][2] = -(zfar + znear) / (zfar - znear);
 
-			return matrix;
-		}
+				matrix.elements[3][3] = 1;
 
-		static Matrix4<T> Perspective(T left, T right, T bottom, T top, T znear, T zfar)
-		{
-			Matrix4<T> matrix = Matrix4<T>(0);
+				return matrix;
+			}
 
-			matrix.elements[0][0] = (2 * znear) / (right - left);
-			matrix.elements[1][1] = (2 * znear) / (top - bottom);
+			static Matrix4<T> Frustrum(T left, T right, T bottom, T top, T znear, T zfar)
+			{
+				Matrix4<T> matrix = Matrix4<T>(0);
 
-			matrix.elements[2][0] = -(right + left) / (right - left);
-			matrix.elements[2][1] = -(top + bottom) / (top - bottom);
-			matrix.elements[2][2] = -(zfar + znear) / (zfar - znear);
-			matrix.elements[2][3] = -1;
+				matrix.elements[0][0] = (2 * znear) / (right - left);
+				matrix.elements[1][1] = (2 * znear) / (top - bottom);
 
-			matrix.elements[3][2] = -(2 * (zfar * znear)) / (zfar - znear);
+				// used only for asymmetric frustrums?
+				matrix.elements[2][0] = (right + left) / (right - left);
+				matrix.elements[2][1] = (top + bottom) / (top - bottom);
 
-			return matrix;
-		}
+				matrix.elements[2][2] = -(zfar + znear) / (zfar - znear);
+				matrix.elements[2][3] = -1;
+
+				matrix.elements[3][2] = -(2 * zfar * znear) / (zfar - znear);
+
+				return matrix;
+			}
+
+			static Matrix4<T> Perspective(float vertical_fov, float aspect_ratio, float znear, float zfar)
+			{
+				float top = znear * tan(Math<float>::Deg2Rad(0.5f * vertical_fov));
+				float right = top * aspect_ratio;
+
+				return Matrix4<T>::Frustrum(-right, right, -top, top, znear, zfar);
+			}
 	};
 	
 	// defined types for usage

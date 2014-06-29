@@ -11,15 +11,23 @@
 
 #define M_PI_4 0.785398163397448309616
 
+#include <math.h>
+
 namespace Renderer
 {
 	template <typename T> class
 	Math
 	{
 		public:
-	
-		static T Rad2Deg(T rad);
-		static T Deg2Rad(T deg);
+			// static member functions
+			static T Rad2Deg(T rad)
+			{
+				return rad * (180.0 / M_PI);
+			}
+			static T Deg2Rad(T deg)
+			{
+				return deg / (180.0 / M_PI);
+			}
 	};
 }
 
