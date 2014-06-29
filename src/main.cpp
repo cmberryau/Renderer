@@ -54,8 +54,8 @@ void CreateTestVAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
+        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
         { GL_NONE, NULL }
     };
     
@@ -129,25 +129,10 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
     
-  	Matrix4f projection_matrix = Matrix4f::translate(0.0f, 1.0f, 0.0f);
-    //Matrix4f projection_matrix = Matrix4f::identity();
+  	Matrix4f tranlation_matrix = Matrix4f::translate(0.0f, 0.5f, 0.0f);
     
-    GLfloat values[16] = {
-        1.0f, 0.0f, 0.0f, 0.0f,
-        0.0f, 1.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f, 1.0f
-    };
-    
-    const GLfloat * projection_floats = projection_matrix;
-    for(int i=0;i<4*4;i++)
-    {
-        printf("%f\n", projection_floats[i]);
-    }
-    
-    //projection_matrix.Print();
     glUseProgram(program);
-    glUniformMatrix4fv(model_matrix_uniform, 1, GL_TRUE, projection_matrix);
+	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, tranlation_matrix);
     
     SDL_Event event;
     while(true)
