@@ -154,7 +154,7 @@ namespace Renderer
 
 				return matrix;
 			}
-
+        
 			static inline Matrix4<T> Frustrum(T left, T right, T bottom, T top, T znear, T zfar)
 			{
 				Matrix4<T> matrix = Matrix4<T>(0);
@@ -173,7 +173,7 @@ namespace Renderer
 
 				return matrix;
 			}
-
+        
 			static inline Matrix4<T> Perspective(float vertical_fov, float aspect_ratio, float znear, float zfar)
 			{
 				float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));

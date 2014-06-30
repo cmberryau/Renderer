@@ -26,6 +26,8 @@
 using namespace Renderer;
 
 GLuint vertex_array_objects[1];
+GLuint element_array_objects[1];
+
 const GLuint num_verts = 3;
 
 void InitGL()
@@ -41,19 +43,39 @@ void CreateTestVAO()
 {
     GLuint vertex_buffers[1];
     
-    glGenVertexArrays(1, vertex_array_objects);
-    glBindVertexArray(vertex_array_objects[0]);
-    
-    GLfloat vertices[3][3] = {
-        { -11.00, -11.00, 50.0 },
-		{ 11.00, -11.0, 50.0 },
-		{ -11.00, 11.0, 50.0 }
+    GLfloat vertices[4][4] =
+    {
+        { -10.00, -10.00, 50.0, 1.0 },
+		{ 10.00, -10.0, 50.0, 1.0 },
+		{ -10.00, 10.0, 50.0, 1.0 },
+        { -10.00, -10.00, 50.0, 1.0 },
     };
     
+    GLfloat colors[4][4] =
+    {
+        {1.0, 0.0, 0.0, 1.0},
+        {0.0, 1.0, 0.0, 1.0},
+        {0.0, 0.0, 1.0, 1.0},
+        {1.0, 0.0, 1.0, 1.0},
+    };
+    
+    static const GLushort vertex_indices[] =
+    {
+        0, 1, 2
+    };
+    
+    glGenBuffers(1, element_array_objects);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_array_objects[0]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(vertex_indices), vertex_indices, GL_STATIC_DRAW);
+    
+    glGenVertexArrays(1, vertex_array_objects);
+    glBindVertexArray(vertex_array_objects[0]);
     glGenBuffers(1, vertex_buffers);
     glBindBuffer(GL_ARRAY_BUFFER, vertex_buffers[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors), NULL, GL_STATIC_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+    glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(colors), colors);
+    
     ShaderInfo  shaders[] = {
         { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
         { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
@@ -64,13 +86,16 @@ void CreateTestVAO()
     
     glUseProgram(program);
     
-    glVertexAttribPointer(0, 3, GL_FLOAT,
-                          GL_FALSE, 0, BUFFER_OFFSET(0));
-
+    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffers[0]);
+    
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *) sizeof(vertices));
+    
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+    
 	model_matrix_uniform = glGetUniformLocation(program, "model_matrix");
 	projection_matrix_uniform = glGetUniformLocation(program, "projection_matrix");
-
-    glEnableVertexAttribArray(0);
 }
 
 void Render()
@@ -78,7 +103,23 @@ void Render()
     glClear(GL_COLOR_BUFFER_BIT);
     
     glBindVertexArray(vertex_array_objects[0]);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_array_objects[0]);
+    
+   	Matrix4f model_matrix = Matrix4f::Translate(-36.0f, 0.0f, 0.0f);
+	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, model_matrix);
     glDrawArrays(GL_TRIANGLES, 0, num_verts);
+
+   	model_matrix = Matrix4f::Translate(-12.0f, 0.0f, 0.0f);
+	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, model_matrix);
+    glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, NULL);
+    
+   	model_matrix = Matrix4f::Translate(12.0f, 0.0f, 0.0f);
+	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, model_matrix);
+    glDrawElementsBaseVertex(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, NULL, 1);
+
+   	model_matrix = Matrix4f::Translate(36.0f, 0.0f, 0.0f);
+	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, model_matrix);
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 3, 1);
     
     glFlush();
 }
@@ -131,12 +172,10 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
     
-  	Matrix4f model_matrix = Matrix4f::Scale(1.0f, 1.0f, 1.0f);    
 	//Matrix4f projection_matrix = Matrix4f::Orthographic(0.0f, 640.0f, 0.0f, 480.0f, 1.0f, 500.0f);
-	Matrix4f projection_matrix = Matrix4f::Perspective(75.0f, 1.6f, 1.0f, 500.0f);
+	Matrix4f projection_matrix = Matrix4f::Perspective(75.0f, 1.33f, 1.0f, 500.0f);
 
     glUseProgram(program);
-	glUniformMatrix4fv(model_matrix_uniform, 1, GL_FALSE, model_matrix);
 	glUniformMatrix4fv(projection_matrix_uniform, 1, GL_FALSE, projection_matrix);
     
     SDL_Event event;
