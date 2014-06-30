@@ -1,21 +1,21 @@
 //
-//  Object.cpp
+//  Mesh.cpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#include "Object.h"
+#include "Mesh.h"
 
 namespace Renderer
 {
-    Object::Object()
+    Mesh::Mesh()
     {
         
     }
     
-    Object::~Object()
+    Mesh::~Mesh()
     {
         
     }

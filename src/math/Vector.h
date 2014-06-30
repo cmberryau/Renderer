@@ -118,6 +118,20 @@ namespace Renderer
                 return (T)sqrt(total);
             }
         
+            // normalize(a) = each element / len(a)
+            inline Vector<T, len> Normalize()
+            {
+                Vector<T, len> result;
+                T length = this->Length();
+                
+                for(int i = 0; i < len; i++)
+                {
+                    result[i] = this[i] / length;
+                }
+                
+                return result;
+            }
+        
             // dist(a, b) = len(b) - len(a)
             inline T Distance(Vector<T, len> vec)
             {

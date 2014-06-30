@@ -27,6 +27,7 @@
 		87C7B47F19516CFC004C5914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47819516CFC004C5914 /* main.cpp */; };
 		87C7B48019516CFC004C5914 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47919516CFC004C5914 /* Object.cpp */; };
 		87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC709E1960B3F7001EDA7D /* Math.cpp */; };
+		87CC70A31961B3BA001EDA7D /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC70A11961B3BA001EDA7D /* Mesh.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		87C7B47A19516CFC004C5914 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
 		87CC709D1960B3F1001EDA7D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Math.h; path = math/Math.h; sourceTree = "<group>"; };
 		87CC709E1960B3F7001EDA7D /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Math.cpp; path = math/Math.cpp; sourceTree = "<group>"; };
+		87CC70A11961B3BA001EDA7D /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = geometry/Mesh.cpp; sourceTree = "<group>"; };
+		87CC70A21961B3BA001EDA7D /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mesh.h; path = geometry/Mesh.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,7 @@
 		87C7B47719516CFC004C5914 /* Cross Platform Code */ = {
 			isa = PBXGroup;
 			children = (
+				87CC70A01961B3A1001EDA7D /* geometry */,
 				87A0B74019599156003F53C6 /* math */,
 				876EA3F019524A1B00AD06B5 /* shaders */,
 				876EA3EB19523D1A00AD06B5 /* utility */,
@@ -222,6 +226,15 @@
 			);
 			name = "Cross Platform Code";
 			path = ../../src;
+			sourceTree = "<group>";
+		};
+		87CC70A01961B3A1001EDA7D /* geometry */ = {
+			isa = PBXGroup;
+			children = (
+				87CC70A11961B3BA001EDA7D /* Mesh.cpp */,
+				87CC70A21961B3BA001EDA7D /* Mesh.h */,
+			);
+			name = geometry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +343,7 @@
 				87A0B749195A1261003F53C6 /* Vector.cpp in Sources */,
 				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
 				87C7B48019516CFC004C5914 /* Object.cpp in Sources */,
+				87CC70A31961B3BA001EDA7D /* Mesh.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

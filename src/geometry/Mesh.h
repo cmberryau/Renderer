@@ -1,25 +1,21 @@
 //
-//  Object.h
+//  Mesh.h
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#ifndef _object_h
-#define _object_h
-
-#include "math/Transform.h"
+#ifndef _mesh_h
+#define _mesh_h
 
 namespace Renderer
 {
-    class Object
+    class Mesh
     {
         public:
-            Transform transform;
-            
-            Object();
-            ~Object();
+            Mesh();
+            ~Mesh();
     };
 }
 

@@ -136,7 +136,10 @@ namespace Renderer
                                   Vector4<T>(0.0, 0.0, 0.0, 1.0));
             }
         
-            
+            static inline Matrix4<T> Rotate(T x, T y, T z)
+            {
+                return Matrix4<T>::Identity();
+            }
 
 			static inline Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
 			{
@@ -154,6 +157,15 @@ namespace Renderer
 
 				return matrix;
 			}
+        
+            static inline Matrix4<T>OrthoFromFOV(float vertical_fov, float aspect_ratio, float znear, float zfar)
+             {
+                 float top = zfar * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
+                 float right = top * aspect_ratio;
+                 
+                 return Matrix4<T>::Orthographic(-right, right, -top, top, znear, zfar);
+             }
+
         
 			static inline Matrix4<T> Frustrum(T left, T right, T bottom, T top, T znear, T zfar)
 			{
@@ -178,7 +190,7 @@ namespace Renderer
 			{
 				float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
 				float right = top * aspect_ratio;
-
+                
 				return Matrix4<T>::Frustrum(-right, right, -top, top, znear, zfar);
 			}
 	};
