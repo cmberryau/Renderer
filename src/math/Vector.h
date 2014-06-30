@@ -9,6 +9,8 @@
 #ifndef _vector_h
 #define _vector_h
 
+#include "Math.h"
+
 namespace Renderer
 {
 	// 
@@ -16,7 +18,7 @@ namespace Renderer
 	//
 	// Generic vector implementation
 	//
-    template <typename T, const int length> 
+    template <typename T, const int len>
 	class Vector
     {
 		public:        
@@ -24,21 +26,124 @@ namespace Renderer
 			Vector(){};
 			Vector(T value)
 			{
-				for (int i = 0; i < length; i++)
+				for (int i = 0; i < len; i++)
 				{
 					elements[i] = value;
 				}
 			}
-
+        
+            // member functions
+            inline Vector<T, len> Add(Vector<T, len> vec)
+            {
+                Vector<T, len> result(0);
+                
+                for(int i = 0; i<len; i++)
+                {
+                    result[i] = this[i] + vec[i];
+                }
+                
+                return result;
+            }
+            
+            inline Vector<T, len> Subtract(Vector<T, len> vec)
+            {
+                Vector<T, len> result(0);
+                
+                for(int i = 0; i<len; i++)
+                {
+                    result[i] = this[i] - vec[i];
+                }
+                
+                return result;
+            }
+        
+            inline Vector<T, len> Multiply(T factor)
+            {
+                Vector<T, len> result(0);
+                
+                for(int i = 0; i<len; i++)
+                {
+                    result[i] = this[i] * factor;
+                }
+                
+                return result;
+            }
+        
+            inline Vector<T, len> ComponentMultiply(Vector<T, len> vec)
+            {
+                Vector<T, len> result(0);
+                
+                for(int i = 0; i<len; i++)
+                {
+                    result[i] = this[i] * vec[i];
+                }
+                
+                return result;
+            }
+        
+            inline Vector<T, len> Divide(T factor)
+            {
+                Vector<T, len> result(0);
+                
+                for(int i = 0; i<len; i++)
+                {
+                    result[i] = this[i] / factor;
+                }
+                
+                return result;
+            }
+        
+            inline Vector<T, len> Negate()
+            {
+                Vector<T, len> result(0);
+                
+                for(int i = 0; i<len; i++)
+                {
+                    result[i] = -this[i];
+                }
+                
+                return result;
+            }
+        
+            // len(a) = sqrt(sum of elements squared)
+            inline T Length()
+            {
+                T total = 0;
+                
+                for(int i = 0;i < len; i++)
+                {
+                    total += elements[i] * elements[i];
+                }
+                
+                return (T)sqrt(total);
+            }
+        
+            // dist(a, b) = len(b) - len(a)
+            inline T Distance(Vector<T, len> vec)
+            {
+                return vec.Length() - this->Length();
+            }
+        
+            // dot(a, b) = total of elementwise multiplication
+            inline T Dot(Vector<T, len> vec)
+            {
+                T total = 0;
+                
+                for(int i = 0; i < len; i++)
+                {
+                    total += this[i] * vec[i];
+                }
+                
+                return total;
+            }
+        
 			// operators
-			// [] operator allows array subscript style access
 			T & operator[](int n) { return elements[n]; }
-			// allows casting to an array
 			operator const T * () const { return &elements[0]; }
 
         protected:        
 			// the actual elements of the vector
-			T elements[length];
+			T elements[len];
     };
 
 	// 
@@ -79,6 +184,16 @@ namespace Renderer
 				this->elements[1] = y;
 				this->elemernts[2] = z;
 			}
+        
+        // cross(a, b) = (a2 * b3 - a3 * b2,
+        //                a3 * b1 - a1 * b3,
+        //                a1 * b2 - a2 * b1)
+        inline Vector<T, 3> Cross(Vector<T, 3> vec)
+        {
+            return Vector<T, 3>(this[1] * vec[2] - this[2] * vec[1],
+                                this[2] * vec[0] - this[0] * vec[2],
+                                this[0] * vec[1] - this[1] * vec[0]);
+        }
 	};
 
 	// defined types for usage

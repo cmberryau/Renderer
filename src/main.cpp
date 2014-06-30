@@ -45,9 +45,9 @@ void CreateTestVAO()
     glBindVertexArray(vertex_array_objects[0]);
     
     GLfloat vertices[3][3] = {
-        { 0.00, 0.00, 50.0 },
-		{ 11.00, 0.0, 50.0 },
-		{ 0.00, 11.0, 50.0 }
+        { -11.00, -11.00, 50.0 },
+		{ 11.00, -11.0, 50.0 },
+		{ -11.00, 11.0, 50.0 }
     };
     
     glGenBuffers(1, vertex_buffers);
@@ -55,8 +55,8 @@ void CreateTestVAO()
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
+        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
         { GL_NONE, NULL }
     };
     
@@ -131,7 +131,7 @@ int main(int argc, char ** argv)
     InitGL();
     CreateTestVAO();
     
-  	Matrix4f model_matrix = Matrix4f::Translate(0.0f, 0.0f, 0.0f);
+  	Matrix4f model_matrix = Matrix4f::Scale(1.0f, 1.0f, 1.0f);    
 	//Matrix4f projection_matrix = Matrix4f::Orthographic(0.0f, 640.0f, 0.0f, 480.0f, 1.0f, 500.0f);
 	Matrix4f projection_matrix = Matrix4f::Perspective(75.0f, 1.6f, 1.0f, 500.0f);
 

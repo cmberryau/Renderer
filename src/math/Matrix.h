@@ -48,7 +48,7 @@ namespace Renderer
 			}
 
 			// static member functions
-			static Matrix<T, w, h> Identity()
+            static inline Matrix<T, w, h> Identity()
 			{
 				Matrix<T, w, h> matrix(0);
             
@@ -75,11 +75,12 @@ namespace Renderer
 			}
     
 			// operators
-			operator const T * () const { return &elements[0][0]; }
+            Vector<T, h> & operator[](int n) { return elements[n]; }
+            operator const T * () const { return &elements[0][0]; }
         
 		protected:
         
-			void assign(const Matrix &that)
+			inline void assign(const Matrix &that)
 			{
 				for (int n=0; n<w; n++)
 				{
@@ -124,8 +125,18 @@ namespace Renderer
 				return Matrix4<T>(Vector4<T>(1.0, 0.0, 0.0, 0.0),
 								  Vector4<T>(0.0, 1.0, 0.0, 0.0),
 								  Vector4<T>(0.0, 0.0, 1.0, 0.0),
-								  Vector4<T>(  x,   y,   z, 1.0f));
+								  Vector4<T>(  x,   y,   z, 1.0));
 			}
+        
+            static inline Matrix4<T> Scale(T x, T y, T z)
+            {
+                return Matrix4<T>(Vector4<T>(  x, 0.0, 0.0, 0.0),
+                                  Vector4<T>(0.0,   y, 0.0, 0.0),
+                                  Vector4<T>(0.0, 0.0,   z, 0.0),
+                                  Vector4<T>(0.0, 0.0, 0.0, 1.0));
+            }
+        
+            
 
 			static inline Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
 			{
