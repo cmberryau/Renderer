@@ -90,7 +90,7 @@
     <ClCompile Include="..\..\src\windowing\Window.cpp">
       <Filter>Source Files\windowing</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\events\Events.cpp">
+    <ClCompile Include="..\..\src\events\EventListener.cpp">
       <Filter>Source Files\events</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,7 +125,7 @@
     <ClInclude Include="..\..\src\windowing\Window.h">
       <Filter>Header Files\windowing</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\events\Events.h">
+    <ClInclude Include="..\..\src\events\EventListener.h">
       <Filter>Header Files\events</Filter>
     </ClInclude>
   </ItemGroup>

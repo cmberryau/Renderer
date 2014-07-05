@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#include <stdio.h>
+
 namespace Renderer
 {
 	Window * Window::Create(int width, int height)
@@ -26,29 +28,12 @@ namespace Renderer
 		SDL_GL_SwapWindow(_sdl_window);
 	}
 
-	void Window::HandleEvents()
-	{
-		SDL_Event event;
-		if (SDL_PollEvent(&event))
-		{
-			if (event.type == SDL_QUIT)
-			{
-				_should_quit = true;
-			}
-		}
-	}
-
-	bool Window::ShouldQuit()
-	{
-		return _should_quit;
-	}
-
-	Window::Window() : _should_quit(false)
-	{
-
-	}
-
 	Window::~Window()
+	{
+
+	}
+
+	Window::Window()
 	{
 
 	}

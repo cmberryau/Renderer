@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 #include "windowing\Window.h"
+#include "events\EventListener.h"
 #include "rendering\RenderingContext.h"
 
 using namespace Renderer;
@@ -13,13 +14,14 @@ using namespace Renderer;
 int main(int argc, char ** argv)
 {   
 	Window * window = Window::Create(640, 480);
+	EventListener * event_listener = EventListener::Create();
 	RenderingContext * rendering_context = RenderingContext::Create(window);
 
 	while (true)
 	{
-		window->HandleEvents();
+		event_listener->ListenForEvents();
 
-		if (window->ShouldQuit())
+		if (event_listener->ShouldQuit())
 			break;
 
 		// Render here

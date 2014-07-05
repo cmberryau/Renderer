@@ -15,8 +15,6 @@
 
 #include <SDL2\SDL.h>
 
-#include <stdio.h>
-
 namespace Renderer
 {
 	class Window
@@ -24,8 +22,6 @@ namespace Renderer
 		public:
 			static Window * Create(int width, int height);
 			void Swap();
-			void HandleEvents();
-			bool ShouldQuit();
 
 			~Window();
 
@@ -33,7 +29,6 @@ namespace Renderer
 
 		protected:
 			Window();
-			bool _should_quit;
 	};
 }
 
