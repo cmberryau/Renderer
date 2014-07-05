@@ -12,7 +12,7 @@
 namespace Renderer
 {
 	// factory constructor
-	Mesh * Mesh::CreateMesh(Vector3f * vertices, unsigned int size)
+	Mesh * Mesh::Create(Vector3f * vertices, unsigned int size)
 	{
 		// confirm the passed data
 		if (vertices == nullptr || size < 0)

@@ -17,7 +17,7 @@ namespace Renderer
     {
         public:
 			// factory constructor
-			static Mesh * CreateMesh(Vector3f * verticies, unsigned int size);
+			static Mesh * Create(Vector3f * verticies, unsigned int size);
             ~Mesh();
 
 			// debug output

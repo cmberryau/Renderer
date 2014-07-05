@@ -43,6 +43,18 @@
     <Filter Include="Source Files\rendering">
       <UniqueIdentifier>{095811e3-2283-4bde-a306-4c405475c62f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\windowing">
+      <UniqueIdentifier>{190aad48-f20f-4ab0-9555-1e33eedc3ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\windowing">
+      <UniqueIdentifier>{6cfef9d8-474e-45af-b010-da9814fb9479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\events">
+      <UniqueIdentifier>{63558b9e-e5c0-41f0-b94c-2ac404ed54e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\events">
+      <UniqueIdentifier>{4e8c93a4-b8ec-4b34-9cc6-d3e4dbf5c6e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -75,6 +87,12 @@
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp">
       <Filter>Source Files\rendering</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\windowing\Window.cpp">
+      <Filter>Source Files\windowing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\events\Events.cpp">
+      <Filter>Source Files\events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\utility\LoadShaders.h">
@@ -103,6 +121,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\RenderingContext.h">
       <Filter>Header Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\windowing\Window.h">
+      <Filter>Header Files\windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\events\Events.h">
+      <Filter>Header Files\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
