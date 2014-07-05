@@ -15,11 +15,15 @@
 	#define GL_GLEXT_PROTOTYPES 1
 #endif
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
+#include <SDL2\SDL.h>
+#include <SDL2\SDL_opengl.h>
 
-#include "utility/LoadShaders.h"
-#include "math/Matrix.h"
+#include "utility\LoadShaders.h"
+#include "math\Matrix.h"
+
+#include "geometry\Mesh.h"
+#include "objects\Object.h"
+#include "rendering\RenderingContext.h"
 
 #define BUFFER_OFFSET(x)  ((const void*) (x))
 
@@ -77,8 +81,8 @@ void CreateTestVAO()
     glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(colors), colors);
     
     ShaderInfo  shaders[] = {
-        { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
-        { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
+        { GL_VERTEX_SHADER, "src\\shaders\\triangles.vert" },
+        { GL_FRAGMENT_SHADER, "src\\shaders\\triangles.frag" },
         { GL_NONE, NULL }
     };
     
@@ -126,12 +130,14 @@ void Render()
 
 int main(int argc, char ** argv)
 {
-    if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
-    {
-        fprintf(stdout, "SDL_Init failed!\n");
-        return -1;
-    }
-    
+	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+	{
+		fprintf(stdout, "SDL_Init failed!\n");
+		return -1;
+	}
+
+	RenderingContext * test_rendering_context = new RenderingContext();
+
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);

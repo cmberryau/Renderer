@@ -65,7 +65,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)..\src\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -119,20 +121,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\geometry\Mesh.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\math\Math.cpp" />
     <ClCompile Include="..\..\src\math\Matrix.cpp" />
     <ClCompile Include="..\..\src\math\Transform.cpp" />
     <ClCompile Include="..\..\src\math\Vector.cpp" />
-    <ClCompile Include="..\..\src\Object.cpp" />
+    <ClCompile Include="..\..\src\objects\Object.cpp" />
+    <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
     <ClCompile Include="..\..\src\utility\LoadShaders.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\geometry\Mesh.h" />
     <ClInclude Include="..\..\src\math\Math.h" />
     <ClInclude Include="..\..\src\math\Matrix.h" />
     <ClInclude Include="..\..\src\math\Transform.h" />
     <ClInclude Include="..\..\src\math\Vector.h" />
-    <ClInclude Include="..\..\src\Object.h" />
+    <ClInclude Include="..\..\src\objects\Object.h" />
+    <ClInclude Include="..\..\src\rendering\MeshRenderer.h" />
+    <ClInclude Include="..\..\src\rendering\RenderingContext.h" />
     <ClInclude Include="..\..\src\utility\LoadShaders.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

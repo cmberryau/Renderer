@@ -151,6 +151,17 @@ namespace Renderer
                 return total;
             }
         
+			// debug output
+			void Print()
+			{
+				for (int i = 0; i < len; i++)
+				{
+					printf("[%d]: %f", i, elements[i]);
+				}
+
+				printf("\n");
+			}
+
 			// operators
 			T & operator[](int n) { return elements[n]; }
 			operator const T * () const { return &elements[0]; }
@@ -196,7 +207,7 @@ namespace Renderer
 			{
 				this->elements[0] = x;
 				this->elements[1] = y;
-				this->elemernts[2] = z;
+				this->elements[2] = z;
 			}
         
         // cross(a, b) = (a2 * b3 - a3 * b2,

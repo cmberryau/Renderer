@@ -7,16 +7,58 @@
 //
 
 #include "Mesh.h"
+#include <stdio.h>
 
 namespace Renderer
 {
-    Mesh::Mesh()
+	// factory constructor
+	Mesh * Mesh::CreateMesh(Vector3f * vertices, unsigned int size)
+	{
+		// confirm the passed data
+		if (vertices == nullptr || size < 0)
+			return nullptr;
+
+		Mesh * mesh = new Mesh();
+
+		mesh->_vertices = new Vector3f[size];
+
+		if (mesh->_vertices == nullptr)
+			return nullptr;
+
+		for (unsigned int i = 0; i < size; i++)
+		{
+			if (vertices[i] == nullptr)
+				return nullptr;
+
+			mesh->_vertices[i] = vertices[i];
+		}
+
+		mesh->_vertices_count = size;
+
+		return mesh;
+	}
+
+	void Mesh::Print()
+	{
+		for (unsigned int i = 0; i < _vertices_count; i++)
+		{
+			if (_vertices[i] == nullptr)
+			{
+				fprintf(stderr, "Error: Found a mesh with a null vertex reference\n");
+				return;
+			}
+			
+			_vertices[i].Print();
+		}
+	}
+
+	Mesh::Mesh() : _vertices(nullptr)
     {
         
     }
     
     Mesh::~Mesh()
     {
-        
+		delete _vertices;
     }
 }

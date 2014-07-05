@@ -9,17 +9,24 @@
 #ifndef _object_h
 #define _object_h
 
-#include "math/Transform.h"
+#include "math\Transform.h"
+#include "geometry\Mesh.h"
+#include "rendering\MeshRenderer.h"
 
 namespace Renderer
 {
     class Object
     {
         public:
-            Transform transform;
-            
+			void AddMesh(Mesh * mesh);
+			void AddMeshRenderer(MeshRenderer * mesh_renderer);
+
             Object();
             ~Object();
+
+		protected:
+			Mesh * _mesh;
+			MeshRenderer * _mesh_renderer;
     };
 }
 

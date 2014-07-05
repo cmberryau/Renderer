@@ -61,6 +61,7 @@ namespace Renderer
 			}
 
 			// member functions
+			// debug output
 			void Print()
 			{
 				for(int i = 0; i < h; i++)

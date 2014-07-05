@@ -9,13 +9,25 @@
 #ifndef _mesh_h
 #define _mesh_h
 
+#include "math\Vector.h"
+
 namespace Renderer
 {
     class Mesh
     {
         public:
-            Mesh();
+			// factory constructor
+			static Mesh * CreateMesh(Vector3f * verticies, unsigned int size);
             ~Mesh();
+
+			// debug output
+			void Print();
+
+		protected:
+			// can only create from the above factory method
+			Mesh();
+			Vector3f * _vertices;
+			unsigned int _vertices_count;
     };
 }
 
