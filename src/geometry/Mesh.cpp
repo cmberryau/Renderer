@@ -15,7 +15,7 @@ namespace Renderer
 	Mesh * Mesh::Create(Vector3f * vertices, unsigned int size)
 	{
 		// confirm the passed data
-		if (vertices == nullptr || size < 0)
+		if (vertices == nullptr)
 			return nullptr;
 
 		Mesh * mesh = new Mesh();

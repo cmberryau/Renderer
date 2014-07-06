@@ -161,8 +161,10 @@ namespace Renderer
         
             static inline Matrix4<T>OrthoFromFOV(float vertical_fov, float aspect_ratio, float znear, float zfar)
              {
-                 float top = zfar * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
-                 float right = top * aspect_ratio;
+                 //float top = zfar * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
+                 //float right = top * aspect_ratio;
+                 
+                 float top = 1.0; float right = 1.0f;
                  
                  return Matrix4<T>::Orthographic(-right, right, -top, top, znear, zfar);
              }
@@ -189,8 +191,10 @@ namespace Renderer
         
 			static inline Matrix4<T> Perspective(float vertical_fov, float aspect_ratio, float znear, float zfar)
 			{
-				float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
-				float right = top * aspect_ratio;
+				//float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
+				//float right = top * aspect_ratio;
+                
+                float top = 1.0; float right = 1.0f;
                 
 				return Matrix4<T>::Frustrum(-right, right, -top, top, znear, zfar);
 			}

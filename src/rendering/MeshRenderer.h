@@ -10,7 +10,7 @@
 #define _mesh_renderer_h
 
 #include "RenderingContext.h"
-#include "geometry\Mesh.h"
+#include "geometry/Mesh.h"
 
 namespace Renderer
 {

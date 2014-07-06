@@ -17,7 +17,7 @@
 
 namespace Renderer
 {
-	template <typename T>
+    template <typename T>
 	class Math
 	{
 		public:
@@ -32,8 +32,8 @@ namespace Renderer
 				return deg / (180.0 / (T)M_PI);
 			}
 	};
-
-	typedef Math<float> Mathf;
+    
+    typedef Math<float> Mathf;
 }
 
 #endif  // _math_h

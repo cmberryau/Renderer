@@ -12,6 +12,7 @@
 		876EA3F319524A2C00AD06B5 /* triangles.frag in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F119524A2C00AD06B5 /* triangles.frag */; };
 		876EA3F419524A2C00AD06B5 /* triangles.vert in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F219524A2C00AD06B5 /* triangles.vert */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
+		87870F891969C44D0040533D /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87870F871969C44D0040533D /* Math.cpp */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
 		87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A0B741195A1261003F53C6 /* Matrix.cpp */; };
 		87A0B748195A1261003F53C6 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A0B743195A1261003F53C6 /* Transform.cpp */; };
@@ -25,7 +26,6 @@
 		87BC83B319452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC83B119452C3E00D97C8E /* InfoPlist.strings */; };
 		87BC83B519452C3E00D97C8E /* RendererTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BC83B419452C3E00D97C8E /* RendererTests.m */; };
 		87C7B47F19516CFC004C5914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47819516CFC004C5914 /* main.cpp */; };
-		87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC709E1960B3F7001EDA7D /* Math.cpp */; };
 		87CC70A31961B3BA001EDA7D /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC70A11961B3BA001EDA7D /* Mesh.cpp */; };
 		87D8152019696284009A8A62 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8151E19696284009A8A62 /* Object.cpp */; };
 		87D8152319696389009A8A62 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152119696389009A8A62 /* Window.cpp */; };
@@ -50,6 +50,8 @@
 		876EA3F119524A2C00AD06B5 /* triangles.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = triangles.frag; path = shaders/triangles.frag; sourceTree = "<group>"; };
 		876EA3F219524A2C00AD06B5 /* triangles.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = triangles.vert; path = shaders/triangles.vert; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		87870F871969C44D0040533D /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Math.cpp; path = math/Math.cpp; sourceTree = "<group>"; };
+		87870F881969C44D0040533D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Math.h; path = math/Math.h; sourceTree = "<group>"; };
 		8787B0DD194DBEF900F894CA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		87A0B741195A1261003F53C6 /* Matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix.cpp; path = math/Matrix.cpp; sourceTree = "<group>"; };
 		87A0B742195A1261003F53C6 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix.h; path = math/Matrix.h; sourceTree = "<group>"; };
@@ -73,8 +75,6 @@
 		87BC83B219452C3E00D97C8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		87BC83B419452C3E00D97C8E /* RendererTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendererTests.m; sourceTree = "<group>"; };
 		87C7B47819516CFC004C5914 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		87CC709D1960B3F1001EDA7D /* Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Math.h; path = math/Math.h; sourceTree = "<group>"; };
-		87CC709E1960B3F7001EDA7D /* Math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Math.cpp; path = math/Math.cpp; sourceTree = "<group>"; };
 		87CC70A11961B3BA001EDA7D /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = geometry/Mesh.cpp; sourceTree = "<group>"; };
 		87CC70A21961B3BA001EDA7D /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mesh.h; path = geometry/Mesh.h; sourceTree = "<group>"; };
 		87D8151E19696284009A8A62 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = objects/Object.cpp; sourceTree = "<group>"; };
@@ -87,6 +87,7 @@
 		87D81529196963A3009A8A62 /* MeshRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshRenderer.h; path = rendering/MeshRenderer.h; sourceTree = "<group>"; };
 		87D8152A196963A3009A8A62 /* RenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RenderingContext.cpp; path = rendering/RenderingContext.cpp; sourceTree = "<group>"; };
 		87D8152B196963A3009A8A62 /* RenderingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderingContext.h; path = rendering/RenderingContext.h; sourceTree = "<group>"; };
+		87D8152E196978C0009A8A62 /* libmathCommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmathCommon.dylib; path = usr/lib/system/libmathCommon.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +134,8 @@
 		87A0B74019599156003F53C6 /* math */ = {
 			isa = PBXGroup;
 			children = (
-				87CC709E1960B3F7001EDA7D /* Math.cpp */,
-				87CC709D1960B3F1001EDA7D /* Math.h */,
+				87870F871969C44D0040533D /* Math.cpp */,
+				87870F881969C44D0040533D /* Math.h */,
 				87A0B741195A1261003F53C6 /* Matrix.cpp */,
 				87A0B742195A1261003F53C6 /* Matrix.h */,
 				87A0B743195A1261003F53C6 /* Transform.cpp */,
@@ -167,6 +168,7 @@
 		87BC838919452C3E00D97C8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				87D8152E196978C0009A8A62 /* libmathCommon.dylib */,
 				8781E88D19519977005CC999 /* SDL2.framework */,
 				8787B0DD194DBEF900F894CA /* OpenGL.framework */,
 				87BC838A19452C3E00D97C8E /* Cocoa.framework */,
@@ -391,8 +393,8 @@
 			files = (
 				87D8152D196963A3009A8A62 /* RenderingContext.cpp in Sources */,
 				87A0B748195A1261003F53C6 /* Transform.cpp in Sources */,
-				87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */,
 				87D8152019696284009A8A62 /* Object.cpp in Sources */,
+				87870F891969C44D0040533D /* Math.cpp in Sources */,
 				87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */,
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				87D8152C196963A3009A8A62 /* MeshRenderer.cpp in Sources */,
@@ -519,6 +521,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "\"${PROJECT_DIR}\"/../src";
 			};
 			name = Release;
 		};
@@ -537,6 +540,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL2.framework/Versions/A",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -558,6 +562,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/SDL2.framework/Versions/A",
+					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
