@@ -24,6 +24,8 @@ int main(int argc, char ** argv)
 		if (event_listener->ShouldQuit())
 			break;
 
+		work on figuring out rendering pattern
+
 		// Render here
 
 		window->Swap();
