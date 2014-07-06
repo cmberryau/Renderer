@@ -28,6 +28,10 @@
 		87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC709E1960B3F7001EDA7D /* Math.cpp */; };
 		87CC70A31961B3BA001EDA7D /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87CC70A11961B3BA001EDA7D /* Mesh.cpp */; };
 		87D8152019696284009A8A62 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8151E19696284009A8A62 /* Object.cpp */; };
+		87D8152319696389009A8A62 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152119696389009A8A62 /* Window.cpp */; };
+		87D8152619696392009A8A62 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152419696392009A8A62 /* EventListener.cpp */; };
+		87D8152C196963A3009A8A62 /* MeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D81528196963A3009A8A62 /* MeshRenderer.cpp */; };
+		87D8152D196963A3009A8A62 /* RenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152A196963A3009A8A62 /* RenderingContext.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,14 @@
 		87CC70A21961B3BA001EDA7D /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mesh.h; path = geometry/Mesh.h; sourceTree = "<group>"; };
 		87D8151E19696284009A8A62 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = objects/Object.cpp; sourceTree = "<group>"; };
 		87D8151F19696284009A8A62 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Object.h; path = objects/Object.h; sourceTree = "<group>"; };
+		87D8152119696389009A8A62 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = windowing/Window.cpp; sourceTree = "<group>"; };
+		87D8152219696389009A8A62 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Window.h; path = windowing/Window.h; sourceTree = "<group>"; };
+		87D8152419696392009A8A62 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EventListener.cpp; path = events/EventListener.cpp; sourceTree = "<group>"; };
+		87D8152519696392009A8A62 /* EventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListener.h; path = events/EventListener.h; sourceTree = "<group>"; };
+		87D81528196963A3009A8A62 /* MeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshRenderer.cpp; path = rendering/MeshRenderer.cpp; sourceTree = "<group>"; };
+		87D81529196963A3009A8A62 /* MeshRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshRenderer.h; path = rendering/MeshRenderer.h; sourceTree = "<group>"; };
+		87D8152A196963A3009A8A62 /* RenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RenderingContext.cpp; path = rendering/RenderingContext.cpp; sourceTree = "<group>"; };
+		87D8152B196963A3009A8A62 /* RenderingContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderingContext.h; path = rendering/RenderingContext.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,8 +228,8 @@
 		87C7B47719516CFC004C5914 /* Cross Platform Code */ = {
 			isa = PBXGroup;
 			children = (
+				87D8152719696398009A8A62 /* rendering */,
 				87D8151D1969626D009A8A62 /* windowing */,
-				87D8151C19696266009A8A62 /* utility */,
 				87D8151B19696259009A8A62 /* objects */,
 				87D8151A19696251009A8A62 /* events */,
 				87CC70A01961B3A1001EDA7D /* geometry */,
@@ -242,6 +254,8 @@
 		87D8151A19696251009A8A62 /* events */ = {
 			isa = PBXGroup;
 			children = (
+				87D8152419696392009A8A62 /* EventListener.cpp */,
+				87D8152519696392009A8A62 /* EventListener.h */,
 			);
 			name = events;
 			sourceTree = "<group>";
@@ -255,18 +269,24 @@
 			name = objects;
 			sourceTree = "<group>";
 		};
-		87D8151C19696266009A8A62 /* utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = utility;
-			sourceTree = "<group>";
-		};
 		87D8151D1969626D009A8A62 /* windowing */ = {
 			isa = PBXGroup;
 			children = (
+				87D8152119696389009A8A62 /* Window.cpp */,
+				87D8152219696389009A8A62 /* Window.h */,
 			);
 			name = windowing;
+			sourceTree = "<group>";
+		};
+		87D8152719696398009A8A62 /* rendering */ = {
+			isa = PBXGroup;
+			children = (
+				87D81528196963A3009A8A62 /* MeshRenderer.cpp */,
+				87D81529196963A3009A8A62 /* MeshRenderer.h */,
+				87D8152A196963A3009A8A62 /* RenderingContext.cpp */,
+				87D8152B196963A3009A8A62 /* RenderingContext.h */,
+			);
+			name = rendering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,11 +389,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D8152D196963A3009A8A62 /* RenderingContext.cpp in Sources */,
 				87A0B748195A1261003F53C6 /* Transform.cpp in Sources */,
 				87CC709F1960B3F7001EDA7D /* Math.cpp in Sources */,
 				87D8152019696284009A8A62 /* Object.cpp in Sources */,
 				87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */,
+				87D8152319696389009A8A62 /* Window.cpp in Sources */,
+				87D8152C196963A3009A8A62 /* MeshRenderer.cpp in Sources */,
 				87A0B749195A1261003F53C6 /* Vector.cpp in Sources */,
+				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
 				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
 				87CC70A31961B3BA001EDA7D /* Mesh.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
@@ -430,7 +454,7 @@
 		87BC83B619452C3E00D97C8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -462,13 +486,14 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "\"${PROJECT_DIR}\"/../src";
 			};
 			name = Debug;
 		};
 		87BC83B719452C3E00D97C8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
