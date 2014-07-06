@@ -11,6 +11,8 @@
 
 #include "Math.h"
 
+#include <stdio.h>
+
 namespace Renderer
 {
 	// 

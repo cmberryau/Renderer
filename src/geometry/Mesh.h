@@ -9,7 +9,7 @@
 #ifndef _mesh_h
 #define _mesh_h
 
-#include "math\Vector.h"
+#include "math/Vector.h"
 
 namespace Renderer
 {

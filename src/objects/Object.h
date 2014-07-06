@@ -9,9 +9,9 @@
 #ifndef _object_h
 #define _object_h
 
-#include "math\Transform.h"
-#include "geometry\Mesh.h"
-#include "rendering\MeshRenderer.h"
+#include "math/Transform.h"
+#include "geometry/Mesh.h"
+#include "rendering/MeshRenderer.h"
 
 namespace Renderer
 {

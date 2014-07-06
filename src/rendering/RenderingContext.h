@@ -11,15 +11,15 @@
 
 #ifdef _WIN32
 #include <windows.h>
-#include <gl\glew.h>
+#include <gl/glew.h>
 #else
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 
-#include <SDL2\SDL.h>
-#include <SDL2\SDL_opengl.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 
-#include "windowing\Window.h"
+#include "windowing/Window.h"
 
 namespace Renderer
 {
