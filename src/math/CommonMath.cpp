@@ -1,5 +1,5 @@
 //
-//  Math.cpp
+//  CommonMath.cpp
 //  Renderer
 //
 //  Created by Christopher Berry on 29/06/2014.

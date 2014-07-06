@@ -1,5 +1,5 @@
 //
-//  Math.h
+//  CommonMath.h
 //  Renderer
 //
 //  Created by Christopher Berry on 29/06/2014.
