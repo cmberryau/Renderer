@@ -23,16 +23,24 @@
 
 namespace Renderer
 {
+	enum RenderingContextType {
+		OpenGLContextType,
+		DirectX11ContextType
+	};
+
 	class RenderingContext
 	{
 		public:
-			static RenderingContext * Create(Window * window);
+			static RenderingContext * Create(Window * window,
+											 RenderingContextType context_type);
+			RenderingContextType Type();
 
 			RenderingContext();
 			~RenderingContext();
 
 		protected:
 			Window * _window;
+			RenderingContextType _context_type;
 			SDL_GLContext _sdl_gl_context;
 	};
 }

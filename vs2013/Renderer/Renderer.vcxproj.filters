@@ -72,9 +72,6 @@
     <ClCompile Include="..\..\src\math\Vector.cpp">
       <Filter>Source Files\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\math\Math.cpp">
-      <Filter>Source Files\math</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\geometry\Mesh.cpp">
       <Filter>Source Files\geometry</Filter>
     </ClCompile>
@@ -93,6 +90,9 @@
     <ClCompile Include="..\..\src\events\EventListener.cpp">
       <Filter>Source Files\events</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\math\CommonMath.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\utility\LoadShaders.h">
@@ -105,9 +105,6 @@
       <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Matrix.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\math\Math.h">
       <Filter>Header Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\geometry\Mesh.h">
@@ -127,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\events\EventListener.h">
       <Filter>Header Files\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\CommonMath.h">
+      <Filter>Header Files\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

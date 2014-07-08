@@ -15,7 +15,7 @@ int main(int argc, char ** argv)
 {   
 	Window * window = Window::Create(640, 480);
 	EventListener * event_listener = EventListener::Create();
-	RenderingContext * rendering_context = RenderingContext::Create(window);
+	RenderingContext * rendering_context = RenderingContext::Create(window, OpenGLContextType);
 
 	while (true)
 	{
