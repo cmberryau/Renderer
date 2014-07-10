@@ -23,6 +23,7 @@ class EventListener
 		bool ShouldQuit();
 
 		~EventListener();
+    
 	protected:
 		EventListener();
 

@@ -34,11 +34,11 @@ namespace Renderer
 			static RenderingContext * Create(Window * window,
 											 RenderingContextType context_type);
 			RenderingContextType Type();
-
-			RenderingContext();
 			~RenderingContext();
 
 		protected:
+            RenderingContext();
+        
 			Window * _window;
 			RenderingContextType _context_type;
 			SDL_GLContext _sdl_gl_context;

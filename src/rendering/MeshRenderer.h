@@ -17,10 +17,17 @@ namespace Renderer
 	class MeshRenderer
 	{
 		public:
-			~MeshRenderer();
+            static MeshRenderer * Create(RenderingContext * rendering_context);
+            virtual void Cache() = 0;
+            virtual void Draw() = 0;
+        
+			virtual ~MeshRenderer();
 
 		protected:
 			MeshRenderer();
+        
+            RenderingContext * _rendering_context;
+            
 	};
 }
 

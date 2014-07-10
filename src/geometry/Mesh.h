@@ -26,6 +26,7 @@ namespace Renderer
 		protected:
 			// can only create from the above factory method
 			Mesh();
+        
 			Vector3f * _vertices;
 			unsigned int _vertices_count;
     };
