@@ -50,10 +50,12 @@ int main(int argc, char ** argv)
 		if (event_listener->ShouldQuit())
 			break;
         
-		// work on figuring out rendering pattern
+		rendering_context->BeginScene();
 
 		// Render here
         test_object->Draw();
+        
+        rendering_context->EndScene();
         
 		window->Swap();
 	}
