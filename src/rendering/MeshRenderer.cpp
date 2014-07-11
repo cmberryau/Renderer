@@ -1,5 +1,5 @@
 #include "MeshRenderer.h"
-#include "OpenGLMeshRenderer.h"
+#include "rendering/OpenGL/OpenGLMeshRenderer.h"
 
 namespace Renderer
 {

@@ -1,5 +1,5 @@
 #include "RenderingContext.h"
-#include "OpenGLRenderingContext.h"
+#include "rendering/OpenGL/OpenGLRenderingContext.h"
 
 namespace Renderer
 {

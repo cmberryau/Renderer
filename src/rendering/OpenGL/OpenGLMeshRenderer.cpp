@@ -28,14 +28,14 @@ namespace Renderer
         
 #ifdef __APPLE__
         ShaderInfo  shaders[] = {
-            { GL_VERTEX_SHADER, "src/shaders/default.vert" },
-            { GL_FRAGMENT_SHADER, "src/shaders/default.frag" },
+            { GL_VERTEX_SHADER, "src/shaders/GLSL/default.vert" },
+            { GL_FRAGMENT_SHADER, "src/shaders/GLSL/default.frag" },
             { GL_NONE, NULL }
         };
 #else
         ShaderInfo  shaders[] = {
-            { GL_VERTEX_SHADER, "src\\shaders\\default.vert" },
-            { GL_FRAGMENT_SHADER, "src\\shaders\\default.frag" },
+            { GL_VERTEX_SHADER, "src\\shaders\\GLSL\\default.vert" },
+            { GL_FRAGMENT_SHADER, "src\\shaders\\GLSL\\default.frag" },
             { GL_NONE, NULL }
         };
 #endif

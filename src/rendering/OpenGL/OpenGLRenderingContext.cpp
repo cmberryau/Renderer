@@ -39,7 +39,7 @@ namespace Renderer
         
         fprintf(stdout, "OpenGL version: %d.%d\n", major_version, minor_version);
         
-        glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         
         return context;
     }
