@@ -32,12 +32,19 @@ int main(int argc, char ** argv)
     test_vertices[1][0] = -10.0f;
     test_vertices[1][1] = 10.0f;
     test_vertices[1][2] = 100.0f;
-    
+
     test_vertices[2][0] = 10.0f;
-    test_vertices[2][1] = -10.0f;
+    test_vertices[2][1] = 10.0f;
     test_vertices[2][2] = 100.0f;
     
-    Mesh * test_mesh = Mesh::Create(test_vertices, 3);
+    test_vertices[3][0] = 10.0f;
+    test_vertices[3][1] = -10.0f;
+    test_vertices[3][2] = 100.0f;
+    
+    Mesh * test_mesh = Mesh::Create(test_vertices, 4);
+    
+    delete test_vertices;
+    
     MeshRenderer * test_mesh_renderer = MeshRenderer::Create(rendering_context);
     
     Object * test_object = new Object();
@@ -60,6 +67,11 @@ int main(int argc, char ** argv)
         
 		window->Swap();
 	}
+    
+    delete test_object;
+    delete rendering_context;
+    delete event_listener;
+    delete window;
 
 	return 0;
 }

@@ -20,6 +20,9 @@ namespace Renderer
 			static Mesh * Create(Vector3f * verticies, unsigned int size);
             ~Mesh();
         
+            void SetVertices(Vector3f * vertices, unsigned int size);
+            void SetTriangles(unsigned int * triangles, unsigned int size);
+        
             const Vector3f * Vertices();
             unsigned int VerticesSize();
             unsigned int VerticesCount();

@@ -22,7 +22,7 @@ namespace Renderer
 	{
 		if (mesh_renderer == nullptr)
 			return;
-
+        
 		_mesh_renderer = mesh_renderer;
         _mesh_renderer->Store(_mesh);
 	}

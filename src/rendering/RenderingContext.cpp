@@ -26,8 +26,7 @@ namespace Renderer
     
 	RenderingContext::~RenderingContext()
 	{
-		delete _window;
-		SDL_Quit();
+        
 	}
     
 	RenderingContext::RenderingContext()

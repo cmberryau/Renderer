@@ -30,7 +30,8 @@ namespace Renderer
 
 	Window::~Window()
 	{
-
+        SDL_DestroyWindow(_sdl_window);
+		SDL_Quit();
 	}
 
 	Window::Window()

@@ -10,7 +10,7 @@ out vec4 vs_fs_color;
 
 void main() 
 {
-    vs_fs_color = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+    vs_fs_color = vec4(0.5f, 0.5f, 0.5f, 1.0f);
     //vs_fs_color = color;
     gl_Position = projection_matrix * (model_matrix * position);
 }
