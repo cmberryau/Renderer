@@ -9,7 +9,8 @@ namespace Renderer
 
         if(rendering_context->Type() == OpenGLContextType)
         {
-			mesh_renderer = new OpenGLMeshRenderer();
+			mesh_renderer = OpenGLMeshRenderer::Create();
+            mesh_renderer->_rendering_context = rendering_context;
         }
         
 		return mesh_renderer;

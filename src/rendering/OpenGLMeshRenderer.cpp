@@ -4,6 +4,11 @@
 
 namespace Renderer
 {
+    OpenGLMeshRenderer * OpenGLMeshRenderer::Create()
+    {
+        return new OpenGLMeshRenderer();
+    }
+    
 	void OpenGLMeshRenderer::Store(Mesh * mesh)
     {
         if(mesh == nullptr)
@@ -40,7 +45,6 @@ namespace Renderer
     
     void OpenGLMeshRenderer::Draw()
     {
-        glClear(GL_COLOR_BUFFER_BIT);
         Matrix4f projection_matrix = Matrix4f::Perspective(75.0f, 1.33f, 1.0f, 500.0f);
         
         glUseProgram(_shader_program);
@@ -51,8 +55,6 @@ namespace Renderer
         
         glBindVertexArray(_vertex_array_objects[0]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
-        
-        glFlush();
     }
     
  	OpenGLMeshRenderer::~OpenGLMeshRenderer()

@@ -16,13 +16,15 @@ namespace Renderer
 	class OpenGLMeshRenderer : public MeshRenderer
 	{
 		public:
+            static OpenGLMeshRenderer * Create();
             void Store(Mesh * mesh);
             void Draw();
         
 			~OpenGLMeshRenderer();
-			OpenGLMeshRenderer();
 
 		protected:
+   			OpenGLMeshRenderer();
+        
             RenderingContext * _rendering_context;
         
             GLuint _vertex_array_objects[1];
