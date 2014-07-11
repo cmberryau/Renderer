@@ -2,7 +2,7 @@
 
 namespace Renderer
 {
-    void OpenGLMeshRenderer::Cache()
+	void OpenGLMeshRenderer::Store(Mesh * mesh)
     {
         
     }

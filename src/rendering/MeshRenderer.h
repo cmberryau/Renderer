@@ -18,7 +18,7 @@ namespace Renderer
 	{
 		public:
             static MeshRenderer * Create(RenderingContext * rendering_context);
-            virtual void Cache() = 0;
+            virtual void Store(Mesh * mesh) = 0;
             virtual void Draw() = 0;
         
 			virtual ~MeshRenderer();

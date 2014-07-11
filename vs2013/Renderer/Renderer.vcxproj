@@ -130,6 +130,7 @@
     <ClCompile Include="..\..\src\math\Vector.cpp" />
     <ClCompile Include="..\..\src\objects\Object.cpp" />
     <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\src\rendering\OpenGLMeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
     <ClCompile Include="..\..\src\utility\LoadShaders.cpp" />
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="..\..\src\math\Vector.h" />
     <ClInclude Include="..\..\src\objects\Object.h" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.h" />
+    <ClInclude Include="..\..\src\rendering\OpenGLMeshRenderer.h" />
     <ClInclude Include="..\..\src\rendering\RenderingContext.h" />
     <ClInclude Include="..\..\src\utility\LoadShaders.h" />
     <ClInclude Include="..\..\src\windowing\Window.h" />

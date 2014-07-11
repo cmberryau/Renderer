@@ -16,14 +16,13 @@ namespace Renderer
 	class OpenGLMeshRenderer : public MeshRenderer
 	{
 		public:
-            virtual void Cache();
-            virtual void Draw();
+            void Store(Mesh * mesh);
+            void Draw();
         
 			~OpenGLMeshRenderer();
-
-		protected:
 			OpenGLMeshRenderer();
-        
+
+		protected:			
             RenderingContext * _rendering_context;
             
 	};

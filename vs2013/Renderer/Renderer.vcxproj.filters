@@ -93,6 +93,9 @@
     <ClCompile Include="..\..\src\math\CommonMath.cpp">
       <Filter>Source Files\math</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGLMeshRenderer.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\utility\LoadShaders.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\math\CommonMath.h">
       <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\OpenGLMeshRenderer.h">
+      <Filter>Header Files\rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

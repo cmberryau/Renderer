@@ -37,11 +37,9 @@ int main(int argc, char ** argv)
     test_vertices[2][2] = 10.0f;
     
     Mesh * test_mesh = Mesh::Create(test_vertices, 3);
-    MeshRenderer * test_mesh_renderer = MeshRenderer::Create(rendering_context);
     
     Object * test_object = new Object();
     test_object->AddMesh(test_mesh);
-    test_object->AddMeshRenderer(test_mesh_renderer);
     
 	while (true)
 	{
