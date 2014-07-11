@@ -9,7 +9,7 @@
 #ifndef _opengl_renderingcontext_h
 #define _opengl_renderingcontext_h
 
-#include "RenderingContext.h"
+#include "rendering/RenderingContext.h"
 
 namespace Renderer
 {

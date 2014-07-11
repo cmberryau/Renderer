@@ -1,5 +1,5 @@
 #include "OpenGLMeshRenderer.h"
-#include "LoadShaders.h"
+#include "utility/LoadShaders.h"
 #include "math/Matrix.h"
 
 namespace Renderer

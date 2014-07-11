@@ -55,6 +55,12 @@
     <Filter Include="Source Files\events">
       <UniqueIdentifier>{4e8c93a4-b8ec-4b34-9cc6-d3e4dbf5c6e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\rendering\OpenGL">
+      <UniqueIdentifier>{6ec300a1-4114-4405-9d32-a725d58af1c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\rendering\OpenGL">
+      <UniqueIdentifier>{e1d762e9-3127-49be-bd5a-c7be5e1b079e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -93,8 +99,11 @@
     <ClCompile Include="..\..\src\math\CommonMath.cpp">
       <Filter>Source Files\math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\rendering\OpenGLMeshRenderer.cpp">
-      <Filter>Source Files\rendering</Filter>
+    <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.cpp">
+      <Filter>Source Files\rendering\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.cpp">
+      <Filter>Source Files\rendering\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,8 +140,11 @@
     <ClInclude Include="..\..\src\math\CommonMath.h">
       <Filter>Header Files\math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\rendering\OpenGLMeshRenderer.h">
-      <Filter>Header Files\rendering</Filter>
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.h">
+      <Filter>Header Files\rendering\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.h">
+      <Filter>Header Files\rendering\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
