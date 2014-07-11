@@ -33,15 +33,17 @@ namespace Renderer
 		public:
 			static RenderingContext * Create(Window * window,
 											 RenderingContextType context_type);
-			RenderingContextType Type();
-			~RenderingContext();
+			virtual RenderingContextType Type() = 0;
+            virtual void BeginScene() = 0;
+            virtual void EndScene() = 0;
+        
+			virtual ~RenderingContext();
 
 		protected:
             RenderingContext();
         
 			Window * _window;
 			RenderingContextType _context_type;
-			SDL_GLContext _sdl_gl_context;
 	};
 }
 
