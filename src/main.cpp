@@ -24,22 +24,24 @@ int main(int argc, char ** argv)
 
     Vector3f * test_vertices = new Vector3f[3];
     
-    test_vertices[0][0] = -10.0f;
-    test_vertices[0][1] = -10.0f;
+    test_vertices[0][0] = -100.0f;
+    test_vertices[0][1] = -100.0f;
     test_vertices[0][2] = 10.0f;
     
-    test_vertices[1][0] = -10.0f;
-    test_vertices[1][1] = 10.0f;
+    test_vertices[1][0] = -100.0f;
+    test_vertices[1][1] = 100.0f;
     test_vertices[1][2] = 10.0f;
     
-    test_vertices[2][0] = 10.0f;
-    test_vertices[2][1] = -10.0f;
+    test_vertices[2][0] = 100.0f;
+    test_vertices[2][1] = -100.0f;
     test_vertices[2][2] = 10.0f;
     
     Mesh * test_mesh = Mesh::Create(test_vertices, 3);
+    MeshRenderer * test_mesh_renderer = MeshRenderer::Create(rendering_context);
     
     Object * test_object = new Object();
     test_object->AddMesh(test_mesh);
+    test_object->AddMeshRenderer(test_mesh_renderer);
     
 	while (true)
 	{
@@ -51,7 +53,8 @@ int main(int argc, char ** argv)
 		// work on figuring out rendering pattern
 
 		// Render here
-
+        test_object->Draw();
+        
 		window->Swap();
 	}
 

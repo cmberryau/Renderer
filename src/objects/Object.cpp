@@ -24,7 +24,13 @@ namespace Renderer
 			return;
 
 		_mesh_renderer = mesh_renderer;
+        _mesh_renderer->Store(_mesh);
 	}
+    
+    void Object::Draw()
+    {
+        _mesh_renderer->Draw();
+    }
 
 	Object::Object() : _mesh(nullptr),
 					   _mesh_renderer(nullptr)

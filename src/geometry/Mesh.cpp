@@ -38,6 +38,21 @@ namespace Renderer
 		return mesh;
 	}
 
+    const Vector3f * Mesh::Vertices()
+    {
+        return (const Vector3f *)_vertices;
+    }
+    
+    unsigned int Mesh::VerticesSize()
+    {
+        return _vertices_count * Vector3f::Size();
+    }
+    
+    unsigned int Mesh::VerticesCount()
+    {
+        return _vertices_count;
+    }
+    
 	void Mesh::Print()
 	{
 		for (unsigned int i = 0; i < _vertices_count; i++)

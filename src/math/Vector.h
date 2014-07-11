@@ -153,6 +153,12 @@ namespace Renderer
                 return total;
             }
         
+            // memory size
+            static inline unsigned int Size()
+            {
+                return sizeof(T) * len;
+            }
+        
 			// debug output
 			void Print()
 			{

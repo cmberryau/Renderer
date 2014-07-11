@@ -38,13 +38,13 @@ namespace Renderer
 
 			GLint major_version = -1;
 			GLint minor_version = -1;
-
+            
 			glGetIntegerv(GL_MAJOR_VERSION, &major_version);
 			glGetIntegerv(GL_MINOR_VERSION, &minor_version);
 
 			fprintf(stdout, "OpenGL version: %d.%d\n", major_version, minor_version);
 
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 		}
 
 		return rendering_context;

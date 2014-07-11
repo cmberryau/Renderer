@@ -19,16 +19,20 @@ namespace Renderer
 			// factory constructor
 			static Mesh * Create(Vector3f * verticies, unsigned int size);
             ~Mesh();
-
+        
+            const Vector3f * Vertices();
+            unsigned int VerticesSize();
+            unsigned int VerticesCount();
+        
 			// debug output
 			void Print();
 
 		protected:
 			// can only create from the above factory method
 			Mesh();
-
-			Vector3f * _vertices;
-			unsigned int _vertices_count;
+        
+            Vector3f * _vertices;
+            unsigned int _vertices_count;
     };
 }
 

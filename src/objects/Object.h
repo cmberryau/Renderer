@@ -20,7 +20,8 @@ namespace Renderer
         public:
 			void AddMesh(Mesh * mesh);
 			void AddMeshRenderer(MeshRenderer * mesh_renderer);
-
+            void Draw();
+        
             Object();
             ~Object();
 

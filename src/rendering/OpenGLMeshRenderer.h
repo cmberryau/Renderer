@@ -22,9 +22,15 @@ namespace Renderer
 			~OpenGLMeshRenderer();
 			OpenGLMeshRenderer();
 
-		protected:			
+		protected:
             RenderingContext * _rendering_context;
-            
+        
+            GLuint _vertex_array_objects[1];
+            GLuint _vertex_buffer_objects[1];
+        
+            GLuint _shader_program;
+            GLint _model_matrix_uniform;
+            GLint _projection_matrix_uniform;
 	};
 }
 
