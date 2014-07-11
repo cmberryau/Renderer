@@ -26,11 +26,19 @@ namespace Renderer
                      mesh->Vertices(),
                      GL_STATIC_DRAW);
         
+#ifdef __APPLE__
         ShaderInfo  shaders[] = {
-            { GL_VERTEX_SHADER, "src/shaders/triangles.vert" },
-            { GL_FRAGMENT_SHADER, "src/shaders/triangles.frag" },
+            { GL_VERTEX_SHADER, "src/shaders/default.vert" },
+            { GL_FRAGMENT_SHADER, "src/shaders/default.frag" },
             { GL_NONE, NULL }
         };
+#else
+        ShaderInfo  shaders[] = {
+            { GL_VERTEX_SHADER, "src\\shaders\\default.vert" },
+            { GL_FRAGMENT_SHADER, "src\\shaders\\default.frag" },
+            { GL_NONE, NULL }
+        };
+#endif
         
         _shader_program = LoadShaders(shaders);
         

@@ -10,8 +10,8 @@
 		874DDA13196DD2A00080E314 /* OpenGLMeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 874DDA12196DD2A00080E314 /* OpenGLMeshRenderer.cpp */; };
 		876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
 		876EA3EF19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
-		876EA3F319524A2C00AD06B5 /* triangles.frag in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F119524A2C00AD06B5 /* triangles.frag */; };
-		876EA3F419524A2C00AD06B5 /* triangles.vert in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F219524A2C00AD06B5 /* triangles.vert */; };
+		876EA3F319524A2C00AD06B5 /* default.frag in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F119524A2C00AD06B5 /* default.frag */; };
+		876EA3F419524A2C00AD06B5 /* default.vert in Resources */ = {isa = PBXBuildFile; fileRef = 876EA3F219524A2C00AD06B5 /* default.vert */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		87870FD81969DC030040533D /* CommonMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87870FD61969DC030040533D /* CommonMath.cpp */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
@@ -51,8 +51,8 @@
 		874DDA12196DD2A00080E314 /* OpenGLMeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLMeshRenderer.cpp; path = rendering/OpenGLMeshRenderer.cpp; sourceTree = "<group>"; };
 		876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = utility/LoadShaders.cpp; sourceTree = "<group>"; };
 		876EA3ED19523D3600AD06B5 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = utility/LoadShaders.h; sourceTree = "<group>"; };
-		876EA3F119524A2C00AD06B5 /* triangles.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = triangles.frag; path = shaders/triangles.frag; sourceTree = "<group>"; };
-		876EA3F219524A2C00AD06B5 /* triangles.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = triangles.vert; path = shaders/triangles.vert; sourceTree = "<group>"; };
+		876EA3F119524A2C00AD06B5 /* default.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = default.frag; path = shaders/default.frag; sourceTree = "<group>"; };
+		876EA3F219524A2C00AD06B5 /* default.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = default.vert; path = shaders/default.vert; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		87870FD61969DC030040533D /* CommonMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonMath.cpp; path = math/CommonMath.cpp; sourceTree = "<group>"; };
 		87870FD71969DC030040533D /* CommonMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonMath.h; path = math/CommonMath.h; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 		876EA3F019524A1B00AD06B5 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
-				876EA3F119524A2C00AD06B5 /* triangles.frag */,
-				876EA3F219524A2C00AD06B5 /* triangles.vert */,
+				876EA3F119524A2C00AD06B5 /* default.frag */,
+				876EA3F219524A2C00AD06B5 /* default.vert */,
 			);
 			name = shaders;
 			sourceTree = "<group>";
@@ -379,8 +379,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */,
-				876EA3F319524A2C00AD06B5 /* triangles.frag in Resources */,
-				876EA3F419524A2C00AD06B5 /* triangles.vert in Resources */,
+				876EA3F319524A2C00AD06B5 /* default.frag in Resources */,
+				876EA3F419524A2C00AD06B5 /* default.vert in Resources */,
 				87BC83A319452C3E00D97C8E /* Images.xcassets in Resources */,
 				87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */,
 			);
