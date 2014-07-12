@@ -21,7 +21,8 @@ namespace Renderer
 		
 	}
     
-	MeshRenderer::MeshRenderer() : _rendering_context(nullptr)
+	MeshRenderer::MeshRenderer() : _rendering_context(nullptr),
+								   _mesh(nullptr)
 	{
 
 	}

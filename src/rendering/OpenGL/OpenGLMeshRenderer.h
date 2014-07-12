@@ -18,7 +18,7 @@ namespace Renderer
 		public:
             static OpenGLMeshRenderer * Create();
             void Store(Mesh * mesh);
-            void Draw();
+			void Draw(Object * parent_object);
         
 			~OpenGLMeshRenderer();
 
@@ -28,6 +28,7 @@ namespace Renderer
             RenderingContext * _rendering_context;
         
             GLuint _vertex_array_objects[1];
+			GLuint _vertex_element_buffer[1];
             GLuint _vertex_buffer_objects[1];
         
             GLuint _shader_program;

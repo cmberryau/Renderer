@@ -170,7 +170,7 @@ namespace Renderer
 				printf("\n");
 			}
 
-			// operators
+			// operators			
 			T & operator[](int n) { return elements[n]; }
 			operator const T * () const { return &elements[0]; }
 
@@ -217,20 +217,21 @@ namespace Renderer
 				this->elements[1] = y;
 				this->elements[2] = z;
 			}
-        
-        // cross(a, b) = (a2 * b3 - a3 * b2,
-        //                a3 * b1 - a1 * b3,
-        //                a1 * b2 - a2 * b1)
-        inline Vector<T, 3> Cross(Vector<T, 3> vec)
-        {
-            return Vector<T, 3>(this[1] * vec[2] - this[2] * vec[1],
-                                this[2] * vec[0] - this[0] * vec[2],
-                                this[0] * vec[1] - this[1] * vec[0]);
-        }
+
+			// cross(a, b) = (a2 * b3 - a3 * b2,
+			//                a3 * b1 - a1 * b3,
+			//                a1 * b2 - a2 * b1)
+			inline Vector<T, 3> Cross(Vector<T, 3> vec)
+			{
+				return Vector<T, 3>(this[1] * vec[2] - this[2] * vec[1],
+									this[2] * vec[0] - this[0] * vec[2],
+									this[0] * vec[1] - this[1] * vec[0]);
+			}
 	};
 
 	// defined types for usage
 	typedef Vector3<float> Vector3f;
+	typedef Vector3<unsigned int> Vector3ui;
 
 	// 
 	// Renderer::Vector4<typename T>

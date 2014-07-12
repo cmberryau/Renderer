@@ -10,14 +10,26 @@
 #define _transform_h
 
 #include "Vector.h"
+#include "Matrix.h"
 
 namespace Renderer
 {
     class Transform
     {
         public:
+			void Translate(float x, float y, float z);
+			void Rotate(float x, float y, float z);
+			void Scale(float x, float y, float z);
+
+			Matrix4f ComposedMatrix();
+
             Transform();
             ~Transform();
+
+		protected:
+			Vector3f _position;
+			Vector3f _rotation;
+			Vector3f _scale;
     };
 }
 

@@ -14,20 +14,26 @@
 
 namespace Renderer
 {
+	class Object;
+
 	class MeshRenderer
 	{
 		public:
             static MeshRenderer * Create(RenderingContext * rendering_context);
+
+			// caches the mesh and prepares it for drawing
             virtual void Store(Mesh * mesh) = 0;
-            virtual void Draw() = 0;
+			// draws teh mesh
+			virtual void Draw(Object * parent_object) = 0;
         
 			virtual ~MeshRenderer();
 
 		protected:
 			MeshRenderer();
         
+			Mesh * _mesh;
+			Object * _parent_object;
             RenderingContext * _rendering_context;
-            
 	};
 }
 

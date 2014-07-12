@@ -10,6 +10,11 @@
 
 namespace Renderer
 {
+	Transform * Object::Transform()
+	{
+		return & _transform;
+	}
+
 	void Object::AddMesh(Mesh * mesh)
 	{
 		if (mesh == nullptr)
@@ -29,7 +34,7 @@ namespace Renderer
     
     void Object::Draw()
     {
-        _mesh_renderer->Draw();
+        _mesh_renderer->Draw(this);
     }
 
 	Object::Object() : _mesh(nullptr),

@@ -23,7 +23,7 @@ int main(int argc, char ** argv)
 	EventListener * event_listener = EventListener::Create();
 	RenderingContext * rendering_context = RenderingContext::Create(window, OpenGLContextType);
 
-    Vector3f * test_vertices = new Vector3f[3];
+    Vector3f * test_vertices = new Vector3f[4];
     
     test_vertices[0][0] = -10.0f;
     test_vertices[0][1] = -10.0f;
@@ -43,6 +43,43 @@ int main(int argc, char ** argv)
     
     Mesh * test_mesh = Mesh::Create(test_vertices, 4);
     
+	Vector4f * test_colors = new Vector4f[4];
+
+	test_colors[0][0] = 1.0f;
+	test_colors[0][1] = 0.0f;
+	test_colors[0][2] = 0.0f;
+	test_colors[0][3] = 1.0f;
+
+	test_colors[1][0] = 0.0f;
+	test_colors[1][1] = 1.0f;
+	test_colors[1][2] = 0.0f;
+	test_colors[1][3] = 1.0f;
+
+	test_colors[2][0] = 0.0f;
+	test_colors[2][1] = 0.0f;
+	test_colors[2][2] = 1.0f;
+	test_colors[2][3] = 1.0f;
+
+	test_colors[3][0] = 1.0f;
+	test_colors[3][1] = 1.0f;
+	test_colors[3][2] = 0.0f;
+	test_colors[3][3] = 1.0f;
+
+	test_mesh->SetColors(test_colors, 4);
+
+	Vector3ui * test_triangles = new Vector3ui[2];
+
+	test_triangles[0][0] = 0;
+	test_triangles[0][1] = 1;
+	test_triangles[0][2] = 2;
+
+	test_triangles[1][0] = 2;
+	test_triangles[1][1] = 3;
+	test_triangles[1][2] = 0;
+
+	test_mesh->SetTriangles(test_triangles, 2);
+
+	delete test_triangles;
     delete test_vertices;
     
     MeshRenderer * test_mesh_renderer = MeshRenderer::Create(rendering_context);
@@ -51,6 +88,8 @@ int main(int argc, char ** argv)
     test_object->AddMesh(test_mesh);
     test_object->AddMeshRenderer(test_mesh_renderer);
     
+	test_object->Transform()->Translate(0.0f, 50.0f, 0.0f);
+
 	while (true)
 	{
 		event_listener->ListenForEvents();
