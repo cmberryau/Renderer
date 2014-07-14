@@ -129,6 +129,7 @@
     <ClCompile Include="..\..\src\math\Transform.cpp" />
     <ClCompile Include="..\..\src\math\Vector.cpp" />
     <ClCompile Include="..\..\src\objects\Object.cpp" />
+    <ClCompile Include="..\..\src\rendering\Camera.cpp" />
     <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.cpp" />
@@ -144,6 +145,7 @@
     <ClInclude Include="..\..\src\math\Transform.h" />
     <ClInclude Include="..\..\src\math\Vector.h" />
     <ClInclude Include="..\..\src\objects\Object.h" />
+    <ClInclude Include="..\..\src\rendering\Camera.h" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.h" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.h" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.h" />

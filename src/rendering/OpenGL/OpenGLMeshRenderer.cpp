@@ -2,6 +2,7 @@
 #include "utility/LoadShaders.h"
 #include "math/Matrix.h"
 #include "objects/Object.h"
+#include "rendering/Camera.h"
 
 namespace Renderer
 {
@@ -77,12 +78,9 @@ namespace Renderer
     {
 		if (_mesh == nullptr)
 			return;
-
-		// should get the projection matrix elsewhere, camera or context
-        Matrix4f projection_matrix = Matrix4f::Perspective(75.0f, 1.33f, 1.0f, 500.0f);
         
         glUseProgram(_shader_program);
-        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, projection_matrix);
+        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, Camera::MainCamera()->ProjectionMatrix());
         glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->Transform()->ComposedMatrix());
         
         glBindVertexArray(_vertex_array_objects[0]);

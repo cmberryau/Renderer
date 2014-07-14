@@ -23,7 +23,7 @@ namespace Renderer
 
 			// caches the mesh and prepares it for drawing
             virtual void Store(Mesh * mesh) = 0;
-			// draws teh mesh
+			// draws the mesh
 			virtual void Draw(Object * parent_object) = 0;
         
 			virtual ~MeshRenderer();

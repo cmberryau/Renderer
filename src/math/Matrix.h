@@ -28,6 +28,7 @@ namespace Renderer
 		public:
 			// constructors
 			Matrix(){};
+
 			Matrix(T value)
 			{
 				for (int i = 0; i < w; i++)
@@ -35,13 +36,15 @@ namespace Renderer
 					elements[i] = value;
 				}
 			}
+
 			Matrix(const Matrix &that)
 			{
 				assign(that);
 			}
+
 			Matrix(const Vector<T, h> &vector)
 			{
-				for(int i=0; i<w; i++)
+				for(int i = 0; i < w; i++)
 				{
 					elements[i] = vector;
 				}
@@ -52,7 +55,7 @@ namespace Renderer
 			{
 				Matrix<T, w, h> matrix(0);
             
-				for (int i=0; i<w; i++)
+				for (int i = 0; i < w; i++)
 				{
 					matrix.elements[i][i] = 1;
 				}
@@ -61,6 +64,31 @@ namespace Renderer
 			}
 
 			// member functions
+
+			inline Matrix<T, w, h> Multiply(Matrix<T, w, h> factor)
+			{
+				Matrix<T, w, h> result(0);
+
+				// iterate through matrix cells
+				for (int i = 0; i < w; i++)
+				{
+					for (int j = 0; j < h; j++)
+					{
+						T cell_total(0);
+
+						// total the cell
+						for (int k = 0; k < w; k++)
+						{
+							cell_total += elements[k][i] * factor[j][k];
+						}
+
+						result[j][i] = cell_total;
+					}
+				}
+
+				return result;
+			}
+
 			// debug output
 			void Print()
 			{

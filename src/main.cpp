@@ -19,6 +19,33 @@ using namespace Renderer;
 
 int main(int argc, char ** argv)
 {   
+	Matrix<float, 3, 3> A(0);
+	Matrix<float, 3, 3> B(0);
+
+	A[0][0] = 1;
+	A[1][0] = 2;
+	A[2][0] = 3;
+	A[0][1] = 4;
+	A[1][1] = 5;
+	A[2][1] = 6;
+	A[0][2] = 7;
+	A[1][2] = 8;
+	A[2][2] = 9;
+
+	B[0][0] = 10;
+	B[1][0] = 11;
+	B[2][0] = 12;
+	B[0][1] = 13;
+	B[1][1] = 14;
+	B[2][1] = 15;
+	B[0][2] = 16;
+	B[1][2] = 17;
+	B[2][2] = 18;
+
+	Matrix<float, 3, 3> AB = A.Multiply(B);
+
+	AB.Print();
+
 	Window * window = Window::Create(640, 480);
 	EventListener * event_listener = EventListener::Create();
 	RenderingContext * rendering_context = RenderingContext::Create(window, OpenGLContextType);
