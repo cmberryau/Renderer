@@ -79,13 +79,12 @@ namespace Renderer
 						// total the cell
 						for (int k = 0; k < w; k++)
 						{
-							cell_total += elements[k][i] * factor[j][k];
+							cell_total += elements[k][j] * factor[i][k];
 						}
 
-						result[j][i] = cell_total;
+						result[i][j] = cell_total;
 					}
 				}
-
 				return result;
 			}
 
