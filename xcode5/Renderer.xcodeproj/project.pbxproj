@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8756FCCD197465A600A016AD /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8756FCCB197465A600A016AD /* Camera.cpp */; };
 		876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
 		876EA3EF19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8756FCCB197465A600A016AD /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = rendering/Camera.cpp; sourceTree = "<group>"; };
+		8756FCCC197465A600A016AD /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = rendering/Camera.h; sourceTree = "<group>"; };
 		876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = utility/LoadShaders.cpp; sourceTree = "<group>"; };
 		876EA3ED19523D3600AD06B5 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = utility/LoadShaders.h; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 		87D8152719696398009A8A62 /* rendering */ = {
 			isa = PBXGroup;
 			children = (
+				8756FCCB197465A600A016AD /* Camera.cpp */,
+				8756FCCC197465A600A016AD /* Camera.h */,
 				87C224C119702E520012E201 /* OpenGL */,
 				87D81528196963A3009A8A62 /* MeshRenderer.cpp */,
 				87D81529196963A3009A8A62 /* MeshRenderer.h */,
@@ -424,6 +429,7 @@
 				87A0B747195A1261003F53C6 /* Matrix.cpp in Sources */,
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				87D8152C196963A3009A8A62 /* MeshRenderer.cpp in Sources */,
+				8756FCCD197465A600A016AD /* Camera.cpp in Sources */,
 				87A0B749195A1261003F53C6 /* Vector.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
 				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
