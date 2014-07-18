@@ -12,7 +12,7 @@ namespace Renderer
         
         if(context_type == OpenGLContextType)
         {
-            context = OpenGLRenderingContext::Create(window);
+            context = OpenGLRenderingContext::Create(window, 4, 0);
             context->_window = window;
         }
 

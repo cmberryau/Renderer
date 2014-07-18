@@ -16,7 +16,12 @@ namespace Renderer
 	class OpenGLRenderingContext : public RenderingContext
 	{
 		public:
-            static OpenGLRenderingContext * Create(Window * window);
+            static const int kNumSupportedOpenGLVersions;
+            static const int kSupportedOpenGLVersions[9][2];
+        
+            static OpenGLRenderingContext * Create(Window * window,
+                                                   int major_version = kSupportedOpenGLVersions[0][0],
+                                                   int minor_version = kSupportedOpenGLVersions[0][1]);
 			~OpenGLRenderingContext();
         
             RenderingContextType Type();
@@ -24,7 +29,10 @@ namespace Renderer
             void EndScene();
         
 		protected:
-            OpenGLRenderingContext();
+            OpenGLRenderingContext() : _sdl_gl_context(nullptr)
+            {
+                
+            }
         
    			SDL_GLContext _sdl_gl_context;
 	};
