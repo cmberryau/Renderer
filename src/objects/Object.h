@@ -18,7 +18,7 @@ namespace Renderer
     class Object
     {
         public:
-			Transform * Transform();
+			Transformf * Transform();
 			void AddMesh(Mesh * mesh);
 			void AddMeshRenderer(MeshRenderer * mesh_renderer);
             void Draw();
@@ -27,7 +27,7 @@ namespace Renderer
             ~Object();
 
 		protected:
-			class Transform _transform;
+            Transformf _transform;
 			Mesh * _mesh;
 			MeshRenderer * _mesh_renderer;
     };

@@ -24,12 +24,12 @@ namespace Renderer
 			// static member functions
 			static T Rad2Deg(T rad)
 			{
-				return rad * (180.0 / (T)M_PI);
+				return rad * (180 / (T)M_PI);
 			}
 
 			static T Deg2Rad(T deg)
 			{
-				return deg / (180.0 / (T)M_PI);
+				return deg / (180 / (T)M_PI);
 			}
 	};
     

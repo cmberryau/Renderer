@@ -211,6 +211,7 @@ namespace Renderer
         public:
 			// constructors
 			Vector3(){};
+            Vector3(T val) : Vector<T, 3>(val){};
 			Vector3(T x, T y, T z)
 			{
 				this->elements[0] = x;

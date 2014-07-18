@@ -164,9 +164,24 @@ namespace Renderer
                                   Vector4<T>(0.0, 0.0, 0.0, 1.0));
             }
         
-            static inline Matrix4<T> Rotate(T x, T y, T z)
+            // http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation#Quaternion-derived_rotation_matrix
+            static inline Matrix4<T> Rotate(T angle, T x, T y, T z)
             {
-                return Matrix4<T>::Identity();
+                T x2 = x * x;
+                T y2 = y * y;
+                T z2 = z * z;
+                
+                T radians = Math<T>::Deg2Rad(angle);
+                
+                T s = sinf(radians);
+                T c = cosf(radians);
+                
+                T omc = (1 - c);
+                
+                return Matrix4<T>(Vector4<T>(c + x2 * omc, y * x * omc + z * s, z * x * omc - y * s, 0.0),
+                                  Vector4<T>(x * y * omc - z * s, c + y2 * omc, z * y * omc + x * s, 0.0),
+                                  Vector4<T>(x * z * omc + y * s, y * z * omc - x * s, c + z2 * omc, 0.0),
+                                  Vector4<T>(0.0, 0.0, 0.0, 1.0));
             }
 
 			static inline Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
