@@ -14,6 +14,7 @@
 #include "geometry/Mesh.h"
 #include "rendering/MeshRenderer.h"
 #include "objects/Object.h"
+#include "scene/Scene.h"
 
 using namespace Renderer;
 
@@ -88,6 +89,8 @@ int main(int argc, char ** argv)
     test_object->AddMesh(test_mesh);
     test_object->AddMeshRenderer(test_mesh_renderer);
     
+    Scene * scene = Scene::Create();
+    scene->AddObject(test_object);
     
 	while (true)
 	{
@@ -99,7 +102,7 @@ int main(int argc, char ** argv)
 		rendering_context->BeginScene();
 
 		// Render here
-        test_object->Draw();
+        scene->Draw();
         
         rendering_context->EndScene();
         

@@ -25,7 +25,6 @@ namespace Renderer
 
 		protected:
 			Transform<float> _transform;
-			//static Camera * _main_camera = nullptr;
 	};
 }
 
