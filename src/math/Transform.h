@@ -15,7 +15,7 @@
 namespace Renderer
 {
     template<typename T>
-    class Transform
+    class TransformType
     {
         public:
 			void Translate(T x, T y, T z)
@@ -117,7 +117,7 @@ namespace Renderer
                 return _composed_matrix;
             }
 
-            Transform<T>(): _position(T(0), T(0), T(0)),
+            TransformType<T>(): _position(T(0), T(0), T(0)),
                             _rotation(T(0), T(0), T(0)),
                                _scale(T(1), T(1), T(1)),
                             _composed_matrix(Matrix4<T>::Identity())
@@ -126,7 +126,7 @@ namespace Renderer
                 
             }
         
-            ~Transform<T>()
+            ~TransformType<T>()
             {
                 
             }
@@ -139,7 +139,8 @@ namespace Renderer
             Matrix4<T> _composed_matrix;
     };
     
-    typedef Transform<float> Transformf;
+    typedef TransformType<float> Transform;
+	typedef TransformType<double> Transformd;
 }
 
 #endif // _transform_h

@@ -32,7 +32,6 @@ namespace Renderer
 			MeshRenderer();
         
 			Mesh * _mesh;
-			Object * _parent_object;
             RenderingContext * _rendering_context;
 	};
 }

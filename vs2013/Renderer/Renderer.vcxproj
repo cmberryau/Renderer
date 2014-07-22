@@ -134,6 +134,7 @@
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.cpp" />
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
+    <ClCompile Include="..\..\src\scene\Scene.cpp" />
     <ClCompile Include="..\..\src\utility\LoadShaders.cpp" />
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
   </ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.h" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.h" />
     <ClInclude Include="..\..\src\rendering\RenderingContext.h" />
+    <ClInclude Include="..\..\src\scene\Scene.h" />
     <ClInclude Include="..\..\src\utility\LoadShaders.h" />
     <ClInclude Include="..\..\src\windowing\Window.h" />
   </ItemGroup>

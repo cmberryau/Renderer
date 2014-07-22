@@ -10,7 +10,7 @@
 
 namespace Renderer
 {
-	Transformf * Object::Transform()
+	Transform * Object::LocalTransform()
 	{
 		return & _transform;
 	}

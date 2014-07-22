@@ -82,7 +82,7 @@ namespace Renderer
         glUseProgram(_shader_program);
         glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, Camera::MainCamera()->ProjectionMatrix());
         glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE,
-        parent_object->Transform()->ComposedMatrix().Multiply(Camera::MainCamera()->ViewMatrix()));
+        parent_object->LocalTransform()->ComposedMatrix().Multiply(Camera::MainCamera()->ViewMatrix()));
         
         glBindVertexArray(_vertex_array_objects[0]);
 		glDrawElements(GL_TRIANGLES, _mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);

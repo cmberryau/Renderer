@@ -24,7 +24,7 @@ namespace Renderer
 			~Camera();
 
 		protected:
-			Transform<float> _transform;
+			TransformType<float> _transform;
 	};
 }
 

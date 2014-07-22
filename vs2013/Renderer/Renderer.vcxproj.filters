@@ -61,6 +61,12 @@
     <Filter Include="Source Files\rendering\OpenGL">
       <UniqueIdentifier>{e1d762e9-3127-49be-bd5a-c7be5e1b079e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\scene">
+      <UniqueIdentifier>{d2cc5e3d-dbe6-41ea-ac4f-e72419901e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\scene">
+      <UniqueIdentifier>{17352afa-0649-4f79-9a49-4bb6c070b5e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp">
@@ -108,6 +114,9 @@
     <ClCompile Include="..\..\src\rendering\Camera.cpp">
       <Filter>Source Files\rendering</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scene\Scene.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\utility\LoadShaders.h">
@@ -151,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\Camera.h">
       <Filter>Header Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scene\Scene.h">
+      <Filter>Header Files\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
