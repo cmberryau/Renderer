@@ -3,22 +3,6 @@
 
 namespace Renderer
 {
-	RenderingContext * RenderingContext::Create(Window * window, RenderingContextType context_type)
-	{
-		if (window == nullptr)
-			return nullptr;
-        
-        RenderingContext * context = nullptr;
-        
-        if(context_type == OpenGLContextType)
-        {
-            context = OpenGLRenderingContext::Create(window, 4, 4);
-            context->_window = window;
-        }
-
-		return context;
-	}
-
 	RenderingContextType RenderingContext::Type()
 	{
 		return _context_type;
@@ -28,8 +12,10 @@ namespace Renderer
 	{
         
 	}
-    
-	RenderingContext::RenderingContext()
+
+	RenderingContext::RenderingContext(RenderingContextType context_type,
+									   RenderingContextPrecision context_precision)
+	: _context_type(context_type), _precision(context_precision)
 	{
 
 	}

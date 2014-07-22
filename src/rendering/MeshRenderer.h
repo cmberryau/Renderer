@@ -14,7 +14,11 @@
 
 namespace Renderer
 {
-	class Object;
+	template <typename T>
+	class ObjectType;
+
+	typedef ObjectType<float> Object;
+	typedef ObjectType<double> Objectd;
 
 	class MeshRenderer
 	{

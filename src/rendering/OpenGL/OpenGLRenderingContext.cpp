@@ -9,14 +9,16 @@ namespace Renderer
                                                                         {3,2},{3,1},{3,0}};
     
     OpenGLRenderingContext * OpenGLRenderingContext::Create(Window * window,
+															RenderingContextPrecision precision,
                                                             int major_version,
                                                             int minor_version)
     {
         if(window == nullptr)
             return nullptr;
         
-        OpenGLRenderingContext * context = new OpenGLRenderingContext();
-        
+        OpenGLRenderingContext * context = new OpenGLRenderingContext(OpenGLContextType,
+																	  FloatPrecision);
+
         // ensure that the requested OpenGL version is supported
         int requested_major_version = major_version;
         int requested_minor_version = minor_version;
@@ -90,11 +92,18 @@ namespace Renderer
     {
         SDL_GL_DeleteContext(_sdl_gl_context);
     }
-    
-    RenderingContextType OpenGLRenderingContext::Type()
-    {
-        return OpenGLContextType;
-    }
+
+	OpenGLRenderingContext::OpenGLRenderingContext(RenderingContextType context_type,
+										           RenderingContextPrecision context_precision)
+	: _sdl_gl_context(nullptr), RenderingContext(context_type, context_precision)
+	{
+
+	}
+
+	RenderingContextPrecision OpenGLRenderingContext::Precision()
+	{
+		return _precision;
+	}
     
     void OpenGLRenderingContext::BeginScene()
     {

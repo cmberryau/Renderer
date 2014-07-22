@@ -74,7 +74,7 @@ namespace Renderer
 		glEnableVertexAttribArray(1);
     }
     
-	void OpenGLMeshRenderer::Draw(Object * parent_object)
+	void OpenGLMeshRenderer::Draw(ObjectType<float> * parent_object)
     {
 		if (_mesh == nullptr)
 			return;

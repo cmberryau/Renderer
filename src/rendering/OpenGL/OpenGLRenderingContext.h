@@ -20,19 +20,20 @@ namespace Renderer
             static const int kSupportedOpenGLVersions[9][2];
         
             static OpenGLRenderingContext * Create(Window * window,
-                                                   int major_version = kSupportedOpenGLVersions[0][0],
-                                                   int minor_version = kSupportedOpenGLVersions[0][1]);
-			~OpenGLRenderingContext();
-        
-            RenderingContextType Type();
+			RenderingContextPrecision precision = FloatPrecision,
+			int major_version = kSupportedOpenGLVersions[0][0],
+            int minor_version = kSupportedOpenGLVersions[0][1]);			
+			
+			RenderingContextPrecision Precision();
+
             void BeginScene();
             void EndScene();
+
+			~OpenGLRenderingContext();
         
 		protected:
-            OpenGLRenderingContext() : _sdl_gl_context(nullptr)
-            {
-                
-            }
+			OpenGLRenderingContext(RenderingContextType context_type,
+								   RenderingContextPrecision context_precision);
         
    			SDL_GLContext _sdl_gl_context;
 	};

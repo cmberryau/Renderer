@@ -3,10 +3,17 @@
 uniform mat4 model_matrix;
 uniform mat4 projection_matrix;
 
+//uniform dmat4 model_matrix;
+//uniform dmat4 projection_matrix;
+
 layout(location = 0) in vec4 position;
 layout(location = 1) in vec4 color;
 
+//layout(location = 0) in dvec4 position;
+//layout(location = 1) in dvec4 color;
+
 out vec4 vs_fs_color;
+//out dvec4 vs_fs_color;
 
 void main() 
 {

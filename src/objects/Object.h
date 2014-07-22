@@ -15,22 +15,57 @@
 
 namespace Renderer
 {
-    class Object
+	template <typename T>
+    class ObjectType
     {
         public:
-			Transform * LocalTransform();
-			void AddMesh(Mesh * mesh);
-			void AddMeshRenderer(MeshRenderer * mesh_renderer);
-            void Draw();
+			TransformType<T> * LocalTransform()
+			{
+				return &_transform;
+			}
+
+			void AddMesh(Mesh * mesh)
+			{
+				if (mesh == nullptr)
+					return;
+
+				_mesh = mesh;
+			}
+
+			void AddMeshRenderer(MeshRenderer * mesh_renderer)
+			{
+				if (mesh_renderer == nullptr)
+					return;
+
+				_mesh_renderer = mesh_renderer;
+				_mesh_renderer->Store(_mesh);
+			}
+
+			void Draw()
+			{
+				_mesh_renderer->Draw(this);
+			}
         
-            Object();
-            ~Object();
+			ObjectType<T>() : _mesh(nullptr),
+					          _mesh_renderer(nullptr)
+			{
+
+			}
+
+			~ObjectType<T>()
+			{
+				delete _mesh;
+				delete _mesh_renderer;
+			}
 
 		protected:
-            Transform _transform;
+            TransformType<T> _transform;
 			Mesh * _mesh;
 			MeshRenderer * _mesh_renderer;
     };
+
+	typedef ObjectType<float> Object;
+	typedef ObjectType<double> Objectd;
 }
 
 #endif // #ifndef _object_h

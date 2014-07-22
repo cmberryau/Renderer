@@ -8,7 +8,7 @@
 
 #include "windowing/Window.h"
 #include "events/EventListener.h"
-#include "rendering/RenderingContext.h"
+#include "rendering/OpenGL/OpenGLRenderingContext.h"
 
 #include "math/Vector.h"
 #include "geometry/Mesh.h"
@@ -22,8 +22,9 @@ int main(int argc, char ** argv)
 {
 	Window * window = Window::Create(640, 480);
 	EventListener * event_listener = EventListener::Create();
-	RenderingContext * rendering_context = RenderingContext::Create(window, OpenGLContextType);
+	RenderingContext * rendering_context = OpenGLRenderingContext::Create(window);
 
+	
     Vector3f * test_vertices = new Vector3f[4];
     
     test_vertices[0][0] = -10.0f;
