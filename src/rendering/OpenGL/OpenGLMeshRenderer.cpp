@@ -6,9 +6,9 @@
 
 namespace Renderer
 {
-    OpenGLMeshRenderer * OpenGLMeshRenderer::Create()
+	OpenGLMeshRenderer * OpenGLMeshRenderer::Create(RenderingContext * rendering_context)
     {
-        return new OpenGLMeshRenderer();
+		return new OpenGLMeshRenderer(rendering_context);
     }
     
 	void OpenGLMeshRenderer::Store(Mesh * mesh)
@@ -73,7 +73,7 @@ namespace Renderer
         glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
     }
-    
+
 	void OpenGLMeshRenderer::Draw(ObjectType<float> * parent_object)
     {
 		if (_mesh == nullptr)
@@ -93,7 +93,8 @@ namespace Renderer
 		
 	}
     
-	OpenGLMeshRenderer::OpenGLMeshRenderer() : _rendering_context(nullptr)
+	OpenGLMeshRenderer::OpenGLMeshRenderer(RenderingContext * rendering_context) 
+	: _rendering_context(rendering_context)
 	{
 
 	}
