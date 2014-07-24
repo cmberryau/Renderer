@@ -24,7 +24,7 @@ namespace Renderer
 				if (vertices == nullptr)
 					return nullptr;
 
-				Mesh * mesh = new Mesh();
+				MeshType<T> * mesh = new MeshType<T>();
 
 				mesh->_vertices = new Vector3<T>[size];
 

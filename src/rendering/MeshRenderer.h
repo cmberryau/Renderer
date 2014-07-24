@@ -20,10 +20,21 @@ namespace Renderer
 	typedef ObjectType<float> Object;
 	typedef ObjectType<double> Objectd;
 
-	class MeshRenderer
+	template <typename T>
+	class MeshRendererType
 	{
 		public:
-            static MeshRenderer * Create(RenderingContext * rendering_context);
+			static MeshRendererType<T> * Create(RenderingContext * rendering_context)
+			{
+				MeshRenderer * mesh_renderer = nullptr;
+
+				if (rendering_context->Type() == OpenGLContextType)
+				{
+					mesh_renderer = OpenGLMeshRenderer::Create(rendering_context);
+				}
+
+				return mesh_renderer;
+			}
 
 			// caches the mesh and prepares it for drawing
             virtual void Store(Mesh * mesh) = 0;
@@ -31,14 +42,21 @@ namespace Renderer
 			// draws the mesh
 			virtual void Draw(Object * parent_object) = 0;
         
-			virtual ~MeshRenderer();
+			virtual ~MeshRendererType(){};
 
 		protected:
-			MeshRenderer();
+			MeshRendererType() : _rendering_context(nullptr),
+							     _mesh(nullptr)
+			{
+
+			}
         
 			Mesh * _mesh;
             RenderingContext * _rendering_context;
 	};
+
+	typedef MeshRendererType<float> MeshRenderer;
+	typedef MeshRendererType<double> MeshRendererd;
 }
 
 #endif // #ifndef _mesh_renderer_h
