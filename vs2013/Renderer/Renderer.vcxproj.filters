@@ -117,6 +117,9 @@
     <ClCompile Include="..\..\src\scene\Scene.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\rendering\MeshRendererFactory.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\utility\LoadShaders.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\scene\Scene.h">
       <Filter>Header Files\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\MeshRendererFactory.h">
+      <Filter>Header Files\rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

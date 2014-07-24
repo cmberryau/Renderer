@@ -24,7 +24,6 @@ int main(int argc, char ** argv)
 	EventListener * event_listener = EventListener::Create();
 	RenderingContext * rendering_context = OpenGLRenderingContext::Create(window);
 
-	
     Vector3f * test_vertices = new Vector3f[4];
     
     test_vertices[0][0] = -10.0f;

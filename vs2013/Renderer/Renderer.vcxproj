@@ -131,6 +131,7 @@
     <ClCompile Include="..\..\src\objects\Object.cpp" />
     <ClCompile Include="..\..\src\rendering\Camera.cpp" />
     <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\src\rendering\MeshRendererFactory.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.cpp" />
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="..\..\src\objects\Object.h" />
     <ClInclude Include="..\..\src\rendering\Camera.h" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.h" />
+    <ClInclude Include="..\..\src\rendering\MeshRendererFactory.h" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.h" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.h" />
     <ClInclude Include="..\..\src\rendering\RenderingContext.h" />

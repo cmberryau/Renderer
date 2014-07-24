@@ -17,7 +17,7 @@ namespace Renderer
 	{
 		public:
             static const int kNumSupportedOpenGLVersions;
-            static const int kSupportedOpenGLVersions[9][2];
+            static const int kSupportedOpenGLVersions[5][2];
         
             static OpenGLRenderingContext * Create(Window * window,
 			RenderingContextPrecision precision = FloatPrecision,
