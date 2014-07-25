@@ -232,6 +232,7 @@ namespace Renderer
 
 	// defined types for usage
 	typedef Vector3<float> Vector3f;
+  	typedef Vector3<double> Vector3d;
 	typedef Vector3<unsigned int> Vector3ui;
 
 	// 

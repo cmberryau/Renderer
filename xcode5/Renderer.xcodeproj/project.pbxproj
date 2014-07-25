@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87295EC11982B58100D6B728 /* defaultd.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87295EBF1982B58100D6B728 /* defaultd.frag */; };
+		87295EC21982B58100D6B728 /* defaultd.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87295EC01982B58100D6B728 /* defaultd.vert */; };
 		872F7BD6197975CE00E70464 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 872F7BD4197975CE00E70464 /* Scene.cpp */; };
 		8756FCCD197465A600A016AD /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8756FCCB197465A600A016AD /* Camera.cpp */; };
 		876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87295EBF1982B58100D6B728 /* defaultd.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.frag; path = shaders/GLSL/defaultd.frag; sourceTree = "<group>"; };
+		87295EC01982B58100D6B728 /* defaultd.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.vert; path = shaders/GLSL/defaultd.vert; sourceTree = "<group>"; };
 		872F7BD4197975CE00E70464 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = scene/Scene.cpp; sourceTree = "<group>"; };
 		872F7BD5197975CE00E70464 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scene.h; path = scene/Scene.h; sourceTree = "<group>"; };
 		8756FCCB197465A600A016AD /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = rendering/Camera.cpp; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 		87C224BC19702DB80012E201 /* GLSL */ = {
 			isa = PBXGroup;
 			children = (
+				87295EBF1982B58100D6B728 /* defaultd.frag */,
+				87295EC01982B58100D6B728 /* defaultd.vert */,
 				87C224BD19702DC50012E201 /* default.frag */,
 				87C224BE19702DC50012E201 /* default.vert */,
 			);
@@ -414,9 +420,11 @@
 			files = (
 				87C224C019702DC50012E201 /* default.vert in Resources */,
 				87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */,
+				87295EC11982B58100D6B728 /* defaultd.frag in Resources */,
 				87BC83A319452C3E00D97C8E /* Images.xcassets in Resources */,
 				87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */,
 				87C224BF19702DC50012E201 /* default.frag in Resources */,
+				87295EC21982B58100D6B728 /* defaultd.vert in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

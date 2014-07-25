@@ -83,9 +83,67 @@ int main(int argc, char ** argv)
 	delete test_triangles;
     delete test_vertices;
     
-    MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
     
+    /*Vector3d * test_vertices = new Vector3d[4];
+    
+    test_vertices[0][0] = -10.0;
+    test_vertices[0][1] = -10.0;
+    test_vertices[0][2] = 100.0;
+    
+    test_vertices[1][0] = -10.0;
+    test_vertices[1][1] = 10.0;
+    test_vertices[1][2] = 100.0;
+    
+    test_vertices[2][0] = 10.0;
+    test_vertices[2][1] = 10.0;
+    test_vertices[2][2] = 100.0;
+    
+    test_vertices[3][0] = 10.0;
+    test_vertices[3][1] = -10.0;
+    test_vertices[3][2] = 100.0;
+    
+    Meshd * test_mesh = Meshd::Create(test_vertices, 4);
+    
+	Vector4f * test_colors = new Vector4f[4];
+    
+	test_colors[0][0] = 1.0f;
+	test_colors[0][1] = 0.0f;
+	test_colors[0][2] = 0.0f;
+	test_colors[0][3] = 1.0f;
+    
+	test_colors[1][0] = 0.0f;
+	test_colors[1][1] = 1.0f;
+	test_colors[1][2] = 0.0f;
+	test_colors[1][3] = 1.0f;
+    
+	test_colors[2][0] = 0.0f;
+	test_colors[2][1] = 0.0f;
+	test_colors[2][2] = 1.0f;
+	test_colors[2][3] = 1.0f;
+    
+	test_colors[3][0] = 1.0f;
+	test_colors[3][1] = 1.0f;
+	test_colors[3][2] = 0.0f;
+	test_colors[3][3] = 1.0f;
+    
+	test_mesh->SetColors(test_colors, 4);
+    
+	Vector3ui * test_triangles = new Vector3ui[2];
+    
+	test_triangles[0][0] = 0;
+	test_triangles[0][1] = 1;
+	test_triangles[0][2] = 2;
+    
+	test_triangles[1][0] = 2;
+	test_triangles[1][1] = 3;
+	test_triangles[1][2] = 0;
+    
+	test_mesh->SetTriangles(test_triangles, 2);
+    
+    RenderingContextd * rendering_context = OpenGLRenderingContextd::Create(window);*/
+    MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
     Object * test_object = new Object();
+    
     test_object->AddMesh(test_mesh);
     test_object->AddMeshRenderer(test_mesh_renderer);
     

@@ -24,7 +24,7 @@ namespace Renderer
 				return &_transform;
 			}
 
-			void AddMesh(Mesh * mesh)
+			void AddMesh(MeshType<T> * mesh)
 			{
 				if (mesh == nullptr)
 					return;
@@ -32,7 +32,7 @@ namespace Renderer
 				_mesh = mesh;
 			}
 
-			void AddMeshRenderer(MeshRenderer * mesh_renderer)
+			void AddMeshRenderer(MeshRendererType<T> * mesh_renderer)
 			{
 				if (mesh_renderer == nullptr)
 					return;
@@ -60,8 +60,8 @@ namespace Renderer
 
 		protected:
             TransformType<T> _transform;
-			Mesh * _mesh;
-			MeshRenderer * _mesh_renderer;
+			MeshType<T> * _mesh;
+			MeshRendererType<T> * _mesh_renderer;
     };
 
 	typedef ObjectType<float> Object;
