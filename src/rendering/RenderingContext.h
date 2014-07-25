@@ -23,38 +23,29 @@
 
 namespace Renderer
 {
-	enum RenderingContextType 
-	{
-		UnknownContextType,
-		OpenGLContextType,
-		DirectX11ContextType
-	};
-
-	enum RenderingContextPrecision
-	{
-		FloatPrecision,
-		DoublePrecision
-	};
-
-	class RenderingContext
+    template <typename T>
+	class RenderingContextType
 	{
 		public:
-			RenderingContextType Type();
-			virtual RenderingContextPrecision Precision() = 0;
-
             virtual void BeginScene() = 0;
             virtual void EndScene() = 0;
         
-			virtual ~RenderingContext();
+			virtual ~RenderingContextType<T>()
+            {
+                
+            }
 
 		protected:
-			RenderingContext(RenderingContextType context_type,
-							 RenderingContextPrecision context_precision);
+			RenderingContextType<T>()
+            {
+                
+            }
         
 			Window * _window;
-			RenderingContextType _context_type;
-			RenderingContextPrecision _precision;
 	};
+    
+    typedef RenderingContextType<float> RenderingContext;
+    typedef RenderingContextType<double> RenderingContextd;
 }
 
 #endif // #ifndef _renderingcontext_h
