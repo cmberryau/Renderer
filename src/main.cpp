@@ -12,7 +12,7 @@
 
 #include "math/Vector.h"
 #include "geometry/Mesh.h"
-#include "rendering/MeshRenderer.h"
+#include "rendering/OpenGL/OpenGLMeshRenderer.h"
 #include "objects/Object.h"
 #include "scene/Scene.h"
 
@@ -83,7 +83,7 @@ int main(int argc, char ** argv)
 	delete test_triangles;
     delete test_vertices;
     
-    MeshRenderer * test_mesh_renderer = MeshRenderer::Create(rendering_context);
+    MeshRenderer * test_mesh_renderer = OpenGLMeshRenderer::Create(rendering_context);
     
     Object * test_object = new Object();
     test_object->AddMesh(test_mesh);
