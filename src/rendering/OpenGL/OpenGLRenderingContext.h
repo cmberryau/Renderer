@@ -10,6 +10,7 @@
 #define _opengl_renderingcontext_h
 
 #include "rendering/RenderingContext.h"
+#include "rendering/OpenGL/OpenGLMeshRenderer.h"
 
 namespace Renderer
 {
@@ -108,6 +109,11 @@ namespace Renderer
                 glFlush();
             }
 
+            MeshRendererType<T> * MeshRenderer()
+            {
+                return new OpenGLMeshRendererType<T>(this);
+            }
+        
 			~OpenGLRenderingContextType<T>()
             {
                 

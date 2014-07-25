@@ -24,22 +24,20 @@
 namespace Renderer
 {
     template <typename T>
+    class MeshRendererType;
+    
+    template <typename T>
 	class RenderingContextType
 	{
 		public:
             virtual void BeginScene() = 0;
-            virtual void EndScene() = 0;
+            virtual void EndScene() = 0;        
+            virtual MeshRendererType<T> * MeshRenderer() = 0;
         
-			virtual ~RenderingContextType<T>()
-            {
-                
-            }
+			virtual ~RenderingContextType<T>(){}
 
 		protected:
-			RenderingContextType<T>()
-            {
-                
-            }
+			RenderingContextType<T>(){}
         
 			Window * _window;
 	};

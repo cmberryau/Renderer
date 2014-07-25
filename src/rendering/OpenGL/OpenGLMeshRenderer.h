@@ -170,13 +170,14 @@ namespace Renderer
                 
             }
 
-		protected:
-   			OpenGLMeshRendererType<T>(RenderingContext * rendering_context)
+            OpenGLMeshRendererType<T>(RenderingContextType<T> * rendering_context)
             {
                 
             }
         
-            RenderingContext * _rendering_context;
+		protected:
+        
+            RenderingContextType<T> * _rendering_context;
         
             GLuint _vertex_array_objects[1];
 			GLuint _vertex_element_buffer[1];

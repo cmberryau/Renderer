@@ -83,7 +83,7 @@ int main(int argc, char ** argv)
 	delete test_triangles;
     delete test_vertices;
     
-    MeshRenderer * test_mesh_renderer = OpenGLMeshRenderer::Create(rendering_context);
+    MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
     
     Object * test_object = new Object();
     test_object->AddMesh(test_mesh);
