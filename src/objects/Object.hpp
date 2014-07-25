@@ -1,5 +1,5 @@
 //
-//  Object.h
+//  Object.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
@@ -9,9 +9,9 @@
 #ifndef _object_h
 #define _object_h
 
-#include "math/Transform.h"
-#include "geometry/Mesh.h"
-#include "rendering/MeshRenderer.h"
+#include "math/Transform.hpp"
+#include "geometry/Mesh.hpp"
+#include "rendering/MeshRenderer.hpp"
 
 namespace Renderer
 {

@@ -1,5 +1,5 @@
 //
-//  OpenGLRenderingContext.h
+//  OpenGLRenderingContext.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 05/07/2014.
@@ -9,8 +9,8 @@
 #ifndef _opengl_renderingcontext_h
 #define _opengl_renderingcontext_h
 
-#include "rendering/RenderingContext.h"
-#include "rendering/OpenGL/OpenGLMeshRenderer.h"
+#include "rendering/RenderingContext.hpp"
+#include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
 
 namespace Renderer
 {

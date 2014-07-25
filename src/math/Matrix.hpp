@@ -1,5 +1,5 @@
 //
-//  Matrix.h
+//  Matrix.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 
-#include "CommonMath.h"
-#include "Vector.h"
+#include "CommonMath.hpp"
+#include "Vector.hpp"
 
 namespace Renderer
 {

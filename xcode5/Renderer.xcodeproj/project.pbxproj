@@ -58,7 +58,7 @@
 		8756FCCB197465A600A016AD /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = rendering/Camera.cpp; sourceTree = "<group>"; };
 		8756FCCC197465A600A016AD /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = rendering/Camera.hpp; sourceTree = "<group>"; };
 		876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = utility/LoadShaders.cpp; sourceTree = "<group>"; };
-		876EA3ED19523D3600AD06B5 /* LoadShaders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LoadShaders.hpp; path = utility/LoadShaders.hpp; sourceTree = "<group>"; };
+		876EA3ED19523D3600AD06B5 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = utility/LoadShaders.h; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		87870FD61969DC030040533D /* CommonMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CommonMath.cpp; path = math/CommonMath.cpp; sourceTree = "<group>"; };
 		87870FD71969DC030040533D /* CommonMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonMath.hpp; path = math/CommonMath.hpp; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */,
-				876EA3ED19523D3600AD06B5 /* LoadShaders.hpp */,
+				876EA3ED19523D3600AD06B5 /* LoadShaders.h */,
 			);
 			name = utility;
 			sourceTree = "<group>";

@@ -1,5 +1,5 @@
 //
-//  RenderingContext.h
+//  RenderingContext.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 05/07/2014.
@@ -19,7 +19,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
-#include "windowing/Window.h"
+#include "windowing/Window.hpp"
 
 namespace Renderer
 {

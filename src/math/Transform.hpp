@@ -1,5 +1,5 @@
 //
-//  Transform.h
+//  Transform.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
@@ -9,8 +9,8 @@
 #ifndef _transform_h
 #define _transform_h
 
-#include "Vector.h"
-#include "Matrix.h"
+#include "Vector.hpp"
+#include "Matrix.hpp"
 
 namespace Renderer
 {

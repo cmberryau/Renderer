@@ -1,5 +1,5 @@
 //
-//  Camera.h
+//  Camera.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 12/07/2014.
@@ -9,7 +9,7 @@
 #ifndef _camera_h
 #define _camera_h
 
-#include "math/Transform.h"
+#include "math/Transform.hpp"
 
 namespace Renderer
 {

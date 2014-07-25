@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#include "windowing/Window.h"
-#include "events/EventListener.h"
-#include "rendering/OpenGL/OpenGLRenderingContext.h"
+#include "windowing/Window.hpp"
+#include "events/EventListener.hpp"
+#include "rendering/OpenGL/OpenGLRenderingContext.hpp"
 
-#include "math/Vector.h"
-#include "geometry/Mesh.h"
-#include "rendering/OpenGL/OpenGLMeshRenderer.h"
-#include "objects/Object.h"
-#include "scene/Scene.h"
+#include "math/Vector.hpp"
+#include "geometry/Mesh.hpp"
+#include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
+#include "objects/Object.hpp"
+#include "scene/Scene.hpp"
 
 using namespace Renderer;
 

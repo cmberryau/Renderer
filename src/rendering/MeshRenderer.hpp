@@ -1,5 +1,5 @@
 //
-//  MeshRenderer.h
+//  MeshRenderer.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 05/07/2014.
@@ -9,8 +9,8 @@
 #ifndef _mesh_renderer_h
 #define _mesh_renderer_h
 
-#include "RenderingContext.h"
-#include "geometry/Mesh.h"
+#include "RenderingContext.hpp"
+#include "geometry/Mesh.hpp"
 
 namespace Renderer
 {

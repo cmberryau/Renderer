@@ -1,13 +1,13 @@
 //
-//  Scene.h
+//  Scene.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 18/07/2014.
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#include "rendering/Camera.h"
-#include "objects/Object.h"
+#include "rendering/Camera.hpp"
+#include "objects/Object.hpp"
 
 #include <vector>
 

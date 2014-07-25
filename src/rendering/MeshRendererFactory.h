@@ -1,5 +1,5 @@
 //
-//  MeshRendererFactory.h
+//  MeshRendererFactory.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 24/07/2014.
@@ -9,7 +9,7 @@
 #ifndef _mesh_renderer_factory_h
 #define _mesh_renderer_factory_h
 
-#include "MeshRenderer.h"
+#include "MeshRenderer.hpp"
 
 namespace Renderer
 {

@@ -1,5 +1,5 @@
 //
-//  Vector.h
+//  Vector.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
@@ -9,7 +9,7 @@
 #ifndef _vector_h
 #define _vector_h
 
-#include "Math.h"
+//#include "Math.h"
 
 #include <stdio.h>
 

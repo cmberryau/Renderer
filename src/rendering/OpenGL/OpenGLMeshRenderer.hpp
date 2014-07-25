@@ -1,5 +1,5 @@
 //
-//  OpenGLMeshRenderer.h
+//  OpenGLMeshRenderer.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 05/07/2014.
@@ -9,9 +9,9 @@
 #ifndef _opengl_mesh_renderer_h
 #define _opengl_mesh_renderer_h
 
-#include "rendering/MeshRenderer.h"
+#include "rendering/MeshRenderer.hpp"
 #include "utility/LoadShaders.h"
-#include "rendering/Camera.h"
+#include "rendering/Camera.hpp"
 
 namespace Renderer
 {

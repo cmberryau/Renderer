@@ -6,5 +6,5 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#include "Matrix.h"
+#include "Matrix.hpp"
 

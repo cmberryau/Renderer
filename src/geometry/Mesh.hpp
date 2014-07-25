@@ -1,5 +1,5 @@
 //
-//  Mesh.h
+//  Mesh.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/06/2014.
@@ -9,7 +9,7 @@
 #ifndef _mesh_h
 #define _mesh_h
 
-#include "math/Vector.h"
+#include "math/Vector.hpp"
 
 namespace Renderer
 {
