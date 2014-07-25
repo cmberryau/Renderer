@@ -131,7 +131,6 @@
     <ClCompile Include="..\..\src\objects\Object.cpp" />
     <ClCompile Include="..\..\src\rendering\Camera.cpp" />
     <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
-    <ClCompile Include="..\..\src\rendering\MeshRendererFactory.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.cpp" />
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
@@ -140,22 +139,21 @@
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\events\EventListener.h" />
-    <ClInclude Include="..\..\src\geometry\Mesh.h" />
-    <ClInclude Include="..\..\src\math\CommonMath.h" />
-    <ClInclude Include="..\..\src\math\Matrix.h" />
-    <ClInclude Include="..\..\src\math\Transform.h" />
-    <ClInclude Include="..\..\src\math\Vector.h" />
-    <ClInclude Include="..\..\src\objects\Object.h" />
-    <ClInclude Include="..\..\src\rendering\Camera.h" />
-    <ClInclude Include="..\..\src\rendering\MeshRenderer.h" />
-    <ClInclude Include="..\..\src\rendering\MeshRendererFactory.h" />
-    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.h" />
-    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.h" />
-    <ClInclude Include="..\..\src\rendering\RenderingContext.h" />
-    <ClInclude Include="..\..\src\scene\Scene.h" />
+    <ClInclude Include="..\..\src\events\EventListener.hpp" />
+    <ClInclude Include="..\..\src\geometry\Mesh.hpp" />
+    <ClInclude Include="..\..\src\math\CommonMath.hpp" />
+    <ClInclude Include="..\..\src\math\Matrix.hpp" />
+    <ClInclude Include="..\..\src\math\Transform.hpp" />
+    <ClInclude Include="..\..\src\math\Vector.hpp" />
+    <ClInclude Include="..\..\src\objects\Object.hpp" />
+    <ClInclude Include="..\..\src\rendering\Camera.hpp" />
+    <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.hpp" />
+    <ClInclude Include="..\..\src\rendering\RenderingContext.hpp" />
+    <ClInclude Include="..\..\src\scene\Scene.hpp" />
     <ClInclude Include="..\..\src\utility\LoadShaders.h" />
-    <ClInclude Include="..\..\src\windowing\Window.h" />
+    <ClInclude Include="..\..\src\windowing\Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -117,58 +117,52 @@
     <ClCompile Include="..\..\src\scene\Scene.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\rendering\MeshRendererFactory.cpp">
-      <Filter>Source Files\rendering</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\utility\LoadShaders.h">
       <Filter>Header Files\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\math\Transform.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\math\Vector.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\math\Matrix.h">
-      <Filter>Header Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\geometry\Mesh.h">
-      <Filter>Header Files\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\objects\Object.h">
-      <Filter>Header Files\objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\rendering\MeshRenderer.h">
-      <Filter>Header Files\rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\rendering\RenderingContext.h">
-      <Filter>Header Files\rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\windowing\Window.h">
-      <Filter>Header Files\windowing</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\events\EventListener.h">
+    <ClInclude Include="..\..\src\events\EventListener.hpp">
       <Filter>Header Files\events</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\math\CommonMath.h">
+    <ClInclude Include="..\..\src\geometry\Mesh.hpp">
+      <Filter>Header Files\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Matrix.hpp">
       <Filter>Header Files\math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.h">
-      <Filter>Header Files\rendering\OpenGL</Filter>
+    <ClInclude Include="..\..\src\math\Transform.hpp">
+      <Filter>Header Files\math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.h">
-      <Filter>Header Files\rendering\OpenGL</Filter>
+    <ClInclude Include="..\..\src\math\Vector.hpp">
+      <Filter>Header Files\math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\rendering\Camera.h">
+    <ClInclude Include="..\..\src\math\CommonMath.hpp">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\objects\Object.hpp">
+      <Filter>Header Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp">
       <Filter>Header Files\rendering</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\scene\Scene.h">
+    <ClInclude Include="..\..\src\rendering\RenderingContext.hpp">
+      <Filter>Header Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\Camera.hpp">
+      <Filter>Header Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.hpp">
+      <Filter>Header Files\rendering\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.hpp">
+      <Filter>Header Files\rendering\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scene\Scene.hpp">
       <Filter>Header Files\scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\rendering\MeshRendererFactory.h">
-      <Filter>Header Files\rendering</Filter>
+    <ClInclude Include="..\..\src\windowing\Window.hpp">
+      <Filter>Header Files\windowing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
