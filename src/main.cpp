@@ -186,6 +186,8 @@ int main(int argc, char ** argv)
 		if (event_listener->ShouldQuit())
             break;
         
+		test_object->LocalTransform()->Rotate(0.0f, 0.0f, 1.0f);
+
 		rendering_context->BeginScene();
 
 		// Render here

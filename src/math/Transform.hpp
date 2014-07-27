@@ -57,6 +57,8 @@ namespace Renderer
                     Vector3<T> rotation_axes(T(0));
                     rotation_axes[i] = T(1);
                     
+					_rotation[i] = ClampRotation(_rotation[i]);
+
                     rotation_matrix[i] = Matrix4<T>::Rotate(_rotation[i],
                                                             rotation_axes[0],
                                                             rotation_axes[1],
@@ -76,6 +78,8 @@ namespace Renderer
                     Vector3<T> rotation_axes(T(0));
                     rotation_axes[i] = T(1);
                     
+					_rotation[i] = ClampRotation(_rotation[i]);
+
                     rotation_matrix[i] = Matrix4<T>::Rotate(-_rotation[i] + rotation[i],
                                                             rotation_axes[0],
                                                             rotation_axes[1],
@@ -86,6 +90,26 @@ namespace Renderer
                 }
             }
         
+			double ClampRotation(double rotation)
+			{
+				double clamped = fmod(rotation, 360.0);
+				
+				if (clamped < 0)
+					clamped += 360.0;
+
+				return clamped;
+			}
+
+			float ClampRotation(float rotation)
+			{
+				float clamped = fmodf(rotation, 360.0);
+
+				if (clamped < 0)
+					clamped += 360.0;
+
+				return clamped;
+			}
+
 			void Scale(T x, T y, T z)
             {
                 Matrix4<T> scale_matrix;
