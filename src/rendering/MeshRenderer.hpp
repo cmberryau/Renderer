@@ -11,12 +11,10 @@
 
 #include "RenderingContext.hpp"
 #include "geometry/Mesh.hpp"
+#include "objects/Object.hpp"
 
 namespace Renderer
-{
-	template <typename T>
-	class ObjectType;
-    
+{    
 	template <typename T>
 	class MeshRendererType
 	{
