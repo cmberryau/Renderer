@@ -17,31 +17,11 @@ namespace Renderer
     class MeshType
     {
         public:
-			// factory constructor
-			static MeshType<T> * Create(Vector3<T> * vertices, unsigned int size)
+			MeshType<T>() : _vertices(nullptr), _vertices_count(0),
+							_vertex_colors(nullptr), _vertex_colors_count(0),
+							_triangles(nullptr), _triangles_count(0)
 			{
-				// confirm the passed data
-				if (vertices == nullptr)
-					return nullptr;
 
-				MeshType<T> * mesh = new MeshType<T>();
-
-				mesh->_vertices = new Vector3<T>[size];
-
-				if (mesh->_vertices == nullptr)
-					return nullptr;
-
-				for (unsigned int i = 0; i < size; i++)
-				{
-					if (vertices[i] == nullptr)
-						return nullptr;
-
-					mesh->_vertices[i] = vertices[i];
-				}
-
-				mesh->_vertices_count = size;
-
-				return mesh;
 			}
 
 			~MeshType<T>()
@@ -52,9 +32,9 @@ namespace Renderer
 			}
         
 			// vertex related
-			void SetVertices(Vector3<T> vertices, unsigned int size)
+			void SetVertices(Vector4<T> * vertices, unsigned int size)
 			{
-				this->_vertices = new Vector3<T>[size];
+				this->_vertices = new Vector4<T>[size];
 
 				if (this->_vertices == nullptr)
 					return;
@@ -70,14 +50,14 @@ namespace Renderer
 				this->_vertices_count = size;
 			}
 
-			const Vector3<T> * Vertices()
+			const Vector4<T> * Vertices()
 			{
-				return (const Vector3<T> *)_vertices;
+				return (const Vector4<T> *)_vertices;
 			}
 
 			unsigned int VerticesSize()
 			{
-				return _vertices_count * Vector3<T>::Size();
+				return _vertices_count * Vector4<T>::Size();
 			}
 
 			unsigned int VerticesCount()
@@ -168,17 +148,9 @@ namespace Renderer
 				}
 			}
 
-		protected:
-			// can only create from the above factory method
-			MeshType<T>() : _vertices(nullptr), _vertices_count(0),
-							_vertex_colors(nullptr), _vertex_colors_count(0),
-							_triangles(nullptr), _triangles_count(0)
-			{
-
-			}
-        
+		protected:        
 			// vertex related
-            Vector3<T> * _vertices;
+            Vector4<T> * _vertices;
             unsigned int _vertices_count;
 
 			// vertex color related

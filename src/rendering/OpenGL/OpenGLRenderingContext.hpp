@@ -12,6 +12,10 @@
 #include "rendering/RenderingContext.hpp"
 #include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
 
+#ifdef _DEBUG
+#include <stdio.h>
+#endif
+
 namespace Renderer
 {
     template <typename T>
@@ -75,7 +79,9 @@ namespace Renderer
                     fprintf(stdout, "SDL_GL_CreateContext failed!\n");
                     return nullptr;
                 }
-                
+      
+				CheckForGLError();
+
 #ifdef _WIN32
                 glewExperimental = GL_TRUE;
                 
@@ -85,17 +91,22 @@ namespace Renderer
                     return nullptr;
                 }
 #endif
-                
+
+				CheckForGLError();
+
                 GLint actual_major_version = -1;
                 GLint actual_minor_version = -1;
                 
                 glGetIntegerv(GL_MAJOR_VERSION, &actual_major_version);
+				CheckForGLError();
                 glGetIntegerv(GL_MINOR_VERSION, &actual_minor_version);
+				CheckForGLError();
                 
                 fprintf(stdout, "OpenGL version: %d.%d\n", actual_major_version, actual_minor_version);
                 
                 glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-                
+				CheckForGLError();
+
                 return context;
             }
 
@@ -108,6 +119,16 @@ namespace Renderer
             {
                 glFlush();
             }
+
+			static void CheckForGLError()
+			{
+				GLenum error;
+				error = glGetError();
+				if (error != GL_NO_ERROR)
+				{
+					fprintf(stderr, "OpenGL error: %d\n", error);
+				}
+			}
 
             MeshRendererType<T> * MeshRenderer()
             {

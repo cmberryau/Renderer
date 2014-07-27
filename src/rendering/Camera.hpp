@@ -13,19 +13,41 @@
 
 namespace Renderer
 {
-	class Camera
+	template <typename T>
+	class CameraType
 	{
 		public:
-			static Camera * MainCamera();
-			Matrix4f ViewMatrix();
-			Matrix4f ProjectionMatrix();
+			static CameraType<T> * MainCamera()
+			{
+				return nullptr;
+			}
 
-			Camera();
-			~Camera();
+			Matrix4<T> ViewMatrix()
+			{
+				return Matrix4<T>::Identity();
+			}
+
+			Matrix4<T> ProjectionMatrix()
+			{
+				return Matrix4<T>::Perspective(T(75.0), T(1.33), T(1.0), T(500.0));
+			}
+
+			CameraType<T>() : _transform(nullptr)
+			{
+
+			}
+
+			~CameraType<T>()
+			{
+
+			}
 
 		protected:
-			TransformType<float> _transform;
+			TransformType<T> _transform;
 	};
+
+	typedef CameraType<float> Camera;
+	typedef CameraType<double> Camerad;
 }
 
 #endif // _camera_h
