@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-//#define _RENDERER_FLOAT
+#define _RENDERER_FLOAT
 
 #include "windowing/Window.hpp"
 #include "events/EventListener.hpp"
@@ -132,26 +132,6 @@ int main(int argc, char ** argv)
 	test_vertices[3][1] = -10.0;
 	test_vertices[3][2] = 100.0;
 	test_vertices[3][3] = 1.0;
-
-	/*test_vertices[0][0] = -0.5;
-	test_vertices[0][1] = -0.5;
-	test_vertices[0][2] = 0.0;
-	test_vertices[0][3] = 1.0;
-
-	test_vertices[1][0] = -0.5;
-	test_vertices[1][1] = 0.5;
-	test_vertices[1][2] = 0.0;
-	test_vertices[1][3] = 1.0;
-
-	test_vertices[2][0] = 0.5;
-	test_vertices[2][1] = 0.5;
-	test_vertices[2][2] = 0.0;
-	test_vertices[2][3] = 1.0;
-
-	test_vertices[3][0] = 0.5;
-	test_vertices[3][1] = -0.5;
-	test_vertices[3][2] = 0.0;
-	test_vertices[3][3] = 1.0;*/
 
 	test_mesh->SetVertices(test_vertices, 4);
 

@@ -24,52 +24,69 @@ namespace Renderer
                 return new OpenGLMeshRendererType<T>(rendering_context);
             }
         
-            void Store(MeshType<float> * mesh)
-            {
-                if (mesh == nullptr)
-                {
-                    return;
-                }
-                
-                if (mesh->Vertices() == nullptr ||
-                    mesh->Colors() == nullptr ||
-                    mesh->Triangles() == nullptr)
-                {
-                    return;
-                }
-                
-                // TODO why does this need the this-> ref?
-                this->_mesh = mesh;
-                
-                glGenVertexArrays(1, _vertex_array_objects);
-				CheckForGLError();
-                glBindVertexArray(_vertex_array_objects[0]);
-				CheckForGLError();
-                
-                glGenBuffers(1, _vertex_buffer_objects);
-				CheckForGLError();
-                glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_objects[0]);
-				CheckForGLError();
-                glBufferData(GL_ARRAY_BUFFER,
-                             mesh->VerticesSize() + mesh->ColorsSize(),
-                             NULL, GL_STATIC_DRAW);
-				CheckForGLError();
-                glBufferSubData(GL_ARRAY_BUFFER, 0, mesh->VerticesSize(), mesh->Vertices());
-				CheckForGLError();
-                glBufferSubData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->ColorsSize(), mesh->Colors());
-				CheckForGLError();
-                
-                
-                glGenBuffers(1, _vertex_element_buffer);
-				CheckForGLError();
-                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vertex_element_buffer[0]);
-				CheckForGLError();
-                glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-                             mesh->TrianglesSize(),
-                             mesh->Triangles(),
-                             GL_STATIC_DRAW);
-				CheckForGLError();
-                
+			void Store(MeshType<T> * mesh)
+			{
+				if (mesh == nullptr)
+				{
+					// todo : throw error
+					return;
+				}
+
+				if (mesh->Vertices() == nullptr ||
+					mesh->Colors() == nullptr ||
+					mesh->Triangles() == nullptr)
+				{
+					// todo : throw error
+					return;
+				}
+
+				if (mesh->VerticesCount() != mesh->ColorsCount())
+				{
+					// todo : throw error
+					return;
+				}				
+
+				for (unsigned int i = 0; i < mesh->TrianglesCount(); i++)
+				{
+					for (int j = 0; j < 3; j++)
+					{
+						if (mesh->Triangles()[i][j] > mesh->VerticesCount() - 1)
+						{
+							// todo : throw error
+							return;
+						}
+					}
+				}
+
+				this->_mesh = mesh;
+				this->GenerateArrays(mesh);
+				this->CreateShader(mesh);
+			}
+
+			void GenerateArrays(MeshType<T> * mesh)
+			{
+				// generate the vertex position, color and triangle index arrays
+				glGenVertexArrays(1, _vertex_array_objects);
+				glBindVertexArray(_vertex_array_objects[0]);
+
+				glGenBuffers(1, _vertex_buffer_objects);
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_objects[0]);
+				glBufferData(GL_ARRAY_BUFFER,
+					mesh->VerticesSize() + mesh->ColorsSize(),
+					NULL, GL_STATIC_DRAW);
+				glBufferSubData(GL_ARRAY_BUFFER, 0, mesh->VerticesSize(), mesh->Vertices());
+				glBufferSubData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->ColorsSize(), mesh->Colors());
+
+				glGenBuffers(1, _vertex_element_buffer);
+				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vertex_element_buffer[0]);
+				glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+					mesh->TrianglesSize(),
+					mesh->Triangles(),
+					GL_STATIC_DRAW);
+			}
+
+            void CreateShader(MeshType<float> * mesh)
+            {                                
 #ifdef __APPLE__
                 ShaderInfo  shaders[] = {
                     { GL_VERTEX_SHADER, "src/shaders/GLSL/default.vert" },
@@ -89,69 +106,19 @@ namespace Renderer
                 _shader_program = LoadShaders(shaders);
                 
                 glUseProgram(_shader_program);
-				CheckForGLError();
                 
                 glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-				CheckForGLError();
                 glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());           
-				CheckForGLError();
 
                 _model_matrix_uniform = glGetUniformLocation(_shader_program, "model_matrix");
-				CheckForGLError();
                 _projection_matrix_uniform = glGetUniformLocation(_shader_program, "projection_matrix");
-				CheckForGLError();
                 
                 glEnableVertexAttribArray(0);
-				CheckForGLError();
                 glEnableVertexAttribArray(1);
-				CheckForGLError();
             }
         
-            void Store(MeshType<double> * mesh)
+			void CreateShader(MeshType<double> * mesh)
             {
-                if (mesh == nullptr)
-                {
-                    return;
-                }
-                
-                if (mesh->Vertices() == nullptr ||
-                    mesh->Colors() == nullptr ||
-                    mesh->Triangles() == nullptr)
-                {
-                    return;
-                }
-                
-                this->_mesh = mesh;
-                
-                glGenVertexArrays(1, _vertex_array_objects);
-				CheckForGLError();
-                glBindVertexArray(_vertex_array_objects[0]);
-				CheckForGLError();
-                
-                glGenBuffers(1, _vertex_buffer_objects);
-				CheckForGLError();
-                glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_objects[0]);
-				CheckForGLError();
-                glBufferData(GL_ARRAY_BUFFER,
-                             mesh->VerticesSize() + mesh->ColorsSize(),
-                             NULL, GL_STATIC_DRAW);
-				CheckForGLError();
-                glBufferSubData(GL_ARRAY_BUFFER, 0, mesh->VerticesSize(), mesh->Vertices());
-				CheckForGLError();
-                glBufferSubData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->ColorsSize(), mesh->Colors());
-				CheckForGLError();
-                
-                
-                glGenBuffers(1, _vertex_element_buffer);
-				CheckForGLError();
-                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vertex_element_buffer[0]);
-				CheckForGLError();
-                glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-                             mesh->TrianglesSize(),
-                             mesh->Triangles(),
-                             GL_STATIC_DRAW);
-				CheckForGLError();
-                
     #ifdef __APPLE__
                 ShaderInfo  shaders[] = {
                     { GL_VERTEX_SHADER, "src/shaders/GLSL/defaultd.vert" },
@@ -170,22 +137,15 @@ namespace Renderer
                 _shader_program = LoadShaders(shaders);
                 
                 glUseProgram(_shader_program);
-				CheckForGLError();
                 
 				glVertexAttribLPointer(0, 4, GL_DOUBLE, 0, NULL);
-				CheckForGLError();
 				glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());
-				CheckForGLError();
                 
                 _model_matrix_uniform = glGetUniformLocation(_shader_program, "model_matrix");
-				CheckForGLError();
                 _projection_matrix_uniform = glGetUniformLocation(_shader_program, "projection_matrix");
-				CheckForGLError();
                 
                 glEnableVertexAttribArray(0);
-				CheckForGLError();
                 glEnableVertexAttribArray(1);
-				CheckForGLError();
             }
 
 			void Draw(ObjectType<float> * parent_object)
@@ -199,7 +159,7 @@ namespace Renderer
 					parent_object->LocalTransform()->ComposedMatrix().Multiply(Camera::MainCamera()->ViewMatrix()));
 
 				glBindVertexArray(_vertex_array_objects[0]);
-				glDrawElements(GL_POINTS, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
+				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
 			}
 
 			void Draw(ObjectType<double> * parent_object)
@@ -212,18 +172,8 @@ namespace Renderer
                 glUniformMatrix4dv(_model_matrix_uniform, 1, GL_FALSE,
 				parent_object->LocalTransform()->ComposedMatrix().Multiply(Camerad::MainCamera()->ViewMatrix()));
 				glBindVertexArray(_vertex_array_objects[0]);
-                glDrawElements(GL_POINTS, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
+				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
             }
-			
-			void CheckForGLError()
-			{
-				GLenum error;
-				error = glGetError();
-				if (error != GL_NO_ERROR)
-				{
-					fprintf(stderr, "OpenGL error: %d\n", error);
-				}
-			}
 
 			~OpenGLMeshRendererType<T>()
             {
