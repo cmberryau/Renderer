@@ -32,35 +32,11 @@ namespace Renderer
 					return;
 				}
 
-				if (mesh->Vertices() == nullptr ||
-					mesh->Colors() == nullptr ||
-					mesh->Triangles() == nullptr)
-				{
-					// todo : throw error
-					return;
-				}
-
-				if (mesh->VerticesCount() != mesh->ColorsCount())
-				{
-					// todo : throw error
-					return;
-				}				
-
-				for (unsigned int i = 0; i < mesh->TrianglesCount(); i++)
-				{
-					for (int j = 0; j < 3; j++)
-					{
-						if (mesh->Triangles()[i][j] > mesh->VerticesCount() - 1)
-						{
-							// todo : throw error
-							return;
-						}
-					}
-				}
-
-				this->_mesh = mesh;
+				mesh->Validate();
 				this->GenerateArrays(mesh);
 				this->CreateShader(mesh);
+
+				this->_mesh = mesh;
 			}
 
 			void GenerateArrays(MeshType<T> * mesh)

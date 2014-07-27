@@ -31,6 +31,35 @@ namespace Renderer
 				delete _triangles;
 			}
         
+			void Validate()
+			{
+				if (this->Vertices() == nullptr ||
+					this->Colors() == nullptr ||
+					this->Triangles() == nullptr)
+				{
+					// todo : throw error
+					return;
+				}
+
+				if (this->VerticesCount() != this->ColorsCount())
+				{
+					// todo : throw error
+					return;
+				}
+
+				for (unsigned int i = 0; i < this->TrianglesCount(); i++)
+				{
+					for (int j = 0; j < 3; j++)
+					{
+						if (this->Triangles()[i][j] > this->VerticesCount() - 1)
+						{
+							// todo : throw error
+							return;
+						}
+					}
+				}
+			}
+
 			// vertex related
 			void SetVertices(Vector4<T> * vertices, unsigned int size)
 			{
