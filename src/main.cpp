@@ -17,6 +17,7 @@
 #include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
 #include "objects/Object.hpp"
 #include "scene/Scene.hpp"
+#include "tests/Rotator.hpp"
 
 using namespace Renderer;
 
@@ -177,17 +178,21 @@ int main(int argc, char ** argv)
 
 	test_object->AddMesh(test_mesh);
 	test_object->AddMeshRenderer(test_mesh_renderer);
+    
 #endif
 
+    IObjectAddable * rotator = new Rotator();
+    test_object->AddComponent(rotator);
+    
 	while (true)
 	{
 		event_listener->ListenForEvents();
 
 		if (event_listener->ShouldQuit())
             break;
-        
-		test_object->LocalTransform()->Rotate(0.0f, 0.0f, 1.0f);
 
+        test_object->Update();
+        
 		rendering_context->BeginScene();
 
 		// Render here

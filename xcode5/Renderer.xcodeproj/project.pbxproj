@@ -73,6 +73,8 @@
 		87A0B744195A1261003F53C6 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = math/Transform.hpp; sourceTree = "<group>"; };
 		87A0B745195A1261003F53C6 /* Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector.cpp; path = math/Vector.cpp; sourceTree = "<group>"; };
 		87A0B746195A1261003F53C6 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = math/Vector.hpp; sourceTree = "<group>"; };
+		87B7A53F19864BF0003C9B41 /* IObjectAddable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = IObjectAddable.hpp; path = objects/IObjectAddable.hpp; sourceTree = "<group>"; };
+		87B7A5411986526C003C9B41 /* Rotator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rotator.hpp; sourceTree = "<group>"; };
 		87BC838719452C3E00D97C8E /* Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BC838A19452C3E00D97C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		87BC838D19452C3E00D97C8E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -172,6 +174,14 @@
 				87A0B746195A1261003F53C6 /* Vector.hpp */,
 			);
 			name = math;
+			sourceTree = "<group>";
+		};
+		87B7A54019865245003C9B41 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				87B7A5411986526C003C9B41 /* Rotator.hpp */,
+			);
+			path = tests;
 			sourceTree = "<group>";
 		};
 		87BC837E19452C3E00D97C8E = {
@@ -282,6 +292,7 @@
 		87C7B47719516CFC004C5914 /* Cross Platform Code */ = {
 			isa = PBXGroup;
 			children = (
+				87B7A54019865245003C9B41 /* tests */,
 				872F7BD21979756D00E70464 /* scene */,
 				87D8152719696398009A8A62 /* rendering */,
 				87D8151D1969626D009A8A62 /* windowing */,
@@ -318,6 +329,7 @@
 		87D8151B19696259009A8A62 /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				87B7A53F19864BF0003C9B41 /* IObjectAddable.hpp */,
 				87D8151E19696284009A8A62 /* Object.cpp */,
 				87D8151F19696284009A8A62 /* Object.hpp */,
 			);

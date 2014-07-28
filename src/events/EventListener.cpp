@@ -1,3 +1,11 @@
+//
+//  EventListener.cpp
+//  Renderer
+//
+//  Created by Christopher Berry on 05/07/2014.
+//  Copyright (c) 2014 Christopher Berry. All rights reserved.
+//
+
 #include "EventListener.hpp"
 
 EventListener * EventListener::Create()

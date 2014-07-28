@@ -12,6 +12,8 @@
 #include "math/Transform.hpp"
 #include "geometry/Mesh.hpp"
 #include "rendering/MeshRenderer.hpp"
+#include "rendering/Camera.hpp"
+#include "objects/IObjectAddable.hpp"
 
 namespace Renderer
 {
@@ -24,6 +26,14 @@ namespace Renderer
 				return &_transform;
 			}
 
+            void AddComponent(IObjectAddableType<T> * object)
+            {
+                if(object == nullptr)
+                    return;
+                
+                _added_object = object;
+            }
+        
 			void AddMesh(MeshType<T> * mesh)
 			{
 				if (mesh == nullptr)
@@ -41,13 +51,25 @@ namespace Renderer
 				_mesh_renderer->Store(_mesh);
 			}
 
+            void Update()
+            {
+                if(_added_object == nullptr)
+                    return;
+                
+                _added_object->Update(this);
+            }
+        
 			void Draw()
 			{
-				_mesh_renderer->Draw(this);
+                if(_mesh_renderer != nullptr)
+                {
+                    _mesh_renderer->Draw(this);
+                }
 			}
         
 			ObjectType<T>() : _mesh(nullptr),
-					          _mesh_renderer(nullptr)
+					          _mesh_renderer(nullptr),
+                              _added_object(nullptr)
 			{
 
 			}
@@ -56,12 +78,21 @@ namespace Renderer
 			{
 				delete _mesh;
 				delete _mesh_renderer;
+                delete _added_object;
 			}
 
 		protected:
+            // required types
             TransformType<T> _transform;
+        
+            // concrete types
 			MeshType<T> * _mesh;
 			MeshRendererType<T> * _mesh_renderer;
+            CameraType<T> * _camera;
+        
+            // generically addable types
+            IObjectAddableType<T> * _added_object;
+        
     };
 
 	typedef ObjectType<float> Object;

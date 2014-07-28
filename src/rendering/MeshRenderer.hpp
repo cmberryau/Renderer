@@ -14,7 +14,7 @@
 #include "objects/Object.hpp"
 
 namespace Renderer
-{    
+{
 	template <typename T>
 	class MeshRendererType
 	{
