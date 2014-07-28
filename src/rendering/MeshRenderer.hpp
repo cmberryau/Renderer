@@ -20,7 +20,7 @@ namespace Renderer
 	{
 		public:
 			// caches the mesh and prepares it for drawing
-            virtual void Store(MeshType<T> * mesh) = 0;
+            virtual void AddMesh(MeshType<T> * mesh) = 0;
 
 			// draws the mesh
 			virtual void Draw(ObjectType<T> * parent_object) = 0;

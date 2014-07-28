@@ -99,8 +99,8 @@ int main(int argc, char ** argv)
 	delete test_triangles;
 	delete test_colors;
     delete test_vertices;
-
-	test_object->AddMesh(test_mesh);
+    
+    test_mesh_renderer->AddMesh(test_mesh);
 	test_object->AddMeshRenderer(test_mesh_renderer);
     
     IObjectAddable * rotator = new Rotator();
@@ -194,8 +194,6 @@ int main(int argc, char ** argv)
 
 		if (event_listener->ShouldQuit())
             break;
-
-        test_object->Update();
         
 		rendering_context->BeginScene();
 

@@ -24,7 +24,7 @@ namespace Renderer
                 return new OpenGLMeshRendererType<T>(rendering_context);
             }
         
-			void Store(MeshType<T> * mesh)
+			void AddMesh(MeshType<T> * mesh)
 			{
 				if (mesh == nullptr)
 				{

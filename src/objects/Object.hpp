@@ -36,14 +36,6 @@ namespace Renderer
                 _addables.push_back(object);
                 object->Added(this);
             }
-        
-			void AddMesh(MeshType<T> * mesh)
-			{
-				if (mesh == nullptr)
-					return;
-
-				_mesh = mesh;
-			}
 
 			void AddMeshRenderer(MeshRendererType<T> * mesh_renderer)
 			{
@@ -51,7 +43,6 @@ namespace Renderer
 					return;
 
 				_mesh_renderer = mesh_renderer;
-				_mesh_renderer->Store(_mesh);
 			}
 
             void Update()
@@ -75,15 +66,13 @@ namespace Renderer
                 }
 			}
         
-			ObjectType<T>() : _mesh(nullptr),
-					          _mesh_renderer(nullptr)
+            ObjectType<T>() : _mesh_renderer(nullptr)
 			{
 
 			}
 
 			~ObjectType<T>()
 			{
-				delete _mesh;
 				delete _mesh_renderer;
             
                 for(int i = 0; i < _addables.size(); i++)
@@ -97,7 +86,6 @@ namespace Renderer
             TransformType<T> _transform;
         
             // concrete types
-			MeshType<T> * _mesh;
 			MeshRendererType<T> * _mesh_renderer;
         
             // generically addable types
