@@ -10,21 +10,22 @@
 #define _camera_h
 
 #include "math/Transform.hpp"
+#include "objects/IObjectAddable.hpp"
 
 namespace Renderer
 {
 	template <typename T>
-	class CameraType
+	class CameraType : public IObjectAddableType<T>
 	{
 		public:
 			static CameraType<T> * MainCamera()
 			{
-				return nullptr;
+				return mainCamera;
 			}
-
+        
 			Matrix4<T> ViewMatrix()
 			{
-				return Matrix4<T>::Identity();
+				return this->_parent_object->LocalTransform()->ComposedMatrix();
 			}
 
 			Matrix4<T> ProjectionMatrix()
@@ -32,20 +33,26 @@ namespace Renderer
 				return Matrix4<T>::Perspective(T(75.0), T(1.33), T(1.0), T(500.0));
 			}
 
-			CameraType<T>() : _transform(nullptr)
+			CameraType<T>()
 			{
-
+                if(CameraType<T>::MainCamera() == nullptr)
+                {
+                    mainCamera = this;
+                }
 			}
 
 			~CameraType<T>()
 			{
 
 			}
-
-		protected:
-			TransformType<T> _transform;
+        
+        protected:
+            static CameraType<T> * mainCamera;
 	};
 
+	template <typename T>
+    CameraType<T> * CameraType<T>::mainCamera = nullptr;
+    
 	typedef CameraType<float> Camera;
 	typedef CameraType<double> Camerad;
 }

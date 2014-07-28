@@ -136,8 +136,6 @@ namespace Renderer
 
 			Matrix4<T> ComposedMatrix()
             {
-                //_composed_matrix = Matrix4<T>::Identity();
-                
                 return _composed_matrix;
             }
 

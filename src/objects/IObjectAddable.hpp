@@ -21,6 +21,16 @@ namespace Renderer
             virtual ~IObjectAddableType<T>(){}
             
             virtual void Update(ObjectType<T> * parent_object){};
+        
+            void Added(ObjectType<T> * parent_object)
+            {
+                _parent_object = parent_object;
+            };
+        
+        protected:
+            IObjectAddableType() : _parent_object(nullptr){}
+        
+            ObjectType<T> * _parent_object;
     };
     
 

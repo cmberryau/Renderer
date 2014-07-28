@@ -15,6 +15,8 @@
 #include "rendering/Camera.hpp"
 #include "objects/IObjectAddable.hpp"
 
+#include <vector>
+
 namespace Renderer
 {
 	template <typename T>
@@ -26,12 +28,13 @@ namespace Renderer
 				return &_transform;
 			}
 
-            void AddComponent(IObjectAddableType<T> * object)
+            void Add(IObjectAddableType<T> * object)
             {
                 if(object == nullptr)
                     return;
                 
-                _added_object = object;
+                _addables.push_back(object);
+                object->Added(this);
             }
         
 			void AddMesh(MeshType<T> * mesh)
@@ -53,10 +56,15 @@ namespace Renderer
 
             void Update()
             {
-                if(_added_object == nullptr)
-                    return;
-                
-                _added_object->Update(this);
+                for(int i = 0; i < _addables.size(); i++)
+                {
+                    if(_addables[i] == nullptr)
+                    {
+                        return;
+                    }
+                    
+                    _addables[i]->Update(this);
+                }
             }
         
 			void Draw()
@@ -68,8 +76,7 @@ namespace Renderer
 			}
         
 			ObjectType<T>() : _mesh(nullptr),
-					          _mesh_renderer(nullptr),
-                              _added_object(nullptr)
+					          _mesh_renderer(nullptr)
 			{
 
 			}
@@ -78,7 +85,11 @@ namespace Renderer
 			{
 				delete _mesh;
 				delete _mesh_renderer;
-                delete _added_object;
+            
+                for(int i = 0; i < _addables.size(); i++)
+                {
+                    delete _addables[i];
+                }
 			}
 
 		protected:
@@ -88,10 +99,9 @@ namespace Renderer
             // concrete types
 			MeshType<T> * _mesh;
 			MeshRendererType<T> * _mesh_renderer;
-            CameraType<T> * _camera;
         
             // generically addable types
-            IObjectAddableType<T> * _added_object;
+            std::vector<IObjectAddableType<T> *>  _addables;
         
     };
 

@@ -27,7 +27,7 @@ int main(int argc, char ** argv)
 	EventListener * event_listener = EventListener::Create();
 
 #ifdef _RENDERER_FLOAT
-	// float based test
+	// float test
 	RenderingContext * rendering_context = OpenGLRenderingContext::Create(window);
 	Object * test_object = new Object();
 	Mesh * test_mesh = new Mesh();
@@ -102,8 +102,15 @@ int main(int argc, char ** argv)
 
 	test_object->AddMesh(test_mesh);
 	test_object->AddMeshRenderer(test_mesh_renderer);
+    
+    IObjectAddable * rotator = new Rotator();
+    test_object->Add(rotator);
+    
+    Object * camera_object = new Object();
+    Camera * camera = new Camera();
+    camera_object->Add(camera);
 
-#else 
+#else
 	RenderingContextd * rendering_context = OpenGLRenderingContextd::Create(window);
 	Objectd * test_object = new Objectd();
 	Meshd * test_mesh = new Meshd();
@@ -180,9 +187,6 @@ int main(int argc, char ** argv)
 	test_object->AddMeshRenderer(test_mesh_renderer);
     
 #endif
-
-    IObjectAddable * rotator = new Rotator();
-    test_object->AddComponent(rotator);
     
 	while (true)
 	{
@@ -196,7 +200,7 @@ int main(int argc, char ** argv)
 		rendering_context->BeginScene();
 
 		// Render here
-        scene->Draw();
+        scene->UpdateAndDraw();
         
         rendering_context->EndScene();
         
