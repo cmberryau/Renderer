@@ -19,17 +19,20 @@
 #include "scene/Scene.hpp"
 #include "tests/Rotator.hpp"
 
+#include "rendering/ShaderFactory.hpp"
+
 using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
 	Window * window = Window::Create(640, 480);
 	EventListener * event_listener = EventListener::Create();
-
+    
 #ifdef _RENDERER_FLOAT
 	// float test
 	RenderingContext * rendering_context = OpenGLRenderingContext::Create(window);
 	Object * test_object = new Object();
+    
 	Mesh * test_mesh = new Mesh();
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
 

@@ -160,4 +160,4 @@ namespace Renderer
         {3,2},{3,1},{3,0}};
 }
 
-#endif // #ifndef _opengl_renderingcontext_h
+#endif // _opengl_renderingcontext_h

@@ -42,4 +42,4 @@ namespace Renderer
 	typedef MeshRendererType<double> MeshRendererd;
 }
 
-#endif // #ifndef _mesh_renderer_h
+#endif // _mesh_renderer_h

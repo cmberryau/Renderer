@@ -38,4 +38,4 @@ namespace Renderer
     typedef IObjectAddableType<double> IObjectAddabled;
 }
 
-#endif // #ifndef _i_object_addable_h
+#endif // _i_object_addable_h

@@ -30,4 +30,4 @@ class EventListener
 		bool _should_quit;
 };
 
-#endif // #ifndef _event_listener_h
+#endif // _event_listener_h

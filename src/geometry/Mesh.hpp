@@ -195,4 +195,4 @@ namespace Renderer
 	typedef MeshType<double> Meshd;
 }
 
-#endif // #ifndef _object_h
+#endif // _object_h

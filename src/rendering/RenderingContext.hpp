@@ -46,4 +46,4 @@ namespace Renderer
     typedef RenderingContextType<double> RenderingContextd;
 }
 
-#endif // #ifndef _renderingcontext_h
+#endif // _renderingcontext_h

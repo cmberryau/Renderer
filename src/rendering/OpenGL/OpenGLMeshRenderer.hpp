@@ -178,4 +178,4 @@ namespace Renderer
     typedef OpenGLMeshRendererType<double> OpenGLMeshRendererd;
 }
 
-#endif // #ifndef _opengl_mesh_renderer_h
+#endif // _opengl_mesh_renderer_h

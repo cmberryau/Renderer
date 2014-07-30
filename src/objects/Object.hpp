@@ -97,4 +97,4 @@ namespace Renderer
 	typedef ObjectType<double> Objectd;
 }
 
-#endif // #ifndef _object_h
+#endif // _object_h

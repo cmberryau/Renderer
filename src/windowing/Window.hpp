@@ -32,4 +32,4 @@ namespace Renderer
 	};
 }
 
-#endif // #ifndef _window_h
+#endif // _window_h

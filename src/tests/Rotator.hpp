@@ -25,4 +25,4 @@ namespace Renderer
     };
 }
 
-#endif // #ifndef _rotator_h
+#endif // _rotator_h
