@@ -14,7 +14,7 @@ namespace Renderer
 {
 	Window * Window::Create(int width, int height)
 	{
-		Window * window = new Window();
+		Window * window = new Window(width, height);
 
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		{
@@ -35,6 +35,16 @@ namespace Renderer
 	{
 		SDL_GL_SwapWindow(_sdl_window);
 	}
+    
+    int Window::Width()
+    {
+        return _width;
+    }
+    
+    int Window::Height()
+    {
+        return _height;
+    }
 
 	Window::~Window()
 	{
@@ -42,7 +52,8 @@ namespace Renderer
 		SDL_Quit();
 	}
 
-	Window::Window()
+	Window::Window(int width, int height)
+    : _width(width), _height(height)
 	{
 
 	}

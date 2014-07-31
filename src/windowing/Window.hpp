@@ -21,14 +21,20 @@ namespace Renderer
 	{
 		public:
 			static Window * Create(int width, int height);
+        
 			void Swap();
-
+        
+            int Width();
+            int Height();
+        
 			~Window();
 
 			SDL_Window * _sdl_window;
 
 		protected:
-			Window();
+			Window(int width, int height);
+        
+            int _width, _height;
 	};
 }
 

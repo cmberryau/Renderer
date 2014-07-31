@@ -11,6 +11,7 @@
 		870CC6C41985B822008A56E5 /* defaultd.geom in Resources */ = {isa = PBXBuildFile; fileRef = 870CC6C21985B822008A56E5 /* defaultd.geom */; };
 		87295EC11982B58100D6B728 /* defaultd.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87295EBF1982B58100D6B728 /* defaultd.frag */; };
 		87295EC21982B58100D6B728 /* defaultd.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87295EC01982B58100D6B728 /* defaultd.vert */; };
+		873C753D198A7C9000CC151A /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 873C753B198A7C9000CC151A /* Material.cpp */; };
 		876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
 		876EA3EF19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
@@ -48,6 +49,8 @@
 		87295EBF1982B58100D6B728 /* defaultd.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.frag; path = shaders/GLSL/defaultd.frag; sourceTree = "<group>"; };
 		87295EC01982B58100D6B728 /* defaultd.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.vert; path = shaders/GLSL/defaultd.vert; sourceTree = "<group>"; };
 		872F7BD5197975CE00E70464 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Scene.hpp; path = scene/Scene.hpp; sourceTree = "<group>"; };
+		873C753B198A7C9000CC151A /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = rendering/Material.cpp; sourceTree = "<group>"; };
+		873C753C198A7C9000CC151A /* Material.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Material.hpp; path = rendering/Material.hpp; sourceTree = "<group>"; };
 		8756FCCC197465A600A016AD /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = rendering/Camera.hpp; sourceTree = "<group>"; };
 		876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = utility/LoadShaders.cpp; sourceTree = "<group>"; };
 		876EA3ED19523D3600AD06B5 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = utility/LoadShaders.h; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 		87D8152719696398009A8A62 /* rendering */ = {
 			isa = PBXGroup;
 			children = (
+				873C753B198A7C9000CC151A /* Material.cpp */,
+				873C753C198A7C9000CC151A /* Material.hpp */,
 				87C75EAE19895C29007B1B38 /* ShaderFactory.cpp */,
 				87C75EAD19895B0E007B1B38 /* ShaderFactory.hpp */,
 				87C75EAC198959C1007B1B38 /* Shader.hpp */,
@@ -440,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
+				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
 				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
 				87C75EB219896040007B1B38 /* OpenGLShader.cpp in Sources */,

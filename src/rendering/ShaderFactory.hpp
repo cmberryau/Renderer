@@ -10,7 +10,7 @@
 #define _shader_factory_h
 
 #include "OpenGL/OpenGLRenderingContext.hpp"
-#include "Shader.hpp"
+#include "OpenGL/OpenGLShader.hpp"
 
 namespace Renderer
 {

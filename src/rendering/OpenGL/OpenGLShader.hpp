@@ -11,22 +11,20 @@
 
 #include "rendering/Shader.hpp"
 
+#include <SDL2/SDL_opengl.h>
+
 namespace Renderer
 {
-    class OpenGLShader
+    class OpenGLShader : public Shader
     {
         public:
             void Use();
         
             virtual ~OpenGLShader(){}
-            OpenGLShader(const char * vertex_source,
-                         const char * geometry_source,
-                         const char * fragment_source);
+            OpenGLShader(GLuint program);
         
         protected:
-            const char * _vertex_source;
-            const char * _geometry_source;
-            const char * _fragment_source;
+            GLuint _program;
     };
 }
 

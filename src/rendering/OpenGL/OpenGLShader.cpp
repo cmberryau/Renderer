@@ -12,16 +12,11 @@ namespace Renderer
 {
     void OpenGLShader::Use()
     {
-        
+        glUseProgram(_program);
     }
     
-    OpenGLShader::OpenGLShader(const char * vertex_source,
-                               const char * geometry_source,
-                               const char * fragment_source)
-    : _vertex_source(vertex_source),
-      _geometry_source(geometry_source),
-      _fragment_source(fragment_source)
+    OpenGLShader::OpenGLShader(GLuint program)
     {
-        
+        _program = program;
     }
 }

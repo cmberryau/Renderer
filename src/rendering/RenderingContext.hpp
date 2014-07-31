@@ -31,15 +31,19 @@ namespace Renderer
 	{
 		public:
             virtual void BeginScene() = 0;
-            virtual void EndScene() = 0;        
+            virtual void EndScene() = 0;
             virtual MeshRendererType<T> * MeshRenderer() = 0;
+            Window * Window()
+            {
+                return _window;
+            }
         
 			virtual ~RenderingContextType<T>(){}
 
 		protected:
 			RenderingContextType<T>(){}
         
-			Window * _window;
+			class Window * _window;
 	};
     
     typedef RenderingContextType<float> RenderingContext;
