@@ -12,8 +12,6 @@
 		87295EC11982B58100D6B728 /* defaultd.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87295EBF1982B58100D6B728 /* defaultd.frag */; };
 		87295EC21982B58100D6B728 /* defaultd.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87295EC01982B58100D6B728 /* defaultd.vert */; };
 		873C753D198A7C9000CC151A /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 873C753B198A7C9000CC151A /* Material.cpp */; };
-		876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
-		876EA3EF19523D3600AD06B5 /* LoadShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
 		87BC838B19452C3E00D97C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC838A19452C3E00D97C8E /* Cocoa.framework */; };
@@ -52,8 +50,6 @@
 		873C753B198A7C9000CC151A /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = rendering/Material.cpp; sourceTree = "<group>"; };
 		873C753C198A7C9000CC151A /* Material.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Material.hpp; path = rendering/Material.hpp; sourceTree = "<group>"; };
 		8756FCCC197465A600A016AD /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = rendering/Camera.hpp; sourceTree = "<group>"; };
-		876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadShaders.cpp; path = utility/LoadShaders.cpp; sourceTree = "<group>"; };
-		876EA3ED19523D3600AD06B5 /* LoadShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadShaders.h; path = utility/LoadShaders.h; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		87870FD71969DC030040533D /* CommonMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonMath.hpp; path = math/CommonMath.hpp; sourceTree = "<group>"; };
 		8787B0DD194DBEF900F894CA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -132,8 +128,6 @@
 		876EA3EB19523D1A00AD06B5 /* utility */ = {
 			isa = PBXGroup;
 			children = (
-				876EA3EC19523D3600AD06B5 /* LoadShaders.cpp */,
-				876EA3ED19523D3600AD06B5 /* LoadShaders.h */,
 			);
 			name = utility;
 			sourceTree = "<group>";
@@ -447,7 +441,6 @@
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
-				876EA3EE19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
 				87C75EB219896040007B1B38 /* OpenGLShader.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				87C75EAF19895C29007B1B38 /* ShaderFactory.cpp in Sources */,
@@ -458,7 +451,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876EA3EF19523D3600AD06B5 /* LoadShaders.cpp in Sources */,
 				87BC83B519452C3E00D97C8E /* RendererTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

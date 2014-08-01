@@ -10,7 +10,6 @@
 #define _opengl_mesh_renderer_h
 
 #include "rendering/MeshRenderer.hpp"
-#include "utility/LoadShaders.h"
 #include "rendering/Camera.hpp"
 #include "OpenGLShader.hpp"
 
@@ -68,7 +67,7 @@ namespace Renderer
                 this->_material->Use();
                 
                 glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());
+                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize()));
 
                 OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
                 
@@ -81,30 +80,15 @@ namespace Renderer
         
 			void CreateShader(MeshType<double> * mesh)
             {
-#ifdef __APPLE__
-                ShaderInfo  shaders[] = {
-                    { GL_VERTEX_SHADER, "src/shaders/GLSL/defaultd.vert" },
-                    { GL_FRAGMENT_SHADER, "src/shaders/GLSL/defaultd.frag" },
-					{ GL_GEOMETRY_SHADER, "src/shaders/GLSL/defaultd.geom" },
-                    { GL_NONE, NULL }
-                };
-#else
-                ShaderInfo  shaders[] = {
-                    { GL_VERTEX_SHADER, "src\\shaders\\GLSL\\defaultd.vert" },
-                    { GL_FRAGMENT_SHADER, "src\\shaders\\GLSL\\defaultd.frag" },				
-					{ GL_GEOMETRY_SHADER, "src\\shaders\\GLSL\\defaultd.geom" },
-                    { GL_NONE, NULL }
-                };
-#endif
-                //_shader_program = LoadShaders(shaders);
+                this->_material->Use();
                 
-                //glUseProgram(_shader_program);
+                glVertexAttribPointer(0, 4, GL_DOUBLE, GL_FALSE, 0, NULL);
+                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize()));
                 
-				glVertexAttribLPointer(0, 4, GL_DOUBLE, 0, NULL);
-				glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());
+                OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
                 
-                _model_matrix_uniform = glGetUniformLocation(_shader_program, "model_matrix");
-                _projection_matrix_uniform = glGetUniformLocation(_shader_program, "projection_matrix");
+                _model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
+                _projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
                 
                 glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
@@ -115,11 +99,10 @@ namespace Renderer
 				if (this->_mesh == nullptr)
 					return;
                 
-				//glUseProgram(_shader_program);
                 this->_material->Use();
 				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, Camera::MainCamera()->ProjectionMatrix());
 				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE,
-					parent_object->LocalTransform()->ComposedMatrix().Multiply(Camera::MainCamera()->ViewMatrix()));
+                parent_object->LocalTransform()->ComposedMatrix().Multiply(Camera::MainCamera()->ViewMatrix()));
 
 				glBindVertexArray(_vertex_array_objects[0]);
 				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
@@ -130,10 +113,11 @@ namespace Renderer
                 if (this->_mesh == nullptr)
                     return;
              
-                glUseProgram(_shader_program);
+                this->_material->Use();
 				glUniformMatrix4dv(_projection_matrix_uniform, 1, GL_FALSE, Camerad::MainCamera()->ProjectionMatrix());
                 glUniformMatrix4dv(_model_matrix_uniform, 1, GL_FALSE,
-				parent_object->LocalTransform()->ComposedMatrix().Multiply(Camerad::MainCamera()->ViewMatrix()));
+                parent_object->LocalTransform()->ComposedMatrix().Multiply(Camerad::MainCamera()->ViewMatrix()));
+                
 				glBindVertexArray(_vertex_array_objects[0]);
 				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
             }
@@ -156,7 +140,6 @@ namespace Renderer
 			GLuint _vertex_element_buffer[1];
             GLuint _vertex_buffer_objects[1];
         
-            GLuint _shader_program;
             GLint _model_matrix_uniform;
             GLint _projection_matrix_uniform;
 	};
