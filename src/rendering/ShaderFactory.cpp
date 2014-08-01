@@ -13,61 +13,20 @@ namespace Renderer
     Shader * ShaderFactory::Create(const char * vertex_shader_source,
                                    const char * geometry_shader_source,
                                    const char * fragment_shader_source,
-                                   OpenGLRenderingContext * context)
+                                   RenderingContext * context)
     {
-        if(vertex_shader_source == nullptr || fragment_shader_source == nullptr)
-        {
-            return nullptr;
-        }
+        Shader * shader = context->Shader();
         
-        const char * sources[3] = {vertex_shader_source,
-                                   geometry_shader_source,
-                                   fragment_shader_source};
+        shader->Compile(vertex_shader_source,
+                        geometry_shader_source,
+                        fragment_shader_source);
         
-        GLenum types[3] = {GL_VERTEX_SHADER,
-                           GL_GEOMETRY_SHADER,
-                           GL_FRAGMENT_SHADER};
-        
-        GLuint program = glCreateProgram();
-        
-        // run through the shader sources
-        for(int i = 0; i < 3; i++)
-        {
-            if(sources[i] == nullptr)
-            {
-                continue;
-            }
-            
-            // create and compile shaders
-            GLuint shader = glCreateShader(types[i]);
-            glShaderSource(shader, 1, &sources[i], NULL);
-            glCompileShader(shader);
-            
-            // check compilation results
-            GLint compiled;
-            glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-            if(!compiled)
-            {
-                GLsizei log_length;
-                glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length);
-                
-                GLchar * shader_log = new GLchar[log_length + 1];
-                glGetShaderInfoLog(shader, log_length, &log_length, shader_log);
-                
-                delete [] shader_log;
-                
-                return nullptr;
-            }
-            
-            glAttachShader(program, shader);
-        }
-        
-        return new OpenGLShader(program);
+        return shader;
     }
     
     Shader * ShaderFactory::Create(const char * vertex_shader_source,
                                    const char * fragment_shader_source,
-                                   OpenGLRenderingContext * context)
+                                   RenderingContext * context)
     {
         return Create(vertex_shader_source,
                       nullptr,

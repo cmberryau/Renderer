@@ -9,15 +9,21 @@
 #ifndef _material_h
 #define _material_h
 
+#include "Shader.hpp"
+
 namespace Renderer
 {
     class Material
     {
-        public:        
-            virtual ~Material(){}
+        public:
+            void Use();
+            Shader * Shader();
+        
+            ~Material();
+            Material(class Shader * shader);
         
         protected:
-            Material(){};
+            class Shader * _shader;
     };
 }
 

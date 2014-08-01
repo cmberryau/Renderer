@@ -20,6 +20,7 @@
 #include <SDL2/SDL_opengl.h>
 
 #include "windowing/Window.hpp"
+#include "Shader.hpp"
 
 namespace Renderer
 {
@@ -32,7 +33,10 @@ namespace Renderer
 		public:
             virtual void BeginScene() = 0;
             virtual void EndScene() = 0;
+        
             virtual MeshRendererType<T> * MeshRenderer() = 0;
+            virtual Shader * Shader() = 0;
+        
             Window * Window()
             {
                 return _window;

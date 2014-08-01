@@ -12,6 +12,7 @@
 #include "RenderingContext.hpp"
 #include "geometry/Mesh.hpp"
 #include "objects/Object.hpp"
+#include "Material.hpp"
 
 namespace Renderer
 {
@@ -20,7 +21,13 @@ namespace Renderer
 	{
 		public:
 			// caches the mesh and prepares it for drawing
-            virtual void AddMesh(MeshType<T> * mesh) = 0;
+            virtual void SetMesh(MeshType<T> * mesh) = 0;
+        
+            // sets the material
+            void SetMaterial(Material * material)
+            {
+                _material = material;
+            }
 
 			// draws the mesh
 			virtual void Draw(ObjectType<T> * parent_object) = 0;
@@ -35,6 +42,7 @@ namespace Renderer
 			}
         
 			MeshType<T> * _mesh;
+            Material * _material;
             RenderingContext * _rendering_context;
 	};
 

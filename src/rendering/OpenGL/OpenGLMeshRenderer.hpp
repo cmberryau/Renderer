@@ -12,6 +12,7 @@
 #include "rendering/MeshRenderer.hpp"
 #include "utility/LoadShaders.h"
 #include "rendering/Camera.hpp"
+#include "OpenGLShader.hpp"
 
 namespace Renderer
 {
@@ -24,7 +25,7 @@ namespace Renderer
                 return new OpenGLMeshRendererType<T>(rendering_context);
             }
         
-			void AddMesh(MeshType<T> * mesh)
+			void SetMesh(MeshType<T> * mesh)
 			{
 				if (mesh == nullptr)
 				{
@@ -33,7 +34,8 @@ namespace Renderer
 				}
 
 				mesh->Validate();
-				this->GenerateArrays(mesh);
+                
+                this->GenerateArrays(mesh);
 				this->CreateShader(mesh);
 
 				this->_mesh = mesh;
@@ -62,32 +64,16 @@ namespace Renderer
 			}
 
             void CreateShader(MeshType<float> * mesh)
-            {                                
-#ifdef __APPLE__
-                ShaderInfo  shaders[] = {
-                    { GL_VERTEX_SHADER, "src/shaders/GLSL/default.vert" },
-                    { GL_FRAGMENT_SHADER, "src/shaders/GLSL/default.frag" },
-					{ GL_GEOMETRY_SHADER, "src/shaders/GLSL/default.geom" },
-                    { GL_NONE, NULL }
-                };
-#else
-                ShaderInfo  shaders[] = {
-                    { GL_VERTEX_SHADER, "src\\shaders\\GLSL\\default.vert" },
-                    { GL_FRAGMENT_SHADER, "src\\shaders\\GLSL\\default.frag" },
-					{ GL_GEOMETRY_SHADER, "src\\shaders\\GLSL\\default.geom" },
-                    { GL_NONE, NULL }
-                };
-#endif
-                
-                _shader_program = LoadShaders(shaders);
-                
-                glUseProgram(_shader_program);
+            {                
+                this->_material->Use();
                 
                 glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());           
+                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());
 
-                _model_matrix_uniform = glGetUniformLocation(_shader_program, "model_matrix");
-                _projection_matrix_uniform = glGetUniformLocation(_shader_program, "projection_matrix");
+                OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
+                
+                _model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
+                _projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
                 
                 glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
@@ -95,24 +81,24 @@ namespace Renderer
         
 			void CreateShader(MeshType<double> * mesh)
             {
-    #ifdef __APPLE__
+#ifdef __APPLE__
                 ShaderInfo  shaders[] = {
                     { GL_VERTEX_SHADER, "src/shaders/GLSL/defaultd.vert" },
                     { GL_FRAGMENT_SHADER, "src/shaders/GLSL/defaultd.frag" },
 					{ GL_GEOMETRY_SHADER, "src/shaders/GLSL/defaultd.geom" },
                     { GL_NONE, NULL }
                 };
-    #else
+#else
                 ShaderInfo  shaders[] = {
                     { GL_VERTEX_SHADER, "src\\shaders\\GLSL\\defaultd.vert" },
                     { GL_FRAGMENT_SHADER, "src\\shaders\\GLSL\\defaultd.frag" },				
 					{ GL_GEOMETRY_SHADER, "src\\shaders\\GLSL\\defaultd.geom" },
                     { GL_NONE, NULL }
                 };
-    #endif
-                _shader_program = LoadShaders(shaders);
+#endif
+                //_shader_program = LoadShaders(shaders);
                 
-                glUseProgram(_shader_program);
+                //glUseProgram(_shader_program);
                 
 				glVertexAttribLPointer(0, 4, GL_DOUBLE, 0, NULL);
 				glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (const GLvoid *)mesh->VerticesSize());
@@ -128,8 +114,9 @@ namespace Renderer
 			{
 				if (this->_mesh == nullptr)
 					return;
-
-				glUseProgram(_shader_program);
+                
+				//glUseProgram(_shader_program);
+                this->_material->Use();
 				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, Camera::MainCamera()->ProjectionMatrix());
 				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE,
 					parent_object->LocalTransform()->ComposedMatrix().Multiply(Camera::MainCamera()->ViewMatrix()));

@@ -10,5 +10,24 @@
 
 namespace Renderer
 {
-
+    void Material::Use()
+    {
+        _shader->Use();
+    }
+    
+    class Shader * Material::Shader()
+    {
+        return _shader;
+    }
+    
+    Material::~Material()
+    {
+        
+    }
+    
+    Material::Material(class Shader * shader)
+    :_shader(shader)
+    {
+        
+    }
 }

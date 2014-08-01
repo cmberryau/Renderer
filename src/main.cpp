@@ -20,8 +20,39 @@
 #include "tests/Rotator.hpp"
 
 #include "rendering/ShaderFactory.hpp"
+#include "rendering/Material.hpp"
 
 using namespace Renderer;
+
+static const char * read_file( const char * filename )
+{
+#ifdef WIN32
+	FILE* infile;
+	fopen_s( &infile, filename, "rb" );
+#else
+    FILE* infile = fopen( filename, "rb" );
+#endif // WIN32
+    
+    if ( !infile ) {
+#ifdef _DEBUG
+        std::cerr << "Unable to open file '" << filename << "'" << std::endl;
+#endif /* DEBUG */
+        return NULL;
+    }
+    
+    fseek( infile, 0, SEEK_END );
+    int len = ftell( infile );
+    fseek( infile, 0, SEEK_SET );
+    
+    GLchar* source = new GLchar[len+1];
+    
+    fread( source, 1, len, infile );
+    fclose( infile );
+    
+    source[len] = 0;
+    
+    return const_cast<const char *>(source);
+}
 
 int main(int argc, char ** argv)
 {
@@ -35,8 +66,14 @@ int main(int argc, char ** argv)
     
 	Mesh * test_mesh = new Mesh();
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
-
-	Scene * scene = Scene::Create();
+    Shader * test_shader = ShaderFactory::Create(read_file("src/shaders/GLSL/default.vert"),
+                                                 read_file("src/shaders/GLSL/default.geom"),
+                                                 read_file("src/shaders/GLSL/default.frag"),
+                                                 rendering_context);
+	
+    Material * test_material = new Material(test_shader);
+    test_mesh_renderer->SetMaterial(test_material);
+    Scene * scene = Scene::Create();
 	scene->AddObject(test_object);
 
     Vector4f * test_vertices = new Vector4f[4];
@@ -103,7 +140,7 @@ int main(int argc, char ** argv)
 	delete test_colors;
     delete test_vertices;
     
-    test_mesh_renderer->AddMesh(test_mesh);
+    test_mesh_renderer->SetMesh(test_mesh);
 	test_object->AddMeshRenderer(test_mesh_renderer);
     
     IObjectAddable * rotator = new Rotator();

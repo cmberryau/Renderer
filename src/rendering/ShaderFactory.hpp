@@ -20,11 +20,11 @@ namespace Renderer
             static Shader * Create(const char * vertex_shader_source,
                                    const char * geometry_shader_source,
                                    const char * fragment_shader_source,
-                                   OpenGLRenderingContext * context);
+                                   RenderingContext * context);
         
             static Shader * Create(const char * vertex_shader_source,
                                    const char * fragment_shader_source,
-                                   OpenGLRenderingContext * context);
+                                   RenderingContext * context);
         
         private:
             ~ShaderFactory(){}

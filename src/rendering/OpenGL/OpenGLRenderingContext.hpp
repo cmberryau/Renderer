@@ -11,6 +11,7 @@
 
 #include "rendering/RenderingContext.hpp"
 #include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
+#include "OpenGLShader.hpp"
 
 #ifdef _DEBUG
 #include <stdio.h>
@@ -133,6 +134,11 @@ namespace Renderer
             MeshRendererType<T> * MeshRenderer()
             {
                 return new OpenGLMeshRendererType<T>(this);
+            }
+        
+            Shader * Shader()
+            {
+                return new OpenGLShader();
             }
         
 			~OpenGLRenderingContextType<T>()
