@@ -125,13 +125,6 @@
 			name = scene;
 			sourceTree = "<group>";
 		};
-		876EA3EB19523D1A00AD06B5 /* utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = utility;
-			sourceTree = "<group>";
-		};
 		876EA3F019524A1B00AD06B5 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,7 +269,6 @@
 				87CC70A01961B3A1001EDA7D /* geometry */,
 				87A0B74019599156003F53C6 /* math */,
 				876EA3F019524A1B00AD06B5 /* shaders */,
-				876EA3EB19523D1A00AD06B5 /* utility */,
 				87C7B47819516CFC004C5914 /* main.cpp */,
 			);
 			name = "Cross Platform Code";
