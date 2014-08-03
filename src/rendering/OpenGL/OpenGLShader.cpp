@@ -30,7 +30,7 @@ namespace Renderer
         
         GLuint shaders[3];
         
-        _program = glCreateProgram();
+		_program = glCreateProgram();
         
         // run through the shader sources
         for(int i = 0; i < 3; i++)
@@ -96,7 +96,7 @@ namespace Renderer
         {
             fprintf(stderr, "%d\n", error);
         }
-        
+
         return this;
     }
     

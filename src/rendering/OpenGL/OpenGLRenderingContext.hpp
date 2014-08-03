@@ -10,8 +10,16 @@
 #define _opengl_renderingcontext_h
 
 #include "rendering/RenderingContext.hpp"
-#include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
+#include "OpenGLMeshRenderer.hpp"
 #include "OpenGLShader.hpp"
+
+// OpenGL includes
+#ifdef _WIN32
+#include <gl/glew.h>
+#else
+#define GL_GLEXT_PROTOTYPES 1
+#endif
+#include <SDL2/SDL_opengl.h>
 
 #ifdef _DEBUG
 #include <stdio.h>
@@ -30,8 +38,10 @@ namespace Renderer
 			int major_version = kSupportedOpenGLVersions[0][0],
             int minor_version = kSupportedOpenGLVersions[0][1])
             {
-                if(window == nullptr)
-                    return nullptr;
+				if (window == nullptr)
+				{
+					return nullptr;
+				}                    
                 
                 OpenGLRenderingContextType<T> * context = new OpenGLRenderingContextType<T>();
                 
@@ -136,7 +146,7 @@ namespace Renderer
                 return new OpenGLMeshRendererType<T>(this);
             }
         
-            Shader * Shader()
+            class Shader * Shader()
             {
                 return new OpenGLShader();
             }

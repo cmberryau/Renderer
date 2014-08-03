@@ -1,132 +1,116 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\utility">
-      <UniqueIdentifier>{879d940d-02d3-4845-b326-adf80d7c0acd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\utility">
-      <UniqueIdentifier>{75ff1e28-27eb-4c2d-82d6-fe6612fbef7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\math">
-      <UniqueIdentifier>{8016f4ab-46de-4f96-a95c-d31a9c36bb1b}</UniqueIdentifier>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Source Files\math">
-      <UniqueIdentifier>{07d3669d-38f0-4694-a491-52dc7096936b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\geometry">
-      <UniqueIdentifier>{b5c91245-2b59-49a7-bf68-983b0f9f2a51}</UniqueIdentifier>
+      <UniqueIdentifier>{8016f4ab-46de-4f96-a95c-d31a9c36bb1b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\geometry">
-      <UniqueIdentifier>{db55b6ae-2851-4f82-a26c-3a287877db54}</UniqueIdentifier>
+      <UniqueIdentifier>{b5c91245-2b59-49a7-bf68-983b0f9f2a51}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\objects">
-      <UniqueIdentifier>{3b0635f7-1c67-455a-b33c-271666d5709d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\objects">
       <UniqueIdentifier>{8d996a3c-4d2e-4331-a37b-39f0a200cee5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\rendering">
+    <Filter Include="Source Files\rendering">
       <UniqueIdentifier>{797172f2-79ab-4e96-86fd-41fe6284c919}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\rendering">
-      <UniqueIdentifier>{095811e3-2283-4bde-a306-4c405475c62f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\windowing">
-      <UniqueIdentifier>{190aad48-f20f-4ab0-9555-1e33eedc3ac6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\windowing">
-      <UniqueIdentifier>{6cfef9d8-474e-45af-b010-da9814fb9479}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\events">
-      <UniqueIdentifier>{63558b9e-e5c0-41f0-b94c-2ac404ed54e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\events">
-      <UniqueIdentifier>{4e8c93a4-b8ec-4b34-9cc6-d3e4dbf5c6e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\rendering\OpenGL">
+    <Filter Include="Source Files\rendering\OpenGL">
       <UniqueIdentifier>{6ec300a1-4114-4405-9d32-a725d58af1c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\rendering\OpenGL">
-      <UniqueIdentifier>{e1d762e9-3127-49be-bd5a-c7be5e1b079e}</UniqueIdentifier>
+    <Filter Include="Source Files\windowing">
+      <UniqueIdentifier>{6cfef9d8-474e-45af-b010-da9814fb9479}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\scene">
-      <UniqueIdentifier>{d2cc5e3d-dbe6-41ea-ac4f-e72419901e97}</UniqueIdentifier>
+    <Filter Include="Source Files\events">
+      <UniqueIdentifier>{63558b9e-e5c0-41f0-b94c-2ac404ed54e4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\scene">
-      <UniqueIdentifier>{17352afa-0649-4f79-9a49-4bb6c070b5e9}</UniqueIdentifier>
+      <UniqueIdentifier>{d2cc5e3d-dbe6-41ea-ac4f-e72419901e97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\utility\LoadShaders.cpp">
-      <Filter>Source Files\utility</Filter>
+    <ClCompile Include="..\..\src\events\EventListener.cpp">
+      <Filter>Source Files\events</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\windowing\Window.cpp">
       <Filter>Source Files\windowing</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\events\EventListener.cpp">
-      <Filter>Source Files\events</Filter>
+    <ClCompile Include="..\..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\Material.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLShader.cpp">
+      <Filter>Source Files\rendering\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp">
+      <Filter>Source Files\rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\utility\LoadShaders.h">
-      <Filter>Header Files\utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
-      <Filter>Header Files\events</Filter>
+      <Filter>Source Files\events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\geometry\Mesh.hpp">
-      <Filter>Header Files\geometry</Filter>
+      <Filter>Source Files\geometry</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Matrix.hpp">
-      <Filter>Header Files\math</Filter>
+      <Filter>Source Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Transform.hpp">
-      <Filter>Header Files\math</Filter>
+      <Filter>Source Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Vector.hpp">
-      <Filter>Header Files\math</Filter>
+      <Filter>Source Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\CommonMath.hpp">
-      <Filter>Header Files\math</Filter>
+      <Filter>Source Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\objects\Object.hpp">
-      <Filter>Header Files\objects</Filter>
+      <Filter>Source Files\objects</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp">
-      <Filter>Header Files\rendering</Filter>
+      <Filter>Source Files\rendering</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\RenderingContext.hpp">
-      <Filter>Header Files\rendering</Filter>
+      <Filter>Source Files\rendering</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\Camera.hpp">
-      <Filter>Header Files\rendering</Filter>
+      <Filter>Source Files\rendering</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.hpp">
-      <Filter>Header Files\rendering\OpenGL</Filter>
+      <Filter>Source Files\rendering\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.hpp">
-      <Filter>Header Files\rendering\OpenGL</Filter>
+      <Filter>Source Files\rendering\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\scene\Scene.hpp">
-      <Filter>Header Files\scene</Filter>
+      <Filter>Source Files\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\windowing\Window.hpp">
-      <Filter>Header Files\windowing</Filter>
+      <Filter>Source Files\windowing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\Shader.hpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\Material.hpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\objects\IObjectAddable.hpp">
+      <Filter>Source Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLShader.hpp">
+      <Filter>Source Files\rendering\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp">
+      <Filter>Source Files\rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

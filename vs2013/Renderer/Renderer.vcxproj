@@ -123,7 +123,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\events\EventListener.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
-    <ClCompile Include="..\..\src\utility\LoadShaders.cpp" />
+    <ClCompile Include="..\..\src\rendering\Material.cpp" />
+    <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp" />
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,14 +135,18 @@
     <ClInclude Include="..\..\src\math\Matrix.hpp" />
     <ClInclude Include="..\..\src\math\Transform.hpp" />
     <ClInclude Include="..\..\src\math\Vector.hpp" />
+    <ClInclude Include="..\..\src\objects\IObjectAddable.hpp" />
     <ClInclude Include="..\..\src\objects\Object.hpp" />
     <ClInclude Include="..\..\src\rendering\Camera.hpp" />
+    <ClInclude Include="..\..\src\rendering\Material.hpp" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLShader.hpp" />
     <ClInclude Include="..\..\src\rendering\RenderingContext.hpp" />
+    <ClInclude Include="..\..\src\rendering\Shader.hpp" />
+    <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp" />
     <ClInclude Include="..\..\src\scene\Scene.hpp" />
-    <ClInclude Include="..\..\src\utility\LoadShaders.h" />
     <ClInclude Include="..\..\src\windowing\Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
