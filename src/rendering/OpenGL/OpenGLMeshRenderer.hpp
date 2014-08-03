@@ -11,7 +11,7 @@
 
 #include "rendering/MeshRenderer.hpp"
 #include "rendering/Camera.hpp"
-#include "OpenGLShader.hpp"
+#include "rendering/OpenGL/OpenGLShader.hpp"
 
 // OpenGL includes
 #ifdef _WIN32

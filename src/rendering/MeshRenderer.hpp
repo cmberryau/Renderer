@@ -9,10 +9,10 @@
 #ifndef _mesh_renderer_h
 #define _mesh_renderer_h
 
-#include "RenderingContext.hpp"
+#include "rendering/RenderingContext.hpp"
 #include "geometry/Mesh.hpp"
 #include "objects/Object.hpp"
-#include "Material.hpp"
+#include "rendering/Material.hpp"
 
 namespace Renderer
 {

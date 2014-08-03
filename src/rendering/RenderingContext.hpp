@@ -10,7 +10,7 @@
 #define _renderingcontext_h
 
 #include "windowing/Window.hpp"
-#include "Shader.hpp"
+#include "rendering/Shader.hpp"
 
 namespace Renderer
 {

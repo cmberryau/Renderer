@@ -10,8 +10,8 @@
 #define _opengl_renderingcontext_h
 
 #include "rendering/RenderingContext.hpp"
-#include "OpenGLMeshRenderer.hpp"
-#include "OpenGLShader.hpp"
+#include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
+//#include "rendering/OpenGL/OpenGLShader.hpp"
 
 // OpenGL includes
 #ifdef _WIN32
@@ -34,7 +34,7 @@ namespace Renderer
             static const int kNumSupportedOpenGLVersions;
             static const int kSupportedOpenGLVersions[9][2];
         
-            static OpenGLRenderingContextType<T> * Create(Window * window,
+            static OpenGLRenderingContextType<T> * Create(class Window * window,
 			int major_version = kSupportedOpenGLVersions[0][0],
             int minor_version = kSupportedOpenGLVersions[0][1])
             {
