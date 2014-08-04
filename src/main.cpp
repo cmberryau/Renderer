@@ -20,6 +20,8 @@
 #include "rendering/ShaderFactory.hpp"
 #include "rendering/Material.hpp"
 
+#include "utility/io.hpp"
+
 using namespace Renderer;
 
 int main(int argc, char ** argv)
@@ -33,9 +35,9 @@ int main(int argc, char ** argv)
     
 	Mesh * test_mesh = new Mesh();
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
-    Shader * test_shader = ShaderFactory::Create("src/shaders/GLSL/default.vert",
-                                                 "src/shaders/GLSL/default.geom",
-                                                 "src/shaders/GLSL/default.frag",
+    Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
+                                                 IO::ReadFile("src/shaders/GLSL/default.geom"),
+                                                 IO::ReadFile("src/shaders/GLSL/default.frag"),
                                                  rendering_context);
 	
     Material * test_material = new Material(test_shader);
