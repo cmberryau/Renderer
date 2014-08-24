@@ -11,6 +11,7 @@
 
 #include "math/Transform.hpp"
 #include "objects/IObjectAddable.hpp"
+#include "rendering/RenderingContext.hpp"
 
 namespace Renderer
 {
@@ -18,11 +19,6 @@ namespace Renderer
 	class CameraType : public IObjectAddableType<T>
 	{
 		public:
-			static CameraType<T> * MainCamera()
-			{
-				return mainCamera;
-			}
-        
 			Matrix4<T> ViewMatrix()
 			{
 				return this->_parent_object->LocalTransform()->ComposedMatrix();
@@ -33,12 +29,10 @@ namespace Renderer
 				return Matrix4<T>::Perspective(T(75.0), T(1.33), T(1.0), T(500.0));
 			}
 
-			CameraType<T>()
+			CameraType<T>(RenderingContextType<T> * rendering_context)
+            : _rendering_context(rendering_context)
 			{
-                if(CameraType<T>::MainCamera() == nullptr)
-                {
-                    mainCamera = this;
-                }
+                
 			}
 
 			~CameraType<T>()
@@ -47,11 +41,8 @@ namespace Renderer
 			}
         
         protected:
-            static CameraType<T> * mainCamera;
+            RenderingContextType<T> * _rendering_context;
 	};
-
-	template <typename T>
-    CameraType<T> * CameraType<T>::mainCamera = nullptr;
     
 	typedef CameraType<float> Camera;
 	typedef CameraType<double> Camerad;

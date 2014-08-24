@@ -18,6 +18,9 @@ namespace Renderer
     class MeshRendererType;
     
     template <typename T>
+    class CameraType;
+    
+    template <typename T>
 	class RenderingContextType
 	{
 		public:
@@ -26,6 +29,20 @@ namespace Renderer
         
             virtual MeshRendererType<T> * MeshRenderer() = 0;
             virtual Shader * Shader() = 0;
+            void SetCamera(CameraType<T> * camera)
+            {
+                if(camera == nullptr)
+                {
+                    exit(0);
+                }
+                
+                this->_camera = camera;
+            }
+        
+            CameraType<T> * MainCamera()
+            {
+                return _camera;
+            }
         
             Window * Window()
             {
@@ -38,6 +55,7 @@ namespace Renderer
 			RenderingContextType<T>(){}
         
 			class Window * _window;
+            CameraType<T> * _camera;
 	};
     
     typedef RenderingContextType<float> RenderingContext;

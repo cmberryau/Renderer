@@ -116,8 +116,9 @@ int main(int argc, char ** argv)
     test_object->Add(rotator);
     
     Object * camera_object = new Object();
-    Camera * camera = new Camera();
+    Camera * camera = new Camera(rendering_context);
     camera_object->Add(camera);
+    rendering_context->SetCamera(camera);
     
 	while (true)
 	{

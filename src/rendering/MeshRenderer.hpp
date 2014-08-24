@@ -35,15 +35,15 @@ namespace Renderer
 			virtual ~MeshRendererType<T>(){};
 
 		protected:
-			MeshRendererType<T>() : _rendering_context(nullptr),
-                                    _mesh(nullptr)
+            MeshRendererType<T>(RenderingContextType<T> * rendering_context)
+            : _rendering_context(rendering_context), _mesh(nullptr)
 			{
 
 			}
         
 			MeshType<T> * _mesh;
             Material * _material;
-            RenderingContext * _rendering_context;
+            RenderingContextType<T> * _rendering_context;
 	};
 
 	typedef MeshRendererType<float> MeshRenderer;
