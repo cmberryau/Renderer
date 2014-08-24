@@ -25,9 +25,10 @@ namespace Renderer
         
         file_stream.seekg(0, file_stream.end);
         std::streamoff length = file_stream.tellg();
+        
         file_stream.seekg(0, file_stream.beg);
         
-        contents = new char[length];
+        contents = new char[length+1];
         
         file_stream.read(contents, length);
         
@@ -39,6 +40,9 @@ namespace Renderer
         
         file_stream.close();
 
+        // cap the end
+        contents[length] = NULL;
+        
 		return contents;
 	}
 }
