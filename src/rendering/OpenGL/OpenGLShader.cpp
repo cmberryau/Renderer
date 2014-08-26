@@ -57,7 +57,7 @@ namespace Renderer
                 GLchar * shader_log = new GLchar[log_length + 1];
                 glGetShaderInfoLog(shaders[i], log_length, &log_length, shader_log);
                 
-                printf("%s", shader_log);
+                printf("%s\n", shader_log);
                 
                 delete [] shader_log;
                 
@@ -79,7 +79,7 @@ namespace Renderer
             GLchar * shader_log = new GLchar[log_length + 1];
             glGetShaderInfoLog(_program, log_length, &log_length, shader_log);
             
-            printf("%s", shader_log);
+            printf("%s\n", shader_log);
             
             delete [] shader_log;
             

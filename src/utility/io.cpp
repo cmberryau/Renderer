@@ -32,7 +32,7 @@ namespace Renderer
         
         file_stream.read(contents, length);
         
-        // was unsuccessful?
+        // was reading the file unsuccessful?
         if(!file_stream)
         {
             return nullptr;
@@ -40,7 +40,7 @@ namespace Renderer
         
         file_stream.close();
 
-        // cap the end
+        // cap the end of the char array
         contents[length] = NULL;
         
 		return contents;

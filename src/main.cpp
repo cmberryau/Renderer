@@ -26,23 +26,25 @@ using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
+    // window, events, graphics context and scene
 	Window * window = Window::Create(640, 480);
 	EventListener * event_listener = EventListener::Create();
-    
-	// float test
 	RenderingContext * rendering_context = OpenGLRenderingContext::Create(window);
-	Object * test_object = new Object();
+    Scene * scene = Scene::Create();
     
+    // object, mesh and meshrenderer
+	Object * test_object = new Object();
 	Mesh * test_mesh = new Mesh();
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
+    
+    // shader and material
     Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
                                                  IO::ReadFile("src/shaders/GLSL/default.geom"),
                                                  IO::ReadFile("src/shaders/GLSL/default.frag"),
                                                  rendering_context);
-	
     Material * test_material = new Material(test_shader);
+    
     test_mesh_renderer->SetMaterial(test_material);
-    Scene * scene = Scene::Create();
 	scene->AddObject(test_object);
 
     Vector4f * test_vertices = new Vector4f[4];
