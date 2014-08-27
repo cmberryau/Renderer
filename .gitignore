@@ -235,3 +235,5 @@ xcode5/Renderer/en.lproj/._InfoPlist.strings
 xcode5/Renderer/Images.xcassets/AppIcon.appiconset/._Contents.json
 xcode5/RendererTests/._RendererTests.m
 xcode5/RendererTests/en.lproj/._InfoPlist.strings
+
+!assets/**
