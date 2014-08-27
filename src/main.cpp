@@ -11,7 +11,7 @@
 #include "rendering/OpenGL/OpenGLRenderingContext.hpp"
 
 #include "math/Vector.hpp"
-#include "geometry/Mesh.hpp"
+#include "geometry/MeshFactory.hpp"
 #include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
 #include "objects/Object.hpp"
 #include "scene/Scene.hpp"
@@ -26,6 +26,8 @@ using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
+    Mesh * bunny_mesh = MeshFactory::MeshFromOBJFile("assets/bunny.obj");
+    
     // window, events, graphics context and scene
 	Window * window = new Window(640, 480);
 	EventListener * event_listener = new EventListener();

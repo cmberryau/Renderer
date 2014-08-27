@@ -11,7 +11,7 @@ namespace Renderer
 	class IO
 	{
 		public:
-			static const char * ReadFile(const char * file_path);
+			static char * ReadFile(const char * file_path);
 
 		protected:
 			IO();

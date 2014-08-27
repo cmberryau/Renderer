@@ -12,7 +12,7 @@
 
 namespace Renderer
 {
-	const char * IO::ReadFile(const char * file_path)
+    char * IO::ReadFile(const char * file_path)
 	{
         char * contents = nullptr;
         
