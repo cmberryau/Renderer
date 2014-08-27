@@ -33,7 +33,7 @@ namespace Renderer
 	{
 		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 		{
-			throw std::exception("SDL_Init failed!\n");
+			throw std::exception();
 		}
 
 		_sdl_window = SDL_CreateWindow("Renderer",
@@ -44,7 +44,7 @@ namespace Renderer
 
 		if (_sdl_window == nullptr)
 		{
-			throw std::exception("SDL_CreateWindow failed!\n");
+			throw std::exception();
 		}
 	}
 

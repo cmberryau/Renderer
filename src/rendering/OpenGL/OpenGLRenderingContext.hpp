@@ -71,7 +71,7 @@ namespace Renderer
 			{
 				if (window == nullptr)
 				{
-					throw std::exception("Passed window parameter is null\n");
+					throw std::exception();
 				}
 
 				// ensure that the requested OpenGL version is supported
@@ -116,7 +116,7 @@ namespace Renderer
 
 				if (_sdl_gl_context == nullptr)
 				{
-					throw std::exception("SDL_GL_CreateContext failed!\n");
+					throw std::exception();
 				}
 
 				CheckForGLError();
