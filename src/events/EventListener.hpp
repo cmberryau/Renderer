@@ -18,15 +18,13 @@
 class EventListener
 {
 	public:
-		static EventListener * Create();
 		void ListenForEvents();
 		bool ShouldQuit();
 
+		EventListener();
 		~EventListener();
     
-	protected:
-		EventListener();
-
+	protected:		
 		bool _should_quit;
 };
 

@@ -27,10 +27,10 @@ using namespace Renderer;
 int main(int argc, char ** argv)
 {
     // window, events, graphics context and scene
-	Window * window = Window::Create(640, 480);
-	EventListener * event_listener = EventListener::Create();
-	RenderingContext * rendering_context = OpenGLRenderingContext::Create(window);
-    Scene * scene = Scene::Create();
+	Window * window = new Window(640, 480);
+	EventListener * event_listener = new EventListener();
+	RenderingContext * rendering_context = new OpenGLRenderingContext(window);
+	Scene * scene = new Scene();
     
     // object, mesh and meshrenderer
 	Object * test_object = new Object();
@@ -38,10 +38,17 @@ int main(int argc, char ** argv)
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
     
     // shader and material
-    Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
-                                                 IO::ReadFile("src/shaders/GLSL/default.geom"),
-                                                 IO::ReadFile("src/shaders/GLSL/default.frag"),
+#ifdef _WIN32
+    Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSL//default.vert"),
+                                                 IO::ReadFile("src//shaders//GLSL//default.geom"),
+                                                 IO::ReadFile("src//shaders//GLSL//default.frag"),
                                                  rendering_context);
+#else
+	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
+												 IO::ReadFile("src/shaders/GLSL/default.geom"),
+												 IO::ReadFile("src/shaders/GLSL/default.frag"),
+												 rendering_context);
+#endif
     Material * test_material = new Material(test_shader);
     
     test_mesh_renderer->SetMaterial(test_material);

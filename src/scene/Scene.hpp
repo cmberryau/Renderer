@@ -16,12 +16,7 @@ namespace Renderer
     template <typename T>
     class SceneType
     {
-        public:
-            static SceneType<T> * Create()
-            {
-                return new SceneType<T>();
-            }
-        
+        public:        
             Camera * MainCamera()
             {
                 return _main_camera;
@@ -40,18 +35,18 @@ namespace Renderer
             {
                 objects.push_back(object);
             }
-        
+
+			SceneType<T>() : _main_camera(nullptr)
+			{
+
+			}
+
             ~SceneType<T>()
             {
                 
             }
         
-        protected:
-            SceneType<T>() : _main_camera(nullptr)
-            {
-                
-            }
-        
+        protected:        
             Camera * _main_camera;
             std::vector<ObjectType<T> *> objects;
     };

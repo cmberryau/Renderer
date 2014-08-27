@@ -9,28 +9,10 @@
 #include "Window.hpp"
 
 #include <stdio.h>
+#include <exception>
 
 namespace Renderer
 {
-	Window * Window::Create(int width, int height)
-	{
-		Window * window = new Window(width, height);
-
-		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
-		{
-			fprintf(stdout, "SDL_Init failed!\n");
-			return nullptr;
-		}
-
-		window->_sdl_window = SDL_CreateWindow("Renderer",
-											   SDL_WINDOWPOS_CENTERED,
-											   SDL_WINDOWPOS_CENTERED,
-											   width, height,
-											   SDL_WINDOW_OPENGL);
-
-		return window;
-	}
-
 	void Window::Swap()
 	{
 		SDL_GL_SwapWindow(_sdl_window);
@@ -46,15 +28,29 @@ namespace Renderer
         return _height;
     }
 
-	Window::~Window()
-	{
-        SDL_DestroyWindow(_sdl_window);
-		SDL_Quit();
-	}
-
 	Window::Window(int width, int height)
     : _width(width), _height(height)
 	{
+		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+		{
+			throw std::exception("SDL_Init failed!\n");
+		}
 
+		_sdl_window = SDL_CreateWindow("Renderer",
+									   SDL_WINDOWPOS_CENTERED,
+									   SDL_WINDOWPOS_CENTERED,
+									   width, height,
+									   SDL_WINDOW_OPENGL);
+
+		if (_sdl_window == nullptr)
+		{
+			throw std::exception("SDL_CreateWindow failed!\n");
+		}
+	}
+
+	Window::~Window()
+	{
+		SDL_DestroyWindow(_sdl_window);
+		SDL_Quit();
 	}
 }

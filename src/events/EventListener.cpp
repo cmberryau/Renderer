@@ -8,13 +8,6 @@
 
 #include "EventListener.hpp"
 
-EventListener * EventListener::Create()
-{
-	EventListener * event_listener = new EventListener();
-
-	return event_listener;
-}
-
 void EventListener::ListenForEvents()
 {
 	SDL_Event event;
@@ -32,12 +25,12 @@ bool EventListener::ShouldQuit()
 	return _should_quit;
 }
 
-EventListener::~EventListener()
+EventListener::EventListener() : _should_quit(false)
 {
 
 }
 
-EventListener::EventListener() : _should_quit(false)
+EventListener::~EventListener()
 {
 
 }
