@@ -10,6 +10,7 @@
 #include "utility/io.hpp"
 
 #include <cstring>
+#include <cstdlib>
 
 namespace Renderer
 {
@@ -34,34 +35,27 @@ namespace Renderer
             return nullptr;
         }
         
-        char * line = std::strtok(obj_source, " ");
-        
-        int vertex_count = 0;
-        int face_count = 0;
+        char * line = std::strtok(obj_source, "\n");
         
         while(line != nullptr)
         {
             // it's a vertex
-            if(line[0] == 'v')
+            if(line[0] == 'v' || line[0] == 'f')
             {
+                size_t span_to_space = 0;
+                // one space after the first value notifing what the type is
+                char * seeked_pos = line + 2;
                 for(int i=0; i<3; i++)
                 {
-                    //line = std::strtok(nullptr, " \n");
+                    span_to_space = strcspn(seeked_pos, " \n");
+                    float value = strtod(seeked_pos, &seeked_pos + span_to_space);
+                    
+                    seeked_pos += span_to_space + 1;
                 }
-                
-                vertex_count++;
-            }
-            // it's a face
-            else if(line[0] == 'f')
-            {
-                face_count++;
-                //line = std::strtok(nullptr, "\n");
             }
             
             line = std::strtok(nullptr, "\n");
         }
-        
-        fprintf(stdout, "vertex count: %d, face count: %d\n", vertex_count, face_count);
         
         return nullptr;
     }
