@@ -26,7 +26,12 @@ using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
-    Mesh * bunny_mesh = MeshFactory::MeshFromOBJFile("assets/bunny.obj");
+
+#ifdef _WIN32
+    Mesh * bunny_mesh = MeshFactory::MeshFromObjFile("assets//bunny.obj");
+#else
+	Mesh * bunny_mesh = MeshFactory::MeshFromObjFile("assets/bunny.obj");
+#endif
     
     // window, events, graphics context and scene
 	Window * window = new Window(640, 480);
@@ -119,9 +124,12 @@ int main(int argc, char ** argv)
 	delete test_triangles;
 	delete test_colors;
     delete test_vertices;
-    
-    test_mesh_renderer->SetMesh(test_mesh);
+
+	test_mesh_renderer->SetMesh(bunny_mesh);
+    //test_mesh_renderer->SetMesh(test_mesh);
 	test_object->AddMeshRenderer(test_mesh_renderer);
+	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 100.0f);
+	test_object->LocalTransform()->SetScale(500.0f, 500.0f, 500.0f);
     
     IObjectAddable * rotator = new Rotator();
     test_object->Add(rotator);
