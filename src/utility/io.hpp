@@ -16,5 +16,7 @@ namespace Renderer
 		protected:
 			IO();
 			~IO();
+
+			static const long long kMaxFileReadBlockSize;
 	};
 }
