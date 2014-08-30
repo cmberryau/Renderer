@@ -33,20 +33,35 @@ namespace Renderer
         
 			void Validate()
 			{
+				// as a baseline, meshes must contain vertices and triangles
 				if (this->Vertices() == nullptr ||
-					this->Colors() == nullptr ||
 					this->Triangles() == nullptr)
 				{
 					// todo : throw error
 					return;
 				}
 
+				// if the mesh does not contain vertex colors, we assign default ones
+				if (this->Colors() == nullptr)
+				{
+					Vector4f * colors = new Vector4f[this->VerticesCount()];
+
+					for (unsigned int i = 0; i < this->VerticesCount(); i++)
+					{
+						colors[i] = Mesh::kDefaultVertexColor;
+					}
+
+					this->SetColors(colors, this->VerticesCount());
+				}
+
+				// there must be a color for each vertex
 				if (this->VerticesCount() != this->ColorsCount())
 				{
 					// todo : throw error
 					return;
 				}
 
+				// the triangle references must not be outside the vertex buffer
 				for (unsigned int i = 0; i < this->TrianglesCount(); i++)
 				{
 					for (int j = 0; j < 3; j++)
@@ -189,7 +204,13 @@ namespace Renderer
 			// triangle related
 			Vector3ui * _triangles;
 			unsigned int _triangles_count;
+
+			// default vertex color
+			static const Vector4f kDefaultVertexColor;
     };
+
+	template <typename T>
+	const Vector4f MeshType<T>::kDefaultVertexColor = Vector4f(0.5f, 0.5f, 0.5f, 1.0f);
 
 	typedef MeshType<float> Mesh;
 	typedef MeshType<double> Meshd;
