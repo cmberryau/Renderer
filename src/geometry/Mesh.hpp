@@ -48,7 +48,7 @@ namespace Renderer
 
 					for (unsigned int i = 0; i < this->VerticesCount(); i++)
 					{
-						colors[i] = Mesh::kDefaultVertexColor;
+						colors[i] = MeshType<T>::kDefaultVertexColor;
 					}
 
 					this->SetColors(colors, this->VerticesCount());

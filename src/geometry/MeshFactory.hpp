@@ -21,11 +21,11 @@ namespace Renderer
             static Mesh * MeshFromObjSource(char * obj_source);
         
         protected:
-			static void MeshFactory::AppendObjSourceLine(char * obj_source_line, 
+			static void AppendObjSourceLine(char * obj_source_line,
 														 std::vector<Vector4f> * vertices,
 														 std::vector<Vector3ui> * faces);
-			static Vector4f MeshFactory::VertexFromObjSource(char * obj_vertex_line);
-			static Vector3ui MeshFactory::TriangleFromObjSource(char * obj_vertex_line);
+			static Vector4f VertexFromObjSource(char * obj_vertex_line);
+			static Vector3ui TriangleFromObjSource(char * obj_vertex_line);
 			static const int kObjSourceLineOffset;
 
             MeshFactory(){};
