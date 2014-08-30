@@ -10,16 +10,24 @@
 #define _mesh_factory_h
 
 #include "Mesh.hpp"
+#include <vector>
 
 namespace Renderer
 {
     class MeshFactory
     {
         public:
-            static Mesh * MeshFromOBJFile(const char * obj_file_path);
-            static Mesh * MeshFromOBJSource(char * obj_source);
+            static Mesh * MeshFromObjFile(const char * obj_file_path);
+            static Mesh * MeshFromObjSource(char * obj_source);
         
         protected:
+			static void MeshFactory::AppendObjSourceLine(char * obj_source_line, 
+														 std::vector<Vector4f> * vertices,
+														 std::vector<Vector3ui> * faces);
+			static Vector4f MeshFactory::VertexFromObjSource(char * obj_vertex_line);
+			static Vector3ui MeshFactory::TriangleFromObjSource(char * obj_vertex_line);
+			static const int kObjSourceLineOffset;
+
             MeshFactory(){};
             ~MeshFactory(){};
     };

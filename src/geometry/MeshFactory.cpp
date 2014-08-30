@@ -14,49 +14,85 @@
 
 namespace Renderer
 {
-    Mesh * MeshFactory::MeshFromOBJFile(const char * obj_file_path)
+	const int MeshFactory::kObjSourceLineOffset = 2;
+
+    Mesh * MeshFactory::MeshFromObjFile(const char * Obj_file_path)
     {
-        if(obj_file_path == nullptr)
+        if(Obj_file_path == nullptr)
         {
             return nullptr;
         }
         
-        char * obj_source = IO::ReadFile(obj_file_path);
+        char * Obj_source = IO::ReadFile(Obj_file_path);
         
-        Mesh * mesh = MeshFactory::MeshFromOBJSource(obj_source);
+        Mesh * mesh = MeshFactory::MeshFromObjSource(Obj_source);
         
         return mesh;
     }
     
-    Mesh * MeshFactory::MeshFromOBJSource(char * obj_source)
+    Mesh * MeshFactory::MeshFromObjSource(char * Obj_source)
     {
-        if(obj_source == nullptr)
+        if(Obj_source == nullptr)
         {
             return nullptr;
-        }
-        
-        char * line = std::strtok(obj_source, "\n");
+        }     
+
+		Mesh * mesh = new Mesh();
+
+		std::vector<Vector4f> vertices;
+		std::vector<Vector3ui> triangles;
+
+        char * line = std::strtok(Obj_source, "\n");
         
         while(line != nullptr)
         {
-            // it's a vertex
-            if(line[0] == 'v' || line[0] == 'f')
-            {
-                size_t span_to_space = 0;
-                // one space after the first value notifing what the type is
-                char * seeked_pos = line + 2;
-                for(int i=0; i<3; i++)
-                {
-                    span_to_space = strcspn(seeked_pos, " \n");
-                    float value = strtod(seeked_pos, &seeked_pos + span_to_space);
-                    
-                    seeked_pos += span_to_space + 1;
-                }
-            }
-            
+			MeshFactory::AppendObjSourceLine(line, &vertices, &triangles);
             line = std::strtok(nullptr, "\n");
         }
-        
-        return nullptr;
+
+		mesh->SetVertices(&vertices[0], static_cast<unsigned long>(vertices.size()));
+		mesh->SetTriangles(&triangles[0], static_cast<unsigned long>(triangles.size()));
+
+		return mesh;
     }
+
+	void MeshFactory::AppendObjSourceLine(char * Obj_source_line,
+										  std::vector<Vector4f> * vertices,
+										  std::vector<Vector3ui> * triangles)
+	{
+		if (Obj_source_line[0] == 'v')
+		{
+			vertices->push_back(MeshFactory::VertexFromObjSource(Obj_source_line + kObjSourceLineOffset));
+		}
+		else if (Obj_source_line[0] == 'f')
+		{			
+			triangles->push_back(MeshFactory::TriangleFromObjSource(Obj_source_line + kObjSourceLineOffset));
+		}
+	}
+
+	Vector4f MeshFactory::VertexFromObjSource(char * Obj_vertex_line)
+	{
+		Vector4f vertex;
+		char * end = Obj_vertex_line;
+		for (int i = 0; i<3; i++)
+		{
+			vertex[i] = strtof(end, &end);
+		}
+
+		vertex[3] = 1.0f;
+
+		return vertex;
+	}
+
+	Vector3ui MeshFactory::TriangleFromObjSource(char * Obj_triangle_line)
+	{
+		Vector3ui triangle;
+		char * end = Obj_triangle_line;
+		for (int i = 0; i<3; i++)
+		{
+			triangle[i] = static_cast<unsigned int>(strtol(end, &end, 10)) - 1;
+		}
+
+		return triangle;
+	}
 }
