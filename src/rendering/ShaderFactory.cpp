@@ -10,9 +10,9 @@
 
 namespace Renderer
 {
-    Shader * ShaderFactory::Create(const char * vertex_shader_source,
-                                   const char * geometry_shader_source,
-                                   const char * fragment_shader_source,
+    Shader * ShaderFactory::Create(char * vertex_shader_source,
+                                   char * geometry_shader_source,
+                                   char * fragment_shader_source,
                                    RenderingContext * context)
     {
         Shader * shader = context->Shader();
@@ -24,8 +24,8 @@ namespace Renderer
         return shader;
     }
     
-    Shader * ShaderFactory::Create(const char * vertex_shader_source,
-                                   const char * fragment_shader_source,
+    Shader * ShaderFactory::Create(char * vertex_shader_source,
+                                   char * fragment_shader_source,
                                    RenderingContext * context)
     {
         return Create(vertex_shader_source,

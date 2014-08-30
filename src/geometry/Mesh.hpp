@@ -10,6 +10,7 @@
 #define _mesh_h
 
 #include "math/Vector.hpp"
+#include <memory>
 
 namespace Renderer
 {
@@ -44,14 +45,15 @@ namespace Renderer
 				// if the mesh does not contain vertex colors, we assign default ones
 				if (this->Colors() == nullptr)
 				{
-					Vector4f * colors = new Vector4f[this->VerticesCount()];
+					Vector4f * default_colors = new Vector4f[this->VerticesCount()];
+					std::unique_ptr<Vector4f> default_colors_unique(default_colors);
 
 					for (unsigned int i = 0; i < this->VerticesCount(); i++)
 					{
-						colors[i] = MeshType<T>::kDefaultVertexColor;
+						default_colors[i] = MeshType<T>::kDefaultVertexColor;
 					}
 
-					this->SetColors(colors, this->VerticesCount());
+					this->SetColors(default_colors, this->VerticesCount());
 				}
 
 				// there must be a color for each vertex

@@ -44,7 +44,6 @@ namespace Renderer
                 
                 this->GenerateArrays(mesh);
 				this->CreateShader(mesh);
-
 				this->_mesh = mesh;
 			}
 

@@ -11,6 +11,7 @@
 
 #include <cstring>
 #include <cstdlib>
+#include <memory>
 
 namespace Renderer
 {
@@ -23,9 +24,10 @@ namespace Renderer
             return nullptr;
         }
         
-        char * Obj_source = IO::ReadFile(Obj_file_path);
+        char * obj_source = IO::ReadFile(Obj_file_path);
+		std::unique_ptr<char> obj_source_unique(obj_source);
         
-        Mesh * mesh = MeshFactory::MeshFromObjSource(Obj_source);
+		Mesh * mesh = MeshFactory::MeshFromObjSource(obj_source);
         
         return mesh;
     }

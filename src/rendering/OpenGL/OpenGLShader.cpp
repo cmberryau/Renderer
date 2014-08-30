@@ -8,17 +8,28 @@
 
 #include "OpenGLShader.hpp"
 #include <stdio.h>
+#include <memory>
 
 namespace Renderer
 {
-    OpenGLShader * OpenGLShader::Compile(const char * vertex_shader_source,
-                                         const char * geometry_shader_source,
-                                         const char * fragment_shader_source)
-    {
+    OpenGLShader * OpenGLShader::Compile(char * vertex_shader_source,
+                                         char * geometry_shader_source,
+                                         char * fragment_shader_source)
+	{
         if(vertex_shader_source == nullptr || fragment_shader_source == nullptr)
         {
             return nullptr;
         }
+
+		std::unique_ptr<char> vertex_shader_source_unique(vertex_shader_source);
+		std::unique_ptr<char> fragment_shader_source_unique(fragment_shader_source);
+		std::unique_ptr<char> geometry_shader_source_unique;
+
+		if (geometry_shader_source != nullptr)		
+		{
+			std::unique_ptr<char> geometry_shader_source_unique_swap(geometry_shader_source);
+			geometry_shader_source_unique = std::move(geometry_shader_source_unique_swap);
+		}
         
         const char * sources[3] = {vertex_shader_source,
                                    geometry_shader_source,

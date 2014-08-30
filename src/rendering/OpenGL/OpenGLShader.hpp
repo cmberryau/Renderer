@@ -24,9 +24,9 @@ namespace Renderer
     class OpenGLShader : public Shader
     {
         public:
-            OpenGLShader * Compile(const char * vertex_shader_source,
-                                   const char * geometry_shader_source,
-                                   const char * fragment_shader_source);
+            OpenGLShader * Compile(char * vertex_shader_source,
+                                   char * geometry_shader_source,
+                                   char * fragment_shader_source);
             void Use();
             GLuint Program();
         

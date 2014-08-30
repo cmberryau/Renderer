@@ -12,14 +12,16 @@
 #include <exception>
 #include <algorithm>
 #include <string>
+#include <memory>
 
 namespace Renderer
 {
 	const long long IO::kMaxFileReadBlockSize = 2048;
 
     char * IO::ReadFile(const char * file_path)
-	{
+	{		
 		char * contents = nullptr;
+		std::unique_ptr<char> contents_unique(contents);
         
 		if(file_path == nullptr)
         {
@@ -56,7 +58,8 @@ namespace Renderer
 
         // cap the end of the char array
         contents[length] = NULL;
-        
+		contents_unique.release();
+
 		return contents;
 	}
 }

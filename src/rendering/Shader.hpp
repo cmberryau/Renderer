@@ -15,9 +15,9 @@ namespace Renderer
     {
         public:
             virtual void Use() = 0;
-            virtual Shader * Compile(const char * vertex_shader_source,
-                                     const char * geometry_shader_source,
-                                     const char * fragment_shader_source) = 0;
+            virtual Shader * Compile(char * vertex_shader_source,
+                                     char * geometry_shader_source,
+                                     char * fragment_shader_source) = 0;
         
             virtual ~Shader(){}
         
