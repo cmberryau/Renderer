@@ -59,6 +59,9 @@
     <ClCompile Include="..\..\src\utility\io.cpp">
       <Filter>Source Files\utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\geometry\MeshFactory.cpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
@@ -120,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utility\io.hpp">
       <Filter>Source Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\geometry\MeshFactory.hpp">
+      <Filter>Source Files\geometry</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

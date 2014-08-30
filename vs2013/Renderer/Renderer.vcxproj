@@ -85,6 +85,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -122,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\events\EventListener.cpp" />
+    <ClCompile Include="..\..\src\geometry\MeshFactory.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\rendering\Material.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLShader.cpp" />
@@ -132,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp" />
     <ClInclude Include="..\..\src\geometry\Mesh.hpp" />
+    <ClInclude Include="..\..\src\geometry\MeshFactory.hpp" />
     <ClInclude Include="..\..\src\math\CommonMath.hpp" />
     <ClInclude Include="..\..\src\math\Matrix.hpp" />
     <ClInclude Include="..\..\src\math\Transform.hpp" />
