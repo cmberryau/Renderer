@@ -19,6 +19,7 @@ namespace Renderer
     {
         public:
 			MeshType<T>() : _vertices(nullptr), _vertices_count(0),
+							_vertex_normals(nullptr), _vertex_normals_count(0),
 							_vertex_colors(nullptr), _vertex_colors_count(0),
 							_triangles(nullptr), _triangles_count(0)
 			{
@@ -28,6 +29,7 @@ namespace Renderer
 			~MeshType<T>()
 			{
 				delete _vertices;
+				delete _vertex_normals;
 				delete _vertex_colors;
 				delete _triangles;
 			}
@@ -109,6 +111,40 @@ namespace Renderer
 			unsigned int VerticesCount()
 			{
 				return _vertices_count;
+			}
+
+			// vertex normal related
+			void SetVertexNormals(Vector3<T> * vertex_normals, unsigned int size)
+			{
+				this->_vertex_normals = new Vector3<T>[size];
+
+				if (this->_vertex_normals == nullptr)
+					return;
+
+				for (unsigned int i = 0; i < size; i++)
+				{
+					if (vertex_normals[i] == nullptr)
+						return;
+
+					this->_vertex_normals = vertex_normals[i];
+				}
+
+				this->_vertex_normals_count = size;
+			}
+			
+			const Vector3<T> * VertexNormals()
+			{
+				return (const Vector3<T> *)_vertex_normals;
+			}
+
+			unsigned int VertexNormalsSize()
+			{
+				return _vertex_normals_count * Vector3<T>::Size();
+			}
+
+			unsigned int VertexNormalsCount()
+			{
+				return _vertex_normals_count;
 			}
 
 			// vertex color related
@@ -195,15 +231,19 @@ namespace Renderer
 			}
 
 		protected:        
-			// vertex related
+			// vertices
             Vector4<T> * _vertices;
             unsigned int _vertices_count;
 
-			// vertex color related
+			// vertex normals
+			Vector3<T> * _vertex_normals;
+			unsigned int _vertex_normals_count;
+
+			// vertex colors
 			Vector4f * _vertex_colors;
 			unsigned int _vertex_colors_count;
 
-			// triangle related
+			// triangles
 			Vector3ui * _triangles;
 			unsigned int _triangles_count;
 
