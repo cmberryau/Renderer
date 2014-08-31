@@ -17,14 +17,14 @@ namespace Renderer
 {
 	const int MeshFactory::kObjSourceLineOffset = 2;
 
-    Mesh * MeshFactory::MeshFromObjFile(const char * Obj_file_path)
+    Mesh * MeshFactory::MeshFromObjFile(const char * obj_file_path)
     {
-        if(Obj_file_path == nullptr)
+        if(obj_file_path == nullptr)
         {
             return nullptr;
         }
         
-        char * obj_source = IO::ReadFile(Obj_file_path);
+        char * obj_source = IO::ReadFile(obj_file_path);
 		std::unique_ptr<char> obj_source_unique(obj_source);
         
 		Mesh * mesh = MeshFactory::MeshFromObjSource(obj_source);
@@ -32,9 +32,9 @@ namespace Renderer
         return mesh;
     }
     
-    Mesh * MeshFactory::MeshFromObjSource(char * Obj_source)
+    Mesh * MeshFactory::MeshFromObjSource(char * obj_source)
     {
-        if(Obj_source == nullptr)
+        if(obj_source == nullptr)
         {
             return nullptr;
         }     
@@ -44,7 +44,7 @@ namespace Renderer
 		std::vector<Vector4f> vertices;
 		std::vector<Vector3ui> triangles;
 
-        char * line = std::strtok(Obj_source, "\n");
+        char * line = std::strtok(obj_source, "\n");
         
         while(line != nullptr)
         {
@@ -58,17 +58,17 @@ namespace Renderer
 		return mesh;
     }
 
-	void MeshFactory::AppendObjSourceLine(char * Obj_source_line,
+	void MeshFactory::AppendObjSourceLine(char * obj_source_line,
 										  std::vector<Vector4f> * vertices,
 										  std::vector<Vector3ui> * triangles)
 	{
-		if (Obj_source_line[0] == 'v')
+		if (obj_source_line[0] == 'v')
 		{
-			vertices->push_back(MeshFactory::VertexFromObjSource(Obj_source_line + kObjSourceLineOffset));
+			vertices->push_back(MeshFactory::VertexFromObjSource(obj_source_line + kObjSourceLineOffset));
 		}
-		else if (Obj_source_line[0] == 'f')
+		else if (obj_source_line[0] == 'f')
 		{			
-			triangles->push_back(MeshFactory::TriangleFromObjSource(Obj_source_line + kObjSourceLineOffset));
+			triangles->push_back(MeshFactory::TriangleFromObjSource(obj_source_line + kObjSourceLineOffset));
 		}
 	}
 
