@@ -10,12 +10,10 @@
 #include "events/EventListener.hpp"
 #include "rendering/OpenGL/OpenGLRenderingContext.hpp"
 
-#include "math/Vector.hpp"
 #include "geometry/MeshFactory.hpp"
 #include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
 #include "objects/Object.hpp"
 #include "scene/Scene.hpp"
-#include "tests/Rotator.hpp"
 
 #include "rendering/ShaderFactory.hpp"
 #include "rendering/Material.hpp"
