@@ -73,6 +73,7 @@ int main(int argc, char ** argv)
 	rendering_context->SetCamera(camera);
 
 	scene->AddObject(test_object);
+	scene->AddObject(camera_object);
 
 	while (true)
 	{

@@ -45,14 +45,17 @@ namespace Renderer
                 glFlush();
             }
 
-			static void CheckForGLError()
+			static bool CheckForGLError()
 			{
 				GLenum error;
 				error = glGetError();
 				if (error != GL_NO_ERROR)
 				{
 					fprintf(stderr, "OpenGL error: %d\n", error);
+					return true;
 				}
+
+				return false;
 			}
 
             MeshRendererType<T> * MeshRenderer()
@@ -129,8 +132,6 @@ namespace Renderer
 					throw std::exception("glewInit failed!\n");
 				}
 #endif
-
-				CheckForGLError();
 
 				GLint actual_major_version = -1;
 				GLint actual_minor_version = -1;
