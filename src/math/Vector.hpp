@@ -23,9 +23,10 @@ namespace Renderer
     template <typename T, const int len>
 	class Vector
     {
-		public:        
+		public:  
 			// constructors
 			Vector(){};
+
 			Vector(T value)
 			{
 				for (int i = 0; i < len; i++)
@@ -35,73 +36,73 @@ namespace Renderer
 			}
         
             // member functions
-            inline Vector<T, len> Add(Vector<T, len> vec)
+            inline Vector Add(Vector<T, len> vec)
             {
                 Vector<T, len> result(0);
                 
                 for(int i = 0; i<len; i++)
                 {
-                    result[i] = this[i] + vec[i];
+                    result[i] = elements[i] + vec[i];
                 }
                 
                 return result;
             }
             
-            inline Vector<T, len> Subtract(Vector<T, len> vec)
+            inline Vector Subtract(Vector<T, len> vec)
             {
                 Vector<T, len> result(0);
                 
                 for(int i = 0; i<len; i++)
                 {
-                    result[i] = this[i] - vec[i];
+                    result[i] = elements[i] - vec[i];
                 }
                 
                 return result;
             }
         
-            inline Vector<T, len> Multiply(T factor)
+            inline Vector Multiply(T factor)
             {
                 Vector<T, len> result(0);
                 
                 for(int i = 0; i<len; i++)
                 {
-                    result[i] = this[i] * factor;
+                    result[i] = elements[i] * factor;
                 }
                 
                 return result;
             }
         
-            inline Vector<T, len> ComponentMultiply(Vector<T, len> vec)
+            inline Vector ComponentMultiply(Vector<T, len> vec)
             {
                 Vector<T, len> result(0);
                 
                 for(int i = 0; i<len; i++)
                 {
-                    result[i] = this[i] * vec[i];
+					result[i] = elements[i] * vec[i];
                 }
                 
                 return result;
             }
         
-            inline Vector<T, len> Divide(T factor)
+            inline Vector Divide(T factor)
             {
                 Vector<T, len> result(0);
                 
                 for(int i = 0; i<len; i++)
                 {
-                    result[i] = this[i] / factor;
+					result[i] = elements[i] / factor;
                 }
                 
                 return result;
             }
         
-            inline Vector<T, len> Negate()
+            inline Vector Negate()
             {
                 Vector<T, len> result(0);
                 
                 for(int i = 0; i<len; i++)
                 {
-                    result[i] = -this[i];
+					result[i] = -elements[i];
                 }
                 
                 return result;
@@ -121,7 +122,7 @@ namespace Renderer
             }
         
             // normalize(a) = each element / len(a)
-            inline Vector<T, len> Normalize()
+            inline Vector Normalize()
             {
                 Vector<T, len> result;
                 T length = this->Length();
@@ -170,13 +171,33 @@ namespace Renderer
 				printf("\n");
 			}
 
-			// operators			
-			T & operator[](int n) { return elements[n]; }
-			operator const T * () const { return &elements[0]; }
+			inline Vector & operator = (const Vector & vec)
+			{
+				assign(vec);
+				return *this;
+			}
+
+			inline T & operator [] (int n) 
+			{ 
+				return elements[n]; 
+			}
+
+			inline operator const T * () const 
+			{ 
+				return &elements[0]; 
+			}
 
         protected:        
 			// the actual elements of the vector
 			T elements[len];
+
+			inline void assign(const Vector<T, len> vec)
+			{
+				for (int i = 0; i < len; ++i)
+				{
+					elements[i] = vec.elements[i];
+				}
+			}
     };
 
 	// 
@@ -211,7 +232,11 @@ namespace Renderer
         public:
 			// constructors
 			Vector3(){};
+
+			Vector3(const Vector<T, 3> & vec) : Vector<T, 3>(vec) {}
+
             Vector3(T val) : Vector<T, 3>(val){};
+
 			Vector3(T x, T y, T z)
 			{
 				this->elements[0] = x;
@@ -222,11 +247,11 @@ namespace Renderer
 			// cross(a, b) = (a2 * b3 - a3 * b2,
 			//                a3 * b1 - a1 * b3,
 			//                a1 * b2 - a2 * b1)
-			inline Vector<T, 3> Cross(Vector<T, 3> vec)
+			inline Vector3 Cross(Vector3<T> vec)
 			{
-				return Vector<T, 3>(this[1] * vec[2] - this[2] * vec[1],
-									this[2] * vec[0] - this[0] * vec[2],
-									this[0] * vec[1] - this[1] * vec[0]);
+				return Vector3(this->elements[1] * vec[2] - this->elements[2] * vec[1],
+							   this->elements[2] * vec[0] - this->elements[0] * vec[2],
+							   this->elements[0] * vec[1] - this->elements[1] * vec[0]);
 			}
 	};
 
@@ -252,6 +277,13 @@ namespace Renderer
 				this->elements[1] = y;
 				this->elements[2] = z;
 				this->elements[3] = w;
+			}
+
+			inline Vector3<T> Vec3()
+			{
+				return Vector3<T>(this->elements[0],
+								  this->elements[1],
+								  this->elements[2]);
 			}
 	};
 

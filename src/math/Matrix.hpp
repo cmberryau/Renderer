@@ -103,8 +103,21 @@ namespace Renderer
 			}
     
 			// operators
-            Vector<T, h> & operator[](int n) { return elements[n]; }
-            operator const T * () const { return &elements[0][0]; }
+			inline Matrix<T, w, h> & operator = (const Matrix<T, w, h> & matrix)
+			{
+				assign(matrix);
+				return *this;
+			}
+
+            inline Vector<T, h> & operator [] (int n) 
+			{
+				return elements[n];
+			}
+
+            inline operator const T * () const 
+			{
+				return &elements[0][0]; 
+			}
         
 		protected:
         
