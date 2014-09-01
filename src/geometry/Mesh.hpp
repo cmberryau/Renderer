@@ -10,7 +10,11 @@
 #define _mesh_h
 
 #include "math/Vector.hpp"
+
+#include <exception>
 #include <memory>
+#include <map>
+#include <vector>
 
 namespace Renderer
 {
@@ -20,6 +24,7 @@ namespace Renderer
         public:
 			MeshType<T>() : _vertices(nullptr), _vertices_count(0),
 							_vertex_normals(nullptr), _vertex_normals_count(0),
+							_face_normals(nullptr), _face_normals_count(0),
 							_vertex_colors(nullptr), _vertex_colors_count(0),
 							_triangles(nullptr), _triangles_count(0)
 			{
@@ -29,6 +34,7 @@ namespace Renderer
 			~MeshType<T>()
 			{
 				delete _vertices;
+				delete _face_normals;
 				delete _vertex_normals;
 				delete _vertex_colors;
 				delete _triangles;
@@ -41,41 +47,39 @@ namespace Renderer
 					this->Triangles() == nullptr)
 				{
 					// todo : throw error
-					return;
+					throw std::exception();
 				}
 
-				// if the mesh does not contain vertex colors, we assign default ones
-				if (this->Colors() == nullptr)
-				{
-					Vector4f * default_colors = new Vector4f[this->VerticesCount()];
-					std::unique_ptr<Vector4f> default_colors_unique(default_colors);
-
-					for (unsigned int i = 0; i < this->VerticesCount(); i++)
-					{
-						default_colors[i] = MeshType<T>::kDefaultVertexColor;
-					}
-
-					this->SetColors(default_colors, this->VerticesCount());
-				}
-
-				// there must be a color for each vertex
-				if (this->VerticesCount() != this->ColorsCount())
-				{
-					// todo : throw error
-					return;
-				}
+				std::map<unsigned int, std::vector<unsigned int>> triangle_vertex_map;
+				std::map<unsigned int, std::vector<unsigned int>> vertex_triangle_map;
 
 				// the triangle references must not be outside the vertex buffer
 				for (unsigned int i = 0; i < this->TrianglesCount(); i++)
 				{
 					for (int j = 0; j < 3; j++)
 					{
+						// map triangle indexes to vertex indexes
+						triangle_vertex_map[i].push_back(this->Triangles()[i][j]);
+						// map vertex indexes to face indexes
+						vertex_triangle_map[this->Triangles()[i][j]].push_back(i);
+
 						if (this->Triangles()[i][j] > this->VerticesCount() - 1)
 						{
-							// todo : throw error
-							return;
+							throw std::exception();
 						}
 					}
+				}
+
+				// validate the vertex colors
+				if (!this->ValidateColors())
+				{
+					throw std::exception();
+				}
+
+				// validate normals
+				if (!this->ValidateNormals(triangle_vertex_map, vertex_triangle_map))
+				{
+					throw std::exception();
 				}
 			}
 
@@ -100,7 +104,7 @@ namespace Renderer
 
 			const Vector4<T> * Vertices()
 			{
-				return (const Vector4<T> *)_vertices;
+				return static_cast<const Vector4<T> *>(_vertices);
 			}
 
 			unsigned int VerticesSize()
@@ -111,6 +115,40 @@ namespace Renderer
 			unsigned int VerticesCount()
 			{
 				return _vertices_count;
+			}
+
+			// face normal related
+			void SetFaceNormals(Vector3<T> * face_normals, unsigned int size)
+			{
+				this->_face_normals = new Vector3<T>[size];
+
+				if (this->_face_normals == nullptr)
+					return;
+
+				for (unsigned int i = 0; i < size; i++)
+				{
+					if (face_normals[i] == nullptr)
+						return;
+
+					this->_face_normals[i] = face_normals[i];
+				}
+
+				this->_face_normals_count = size;
+			}
+
+			const Vector3<T> * FaceNormals()
+			{
+				return static_cast<const Vector3<T> *>(_face_normals);
+			}
+
+			unsigned int FaceNormalsSize()
+			{
+				return _face_normals_count * Vector3<T>::Size();
+			}
+
+			unsigned int FaceNormalsCount()
+			{
+				return _face_normals_count;
 			}
 
 			// vertex normal related
@@ -126,7 +164,7 @@ namespace Renderer
 					if (vertex_normals[i] == nullptr)
 						return;
 
-					this->_vertex_normals = vertex_normals[i];
+					this->_vertex_normals[i] = vertex_normals[i];
 				}
 
 				this->_vertex_normals_count = size;
@@ -134,7 +172,7 @@ namespace Renderer
 			
 			const Vector3<T> * VertexNormals()
 			{
-				return (const Vector3<T> *)_vertex_normals;
+				return static_cast<const Vector3<T> *>(_vertex_normals);
 			}
 
 			unsigned int VertexNormalsSize()
@@ -168,7 +206,7 @@ namespace Renderer
 
 			const Vector4f * Colors()
 			{
-				return (const Vector4f *)_vertex_colors;
+				return static_cast<const Vector4f *>(_vertex_colors);
 			}
 
 			unsigned int ColorsSize()
@@ -202,7 +240,7 @@ namespace Renderer
 
 			const Vector3ui * Triangles()
 			{
-				return (const Vector3ui *)_triangles;
+				return static_cast<const Vector3ui *>(_triangles);
 			}
 
 			unsigned int TrianglesSize()
@@ -230,7 +268,81 @@ namespace Renderer
 				}
 			}
 
-		protected:        
+		protected:
+			bool ValidateColors()
+			{
+				// if the mesh does not contain vertex colors, we assign default ones
+				if (this->Colors() == nullptr)
+				{
+					Vector4f * default_colors = new Vector4f[this->VerticesCount()];
+					std::unique_ptr<Vector4f> default_colors_unique(default_colors);
+
+					for (unsigned int i = 0; i < this->VerticesCount(); i++)
+					{
+						default_colors[i] = MeshType<T>::kDefaultVertexColor;
+					}
+
+					this->SetColors(default_colors, this->VerticesCount());
+				}
+				// there must be a color for each vertex
+				else if (this->VerticesCount() != this->ColorsCount())
+				{
+					return false;
+				}
+
+				return true;
+			}
+
+			bool ValidateNormals(std::map<unsigned int, std::vector<unsigned int>> triangle_vertex_map,
+								 std::map<unsigned int, std::vector<unsigned int>> vertex_triangle_map)
+			{
+				// if the mesh does not contain face normals, we need to assign default ones
+				if (this->FaceNormals() == nullptr)
+				{
+					Vector3<T> * default_face_normals = new Vector3<T>[this->TrianglesCount()];
+					std::unique_ptr<Vector3f> default_face_normals_unique(default_face_normals);
+
+					// evaluate the face normal based on the vertices
+					for (unsigned int i = 0; i < this->TrianglesCount(); ++i)
+					{
+						Vector4<T> face_vertex_0 = this->Vertices()[triangle_vertex_map[i][0]];
+						Vector4<T> face_vertex_1 = this->Vertices()[triangle_vertex_map[i][1]];
+
+						Vector3<T> face_normal = face_vertex_0.Vec3().Cross(face_vertex_1.Vec3());
+						default_face_normals[i] = face_normal;
+					}
+
+					this->SetFaceNormals(default_face_normals, this->TrianglesCount());
+				}
+				// there must be a normal for each vertex
+				else if (this->TrianglesCount() != this->FaceNormalsCount())
+				{
+					return false;
+				}
+
+				if (this->VertexNormals() == nullptr)
+				{
+					Vector3<T> * default_vertex_normals = new Vector3<T>[this->VerticesCount()];
+					std::unique_ptr<Vector3f> default_vertex_normals_unique(default_vertex_normals);
+
+					// evaluate the vertex normals based on the face normals
+					for (unsigned int i = 0; i < this->VerticesCount(); ++i)
+					{
+						Vector3<T> vertex_normal(0.0f);
+
+						for (unsigned int j = 0; j < vertex_triangle_map[i].size(); j++)
+						{
+							vertex_normal = vertex_normal.Add(_face_normals[vertex_triangle_map[i][j]]);
+						}
+
+						default_vertex_normals[i] = vertex_normal;
+					}
+				}
+				
+
+				return true;
+			}
+
 			// vertices
             Vector4<T> * _vertices;
             unsigned int _vertices_count;
@@ -238,6 +350,10 @@ namespace Renderer
 			// vertex normals
 			Vector3<T> * _vertex_normals;
 			unsigned int _vertex_normals_count;
+
+			// face normals
+			Vector3<T> * _face_normals;
+			unsigned int _face_normals_count;
 
 			// vertex colors
 			Vector4f * _vertex_colors;
