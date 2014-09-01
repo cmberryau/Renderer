@@ -27,9 +27,14 @@ namespace Renderer
 	{
 		public:
 			// constructors
-			Matrix(){};
+			inline Matrix(){};
 
-			Matrix(T value)
+			inline Matrix(const Matrix &that)
+			{
+				assign(that);
+			}
+
+			inline Matrix(T value)
 			{
 				for (int i = 0; i < w; i++)
 				{
@@ -37,12 +42,7 @@ namespace Renderer
 				}
 			}
 
-			Matrix(const Matrix &that)
-			{
-				assign(that);
-			}
-
-			Matrix(const Vector<T, h> &vector)
+			inline Matrix(const Vector<T, h> &vector)
 			{
 				for(int i = 0; i < w; i++)
 				{

@@ -25,9 +25,17 @@ namespace Renderer
     {
 		public:  
 			// constructors
-			Vector(){};
+			inline Vector()
+			{
 
-			Vector(T value)
+			}
+
+			inline Vector(const Vector & vec)
+			{
+				assign(vec);
+			}
+
+			inline Vector(T value)
 			{
 				for (int i = 0; i < len; i++)
 				{
@@ -191,7 +199,7 @@ namespace Renderer
 			// the actual elements of the vector
 			T elements[len];
 
-			inline void assign(const Vector<T, len> vec)
+			inline void assign(const Vector & vec)
 			{
 				for (int i = 0; i < len; ++i)
 				{
