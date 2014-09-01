@@ -60,10 +60,7 @@ int main(int argc, char ** argv)
 
 	test_mesh_renderer->SetMaterial(test_material);
 	test_mesh_renderer->SetMesh(test_mesh);
-
 	test_object->AddMeshRenderer(test_mesh_renderer);
-	test_object->LocalTransform()->SetPosition(12.5f, -50.0f, 100.0f);
-	test_object->LocalTransform()->SetScale(500.0f, 500.0f, 500.0f);
 
 	Object * camera_object = new Object();
 	Camera * camera = new Camera(rendering_context);
@@ -71,7 +68,11 @@ int main(int argc, char ** argv)
 	rendering_context->SetCamera(camera);
 
 	scene->AddObject(test_object);
+	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
+	test_object->LocalTransform()->SetScale(10.0f, 10.0f, 10.0f);
+
 	scene->AddObject(camera_object);
+	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 5.0f);
 
 	while (true)
 	{
