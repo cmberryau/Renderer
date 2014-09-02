@@ -40,14 +40,14 @@ int main(int argc, char ** argv)
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
 
 #ifdef _WIN32
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//bunny.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//square.obj");
 #else
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/bunny.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/square.obj");
 #endif	
 
 #ifdef _WIN32
 	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSL//default.vert"),
-		IO::ReadFile("src//shaders//GLSL//default.geom"),
+		//IO::ReadFile("src//shaders//GLSL//default.geom"),
 		IO::ReadFile("src//shaders//GLSL//default.frag"),
 		rendering_context);
 #else
@@ -68,20 +68,29 @@ int main(int argc, char ** argv)
 	rendering_context->SetCamera(camera);
 
 	scene->AddObject(test_object);
-	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
+	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 20.0f);
 	test_object->LocalTransform()->SetScale(10.0f, 10.0f, 10.0f);
 
 	scene->AddObject(camera_object);
-	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 5.0f);
+	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
+	camera_object->LocalTransform()->SetRotation(0.0f, 0.0f, 0.0f);
+
+	float rotation = 0.0f;
 
 	while (true)
 	{
 		event_listener->ListenForEvents();
 
 		if (event_listener->ShouldQuit())
+		{
 			break;
+		}
 
 		rendering_context->BeginScene();
+
+		rotation += 1.0f;
+
+		camera_object->LocalTransform()->SetRotation(0.0f, rotation, 0.0f);
 
 		// Render here
 		scene->UpdateAndDraw();

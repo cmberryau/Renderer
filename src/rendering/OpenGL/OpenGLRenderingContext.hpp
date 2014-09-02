@@ -35,16 +35,6 @@ namespace Renderer
             static const int kNumSupportedOpenGLVersions;
             static const int kSupportedOpenGLVersions[9][2];
 
-            void BeginScene()
-            {
-                glClear(GL_COLOR_BUFFER_BIT);
-            }
-        
-            void EndScene()
-            {
-                glFlush();
-            }
-
 			static bool CheckForGLError()
 			{
 				GLenum error;
@@ -57,6 +47,17 @@ namespace Renderer
 
 				return false;
 			}
+
+            void BeginScene()
+            {
+                glClear(GL_COLOR_BUFFER_BIT);
+				glClear(GL_DEPTH_BUFFER_BIT);
+            }
+        
+            void EndScene()
+            {
+                glFlush();
+            }
 
             MeshRendererType<T> * MeshRenderer()
             {
@@ -142,8 +143,16 @@ namespace Renderer
 				CheckForGLError();
 
 				fprintf(stdout, "OpenGL version: %d.%d\n", actual_major_version, actual_minor_version);
-
+			
 				glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+				glEnable(GL_CULL_FACE);
+				glFrontFace(GL_CW);
+				glCullFace(GL_BACK);
+
+				glEnable(GL_DEPTH_TEST);
+				glDepthFunc(GL_LESS);
+
 				CheckForGLError();
 			}
 

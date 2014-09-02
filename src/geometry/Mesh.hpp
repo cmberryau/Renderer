@@ -308,14 +308,14 @@ namespace Renderer
 						Vector4<T> face_vertex_0 = this->Vertices()[triangle_vertex_map[i][0]];
 						Vector4<T> face_vertex_1 = this->Vertices()[triangle_vertex_map[i][1]];
 
-						Vector3<T> face_normal = face_vertex_0.Vec3().Cross(face_vertex_1.Vec3());
+						Vector3<T> face_normal = face_vertex_0.Vec3().Cross(face_vertex_1.Vec3()).Normalize();
 						default_face_normals[i] = face_normal;
 					}
 
 					this->SetFaceNormals(default_face_normals, this->TrianglesCount());
 				}
-				// there must be a normal for each vertex
-				else if (this->TrianglesCount() != this->FaceNormalsCount())
+				// there must be a face normal for each face / triangle
+				else if (this->FaceNormalsCount() != this->TrianglesCount())
 				{
 					return false;
 				}
@@ -330,15 +330,22 @@ namespace Renderer
 					{
 						Vector3<T> vertex_normal(0.0f);
 
-						for (unsigned int j = 0; j < vertex_triangle_map[i].size(); j++)
+						unsigned int j;
+
+						for (j = 0; j < vertex_triangle_map[i].size(); j++)
 						{
 							vertex_normal = vertex_normal.Add(_face_normals[vertex_triangle_map[i][j]]);
 						}
-
-						default_vertex_normals[i] = vertex_normal;
+						default_vertex_normals[i] = vertex_normal.Divide(j);
 					}
+
+					this->SetVertexNormals(default_vertex_normals, this->VerticesCount());
 				}
-				
+				// there must be a vertex normal for each vertex
+				else if (this->VertexNormalsCount() != this->VerticesCount())
+				{
+					return false;
+				}
 
 				return true;
 			}

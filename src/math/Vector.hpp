@@ -137,20 +137,20 @@ namespace Renderer
                 
                 for(int i = 0; i < len; i++)
                 {
-                    result[i] = this[i] / length;
+					result[i] = elements[i] / length;
                 }
                 
                 return result;
             }
         
             // dist(a, b) = len(b) - len(a)
-            inline T Distance(Vector<T, len> vec)
+            inline T Distance(Vector vec)
             {
                 return vec.Length() - this->Length();
             }
         
             // dot(a, b) = total of elementwise multiplication
-            inline T Dot(Vector<T, len> vec)
+            inline T Dot(Vector vec)
             {
                 T total = 0;
                 

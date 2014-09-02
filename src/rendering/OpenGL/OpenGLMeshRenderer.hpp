@@ -32,6 +32,19 @@ namespace Renderer
                 return new OpenGLMeshRendererType<T>(rendering_context);
             }
         
+			static bool CheckForGLError()
+			{
+				GLenum error;
+				error = glGetError();
+				if (error != GL_NO_ERROR)
+				{
+					fprintf(stderr, "OpenGL error: %d\n", error);
+					return true;
+				}
+
+				return false;
+			}
+
 			void SetMesh(MeshType<T> * mesh)
 			{
 				if (mesh == nullptr)
@@ -55,18 +68,14 @@ namespace Renderer
 
 				glGenBuffers(1, _vertex_buffer_objects);
 				glBindBuffer(GL_ARRAY_BUFFER, _vertex_buffer_objects[0]);
-				glBufferData(GL_ARRAY_BUFFER,
-					mesh->VerticesSize() + mesh->ColorsSize(),
-					NULL, GL_STATIC_DRAW);
+				glBufferData(GL_ARRAY_BUFFER, mesh->VerticesSize() + mesh->VertexNormalsSize() + mesh->ColorsSize(), NULL, GL_STATIC_DRAW);
 				glBufferSubData(GL_ARRAY_BUFFER, 0, mesh->VerticesSize(), mesh->Vertices());
-				glBufferSubData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->ColorsSize(), mesh->Colors());
+				glBufferSubData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->VertexNormalsSize(), mesh->VertexNormals());
+				glBufferSubData(GL_ARRAY_BUFFER, mesh->VerticesSize() + mesh->VertexNormalsSize(), mesh->ColorsSize(), mesh->Colors());
 
 				glGenBuffers(1, _vertex_element_buffer);
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vertex_element_buffer[0]);
-				glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-					mesh->TrianglesSize(),
-					mesh->Triangles(),
-					GL_STATIC_DRAW);
+				glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->TrianglesSize(), mesh->Triangles(),	GL_STATIC_DRAW);
 			}
 
             void CreateShader(MeshType<float> * mesh)
@@ -74,7 +83,8 @@ namespace Renderer
                 this->_material->Use();
                 
                 glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize()));
+				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize()));
+				glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize() + mesh->VertexNormalsSize()));
 
                 OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
                 
@@ -83,6 +93,7 @@ namespace Renderer
                 
                 glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
+				glEnableVertexAttribArray(2);
             }
         
 			void CreateShader(MeshType<double> * mesh)
@@ -90,7 +101,8 @@ namespace Renderer
                 this->_material->Use();
                 
                 glVertexAttribPointer(0, 4, GL_DOUBLE, GL_FALSE, 0, NULL);
-                glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize()));
+				glVertexAttribPointer(1, 3, GL_DOUBLE, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize()));
+				glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(mesh->VerticesSize() + mesh->VertexNormalsSize()));
                 
                 OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
                 
@@ -99,6 +111,7 @@ namespace Renderer
                 
                 glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
+				glEnableVertexAttribArray(2);
             }
 
 			void Draw(ObjectType<float> * parent_object)
@@ -107,10 +120,9 @@ namespace Renderer
 					return;
                 
                 this->_material->Use();
-				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
-				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE,
-                parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 
+				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
+				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 				glBindVertexArray(_vertex_array_objects[0]);
 				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
 			}
