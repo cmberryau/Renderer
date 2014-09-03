@@ -42,7 +42,7 @@ int main(int argc, char ** argv)
 #ifdef _WIN32
 	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//bunny.obj");
 #else
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/cube.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/bunny.obj");
 #endif	
 
 #ifdef _WIN32
