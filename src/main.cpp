@@ -40,9 +40,9 @@ int main(int argc, char ** argv)
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
 
 #ifdef _WIN32
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//square.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//bunny.obj");
 #else
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/square.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/cube.obj");
 #endif	
 
 #ifdef _WIN32
@@ -52,7 +52,7 @@ int main(int argc, char ** argv)
 		rendering_context);
 #else
 	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
-		IO::ReadFile("src/shaders/GLSL/default.geom"),
+		//IO::ReadFile("src/shaders/GLSL/default.geom"),
 		IO::ReadFile("src/shaders/GLSL/default.frag"),
 		rendering_context);
 #endif
@@ -68,8 +68,8 @@ int main(int argc, char ** argv)
 	rendering_context->SetCamera(camera);
 
 	scene->AddObject(test_object);
-	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 20.0f);
-	test_object->LocalTransform()->SetScale(10.0f, 10.0f, 10.0f);
+	test_object->LocalTransform()->SetPosition(0.0f, -15.0f, 30.0f);
+	test_object->LocalTransform()->SetScale(150.0f, 150.0f, 150.0f);
 
 	scene->AddObject(camera_object);
 	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
