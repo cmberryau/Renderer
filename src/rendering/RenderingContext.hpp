@@ -33,7 +33,7 @@ namespace Renderer
             {
                 if(camera == nullptr)
                 {
-                    exit(0);
+                    return;
                 }
                 
                 this->_camera = camera;

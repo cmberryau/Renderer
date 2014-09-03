@@ -18,7 +18,12 @@
 #else
 #define GL_GLEXT_PROTOTYPES 1
 #endif
+
+#ifdef EMSCRIPTEN
+#include <SDL/SDL_opengl.h>
+#else
 #include <SDL2/SDL_opengl.h>
+#endif
 
 #ifdef _DEBUG
 #include <stdio.h>
@@ -99,7 +104,7 @@ namespace Renderer
 					requested_minor_version = kSupportedOpenGLVersions[0][1];
 				}
 
-				SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+				//SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, requested_major_version);
 				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, requested_minor_version);
 
@@ -109,7 +114,7 @@ namespace Renderer
 				i = 0;
 				while (_sdl_gl_context == nullptr && i < kNumSupportedOpenGLVersions)
 				{
-					SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+					//SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 					SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, kSupportedOpenGLVersions[i][0]);
 					SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, kSupportedOpenGLVersions[i][1]);
 

@@ -17,7 +17,12 @@
 #else
 #define GL_GLEXT_PROTOTYPES 1
 #endif
+
+#ifdef EMSCRIPTEN
+#include <SDL/SDL_opengl.h>
+#else
 #include <SDL2/SDL_opengl.h>
+#endif
 
 namespace Renderer
 {

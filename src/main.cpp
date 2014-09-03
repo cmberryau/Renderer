@@ -31,7 +31,7 @@ using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
-	Window * window = new Window(640, 480);
+	Window * window = new Window(1024, 768);
 	EventListener * event_listener = new EventListener();
 	RenderingContext * rendering_context = new OpenGLRenderingContext(window);
 	Scene * scene = new Scene();
