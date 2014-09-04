@@ -9,6 +9,7 @@
 #include "windowing/Window.hpp"
 #include "events/EventListener.hpp"
 #include "rendering/OpenGL/OpenGLRenderingContext.hpp"
+#include "rendering/OpenGLES/OpenGLESRenderingContext.hpp"
 
 #include "geometry/MeshFactory.hpp"
 #include "rendering/OpenGL/OpenGLMeshRenderer.hpp"
@@ -33,7 +34,7 @@ int main(int argc, char ** argv)
 {
 	Window * window = new Window(1024, 768);
 	EventListener * event_listener = new EventListener();
-	RenderingContext * rendering_context = new OpenGLRenderingContext(window);
+	RenderingContext * rendering_context = new OpenGLESRenderingContext(window);
 	Scene * scene = new Scene();
 
 	Object * test_object = new Object();

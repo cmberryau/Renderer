@@ -6,18 +6,12 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#ifdef EMSCRIPTEN
-
 #ifndef _opengles_shader_h
 #define _opengles_shader_h
 
 #include "rendering/Shader.hpp"
 
-#ifdef EMSCRIPTEN
-#include <SDL/SDL_opengles2.h>
-#else
 #include <SDL2/SDL_opengles2.h>
-#endif
 
 namespace Renderer
 {
@@ -39,5 +33,3 @@ namespace Renderer
 }
 
 #endif // _opengles_shader_h
-
-#endif // EMSCRIPTEN

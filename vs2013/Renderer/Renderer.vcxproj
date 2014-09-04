@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\src\geometry\MeshFactory.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\rendering\Material.cpp" />
+    <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESShader.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp" />
     <ClCompile Include="..\..\src\utility\io.cpp" />
@@ -144,6 +145,9 @@
     <ClInclude Include="..\..\src\rendering\Camera.hpp" />
     <ClInclude Include="..\..\src\rendering\Material.hpp" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESMeshRenderer.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESRenderingContext.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESShader.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLShader.hpp" />

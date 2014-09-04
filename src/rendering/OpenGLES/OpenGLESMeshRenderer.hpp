@@ -6,20 +6,14 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#ifdef EMSCRIPTEN
-
 #ifndef _opengles_mesh_renderer_h
 #define _opengles_mesh_renderer_h
 
 #include "rendering/MeshRenderer.hpp"
 #include "rendering/Camera.hpp"
-#include "rendering/OpenGLES/OpenGLShader.hpp"
+#include "rendering/OpenGLES/OpenGLESShader.hpp"
 
-#ifdef EMSCRIPTEN
-#include <SDL/SDL_opengles2.h>
-#else
 #include <SDL2/SDL_opengles2.h>
-#endif
 
 namespace Renderer
 {
@@ -34,12 +28,15 @@ namespace Renderer
         
 			void SetMesh(MeshType<T> * mesh)
 			{
+				if (mesh == nullptr)
+				{
+					throw std::exception();
+				}
 
-			}
+				mesh->Validate();
+				this->_mesh = mesh;
 
-			void GenerateArrays(MeshType<T> * mesh)
-			{
-
+				this->CreateShader(mesh);				
 			}
 
             void CreateShader(MeshType<float> * mesh)
@@ -49,13 +46,17 @@ namespace Renderer
         
 			void Draw(ObjectType<float> * parent_object)
 			{
-                
+				if (this->_mesh == nullptr)
+				{
+					throw std::exception();
+				}
+
+				this->_material->Use();
+
+				glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, _mesh->Vertices());
+				glEnableVertexAttribArray(0);
+				glDrawArrays(GL_TRIANGLES, 0, 3);
 			}
-
-			void Draw(ObjectType<double> * parent_object)
-            {
-
-            }
 
 			~OpenGLESMeshRendererType<T>()
             {
@@ -66,15 +67,6 @@ namespace Renderer
             {
                 
             }
-        
-		protected:
-        
-            GLuint _vertex_array_objects[1];
-			GLuint _vertex_element_buffer[1];
-            GLuint _vertex_buffer_objects[1];
-        
-            GLint _model_matrix_uniform;
-            GLint _projection_matrix_uniform;
 	};
     
     typedef OpenGLESMeshRendererType<float> OpenGLESMeshRenderer;
@@ -82,5 +74,3 @@ namespace Renderer
 }
 
 #endif // _opengles_mesh_renderer_h
-
-#endif // EMSCRIPTEN

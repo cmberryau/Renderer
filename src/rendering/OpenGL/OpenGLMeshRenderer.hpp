@@ -26,6 +26,8 @@
 #include <SDL2/SDL_opengl.h>
 #endif
 
+#include <exception>
+
 namespace Renderer
 {
     template <typename T>
@@ -54,8 +56,7 @@ namespace Renderer
 			{
 				if (mesh == nullptr)
 				{
-					// todo : throw error
-					return;
+					throw std::exception();
 				}
 
 				mesh->Validate();
