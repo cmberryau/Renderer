@@ -19,6 +19,9 @@ namespace Renderer
     {
         public:
             OpenGLESShader * Compile(char * vertex_shader_source,
+                                     char * fragment_shader_source);
+        
+            OpenGLESShader * Compile(char * vertex_shader_source,
                                      char * geometry_shader_source,
                                      char * fragment_shader_source);
             void Use();

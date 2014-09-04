@@ -30,6 +30,9 @@ namespace Renderer
     {
         public:
             OpenGLShader * Compile(char * vertex_shader_source,
+                                   char * fragment_shader_source);
+        
+            OpenGLShader * Compile(char * vertex_shader_source,
                                    char * geometry_shader_source,
                                    char * fragment_shader_source);
             void Use();

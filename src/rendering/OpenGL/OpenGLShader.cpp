@@ -13,6 +13,12 @@
 namespace Renderer
 {
     OpenGLShader * OpenGLShader::Compile(char * vertex_shader_source,
+                                         char * fragment_shader_source)
+	{
+        return this->Compile(vertex_shader_source, nullptr, fragment_shader_source);
+    }
+    
+    OpenGLShader * OpenGLShader::Compile(char * vertex_shader_source,
                                          char * geometry_shader_source,
                                          char * fragment_shader_source)
 	{
