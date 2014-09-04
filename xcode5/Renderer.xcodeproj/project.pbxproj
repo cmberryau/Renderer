@@ -31,6 +31,7 @@
 		87C7B47F19516CFC004C5914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47819516CFC004C5914 /* main.cpp */; };
 		87D8152319696389009A8A62 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152119696389009A8A62 /* Window.cpp */; };
 		87D8152619696392009A8A62 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152419696392009A8A62 /* EventListener.cpp */; };
+		87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,10 @@
 		87D81529196963A3009A8A62 /* MeshRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MeshRenderer.hpp; path = rendering/MeshRenderer.hpp; sourceTree = "<group>"; };
 		87D8152B196963A3009A8A62 /* RenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RenderingContext.hpp; path = rendering/RenderingContext.hpp; sourceTree = "<group>"; };
 		87D8152E196978C0009A8A62 /* libmathCommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmathCommon.dylib; path = usr/lib/system/libmathCommon.dylib; sourceTree = SDKROOT; };
+		87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESMeshRenderer.hpp; sourceTree = "<group>"; };
+		87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESRenderingContext.hpp; sourceTree = "<group>"; };
+		87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESShader.cpp; sourceTree = "<group>"; };
+		87EB986319B896B6006E75C1 /* OpenGLESShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESShader.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,6 +336,7 @@
 		87D8152719696398009A8A62 /* rendering */ = {
 			isa = PBXGroup;
 			children = (
+				87EB985A19B89694006E75C1 /* OpenGLES */,
 				87C224C119702E520012E201 /* OpenGL */,
 				873C753B198A7C9000CC151A /* Material.cpp */,
 				873C753C198A7C9000CC151A /* Material.hpp */,
@@ -342,6 +348,18 @@
 				87D8152B196963A3009A8A62 /* RenderingContext.hpp */,
 			);
 			name = rendering;
+			sourceTree = "<group>";
+		};
+		87EB985A19B89694006E75C1 /* OpenGLES */ = {
+			isa = PBXGroup;
+			children = (
+				87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */,
+				87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */,
+				87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */,
+				87EB986319B896B6006E75C1 /* OpenGLESShader.hpp */,
+			);
+			name = OpenGLES;
+			path = rendering/OpenGLES;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +468,7 @@
 			files = (
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
+				87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
 				87C75EB219896040007B1B38 /* OpenGLShader.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
