@@ -55,6 +55,15 @@ namespace Renderer
 
 				_sdl_gl_context = SDL_GL_CreateContext(window->_sdl_window);
 
+#ifdef _WIN32
+				glewExperimental = GL_TRUE;
+
+				if (glewInit() != GLEW_OK)
+				{
+					throw std::exception("glewInit failed!\n");
+				}
+#endif
+
 				glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 				glEnable(GL_CULL_FACE);

@@ -48,10 +48,8 @@ int main(int argc, char ** argv)
 #endif	
 
 #ifdef _WIN32
-	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSL//default.vert"),
-		//IO::ReadFile("src//shaders//GLSL//default.geom"),
-		IO::ReadFile("src//shaders//GLSL//default.frag"),
-		rendering_context);
+	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSL//default.vert"), nullptr, IO::ReadFile("src//shaders//GLSL//default.frag"), rendering_context);
+	//Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSLES//default.vert"), IO::ReadFile("src//shaders//GLSLES//default.frag"), rendering_context);
 #else
 	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
 		//IO::ReadFile("src/shaders/GLSL/default.geom"),
