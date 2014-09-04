@@ -34,7 +34,8 @@ int main(int argc, char ** argv)
 {
 	Window * window = new Window(1024, 768);
 	EventListener * event_listener = new EventListener();
-	RenderingContext * rendering_context = new OpenGLESRenderingContext(window);
+	RenderingContext * rendering_context = new OpenGLRenderingContext(window);
+	//RenderingContext * rendering_context = new OpenGLESRenderingContext(window);
 	Scene * scene = new Scene();
 
 	Object * test_object = new Object();
