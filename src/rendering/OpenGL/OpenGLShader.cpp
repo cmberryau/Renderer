@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef EMSCRIPTEN
+
 #include "OpenGLShader.hpp"
 #include <stdio.h>
 #include <memory>
@@ -148,3 +150,5 @@ namespace Renderer
         
     }
 }
+
+#endif // !EMSCRIPTEN

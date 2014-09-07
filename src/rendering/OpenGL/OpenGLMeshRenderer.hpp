@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef EMSCRIPTEN
+
 #ifndef _opengl_mesh_renderer_h
 #define _opengl_mesh_renderer_h
 
@@ -20,12 +22,7 @@
 #define GL_GLEXT_PROTOTYPES 1
 #endif
 
-#ifdef EMSCRIPTEN
-#include <SDL/SDL_opengl.h>
-#else
 #include <SDL2/SDL_opengl.h>
-#endif
-
 #include <exception>
 
 namespace Renderer
@@ -129,6 +126,7 @@ namespace Renderer
 
 				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
 				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
+
 				glBindVertexArray(_vertex_array_objects[0]);
 				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
 			}
@@ -139,10 +137,10 @@ namespace Renderer
                     return;
              
                 this->_material->Use();
+
 				glUniformMatrix4dv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
-                glUniformMatrix4dv(_model_matrix_uniform, 1, GL_FALSE,
-                parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
-                
+                glUniformMatrix4dv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
+
 				glBindVertexArray(_vertex_array_objects[0]);
 				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
             }
@@ -172,3 +170,5 @@ namespace Renderer
 }
 
 #endif // _opengl_mesh_renderer_h
+
+#endif // !EMSCRIPTEN

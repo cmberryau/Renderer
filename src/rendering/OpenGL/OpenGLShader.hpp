@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef EMSCRIPTEN
+
 #ifndef _opengl_shader_h
 #define _opengl_shader_h
 
@@ -47,3 +49,5 @@ namespace Renderer
 }
 
 #endif // _opengl_shader_h
+
+#endif // !EMSCRIPTEN

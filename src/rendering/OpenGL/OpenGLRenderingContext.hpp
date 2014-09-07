@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef EMSCRIPTEN
+
 #ifndef _opengl_renderingcontext_h
 #define _opengl_renderingcontext_h
 
@@ -181,3 +183,5 @@ namespace Renderer
 }
 
 #endif // _opengl_renderingcontext_h
+
+#endif // !EMSCRIPTEN
