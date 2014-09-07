@@ -36,12 +36,50 @@ namespace Renderer
 				mesh->Validate();
 				this->_mesh = mesh;
 
+				this->GenerateArrays(mesh);
+				this->CreateShader(mesh);
 				this->CreateShader(mesh);				
 			}
 
-            void CreateShader(MeshType<float> * mesh)
-            {                
+			void GenerateArrays(MeshType<float> * mesh)
+			{
+				glGenBuffers(1, &_vertex_position_buffer);
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
+				glBufferData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->Vertices(), GL_STATIC_DRAW);
 
+				glGenBuffers(1, &_vertex_normal_buffer);
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_normal_buffer);
+				glBufferData(GL_ARRAY_BUFFER, mesh->VertexNormalsSize(), mesh->VertexNormals(), GL_STATIC_DRAW);
+
+				glGenBuffers(1, &_vertex_color_buffer);
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_color_buffer);
+				glBufferData(GL_ARRAY_BUFFER, mesh->ColorsSize(), mesh->Colors(), GL_STATIC_DRAW);
+
+				glGenBuffers(1, &_triangle_index_buffer);
+				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _triangle_index_buffer);
+				glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->TrianglesSize(), mesh->Triangles(), GL_STATIC_DRAW);
+			}
+
+            void CreateShader(MeshType<float> * mesh)
+            {   
+				this->_material->Use();
+
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
+				glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+				glEnableVertexAttribArray(0);
+
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_normal_buffer);
+				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+				glEnableVertexAttribArray(1);
+
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_color_buffer);
+				glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+				glEnableVertexAttribArray(2);
+
+				OpenGLESShader * opengles_shader = dynamic_cast<OpenGLESShader *>(this->_material->Shader());
+
+				_model_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "model_matrix");
+				_projection_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "projection_matrix");
             }
         
 			void Draw(ObjectType<float> * parent_object)
@@ -53,9 +91,11 @@ namespace Renderer
 
 				this->_material->Use();
 
-				glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, _mesh->Vertices());
-				glEnableVertexAttribArray(0);
-				glDrawArrays(GL_TRIANGLES, 0, 3);
+				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
+				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
+
+				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _triangle_index_buffer);
+				glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
 			}
 
 			~OpenGLESMeshRendererType<T>()
@@ -67,6 +107,15 @@ namespace Renderer
             {
                 
             }
+
+		protected:
+			GLuint _vertex_position_buffer;
+			GLuint _vertex_normal_buffer;
+			GLuint _vertex_color_buffer;
+			GLuint _triangle_index_buffer;
+
+			GLint _model_matrix_uniform;
+			GLint _projection_matrix_uniform;
 	};
     
     typedef OpenGLESMeshRendererType<float> OpenGLESMeshRenderer;

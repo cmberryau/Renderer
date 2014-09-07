@@ -21,7 +21,7 @@ namespace Renderer
 		{
 			throw std::exception();
 		}
-		
+
 		std::unique_ptr<char> vertex_shader_source_unique(vertex_shader_source);
 		std::unique_ptr<char> fragment_shader_source_unique(fragment_shader_source);
 
@@ -36,7 +36,7 @@ namespace Renderer
 		_program = glCreateProgram();
 
 		// run through the shader sources
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			if (sources[i] == nullptr)
 			{

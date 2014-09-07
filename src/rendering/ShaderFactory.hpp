@@ -12,6 +12,9 @@
 #include "OpenGL/OpenGLRenderingContext.hpp"
 #include "OpenGL/OpenGLShader.hpp"
 
+#include "OpenGLES/OpenGLESRenderingContext.hpp"
+#include "OpenGLES/OpenGLESShader.hpp"
+
 namespace Renderer
 {
     class ShaderFactory
