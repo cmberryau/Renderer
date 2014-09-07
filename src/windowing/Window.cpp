@@ -28,10 +28,9 @@ namespace Renderer
         return _height;
     }
 
-	Window::Window(int width, int height)
-    : _width(width), _height(height)
+	Window::Window(int width, int height) : _width(width), _height(height)
 	{
-		if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+		if (SDL_Init(SDL_INIT_VIDEO) != 0)
 		{
 			throw std::exception();
 		}
