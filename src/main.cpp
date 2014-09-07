@@ -28,34 +28,75 @@
 #include <crtdbg.h>
 #endif
 
+#ifdef EMSCRIPTEN
+#include <emscripten.h>
+#endif
+
 using namespace Renderer;
+
+Window * window;
+EventListener * event_listener;
+RenderingContext * rendering_context;
+Scene * scene;
+
+float rotation = 0.0f;
+Object * test_object;
+
+void emscripten_loop()
+{
+	event_listener->ListenForEvents();
+
+	if (event_listener->ShouldQuit())
+	{
+		return;
+	}
+
+	rendering_context->BeginScene();
+
+	rotation += 1.0f;
+
+	test_object->LocalTransform()->SetRotation(0.0f, rotation, 0.0f);
+
+	// Render here
+	scene->UpdateAndDraw();
+
+	rendering_context->EndScene();
+
+	window->Swap();
+}
 
 int main(int argc, char ** argv)
 {
-	Window * window = new Window(1024, 768);
-	EventListener * event_listener = new EventListener();
+	window = new Window(640, 480);
+	event_listener = new EventListener();
+#ifndef EMSCRIPTEN
 	RenderingContext * rendering_context = new OpenGLRenderingContext(window);
-	//RenderingContext * rendering_context = new OpenGLESRenderingContext(window);
-	Scene * scene = new Scene();
+#else
+	rendering_context = new OpenGLESRenderingContext(window);
+#endif
 
-	Object * test_object = new Object();
+	scene = new Scene();
+
+	test_object = new Object();
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
 
 #ifdef _WIN32
 	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//bunny.obj");
+#elif EMSCRIPTEN
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("bunny.obj");
 #else
 	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/bunny.obj");
-#endif	
+#endif
 
 #ifdef _WIN32
 	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSL//default.vert"), nullptr, IO::ReadFile("src//shaders//GLSL//default.frag"), rendering_context);
 	//Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSLES//default.vert"), IO::ReadFile("src//shaders//GLSLES//default.frag"), rendering_context);
+#elif EMSCRIPTEN
+	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("/shaders/GLSLES/default.vert"), IO::ReadFile("/shaders/GLSLES/default.frag"), rendering_context);
 #else
-	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"),
-		//IO::ReadFile("src/shaders/GLSL/default.geom"),
-		IO::ReadFile("src/shaders/GLSL/default.frag"),
-		rendering_context);
+	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"), IO::ReadFile("src/shaders/GLSL/default.frag"), rendering_context);
 #endif
+
 	Material * test_material = new Material(test_shader);
 
 	test_mesh_renderer->SetMaterial(test_material);
@@ -75,7 +116,11 @@ int main(int argc, char ** argv)
 	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	camera_object->LocalTransform()->SetRotation(0.0f, 0.0f, 0.0f);
 
-	float rotation = 0.0f;
+	rotation = 0.0f;
+
+#ifdef EMSCRIPTEN
+	emscripten_set_main_loop(emscripten_loop, 0, true);
+#endif
 
 	while (true)
 	{
@@ -90,7 +135,7 @@ int main(int argc, char ** argv)
 
 		rotation += 1.0f;
 
-		camera_object->LocalTransform()->SetRotation(0.0f, rotation, 0.0f);
+		test_object->LocalTransform()->SetRotation(0.0f, rotation, 0.0f);
 
 		// Render here
 		scene->UpdateAndDraw();
