@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifdef EMSCRIPTEN
+
 #include "OpenGLESShader.hpp"
 
 #include <stdio.h>
@@ -140,3 +142,5 @@ namespace Renderer
         
     }
 }
+
+#endif

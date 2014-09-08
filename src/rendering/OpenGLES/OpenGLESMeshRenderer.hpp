@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifdef EMSCRIPTEN
+
 #ifndef _opengles_mesh_renderer_h
 #define _opengles_mesh_renderer_h
 
@@ -123,3 +125,5 @@ namespace Renderer
 }
 
 #endif // _opengles_mesh_renderer_h
+
+#endif

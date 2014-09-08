@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifdef EMSCRIPTEN
+
 #ifndef _opengles_shader_h
 #define _opengles_shader_h
 
@@ -43,3 +45,5 @@ namespace Renderer
 }
 
 #endif // _opengles_shader_h
+
+#endif

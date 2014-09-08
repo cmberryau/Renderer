@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifdef EMSCRIPTEN
+
 #ifndef _opengles_renderingcontext_h
 #define _opengles_renderingcontext_h
 
@@ -88,3 +90,5 @@ namespace Renderer
 }
 
 #endif // _opengles_renderingcontext_h
+
+#endif
