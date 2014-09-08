@@ -237,6 +237,7 @@ xcode5/RendererTests/._RendererTests.m
 xcode5/RendererTests/en.lproj/._InfoPlist.strings
 
 !assets/**
+!emscripten/**
 
 #emscripten
 *.bc
