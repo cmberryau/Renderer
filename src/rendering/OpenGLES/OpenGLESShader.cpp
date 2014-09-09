@@ -72,6 +72,11 @@ namespace Renderer
 			glAttachShader(_program, shaders[i]);
 		}
 
+        // get explicit locations for attributes
+        glBindAttribLocation(_program, 0, "position");
+        glBindAttribLocation(_program, 1, "normal");
+        glBindAttribLocation(_program, 2, "color");
+        
 		glLinkProgram(_program);
 
 		GLint linked;

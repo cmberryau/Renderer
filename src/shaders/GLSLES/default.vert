@@ -9,6 +9,12 @@ varying vec4 vs_gs_color;
 
 void main()
 {
-    vs_gs_color = vec4(0.0, 1.0, 0.0, 1.0);
-    gl_Position = projection_matrix * (model_matrix * position);
+    vec4 world_position = model_matrix * position;
+    vec3 world_normal = normalize(vec3(model_matrix * vec4(normal, 0.0)));
+    vec3 light_vec = normalize(vec3(0.0, 0.0, 0.0) - world_position.xyz);
+
+    float ndotl = dot(world_normal.xyz, light_vec);
+
+    vs_gs_color = color * ndotl;
+    gl_Position = projection_matrix * world_position;
 }
