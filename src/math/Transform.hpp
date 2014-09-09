@@ -64,6 +64,7 @@ namespace Renderer
                                                             rotation_axes[1],
                                                             rotation_axes[2]);
                     
+                    _normal_matrix = _normal_matrix.Multiply(rotation_matrix[i]);
                     _composed_matrix = _composed_matrix.Multiply(rotation_matrix[i]);
                 }
             }
@@ -85,6 +86,7 @@ namespace Renderer
                                                             rotation_axes[1],
                                                             rotation_axes[2]);
                     
+                    _normal_matrix = _normal_matrix.Multiply(rotation_matrix[i]);
                     _composed_matrix = _composed_matrix.Multiply(rotation_matrix[i]);
                     _rotation[i] = rotation[i];
                 }
@@ -134,15 +136,21 @@ namespace Renderer
                 _composed_matrix = _composed_matrix.Multiply(scale_matrix);
             }
 
+            Matrix4<T> NormalMatrix()
+            {
+                return _normal_matrix;
+            }
+        
 			Matrix4<T> ComposedMatrix()
             {
                 return _composed_matrix;
             }
 
             TransformType<T>(): _position(T(0), T(0), T(0)),
-                            _rotation(T(0), T(0), T(0)),
-                               _scale(T(1), T(1), T(1)),
-                            _composed_matrix(Matrix4<T>::Identity())
+                                _rotation(T(0), T(0), T(0)),
+                                _scale(T(1), T(1), T(1)),
+                                _composed_matrix(Matrix4<T>::Identity()),
+                                _normal_matrix(Matrix4<T>::Identity())
         
             {
                 
@@ -159,6 +167,7 @@ namespace Renderer
             Vector3<T> _scale;
         
             Matrix4<T> _composed_matrix;
+            Matrix4<T> _normal_matrix;
     };
     
     typedef TransformType<float> Transform;

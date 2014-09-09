@@ -92,6 +92,7 @@ namespace Renderer
                 OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
                 
                 _model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
+                _normal_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "normal_matrix");
                 _projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
                 
                 glEnableVertexAttribArray(0);
@@ -110,6 +111,7 @@ namespace Renderer
                 OpenGLShader * opengl_shader = dynamic_cast<OpenGLShader *>(this->_material->Shader());
                 
                 _model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
+                _normal_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "normal_matrix");
                 _projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
                 
                 glEnableVertexAttribArray(0);
@@ -125,6 +127,7 @@ namespace Renderer
                 this->_material->Use();
 
 				glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
+                glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->NormalMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 
 				glBindVertexArray(_vertex_array_objects[0]);
@@ -139,6 +142,7 @@ namespace Renderer
                 this->_material->Use();
 
 				glUniformMatrix4dv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
+                glUniformMatrix4dv(_normal_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->NormalMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
                 glUniformMatrix4dv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 
 				glBindVertexArray(_vertex_array_objects[0]);
@@ -162,6 +166,7 @@ namespace Renderer
             GLuint _vertex_buffer_objects[1];
         
             GLint _model_matrix_uniform;
+            GLint _normal_matrix_uniform;
             GLint _projection_matrix_uniform;
 	};
     

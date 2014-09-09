@@ -86,16 +86,8 @@ namespace Renderer
                 
                	OpenGLESShader * opengles_shader = dynamic_cast<OpenGLESShader *>(this->_material->Shader());
                 
-                // confirm our attributes
-                GLint max_number_of_attributes;
-                glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &max_number_of_attributes);
-                printf("Max number of attributes: %d\n", max_number_of_attributes);
-                
-                GLint number_of_attributes = 0;
-                glGetProgramiv(opengles_shader->Program(), GL_ACTIVE_ATTRIBUTES, &number_of_attributes);
-                printf("Number of attributes: %d\n", number_of_attributes);
-                
 				_model_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "model_matrix");
+   				_normal_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "normal_matrix");
 				_projection_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "projection_matrix");
             }
         
@@ -109,6 +101,7 @@ namespace Renderer
 				this->_material->Use();
                 
                 glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
+				glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->NormalMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 				glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
 
 				glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _triangle_index_buffer);
@@ -133,6 +126,7 @@ namespace Renderer
 			GLuint _triangle_index_buffer;
 
 			GLint _model_matrix_uniform;
+            GLint _normal_matrix_uniform;
 			GLint _projection_matrix_uniform;
 	};
     

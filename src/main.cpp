@@ -39,7 +39,6 @@ EventListener * event_listener;
 RenderingContext * rendering_context;
 Scene * scene;
 
-float rotation = 0.0f;
 Object * test_object;
 
 void emscripten_loop()
@@ -53,9 +52,7 @@ void emscripten_loop()
 
 	rendering_context->BeginScene();
 
-	rotation += 1.0f;
-
-	test_object->LocalTransform()->SetRotation(0.0f, rotation, 0.0f);
+    test_object->LocalTransform()->Rotate(1.0f, 1.0f, 0.0f);
 
 	// Render here
 	scene->UpdateAndDraw();
@@ -81,11 +78,11 @@ int main(int argc, char ** argv)
 	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
 
 #ifdef _WIN32
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//bunny.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//cube.obj");
 #elif EMSCRIPTEN
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("bunny.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("cube.obj");
 #else
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/bunny.obj");
+	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/cube.obj");
 #endif
 
 #ifdef _WIN32
@@ -109,14 +106,11 @@ int main(int argc, char ** argv)
 	rendering_context->SetCamera(camera);
 
 	scene->AddObject(test_object);
-	test_object->LocalTransform()->SetPosition(0.0f, -15.0f, 30.0f);
-	test_object->LocalTransform()->SetScale(150.0f, 150.0f, 150.0f);
+	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 2.0f);
 
 	scene->AddObject(camera_object);
 	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
 	camera_object->LocalTransform()->SetRotation(0.0f, 0.0f, 0.0f);
-
-	rotation = 0.0f;
 
 #ifdef EMSCRIPTEN
 	emscripten_set_main_loop(emscripten_loop, 0, true);
@@ -133,9 +127,7 @@ int main(int argc, char ** argv)
 
 		rendering_context->BeginScene();
 
-		rotation += 1.0f;
-
-		test_object->LocalTransform()->SetRotation(0.0f, rotation, 0.0f);
+		test_object->LocalTransform()->Rotate(1.0f, 1.0f, 0.0f);
 
 		// Render here
 		scene->UpdateAndDraw();
