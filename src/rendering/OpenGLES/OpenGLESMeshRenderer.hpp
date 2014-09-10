@@ -38,11 +38,11 @@ namespace Renderer
 				mesh->Validate();
 				this->_mesh = mesh;
 
-				this->GenerateArrays(mesh);
-				this->CreateShader(mesh);			
+				this->GenerateBuffers(mesh);
+				this->SetupShader(mesh);
 			}
 
-			void GenerateArrays(MeshType<float> * mesh)
+			void GenerateBuffers(MeshType<float> * mesh)
 			{
 				glGenBuffers(1, &_vertex_position_buffer);
 				glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
@@ -65,7 +65,7 @@ namespace Renderer
                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 			}
 
-            void CreateShader(MeshType<float> * mesh)
+            void SetupShader(MeshType<float> * mesh)
             {   
 				this->_material->Use();
                 

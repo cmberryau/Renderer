@@ -6,12 +6,14 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#include <string>
+
 namespace Renderer
 {
 	class IO
 	{
 		public:
-			static char * ReadFile(const char * file_path);
+            static std::string ReadFile(std::string & file_path);
 
 		protected:
 			IO();

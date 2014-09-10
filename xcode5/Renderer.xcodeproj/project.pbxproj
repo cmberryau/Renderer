@@ -16,6 +16,7 @@
 		878008D719ADD99700329645 /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878008D619ADD99700329645 /* MeshFactory.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
+		87BB486219C079C000A61967 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87BB486019C079C000A61967 /* util.cpp */; };
 		87BC838B19452C3E00D97C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC838A19452C3E00D97C8E /* Cocoa.framework */; };
 		87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839319452C3E00D97C8E /* InfoPlist.strings */; };
 		87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839919452C3E00D97C8E /* Credits.rtf */; };
@@ -65,6 +66,8 @@
 		87A0B746195A1261003F53C6 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = math/Vector.hpp; sourceTree = "<group>"; };
 		87B7A53F19864BF0003C9B41 /* IObjectAddable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = IObjectAddable.hpp; path = objects/IObjectAddable.hpp; sourceTree = "<group>"; };
 		87B7A5411986526C003C9B41 /* Rotator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rotator.hpp; sourceTree = "<group>"; };
+		87BB486019C079C000A61967 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = util.cpp; path = utility/util.cpp; sourceTree = "<group>"; };
+		87BB486119C079C000A61967 /* util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = util.hpp; path = utility/util.hpp; sourceTree = "<group>"; };
 		87BC838719452C3E00D97C8E /* Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BC838A19452C3E00D97C8E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		87BC838D19452C3E00D97C8E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -139,8 +142,10 @@
 		87408169198FE49700C97976 /* utility */ = {
 			isa = PBXGroup;
 			children = (
-				8740816A198FE49E00C97976 /* io.cpp */,
+				87BB486119C079C000A61967 /* util.hpp */,
+				87BB486019C079C000A61967 /* util.cpp */,
 				8740816B198FE49E00C97976 /* io.hpp */,
+				8740816A198FE49E00C97976 /* io.cpp */,
 			);
 			name = utility;
 			sourceTree = "<group>";
@@ -269,8 +274,8 @@
 		87C224C119702E520012E201 /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
-				87C75EB119896040007B1B38 /* OpenGLShader.cpp */,
 				87C75EB019895FE7007B1B38 /* OpenGLShader.hpp */,
+				87C75EB119896040007B1B38 /* OpenGLShader.cpp */,
 				87C224C319702E5B0012E201 /* OpenGLMeshRenderer.hpp */,
 				87C224C519702E5B0012E201 /* OpenGLRenderingContext.hpp */,
 			);
@@ -299,8 +304,8 @@
 		87CC70A01961B3A1001EDA7D /* geometry */ = {
 			isa = PBXGroup;
 			children = (
-				878008D619ADD99700329645 /* MeshFactory.cpp */,
 				878008D519ADD8A300329645 /* MeshFactory.hpp */,
+				878008D619ADD99700329645 /* MeshFactory.cpp */,
 				87CC70A21961B3BA001EDA7D /* Mesh.hpp */,
 			);
 			name = geometry;
@@ -309,8 +314,8 @@
 		87D8151A19696251009A8A62 /* events */ = {
 			isa = PBXGroup;
 			children = (
-				87D8152419696392009A8A62 /* EventListener.cpp */,
 				87D8152519696392009A8A62 /* EventListener.hpp */,
+				87D8152419696392009A8A62 /* EventListener.cpp */,
 			);
 			name = events;
 			sourceTree = "<group>";
@@ -327,8 +332,8 @@
 		87D8151D1969626D009A8A62 /* windowing */ = {
 			isa = PBXGroup;
 			children = (
-				87D8152119696389009A8A62 /* Window.cpp */,
 				87D8152219696389009A8A62 /* Window.hpp */,
+				87D8152119696389009A8A62 /* Window.cpp */,
 			);
 			name = windowing;
 			sourceTree = "<group>";
@@ -340,8 +345,8 @@
 				87C224C119702E520012E201 /* OpenGL */,
 				873C753B198A7C9000CC151A /* Material.cpp */,
 				873C753C198A7C9000CC151A /* Material.hpp */,
-				87C75EAE19895C29007B1B38 /* ShaderFactory.cpp */,
 				87C75EAD19895B0E007B1B38 /* ShaderFactory.hpp */,
+				87C75EAE19895C29007B1B38 /* ShaderFactory.cpp */,
 				87C75EAC198959C1007B1B38 /* Shader.hpp */,
 				8756FCCC197465A600A016AD /* Camera.hpp */,
 				87D81529196963A3009A8A62 /* MeshRenderer.hpp */,
@@ -353,10 +358,10 @@
 		87EB985A19B89694006E75C1 /* OpenGLES */ = {
 			isa = PBXGroup;
 			children = (
+				87EB986319B896B6006E75C1 /* OpenGLESShader.hpp */,
+				87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */,
 				87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */,
 				87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */,
-				87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */,
-				87EB986319B896B6006E75C1 /* OpenGLESShader.hpp */,
 			);
 			name = OpenGLES;
 			path = rendering/OpenGLES;
@@ -469,6 +474,7 @@
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
 				87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */,
+				87BB486219C079C000A61967 /* util.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
 				87C75EB219896040007B1B38 /* OpenGLShader.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,

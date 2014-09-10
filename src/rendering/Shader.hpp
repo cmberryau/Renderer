@@ -9,6 +9,8 @@
 #ifndef _shader_h
 #define _shader_h
 
+#include <string>
+
 namespace Renderer
 {
     class Shader
@@ -16,12 +18,12 @@ namespace Renderer
         public:
             virtual void Use() = 0;
         
-            virtual Shader * Compile(char * vertex_shader_source,
-                                     char * fragment_shader_source) = 0;
+            virtual Shader * Compile(std::string & vertex_shader_source,
+                                     std::string & fragment_shader_source) = 0;
         
-            virtual Shader * Compile(char * vertex_shader_source,
-                                     char * geometry_shader_source,
-                                     char * fragment_shader_source) = 0;
+            virtual Shader * Compile(std::string & vertex_shader_source,
+                                     std::string & geometry_shader_source,
+                                     std::string & fragment_shader_source) = 0;
         
             virtual ~Shader(){}
         

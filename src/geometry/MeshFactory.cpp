@@ -8,6 +8,7 @@
 
 #include "MeshFactory.hpp"
 #include "utility/io.hpp"
+#include "utility/util.hpp"
 
 #include <cstring>
 #include <cstdlib>
@@ -17,57 +18,50 @@ namespace Renderer
 {
 	const int MeshFactory::kObjSourceLineOffset = 2;
     
-    Mesh * MeshFactory::MeshFromObjFile(const char * obj_file_path)
-    {
-        if(obj_file_path == nullptr)
-        {
-            return nullptr;
-        }
-        
-        char * obj_source = IO::ReadFile(obj_file_path);
-		std::unique_ptr<char> obj_source_unique(obj_source);
+    Mesh * MeshFactory::MeshFromObjFile(std::string & obj_file_path)
+    {        
+        std::string obj_source = IO::ReadFile(obj_file_path);
         
 		Mesh * mesh = MeshFactory::MeshFromObjSource(obj_source);
         
         return mesh;
     }
     
-    Mesh * MeshFactory::MeshFromObjSource(char * obj_source)
+    Mesh * MeshFactory::MeshFromObjSource(std::string & obj_source)
     {
-        if(obj_source == nullptr)
-        {
-            return nullptr;
-        }
-        
 		Mesh * mesh = new Mesh();
         
-		std::vector<Vector4f> vertices;
-        std::vector<Vector3f> normals;
-        std::vector<Vector2f> uvs;
+		std::vector<Vector4f> intermediate_vertices;
+        std::vector<Vector3f> intermediate_normals;
+        std::vector<Vector2f> intermediate_uvs;
 		std::vector<Vector3ui> triangles;
         
-        char * line = std::strtok(obj_source, "\n");
+        std::vector<std::string> lines = split_string(obj_source, '\n');
         
-        while(line != nullptr)
+        std::vector<std::string>::iterator it;
+        for(it = lines.begin(); it != lines.end(); ++it)
         {
-			MeshFactory::AppendObjSourceLine(line, vertices, normals, uvs, triangles);
-            line = std::strtok(nullptr, "\n");
+			MeshFactory::AppendObjSourceLine(*it,
+                                             intermediate_vertices,
+                                             intermediate_normals,
+                                             intermediate_uvs,
+                                             triangles);
         }
         
-        if(vertices.size() == 0 || triangles.size() == 0)
+        if(intermediate_vertices.size() == 0 || triangles.size() == 0)
         {
             throw std::exception();
         }
         
-		mesh->SetVertices(&vertices[0], static_cast<unsigned long>(vertices.size()));
+		mesh->SetVertices(&intermediate_vertices[0], static_cast<unsigned long>(intermediate_vertices.size()));
 		mesh->SetTriangles(&triangles[0], static_cast<unsigned long>(triangles.size()));
         
-        if(normals.size() != 0)
+        if(intermediate_normals.size() != 0)
         {
-            mesh->SetVertexNormals(&normals[0], static_cast<unsigned long>(normals.size()));
+            //mesh->SetVertexNormals(&normals[0], static_cast<unsigned long>(normals.size()));
         }
         
-        if(uvs.size() != 0 )
+        if(intermediate_uvs.size() != 0 )
         {
             
         }
@@ -75,7 +69,7 @@ namespace Renderer
 		return mesh;
     }
     
-	void MeshFactory::AppendObjSourceLine(char * obj_source_line,
+	void MeshFactory::AppendObjSourceLine(std::string & obj_source_line,
 										  std::vector<Vector4f> & vertices,
                                           std::vector<Vector3f> & normals,
                                           std::vector<Vector2f> & uvs,
@@ -96,7 +90,7 @@ namespace Renderer
             else if(obj_source_line[1] == ' ')
             {
                 // vertex position
-       			vertices.push_back(MeshFactory::VertexFromObjSource(obj_source_line + kObjSourceLineOffset));
+       			vertices.push_back(MeshFactory::VertexFromObjSource(obj_source_line));
             }
             else
             {
@@ -105,17 +99,24 @@ namespace Renderer
 		}
 		else if (obj_source_line[0] == 'f')
 		{
-			triangles.push_back(MeshFactory::TriangleFromObjSource(obj_source_line + kObjSourceLineOffset));
+			triangles.push_back(MeshFactory::TriangleFromObjSource(obj_source_line));
 		}
 	}
     
-	Vector4f MeshFactory::VertexFromObjSource(char * obj_vertex_line)
+	Vector4f MeshFactory::VertexFromObjSource(std::string & obj_vertex_line)
 	{
+        std::locale loc;
+        std::vector<std::string> elements = split_string(obj_vertex_line, ' ');
+        
 		Vector4f vertex;
-		char * end = obj_vertex_line;
-		for (int i = 0; i<3; i++)
+        std::vector<std::string>::iterator it; int i;
+		for (it = elements.begin(), i = 0; it != elements.end(); ++it)
 		{
-			vertex[i] = strtof(end, &end);
+            if(std::isdigit((*it)[0], loc) || (*it)[0] == '-')
+            {
+                vertex[i] = std::stof(*it);
+                ++i;
+            }
 		}
         
 		vertex[3] = 1.0f;
@@ -123,41 +124,58 @@ namespace Renderer
 		return vertex;
 	}
     
-    Vector3f MeshFactory::NormalFromObjSource(char * obj_normal_line)
+    Vector3f MeshFactory::NormalFromObjSource(std::string & obj_normal_line)
     {
+        std::vector<std::string> elements = split_string(obj_normal_line, ' ');
+        
         Vector3f normal;
-        char * end = obj_normal_line;
-		for (int i = 0; i<3; i++)
+        std::vector<std::string>::iterator it; int i;
+		for (it = elements.begin(), i = 0; it != elements.end(); ++it, ++i)
 		{
-			normal[i] = strtof(end, &end);
+			//normal[i] = strtof(end, &end);
 		}
         
 		return normal;
     }
     
-    Vector2f MeshFactory::UVFromObjSource(char * obj_uv_line)
+    Vector2f MeshFactory::UVFromObjSource(std::string & obj_uv_line)
     {
-        Vector2f uv;
-        char * end = obj_uv_line;
+        std::vector<std::string> elements = split_string(obj_uv_line, ' ');
         
-		for (int i = 0; i<2; i++)
+        Vector2f uv;
+        
+        std::vector<std::string>::iterator it; int i;
+		for (it = elements.begin(), i = 0; it != elements.end(); ++it, ++i)
 		{
-			uv[i] = strtof(end, &end);
+			//uv[i] = strtof(end, &end);
 		}
         
         return uv;
     }
     
-	Vector3ui MeshFactory::TriangleFromObjSource(char * obj_triangle_line)
+	Vector3ui MeshFactory::TriangleFromObjSource(std::string & obj_triangle_line)
 	{
+        std::locale loc;
+        std::vector<std::string> elements = split_string(obj_triangle_line, ' ');
 		Vector3ui triangle;
-		char * end = obj_triangle_line;
         
-		for (int i = 0; i<3; i++)
+        std::vector<std::string>::iterator it; int i;
+		for (it = elements.begin(), i = 0; it != elements.end(); ++it)
 		{
-			triangle[i] = static_cast<unsigned int>(strtol(end, &end, 10)) - 1;
-            
-            end = strchr(end, ' ');
+            if(std::isdigit((*it)[0], loc))
+            {
+                std::vector<std::string> sub_elements = split_string(*it, '\\');
+                std::vector<std::string>::iterator sub_it; int j;
+                for (sub_it = sub_elements.begin(), j = 0; sub_it != sub_elements.end(); ++sub_it)
+                {
+                    if(j == 0)
+                    {
+                        triangle[i] = static_cast<unsigned int>(std::stoll(*it) - 1);
+                    }
+                    ++j;
+                }
+                ++i;
+            }
         }
         
 		return triangle;

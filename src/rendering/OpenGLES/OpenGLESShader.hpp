@@ -27,12 +27,12 @@ namespace Renderer
     class OpenGLESShader : public Shader
     {
         public:
-            OpenGLESShader * Compile(char * vertex_shader_source,
-                                     char * fragment_shader_source);
+            OpenGLESShader * Compile(std::string & vertex_shader_source,
+                                     std::string & fragment_shader_source);
         
-            OpenGLESShader * Compile(char * vertex_shader_source,
-                                     char * geometry_shader_source,
-                                     char * fragment_shader_source);
+            OpenGLESShader * Compile(std::string & vertex_shader_source,
+                                     std::string & geometry_shader_source,
+                                     std::string & fragment_shader_source);
             void Use();
             GLuint Program();
         

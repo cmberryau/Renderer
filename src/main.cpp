@@ -19,6 +19,8 @@
 #include "rendering/ShaderFactory.hpp"
 #include "rendering/Material.hpp"
 
+#include "tests/Rotator.hpp"
+
 #include "utility/io.hpp"
 
 // for memory leak detection on windows
@@ -71,30 +73,53 @@ int main(int argc, char ** argv)
 
 	scene = new Scene();
 
+    std::string sphere_file;
+    std::string cube_file;
+    std::string cone_file;
+    
 #ifdef _WIN32
-	Mesh * sphere_mesh = MeshFactory::MeshFromObjFile("assets//sphere.obj");
-    Mesh * cube_mesh = MeshFactory::MeshFromObjFile("assets//cube.obj");
-    Mesh * cone_mesh = MeshFactory::MeshFromObjFile("assets//cone.obj");
+	sphere_file = std::string("assets//sphere.obj");
+    cube_file = std::string("assets//cube.obj");
+    cone_file = std::string("assets//cone.obj");
 #elif EMSCRIPTEN
-	Mesh * sphere_mesh = MeshFactory::MeshFromObjFile("sphere.obj");
-    Mesh * cube_mesh = MeshFactory::MeshFromObjFile("cube.obj");
-    Mesh * cone_mesh = MeshFactory::MeshFromObjFile("cone.obj");
+	sphere_file = std::string("sphere.obj");
+    cube_file = std::string("cube.obj");
+    cone_file = std::string("cone.obj");
 #else
-	Mesh * sphere_mesh = MeshFactory::MeshFromObjFile("assets/sphere.obj");
-    Mesh * cube_mesh = MeshFactory::MeshFromObjFile("assets/cube.obj");
-    Mesh * cone_mesh = MeshFactory::MeshFromObjFile("assets/cone.obj");
+	sphere_file = std::string("assets/sphere.obj");
+    cube_file = std::string("assets/cube.obj");
+    cone_file = std::string("assets/cone.obj");
 #endif
-
+    
+    //Mesh * sphere_mesh = MeshFactory::MeshFromObjFile(sphere_file);
+    //Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
+    Mesh * cube_mesh = MeshFactory::MeshFromObjFile(cube_file);
+    
+    std::string vertex_source_file;
+    std::string fragment_source_file;
+    
 #ifdef _WIN32
-	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSL//default.vert"), nullptr, IO::ReadFile("src//shaders//GLSL//default.frag"), rendering_context);
-	//Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src//shaders//GLSLES//default.vert"), IO::ReadFile("src//shaders//GLSLES//default.frag"), rendering_context);
+    vertex_source_file = std::string("src//shaders//GLSL//default.vert");
+    fragment_source_file = std::string("src//shaders//GLSL//default.frag");
 #elif EMSCRIPTEN
-	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("/shaders/GLSLES/default.vert"), IO::ReadFile("/shaders/GLSLES/default.frag"), rendering_context);
+    vertex_source_file = std::string("/shaders/GLSLES/default.vert");
+    fragment_source_file = std::string("/shaders/GLSLES/default.frag");
 #else
-	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"), IO::ReadFile("src/shaders/GLSL/default.frag"), rendering_context);
+    vertex_source_file = std::string("src/shaders/GLSL/default.vert");
+    fragment_source_file = std::string("src/shaders/GLSL/default.frag");
 #endif
-
+    std::string vertex_source;
+    std::string fragment_source;
+    
+    vertex_source = IO::ReadFile(vertex_source_file);
+    fragment_source = IO::ReadFile(fragment_source_file);
+    
+	Shader * test_shader = ShaderFactory::Create(vertex_source, fragment_source, rendering_context);
+    
+    /*
+    Rotator * rotator = new Rotator;
     Object * sphere_object = new Object();
+    sphere_object->Add(rotator);
 	MeshRenderer * sphere_mesh_renderer = rendering_context->MeshRenderer();
 	Material * sphere_material = new Material(test_shader);
 
@@ -115,11 +140,12 @@ int main(int argc, char ** argv)
     
 	scene->AddObject(cone_object);
 	cone_object->LocalTransform()->SetPosition(-2.0f, 0.0f, 4.0f);
+    */
     
     Object * cube_object = new Object();
 	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cube_material = new Material(test_shader);
-    
+     
 	cube_mesh_renderer->SetMaterial(cube_material);
 	cube_mesh_renderer->SetMesh(cube_mesh);
 	cube_object->AddMeshRenderer(cube_mesh_renderer);
@@ -162,7 +188,8 @@ int main(int argc, char ** argv)
    	delete test_shader;
 	delete cube_material;
 	delete cube_mesh;
-	delete sphere_material;
+	/*
+    delete sphere_material;
 	delete sphere_mesh;
     delete cone_material;
 	delete cone_mesh;
@@ -170,6 +197,7 @@ int main(int argc, char ** argv)
 	delete cube_object;
 	delete sphere_object;
 	delete cone_object;
+    */
 	delete scene;
 	delete rendering_context;
 	delete event_listener;
