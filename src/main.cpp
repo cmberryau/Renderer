@@ -21,7 +21,7 @@
 
 #include "utility/io.hpp"
 
-// for memory leak detection
+// for memory leak detection on windows
 #ifdef _WIN32
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
@@ -39,8 +39,6 @@ EventListener * event_listener;
 RenderingContext * rendering_context;
 Scene * scene;
 
-Object * test_object;
-
 void emscripten_loop()
 {
 	event_listener->ListenForEvents();
@@ -51,8 +49,6 @@ void emscripten_loop()
 	}
 
 	rendering_context->BeginScene();
-
-    test_object->LocalTransform()->Rotate(1.0f, 1.0f, 0.0f);
 
 	// Render here
 	scene->UpdateAndDraw();
@@ -66,23 +62,27 @@ int main(int argc, char ** argv)
 {
 	window = new Window(640, 480);
 	event_listener = new EventListener();
+    
 #ifndef EMSCRIPTEN
-	RenderingContext * rendering_context = new OpenGLRenderingContext(window);
+	rendering_context = new OpenGLRenderingContext(window);
 #else
 	rendering_context = new OpenGLESRenderingContext(window);
 #endif
 
 	scene = new Scene();
 
-	test_object = new Object();
-	MeshRenderer * test_mesh_renderer = rendering_context->MeshRenderer();
-
 #ifdef _WIN32
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets//cube.obj");
+	Mesh * sphere_mesh = MeshFactory::MeshFromObjFile("assets//sphere.obj");
+    Mesh * cube_mesh = MeshFactory::MeshFromObjFile("assets//cube.obj");
+    Mesh * cone_mesh = MeshFactory::MeshFromObjFile("assets//cone.obj");
 #elif EMSCRIPTEN
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("cube.obj");
+	Mesh * sphere_mesh = MeshFactory::MeshFromObjFile("sphere.obj");
+    Mesh * cube_mesh = MeshFactory::MeshFromObjFile("cube.obj");
+    Mesh * cone_mesh = MeshFactory::MeshFromObjFile("cone.obj");
 #else
-	Mesh * test_mesh = MeshFactory::MeshFromObjFile("assets/cube.obj");
+	Mesh * sphere_mesh = MeshFactory::MeshFromObjFile("assets/sphere.obj");
+    Mesh * cube_mesh = MeshFactory::MeshFromObjFile("assets/cube.obj");
+    Mesh * cone_mesh = MeshFactory::MeshFromObjFile("assets/cone.obj");
 #endif
 
 #ifdef _WIN32
@@ -94,24 +94,46 @@ int main(int argc, char ** argv)
 	Shader * test_shader = ShaderFactory::Create(IO::ReadFile("src/shaders/GLSL/default.vert"), IO::ReadFile("src/shaders/GLSL/default.frag"), rendering_context);
 #endif
 
-	Material * test_material = new Material(test_shader);
+    Object * sphere_object = new Object();
+	MeshRenderer * sphere_mesh_renderer = rendering_context->MeshRenderer();
+	Material * sphere_material = new Material(test_shader);
 
-	test_mesh_renderer->SetMaterial(test_material);
-	test_mesh_renderer->SetMesh(test_mesh);
-	test_object->AddMeshRenderer(test_mesh_renderer);
+	sphere_mesh_renderer->SetMaterial(sphere_material);
+	sphere_mesh_renderer->SetMesh(sphere_mesh);
+	sphere_object->AddMeshRenderer(sphere_mesh_renderer);
 
+	scene->AddObject(sphere_object);
+	sphere_object->LocalTransform()->SetPosition(0.0f, 0.0f, 4.0f);
+    
+    Object * cone_object = new Object();
+	MeshRenderer * cone_mesh_renderer = rendering_context->MeshRenderer();
+	Material * cone_material = new Material(test_shader);
+    
+	cone_mesh_renderer->SetMaterial(cone_material);
+	cone_mesh_renderer->SetMesh(cone_mesh);
+	cone_object->AddMeshRenderer(cone_mesh_renderer);
+    
+	scene->AddObject(cone_object);
+	cone_object->LocalTransform()->SetPosition(-2.0f, 0.0f, 4.0f);
+    
+    Object * cube_object = new Object();
+	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
+	Material * cube_material = new Material(test_shader);
+    
+	cube_mesh_renderer->SetMaterial(cube_material);
+	cube_mesh_renderer->SetMesh(cube_mesh);
+	cube_object->AddMeshRenderer(cube_mesh_renderer);
+    
+	scene->AddObject(cube_object);
+	cube_object->LocalTransform()->SetPosition(2.0f, 0.0f, 4.0f);
+    
 	Object * camera_object = new Object();
 	Camera * camera = new Camera(rendering_context);
 	camera_object->Add(camera);
-	rendering_context->SetCamera(camera);
-
-	scene->AddObject(test_object);
-	test_object->LocalTransform()->SetPosition(0.0f, 0.0f, 2.0f);
-
 	scene->AddObject(camera_object);
-	camera_object->LocalTransform()->SetPosition(0.0f, 0.0f, 0.0f);
-	camera_object->LocalTransform()->SetRotation(0.0f, 0.0f, 0.0f);
 
+  	rendering_context->SetCamera(camera);
+    
 #ifdef EMSCRIPTEN
 	emscripten_set_main_loop(emscripten_loop, 0, true);
 #endif
@@ -127,8 +149,6 @@ int main(int argc, char ** argv)
 
 		rendering_context->BeginScene();
 
-		test_object->LocalTransform()->Rotate(1.0f, 1.0f, 0.0f);
-
 		// Render here
 		scene->UpdateAndDraw();
 
@@ -139,11 +159,17 @@ int main(int argc, char ** argv)
 
 	//delete camera; - deleted by object
 	delete camera_object;
-	delete test_material;
-	delete test_shader;
-	delete test_mesh;
+   	delete test_shader;
+	delete cube_material;
+	delete cube_mesh;
+	delete sphere_material;
+	delete sphere_mesh;
+    delete cone_material;
+	delete cone_mesh;
 	//delete test_mesh_renderer; - deleted by object
-	delete test_object;
+	delete cube_object;
+	delete sphere_object;
+	delete cone_object;
 	delete scene;
 	delete rendering_context;
 	delete event_listener;

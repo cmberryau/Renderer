@@ -22,10 +22,16 @@ namespace Renderer
         
         protected:
 			static void AppendObjSourceLine(char * obj_source_line,
-														 std::vector<Vector4f> * vertices,
-														 std::vector<Vector3ui> * faces);
+                                            std::vector<Vector4f> & vertices,
+                                            std::vector<Vector3f> & normals,
+                                            std::vector<Vector2f> & uvs,
+                                            std::vector<Vector3ui> & faces);
+        
 			static Vector4f VertexFromObjSource(char * obj_vertex_line);
+            static Vector3f NormalFromObjSource(char * obj_normal_line);
+            static Vector2f UVFromObjSource(char * obj_uv_line);
 			static Vector3ui TriangleFromObjSource(char * obj_vertex_line);
+        
 			static const int kObjSourceLineOffset;
 
             MeshFactory(){};

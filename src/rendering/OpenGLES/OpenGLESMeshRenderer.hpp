@@ -68,21 +68,6 @@ namespace Renderer
             void CreateShader(MeshType<float> * mesh)
             {   
 				this->_material->Use();
-            
-				glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
-				glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-				glEnableVertexAttribArray(0);
-                glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-				glBindBuffer(GL_ARRAY_BUFFER, _vertex_normal_buffer);
-				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-				glEnableVertexAttribArray(1);
-                glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-				glBindBuffer(GL_ARRAY_BUFFER, _vertex_color_buffer);
-				glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-				glEnableVertexAttribArray(2);
-                glBindBuffer(GL_ARRAY_BUFFER, 0);
                 
                	OpenGLESShader * opengles_shader = dynamic_cast<OpenGLESShader *>(this->_material->Shader());
                 
@@ -99,6 +84,21 @@ namespace Renderer
 				}
 
 				this->_material->Use();
+                
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
+				glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+				glEnableVertexAttribArray(0);
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
+                
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_normal_buffer);
+				glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+				glEnableVertexAttribArray(1);
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
+                
+				glBindBuffer(GL_ARRAY_BUFFER, _vertex_color_buffer);
+				glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+				glEnableVertexAttribArray(2);
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
                 
                 glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
 				glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->NormalMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
