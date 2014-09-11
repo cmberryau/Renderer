@@ -76,7 +76,7 @@ namespace Renderer
             if (obj_source_line[1] == 'n')
             {
                 // vertex normal
-                intermediate_mesh.normals.push_back(MeshFactory::NormalFromObjSource(obj_source_line));
+                //intermediate_mesh.normals.push_back(MeshFactory::NormalFromObjSource(obj_source_line));
             }
             else if(obj_source_line[1] == 't')
             {
