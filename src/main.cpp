@@ -91,8 +91,8 @@ int main(int argc, char ** argv)
     cone_file = std::string("assets/cone.obj");
 #endif
     
-    //Mesh * sphere_mesh = MeshFactory::MeshFromObjFile(sphere_file);
-    //Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
+    Mesh * sphere_mesh = MeshFactory::MeshFromObjFile(sphere_file);
+    Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
     Mesh * cube_mesh = MeshFactory::MeshFromObjFile(cube_file);
     
     std::string vertex_source_file;
@@ -116,7 +116,6 @@ int main(int argc, char ** argv)
     
 	Shader * test_shader = ShaderFactory::Create(vertex_source, fragment_source, rendering_context);
     
-    /*
     Rotator * rotator = new Rotator;
     Object * sphere_object = new Object();
     sphere_object->Add(rotator);
@@ -140,7 +139,6 @@ int main(int argc, char ** argv)
     
 	scene->AddObject(cone_object);
 	cone_object->LocalTransform()->SetPosition(-2.0f, 0.0f, 4.0f);
-    */
     
     Object * cube_object = new Object();
 	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
@@ -188,7 +186,6 @@ int main(int argc, char ** argv)
    	delete test_shader;
 	delete cube_material;
 	delete cube_mesh;
-	/*
     delete sphere_material;
 	delete sphere_mesh;
     delete cone_material;
@@ -197,7 +194,6 @@ int main(int argc, char ** argv)
 	delete cube_object;
 	delete sphere_object;
 	delete cone_object;
-    */
 	delete scene;
 	delete rendering_context;
 	delete event_listener;

@@ -13,6 +13,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <memory>
+#include <iostream>
 
 namespace Renderer
 {
@@ -109,6 +110,7 @@ namespace Renderer
         std::vector<std::string> elements = split_string(obj_vertex_line, ' ');
         
 		Vector4f vertex;
+        
         std::vector<std::string>::iterator it; int i;
 		for (it = elements.begin(), i = 0; it != elements.end(); ++it)
 		{
@@ -129,6 +131,7 @@ namespace Renderer
         std::vector<std::string> elements = split_string(obj_normal_line, ' ');
         
         Vector3f normal;
+        
         std::vector<std::string>::iterator it; int i;
 		for (it = elements.begin(), i = 0; it != elements.end(); ++it, ++i)
 		{
@@ -157,6 +160,7 @@ namespace Renderer
 	{
         std::locale loc;
         std::vector<std::string> elements = split_string(obj_triangle_line, ' ');
+        
 		Vector3ui triangle;
         
         std::vector<std::string>::iterator it; int i;
