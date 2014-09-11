@@ -32,37 +32,35 @@ namespace Renderer
     {
 		Mesh * mesh = new Mesh();
         
-		std::vector<Vector4f> intermediate_vertices;
-        std::vector<Vector3f> intermediate_normals;
-        std::vector<Vector2f> intermediate_uvs;
-		std::vector<Vector3ui> triangles;
+        IntermediateMesh intermediate_mesh;
         
         std::vector<std::string> lines = split_string(obj_source, '\n');
         
         std::vector<std::string>::iterator it;
         for(it = lines.begin(); it != lines.end(); ++it)
         {
-			MeshFactory::AppendObjSourceLine(*it,
-                                             intermediate_vertices,
-                                             intermediate_normals,
-                                             intermediate_uvs,
-                                             triangles);
+			MeshFactory::AppendObjSourceLine(*it, intermediate_mesh);
         }
         
-        if(intermediate_vertices.size() == 0 || triangles.size() == 0)
+        if(intermediate_mesh.vertices.size() == 0 ||
+           intermediate_mesh.vertex_indices.size() == 0)
         {
             throw std::exception();
         }
         
-		mesh->SetVertices(&intermediate_vertices[0], static_cast<unsigned long>(intermediate_vertices.size()));
-		mesh->SetTriangles(&triangles[0], static_cast<unsigned long>(triangles.size()));
+		mesh->SetVertices(&intermediate_mesh.vertices[0],
+                          static_cast<unsigned int>(intermediate_mesh.vertices.size()));
         
-        if(intermediate_normals.size() != 0)
+		mesh->SetTriangles(&intermediate_mesh.vertex_indices[0],
+                           static_cast<unsigned int>(intermediate_mesh.vertex_indices.size()));
+        
+        if(intermediate_mesh.normals.size() != 0)
         {
-            //mesh->SetVertexNormals(&normals[0], static_cast<unsigned long>(normals.size()));
+            //mesh->SetVertexNormals(&intermediate_mesh.normals[0],
+            //                       static_cast<unsigned long>(intermediate_mesh.normals.size()));
         }
         
-        if(intermediate_uvs.size() != 0 )
+        if(intermediate_mesh.uvs.size() != 0 )
         {
             
         }
@@ -71,17 +69,14 @@ namespace Renderer
     }
     
 	void MeshFactory::AppendObjSourceLine(std::string & obj_source_line,
-										  std::vector<Vector4f> & vertices,
-                                          std::vector<Vector3f> & normals,
-                                          std::vector<Vector2f> & uvs,
-										  std::vector<Vector3ui> & triangles)
+										  IntermediateMesh & intermediate_mesh)
 	{
 		if (obj_source_line[0] == 'v')
 		{
             if (obj_source_line[1] == 'n')
             {
                 // vertex normal
-                //normals.push_back(MeshFactory::NormalFromObjSource(obj_source_line + kObjSourceLineOffset + 1));
+                intermediate_mesh.normals.push_back(MeshFactory::NormalFromObjSource(obj_source_line));
             }
             else if(obj_source_line[1] == 't')
             {
@@ -91,7 +86,7 @@ namespace Renderer
             else if(obj_source_line[1] == ' ')
             {
                 // vertex position
-       			vertices.push_back(MeshFactory::VertexFromObjSource(obj_source_line));
+       			intermediate_mesh.vertices.push_back(MeshFactory::VertexFromObjSource(obj_source_line));
             }
             else
             {
@@ -100,7 +95,7 @@ namespace Renderer
 		}
 		else if (obj_source_line[0] == 'f')
 		{
-			triangles.push_back(MeshFactory::TriangleFromObjSource(obj_source_line));
+			MeshFactory::TriangleIndexFromObjSource(obj_source_line, intermediate_mesh);
 		}
 	}
     
@@ -128,6 +123,7 @@ namespace Renderer
     
     Vector3f MeshFactory::NormalFromObjSource(std::string & obj_normal_line)
     {
+        std::locale loc;
         std::vector<std::string> elements = split_string(obj_normal_line, ' ');
         
         Vector3f normal;
@@ -135,7 +131,11 @@ namespace Renderer
         std::vector<std::string>::iterator it; int i;
 		for (it = elements.begin(), i = 0; it != elements.end(); ++it, ++i)
 		{
-			//normal[i] = strtof(end, &end);
+            if(std::isdigit((*it)[0], loc) || (*it)[0] == '-')
+            {
+                normal[i] = std::stof(*it);
+                ++i;
+            }
 		}
         
 		return normal;
@@ -156,32 +156,84 @@ namespace Renderer
         return uv;
     }
     
-	Vector3ui MeshFactory::TriangleFromObjSource(std::string & obj_triangle_line)
+	void MeshFactory::TriangleIndexFromObjSource(std::string & obj_triangle_line,
+                                                 IntermediateMesh & intermediate_mesh)
 	{
         std::locale loc;
         std::vector<std::string> elements = split_string(obj_triangle_line, ' ');
         
-		Vector3ui triangle;
+        Vector3ui vertex_index;
+        Vector3ui uv_index;
+        Vector3ui normal_index;
+        
+        bool vertex_index_added = false;
+        bool uv_index_added = false;
+        bool normal_index_added = false;
         
         std::vector<std::string>::iterator it; int i;
 		for (it = elements.begin(), i = 0; it != elements.end(); ++it)
 		{
             if(std::isdigit((*it)[0], loc))
             {
-                std::vector<std::string> sub_elements = split_string(*it, '\\');
+                std::vector<std::string> sub_elements = split_string(*it, '/');
+                //std::cout << "Splits: " << sub_elements.size() << std::endl;
                 std::vector<std::string>::iterator sub_it; int j;
                 for (sub_it = sub_elements.begin(), j = 0; sub_it != sub_elements.end(); ++sub_it)
                 {
-                    if(j == 0)
+                    //std::cout << " [" << j << "]" << " " << ((*sub_it).size() > 0 ? *sub_it : "NaN");
+                    
+                    if((*sub_it).size() > 0)
                     {
-                        triangle[i] = static_cast<unsigned int>(std::stoll(*it) - 1);
+                        // the first value is always the vertex index
+                        if(j == 0)
+                        {
+                            vertex_index[i] = static_cast<unsigned int>(std::stoll(*it) - 1);
+                            vertex_index_added = true;
+                        }
+                        // the second value should be a texture coord index
+                        else if(j == 1)
+                        {
+                            uv_index[i] = static_cast<unsigned int>(std::stoll(*it) - 1);
+                            uv_index_added = true;
+                        }
+                        // the third value should be a vertex normal index
+                        else if(j == 2)
+                        {
+                            normal_index[i] = static_cast<unsigned int>(std::stoll(*it) - 1);
+                            normal_index_added = true;
+                        }
+                        // anything else is most likely in error
+                        else
+                        {
+                            throw std::exception();
+                        }
                     }
                     ++j;
                 }
+                //std::cout << std::endl;
                 ++i;
             }
         }
         
-		return triangle;
+        // we have more than 2 elements, right?
+        if(i < 2)
+        {
+            throw std::exception();
+        }
+        
+        if(vertex_index_added)
+        {
+            intermediate_mesh.vertex_indices.push_back(vertex_index);
+        }
+        
+        if(uv_index_added)
+        {
+            intermediate_mesh.uv_indices.push_back(uv_index);
+        }
+        
+        if(normal_index_added)
+        {
+            intermediate_mesh.normal_indices.push_back(normal_index);
+        }
 	}
 }
