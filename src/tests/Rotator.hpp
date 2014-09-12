@@ -20,7 +20,7 @@ namespace Renderer
             
             void Update(Object * parent_object)
             {
-                parent_object->LocalTransform()->Rotate(0.0f, 1.0f, 0.0f);
+                parent_object->LocalTransform()->Rotate(1.0f, 1.0f, 0.0f);
             }
     };
 }

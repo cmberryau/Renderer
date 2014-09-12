@@ -30,7 +30,7 @@
 #include <crtdbg.h>
 #endif
 
-#ifdef EMSCRIPTEN
+#ifdef EMSCRIPTEN 
 #include <emscripten.h>
 #endif
 
@@ -76,24 +76,29 @@ int main(int argc, char ** argv)
     std::string sphere_file;
     std::string cube_file;
     std::string cone_file;
+    std::string bunny_file;
     
 #ifdef _WIN32
 	sphere_file = std::string("assets//sphere.obj");
     cube_file = std::string("assets//cube.obj");
     cone_file = std::string("assets//cone.obj");
+    bunny_file = std::string("assets//bunny.obj");
 #elif EMSCRIPTEN
 	sphere_file = std::string("sphere.obj");
     cube_file = std::string("cube.obj");
     cone_file = std::string("cone.obj");
+    bunny_file = std::string("bunny.obj");
 #else
 	sphere_file = std::string("assets/sphere.obj");
     cube_file = std::string("assets/cube.obj");
     cone_file = std::string("assets/cone.obj");
+    bunny_file = std::string("assets/bunny.obj");
 #endif
     
-    //Mesh * sphere_mesh = MeshFactory::MeshFromObjFile(sphere_file);
-    //Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
+    Mesh * sphere_mesh = MeshFactory::MeshFromObjFile(sphere_file);
     Mesh * cube_mesh = MeshFactory::MeshFromObjFile(cube_file);
+    Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
+    Mesh * bunny_mesh = MeshFactory::MeshFromObjFile(bunny_file);
     
     std::string vertex_source_file;
     std::string fragment_source_file;
@@ -116,7 +121,6 @@ int main(int argc, char ** argv)
     
 	Shader * test_shader = ShaderFactory::Create(vertex_source, fragment_source, rendering_context);
     
-    /*
     Rotator * rotator = new Rotator;
     Object * sphere_object = new Object();
     sphere_object->Add(rotator);
@@ -140,8 +144,7 @@ int main(int argc, char ** argv)
     
 	scene->AddObject(cone_object);
 	cone_object->LocalTransform()->SetPosition(-2.0f, 0.0f, 4.0f);
-    */
-    
+
     Object * cube_object = new Object();
 	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cube_material = new Material(test_shader);
@@ -153,6 +156,18 @@ int main(int argc, char ** argv)
 	scene->AddObject(cube_object);
 	cube_object->LocalTransform()->SetPosition(2.0f, 0.0f, 4.0f);
     
+    Object * bunny_object = new Object();
+	MeshRenderer * bunny_mesh_renderer = rendering_context->MeshRenderer();
+	Material * bunny_material = new Material(test_shader);
+    
+	bunny_mesh_renderer->SetMaterial(bunny_material);
+	bunny_mesh_renderer->SetMesh(bunny_mesh);
+	bunny_object->AddMeshRenderer(bunny_mesh_renderer);
+    
+	scene->AddObject(bunny_object);
+	bunny_object->LocalTransform()->SetPosition(0.0f, -2.0f, 3.0f);
+    bunny_object->LocalTransform()->SetScale(10.0f, 10.0f, 10.0f);
+     
 	Object * camera_object = new Object();
 	Camera * camera = new Camera(rendering_context);
 	camera_object->Add(camera);
@@ -188,7 +203,6 @@ int main(int argc, char ** argv)
    	delete test_shader;
 	delete cube_material;
 	delete cube_mesh;
-	/*
     delete sphere_material;
 	delete sphere_mesh;
     delete cone_material;
@@ -197,7 +211,6 @@ int main(int argc, char ** argv)
 	delete cube_object;
 	delete sphere_object;
 	delete cone_object;
-    */
 	delete scene;
 	delete rendering_context;
 	delete event_listener;

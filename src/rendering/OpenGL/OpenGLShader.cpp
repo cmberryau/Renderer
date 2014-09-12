@@ -11,6 +11,7 @@
 #include "OpenGLShader.hpp"
 #include <stdio.h>
 #include <memory>
+#include <vector>
 
 namespace Renderer
 {
@@ -26,13 +27,17 @@ namespace Renderer
                                          std::string & geometry_shader_source,
                                          std::string & fragment_shader_source)
 	{
-        const char * sources[3] = {vertex_shader_source.c_str(),
-                                   geometry_shader_source.c_str(),
-                                   fragment_shader_source.c_str()};
+        std::vector<std::string> sources = {
+                                            vertex_shader_source,
+                                            geometry_shader_source,
+                                            fragment_shader_source
+                                            };
         
-        GLenum types[3] = {GL_VERTEX_SHADER,
+        GLenum types[3] = {
+                           GL_VERTEX_SHADER,
                            GL_GEOMETRY_SHADER,
-                           GL_FRAGMENT_SHADER};
+                           GL_FRAGMENT_SHADER
+                          };
         
         GLuint shaders[3];
         
@@ -41,14 +46,15 @@ namespace Renderer
         // run through the shader sources
         for(int i = 0; i < 3; i++)
         {
-            if(i == 1)
+            if(sources[i].length() == 0)
             {
                 continue;
             }
             
             // create and compile shaders
             shaders[i] = glCreateShader(types[i]);
-            glShaderSource(shaders[i], 1, &sources[i], nullptr);
+            const char * c_source = sources[i].c_str();
+            glShaderSource(shaders[i], 1, &c_source, nullptr);
             glCompileShader(shaders[i]);
             
             // check compilation results
@@ -60,13 +66,13 @@ namespace Renderer
                 glGetShaderiv(shaders[i], GL_INFO_LOG_LENGTH, &log_length);
                 
                 GLchar * shader_log = new GLchar[log_length + 1];
+                std::unique_ptr<GLchar> shader_log_unique(shader_log);
+                
                 glGetShaderInfoLog(shaders[i], log_length, &log_length, shader_log);
                 
                 printf("%s\n", shader_log);
                 
-                delete [] shader_log;
-                
-                return nullptr;
+                throw std::exception();
             }
             
             glAttachShader(_program, shaders[i]);
@@ -82,11 +88,11 @@ namespace Renderer
             glGetShaderiv(_program, GL_INFO_LOG_LENGTH, &log_length);
             
             GLchar * shader_log = new GLchar[log_length + 1];
+            std::unique_ptr<GLchar> shader_log_unique(shader_log);
+            
             glGetShaderInfoLog(_program, log_length, &log_length, shader_log);
             
             printf("%s\n", shader_log);
-            
-            delete [] shader_log;
             
             for(int i = 0; i < 3; i++)
             {
@@ -96,7 +102,7 @@ namespace Renderer
                 }
             }
             
-            return nullptr;
+            throw std::exception();
         }
         
         GLenum error;

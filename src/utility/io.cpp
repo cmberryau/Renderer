@@ -9,19 +9,15 @@
 #include "utility/io.hpp"
 
 #include <fstream>
-#include <exception>
-#include <algorithm>
 #include <memory>
+#include <exception>
 
 namespace Renderer
 {
 	const long long IO::kMaxFileReadBlockSize = 2048;
 
     std::string IO::ReadFile(std::string & file_path)
-	{		
-		char * contents = nullptr;
-		std::unique_ptr<char> contents_unique(contents);
-        
+	{
 		// create a filestream, find the size of the file
         std::fstream file_stream(file_path, std::ios_base::in);
         file_stream.seekg(0, file_stream.end);
@@ -29,7 +25,9 @@ namespace Renderer
 		file_stream.seekg(0, file_stream.beg);
 
 		// create the buffer for it to go into
-        contents = new char[length + 1];
+        char * contents = new char[length + 1];
+   		std::unique_ptr<char> contents_unique(contents);
+        
 		std::streamoff remaining = length;
 		while (remaining > 0)
 		{
@@ -49,7 +47,7 @@ namespace Renderer
 		}
         
         file_stream.close();
-
+        
         // cap the end of the char array
         contents[length] = NULL;
 

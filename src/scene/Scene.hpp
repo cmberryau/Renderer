@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef _scene_h
+#define _scene_h
+
 #include "rendering/Camera.hpp"
 #include "objects/Object.hpp"
 
@@ -54,3 +57,5 @@ namespace Renderer
     typedef SceneType<float> Scene;
     typedef SceneType<double> Scened;
 }
+
+#endif // _scene_h

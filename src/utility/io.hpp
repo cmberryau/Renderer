@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef _io_h
+#define _io_h
+
 #include <string>
 
 namespace Renderer
@@ -22,3 +25,5 @@ namespace Renderer
 			static const long long kMaxFileReadBlockSize;
 	};
 }
+
+#endif // _io_h
