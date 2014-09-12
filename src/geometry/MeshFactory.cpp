@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <memory>
 #include <iostream>
+#include <locale>
 
 namespace Renderer
 {

@@ -8,9 +8,11 @@
 
 #include "utility/io.hpp"
 
+#include <sstream>
 #include <fstream>
 #include <memory>
 #include <exception>
+#include <algorithm>
 
 namespace Renderer
 {
@@ -18,39 +20,11 @@ namespace Renderer
 
     std::string IO::ReadFile(std::string & file_path)
 	{
-		// create a filestream, find the size of the file
-        std::fstream file_stream(file_path, std::ios_base::in);
-        file_stream.seekg(0, file_stream.end);
-        std::streamoff length = file_stream.tellg();        
-		file_stream.seekg(0, file_stream.beg);
+        std::ifstream file_stream(file_path, std::ios_base::in);
 
-		// create the buffer for it to go into
-        char * contents = new char[length + 1];
-   		std::unique_ptr<char> contents_unique(contents);
-        
-		std::streamoff remaining = length;
-		while (remaining > 0)
-		{
-			std::streamoff buffer_size = std::min(remaining, kMaxFileReadBlockSize);
-			file_stream.read(contents + (length - remaining), buffer_size);
+		std::stringstream content;
+		content << file_stream.rdbuf();
 
-			remaining -= kMaxFileReadBlockSize;
-		}        
-        
-		// check for errors in the stream
-		if (!file_stream)
-		{
-			if (!file_stream.eof())
-			{
-				throw std::exception();
-			}
-		}
-        
-        file_stream.close();
-        
-        // cap the end of the char array
-        contents[length] = NULL;
-
-		return std::string(contents);
+		return content.str();
 	}
 }
