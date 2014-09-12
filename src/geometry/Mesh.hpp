@@ -13,15 +13,14 @@
 
 #include <exception>
 #include <memory>
-#include <map>
 #include <vector>
 
 namespace Renderer
 {
 	template <typename T>
-    class MeshType
-    {
-        public:
+	class MeshType
+	{
+		public:
 			MeshType<T>() : _vertices(nullptr), _vertex_count(0),
 							_vertex_normals(nullptr), _vertex_normals_count(0),
 							_vertex_colors(nullptr), _vertex_colors_count(0),
@@ -37,7 +36,7 @@ namespace Renderer
 				delete _vertex_colors;
 				delete _triangles;
 			}
-        
+		
 			void Validate()
 			{
 				// as a baseline, meshes must contain vertices and triangles
@@ -207,7 +206,7 @@ namespace Renderer
 			{
 				return _triangle_count;
 			}
-        
+		
 			// debug output
 			void Print()
 			{
@@ -304,8 +303,8 @@ namespace Renderer
 			}
 
 			// vertices
-            Vector4<T> * _vertices;
-            unsigned int _vertex_count;
+			Vector4<T> * _vertices;
+			unsigned int _vertex_count;
 
 			// vertex normals
 			Vector3<T> * _vertex_normals;
@@ -321,7 +320,7 @@ namespace Renderer
 
 			// default vertex color
 			static const Vector4f kDefaultVertexColor;
-    };
+	};
 
 	template <typename T>
 	const Vector4f MeshType<T>::kDefaultVertexColor = Vector4f(0.5f, 0.5f, 0.5f, 1.0f);
