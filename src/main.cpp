@@ -96,9 +96,9 @@ int main(int argc, char ** argv)
 #endif
     
     Mesh * sphere_mesh = MeshFactory::MeshFromObjFile(sphere_file);
-    //Mesh * cube_mesh = MeshFactory::MeshFromObjFile(cube_file);
+    Mesh * cube_mesh = MeshFactory::MeshFromObjFile(cube_file);
     Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
-    //Mesh * bunny_mesh = MeshFactory::MeshFromObjFile(bunny_file);
+    Mesh * bunny_mesh = MeshFactory::MeshFromObjFile(bunny_file);
     
     std::string vertex_source_file;
     std::string fragment_source_file;
@@ -132,10 +132,9 @@ int main(int argc, char ** argv)
 	sphere_object->AddMeshRenderer(sphere_mesh_renderer);
 
 	scene->AddObject(sphere_object);
-	sphere_object->LocalTransform()->SetPosition(0.0f, 0.0f, 2.0f);
+	sphere_object->LocalTransform()->SetPosition(0.0f, 0.0f, 4.0f);
     
     Object * cone_object = new Object();
-    cone_object->Add(rotator);
 	MeshRenderer * cone_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cone_material = new Material(test_shader);
     
@@ -145,8 +144,7 @@ int main(int argc, char ** argv)
     
 	scene->AddObject(cone_object);
 	cone_object->LocalTransform()->SetPosition(-2.0f, 0.0f, 4.0f);
-    
-    /*
+
     Object * cube_object = new Object();
 	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cube_material = new Material(test_shader);
@@ -169,8 +167,6 @@ int main(int argc, char ** argv)
 	scene->AddObject(bunny_object);
 	bunny_object->LocalTransform()->SetPosition(0.0f, -2.0f, 3.0f);
     bunny_object->LocalTransform()->SetScale(10.0f, 10.0f, 10.0f);
-    bunny_object->Add(rotator);
-    */
      
 	Object * camera_object = new Object();
 	Camera * camera = new Camera(rendering_context);
@@ -205,16 +201,16 @@ int main(int argc, char ** argv)
 	//delete camera; - deleted by object
 	delete camera_object;
    	delete test_shader;
-	//delete cube_material;
-	//delete cube_mesh;
+	delete cube_material;
+	delete cube_mesh;
     delete sphere_material;
 	delete sphere_mesh;
-    //delete cone_material;
-	//delete cone_mesh;
+    delete cone_material;
+	delete cone_mesh;
 	//delete test_mesh_renderer; - deleted by object
-	//delete cube_object;
+	delete cube_object;
 	delete sphere_object;
-	//delete cone_object;
+	delete cone_object;
 	delete scene;
 	delete rendering_context;
 	delete event_listener;
