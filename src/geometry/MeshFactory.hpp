@@ -34,8 +34,11 @@ namespace Renderer
             static Mesh * MeshFromObjFile(std::string & obj_file_path);
             static Mesh * MeshFromObjSource(std::string & obj_source);
         
-        protected:        
-			static void AppendObjSourceLine(std::string &obj_source_line,
+        protected:
+            static void ValidateIntermediateMesh(IntermediateMesh & intermediate_mesh);
+            static void PrepareIntermediateMesh(IntermediateMesh & intermediate_mesh);
+        
+			static void AppendObjSourceLine(std::string & obj_source_line,
                                             IntermediateMesh & intermediate_mesh);
         
 			static Vector4f VertexFromObjSource(std::string & obj_vertex_line);
@@ -44,7 +47,9 @@ namespace Renderer
 			static void TriangleIndexFromObjSource(std::string & obj_vertex_line,
                                                    IntermediateMesh & intermediate_mesh);
         
-			static const int kObjSourceLineOffset;
+            static const int kMaxVertexElements;
+			static const int kMaxNormalElements;
+            static const int kMaxUVElements;
 
             MeshFactory(){};
             ~MeshFactory(){};
