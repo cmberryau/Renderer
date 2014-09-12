@@ -130,6 +130,7 @@
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp" />
     <ClCompile Include="..\..\src\utility\io.cpp" />
+    <ClCompile Include="..\..\src\utility\util.cpp" />
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp" />
     <ClInclude Include="..\..\src\scene\Scene.hpp" />
     <ClInclude Include="..\..\src\utility\io.hpp" />
+    <ClInclude Include="..\..\src\utility\util.hpp" />
     <ClInclude Include="..\..\src\windowing\Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

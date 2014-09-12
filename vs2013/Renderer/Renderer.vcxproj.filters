@@ -68,6 +68,9 @@
     <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESShader.cpp">
       <Filter>Source Files\rendering\OpenGLES</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\utility\util.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
@@ -141,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESShader.hpp">
       <Filter>Source Files\rendering\OpenGLES</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\util.hpp">
+      <Filter>Source Files\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
