@@ -235,9 +235,6 @@ namespace Renderer
 	void MeshFactory::TriangleIndexFromObjSource(std::string & obj_triangle_line,
                                                  IntermediateMesh & intermediate_mesh)
 	{
-        std::locale loc;
-        std::vector<std::string> elements = split_string(obj_triangle_line, ' ');
-        
         Vector3ui vertex_index;
         Vector3ui uv_index;
         Vector3ui normal_index;
@@ -246,36 +243,49 @@ namespace Renderer
         bool uv_index_added = false;
         bool normal_index_added = false;
         
+        // we have a whole line e.g 'f 1/1/1 2/2/2 3/3/3', we split this into
+        // 'f' '1/1/1' '2/2/2' '3/3/3' and go into the second loop
+        std::locale loc;
+        std::vector<std::string> elements = split_string(obj_triangle_line, ' ');
         std::vector<std::string>::iterator it; int i;
 		for (it = elements.begin(), i = 0; it != elements.end(); ++it)
 		{
             if(std::isdigit((*it)[0], loc))
             {
+                if(i > 2)
+                {
+                    throw std::exception();
+                }
+                
+                // we have a group of 1-3 indexes '1/1/1', which we split again
+                // according to the standard, the 0th element is the vertex
+                // position index, the 1st is the uv position index the final
+                // element is the normal index
                 std::vector<std::string> sub_elements = split_string(*it, '/');
                 std::vector<std::string>::iterator sub_it; int j;
-                for (sub_it = sub_elements.begin(), j = 0; sub_it != sub_elements.end(); ++sub_it)
+                for (sub_it = sub_elements.begin(), j = 0;
+                     sub_it != sub_elements.end(); ++sub_it)
                 {
                     if((*sub_it).size() > 0)
                     {
-                        // the first value is always the vertex index
+                        unsigned int index = static_cast<unsigned int>(std::stoll(*sub_it) - 1);
+                        
                         if(j == 0)
                         {
-                            vertex_index[i] = static_cast<unsigned int>(std::stoll(*sub_it) - 1);
+                            vertex_index[i] = index;
                             vertex_index_added = true;
                         }
-                        // the second value should be a texture coord index
                         else if(j == 1)
                         {
-                            uv_index[i] = static_cast<unsigned int>(std::stoll(*sub_it) - 1);
+                            uv_index[i] = index;
                             uv_index_added = true;
                         }
-                        // the third value should be a vertex normal index
                         else if(j == 2)
                         {
-                            normal_index[i] = static_cast<unsigned int>(std::stoll(*sub_it) - 1);
+                            normal_index[i] = index;
                             normal_index_added = true;
                         }
-                        // anything else is most likely in error
+                        // there should be no more than 3 elements
                         else
                         {
                             throw std::exception();
