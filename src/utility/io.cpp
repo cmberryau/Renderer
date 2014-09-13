@@ -10,14 +10,9 @@
 
 #include <sstream>
 #include <fstream>
-#include <memory>
-#include <exception>
-#include <algorithm>
 
 namespace Renderer
 {
-	const long long IO::kMaxFileReadBlockSize = 2048;
-
     std::string IO::ReadFile(std::string & file_path)
 	{
         std::ifstream file_stream(file_path, std::ios_base::in);

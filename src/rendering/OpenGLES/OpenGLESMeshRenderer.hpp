@@ -16,6 +16,7 @@
 #include "rendering/OpenGLES/OpenGLESShader.hpp"
 
 #include <SDL2/SDL_opengles2.h>
+#include <iostream>
 
 namespace Renderer
 {
@@ -31,13 +32,13 @@ namespace Renderer
 			void SetMesh(MeshType<T> * mesh)
 			{
 				if (mesh == nullptr)
-				{
+				{					
 					throw std::exception();
 				}
 
-				mesh->Validate();
+				mesh->Validate();				
 				this->_mesh = mesh;
-
+				
 				this->GenerateBuffers(mesh);
 				this->SetupShader(mesh);
 			}

@@ -9,10 +9,11 @@
 #ifndef _matrix_h
 #define _matrix_h
 
-#include <stdio.h>
-
 #include "CommonMath.hpp"
 #include "Vector.hpp"
+
+//TODO: remove C style output
+#include <stdio.h>
 
 namespace Renderer
 {
@@ -51,15 +52,15 @@ namespace Renderer
 			}
 
 			// static member functions
-            static inline Matrix<T, w, h> Identity()
+			static inline Matrix<T, w, h> Identity()
 			{
 				Matrix<T, w, h> matrix(0);
-            
+			
 				for (int i = 0; i < w; i++)
 				{
 					matrix.elements[i][i] = 1;
 				}
-            
+			
 				return matrix;
 			}
 
@@ -101,7 +102,7 @@ namespace Renderer
 				}
 				printf("\n");
 			}
-    
+	
 			// operators
 			inline Matrix<T, w, h> & operator = (const Matrix<T, w, h> & matrix)
 			{
@@ -109,18 +110,18 @@ namespace Renderer
 				return *this;
 			}
 
-            inline Vector<T, h> & operator [] (int n) 
+			inline Vector<T, h> & operator [] (int n) 
 			{
 				return elements[n];
 			}
 
-            inline operator const T * () const 
+			inline operator const T * () const 
 			{
 				return &elements[0][0]; 
 			}
-        
+		
 		protected:
-        
+		
 			inline void assign(const Matrix &that)
 			{
 				for (int n=0; n<w; n++)
@@ -128,7 +129,7 @@ namespace Renderer
 					elements[n] = that.elements[n];
 				}
 			}
-    
+	
 			Vector<T, h> elements[w];
 	};
 
@@ -168,34 +169,34 @@ namespace Renderer
 								  Vector4<T>(0.0, 0.0, 1.0, 0.0),
 								  Vector4<T>(  x,   y,   z, 1.0));
 			}
-        
-            static inline Matrix4<T> Scale(T x, T y, T z)
-            {
-                return Matrix4<T>(Vector4<T>(  x, 0.0, 0.0, 0.0),
-                                  Vector4<T>(0.0,   y, 0.0, 0.0),
-                                  Vector4<T>(0.0, 0.0,   z, 0.0),
-                                  Vector4<T>(0.0, 0.0, 0.0, 1.0));
-            }
-        
-            // http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation#Quaternion-derived_rotation_matrix
-            static inline Matrix4<T> Rotate(T angle, T x, T y, T z)
-            {
-                T x2 = x * x;
-                T y2 = y * y;
-                T z2 = z * z;
-                
-                T radians = Math<T>::Deg2Rad(angle);
-                
-                T s = sinf(radians);
-                T c = cosf(radians);
-                
-                T omc = (1 - c);
-                
-                return Matrix4<T>(Vector4<T>(c + x2 * omc, y * x * omc + z * s, z * x * omc - y * s, 0.0),
-                                  Vector4<T>(x * y * omc - z * s, c + y2 * omc, z * y * omc + x * s, 0.0),
-                                  Vector4<T>(x * z * omc + y * s, y * z * omc - x * s, c + z2 * omc, 0.0),
-                                  Vector4<T>(0.0, 0.0, 0.0, 1.0));
-            }
+		
+			static inline Matrix4<T> Scale(T x, T y, T z)
+			{
+				return Matrix4<T>(Vector4<T>(  x, 0.0, 0.0, 0.0),
+								  Vector4<T>(0.0,   y, 0.0, 0.0),
+								  Vector4<T>(0.0, 0.0,   z, 0.0),
+								  Vector4<T>(0.0, 0.0, 0.0, 1.0));
+			}
+		
+			// http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation#Quaternion-derived_rotation_matrix
+			static inline Matrix4<T> Rotate(T angle, T x, T y, T z)
+			{
+				T x2 = x * x;
+				T y2 = y * y;
+				T z2 = z * z;
+				
+				T radians = Math<T>::Deg2Rad(angle);
+				
+				T s = sinf(radians);
+				T c = cosf(radians);
+				
+				T omc = (1 - c);
+				
+				return Matrix4<T>(Vector4<T>(c + x2 * omc, y * x * omc + z * s, z * x * omc - y * s, 0.0),
+								  Vector4<T>(x * y * omc - z * s, c + y2 * omc, z * y * omc + x * s, 0.0),
+								  Vector4<T>(x * z * omc + y * s, y * z * omc - x * s, c + z2 * omc, 0.0),
+								  Vector4<T>(0.0, 0.0, 0.0, 1.0));
+			}
 
 			static inline Matrix4<T> Orthographic(T left, T right, T bottom, T top, T znear, T zfar)
 			{
@@ -213,16 +214,16 @@ namespace Renderer
 
 				return matrix;
 			}
-        
-            static inline Matrix4<T>OrthoFromFOV(float vertical_fov, float aspect_ratio, float znear, float zfar)
-             {
-                 float top = zfar * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
-                 float right = top * aspect_ratio;
-                 
-                 return Matrix4<T>::Orthographic(-right, right, -top, top, znear, zfar);
-             }
+		
+			static inline Matrix4<T>OrthoFromFOV(float vertical_fov, float aspect_ratio, float znear, float zfar)
+			 {
+				 float top = zfar * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
+				 float right = top * aspect_ratio;
+				 
+				 return Matrix4<T>::Orthographic(-right, right, -top, top, znear, zfar);
+			 }
 
-        
+		
 			static inline Matrix4<T> Frustrum(T left, T right, T bottom, T top, T znear, T zfar)
 			{
 				Matrix4<T> matrix = Matrix4<T>(0);
@@ -241,13 +242,13 @@ namespace Renderer
 
 				return matrix;
 			}
-        
+		
 			// todo : specialize for doubles
 			static inline Matrix4<T> Perspective(T vertical_fov, T aspect_ratio, T znear, T zfar)
 			{
 				float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));
 				float right = top * aspect_ratio;
-                
+				
 				return Matrix4<T>::Frustrum(-right, right, -top, top, znear, zfar);
 			}
 	};

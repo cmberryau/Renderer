@@ -123,7 +123,7 @@ namespace Renderer
         
         MeshFactory::ValidateIntermediateMesh(intermediate_mesh);
         MeshFactory::PrepareIntermediateMesh(intermediate_mesh);
-        
+
 		mesh->SetVertices(&intermediate_mesh.vertices[0],
         static_cast<unsigned int>(intermediate_mesh.vertices.size()));
         

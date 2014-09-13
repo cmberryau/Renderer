@@ -9,8 +9,7 @@
 #ifndef _vector_h
 #define _vector_h
 
-//#include "Math.h"
-
+//TODO: remove C style output
 #include <stdio.h>
 
 namespace Renderer
@@ -20,9 +19,9 @@ namespace Renderer
 	//
 	// Generic vector implementation
 	//
-    template <typename T, const int len>
+	template <typename T, const int len>
 	class Vector
-    {
+	{
 		public:  
 			// constructors
 			inline Vector()
@@ -42,132 +41,132 @@ namespace Renderer
 					elements[i] = value;
 				}
 			}
-        
-            // member functions
-            inline Vector Add(Vector<T, len> vec)
-            {
-                Vector<T, len> result(0);
-                
-                for(int i = 0; i<len; i++)
-                {
-                    result[i] = elements[i] + vec[i];
-                }
-                
-                return result;
-            }
-            
-            inline Vector Subtract(Vector<T, len> vec)
-            {
-                Vector<T, len> result(0);
-                
-                for(int i = 0; i<len; i++)
-                {
-                    result[i] = elements[i] - vec[i];
-                }
-                
-                return result;
-            }
-        
-            inline Vector Multiply(T factor)
-            {
-                Vector<T, len> result(0);
-                
-                for(int i = 0; i<len; i++)
-                {
-                    result[i] = elements[i] * factor;
-                }
-                
-                return result;
-            }
-        
-            inline Vector ComponentMultiply(Vector<T, len> vec)
-            {
-                Vector<T, len> result(0);
-                
-                for(int i = 0; i<len; i++)
-                {
+		
+			// member functions
+			inline Vector Add(Vector<T, len> vec)
+			{
+				Vector<T, len> result(0);
+				
+				for(int i = 0; i<len; i++)
+				{
+					result[i] = elements[i] + vec[i];
+				}
+				
+				return result;
+			}
+			
+			inline Vector Subtract(Vector<T, len> vec)
+			{
+				Vector<T, len> result(0);
+				
+				for(int i = 0; i<len; i++)
+				{
+					result[i] = elements[i] - vec[i];
+				}
+				
+				return result;
+			}
+		
+			inline Vector Multiply(T factor)
+			{
+				Vector<T, len> result(0);
+				
+				for(int i = 0; i<len; i++)
+				{
+					result[i] = elements[i] * factor;
+				}
+				
+				return result;
+			}
+		
+			inline Vector ComponentMultiply(Vector<T, len> vec)
+			{
+				Vector<T, len> result(0);
+				
+				for(int i = 0; i<len; i++)
+				{
 					result[i] = elements[i] * vec[i];
-                }
-                
-                return result;
-            }
-        
-            inline Vector Divide(T factor)
-            {
-                Vector<T, len> result(0);
-                
-                for(int i = 0; i<len; i++)
-                {
+				}
+				
+				return result;
+			}
+		
+			inline Vector Divide(T factor)
+			{
+				Vector<T, len> result(0);
+				
+				for(int i = 0; i<len; i++)
+				{
 					result[i] = elements[i] / factor;
-                }
-                
-                return result;
-            }
-        
-            inline Vector Negate()
-            {
-                Vector<T, len> result(0);
-                
-                for(int i = 0; i<len; i++)
-                {
+				}
+				
+				return result;
+			}
+		
+			inline Vector Negate()
+			{
+				Vector<T, len> result(0);
+				
+				for(int i = 0; i<len; i++)
+				{
 					result[i] = -elements[i];
-                }
-                
-                return result;
-            }
-        
-            // len(a) = sqrt(sum of elements squared)
-            inline T Length()
-            {
-                T total = 0;
-                
-                for(int i = 0;i < len; i++)
-                {
-                    total += elements[i] * elements[i];
-                }
-                
-                return (T)sqrt(total);
-            }
-        
-            // normalize(a) = each element / len(a)
-            inline Vector Normalize()
-            {
-                Vector<T, len> result;
-                T length = this->Length();
-                
-                for(int i = 0; i < len; i++)
-                {
+				}
+				
+				return result;
+			}
+		
+			// len(a) = sqrt(sum of elements squared)
+			inline T Length()
+			{
+				T total = 0;
+				
+				for(int i = 0;i < len; i++)
+				{
+					total += elements[i] * elements[i];
+				}
+				
+				return (T)sqrt(total);
+			}
+		
+			// normalize(a) = each element / len(a)
+			inline Vector Normalize()
+			{
+				Vector<T, len> result;
+				T length = this->Length();
+				
+				for(int i = 0; i < len; i++)
+				{
 					result[i] = elements[i] / length;
-                }
-                
-                return result;
-            }
-        
-            // dist(a, b) = len(b) - len(a)
-            inline T Distance(Vector vec)
-            {
-                return vec.Length() - this->Length();
-            }
-        
-            // dot(a, b) = total of elementwise multiplication
-            inline T Dot(Vector vec)
-            {
-                T total = 0;
-                
-                for(int i = 0; i < len; i++)
-                {
-                    total += this[i] * vec[i];
-                }
-                
-                return total;
-            }
-        
-            // memory size
-            static inline unsigned int Size()
-            {
-                return sizeof(T) * len;
-            }
-        
+				}
+				
+				return result;
+			}
+		
+			// dist(a, b) = len(b) - len(a)
+			inline T Distance(Vector vec)
+			{
+				return vec.Length() - this->Length();
+			}
+		
+			// dot(a, b) = total of elementwise multiplication
+			inline T Dot(Vector vec)
+			{
+				T total = 0;
+				
+				for(int i = 0; i < len; i++)
+				{
+					total += this[i] * vec[i];
+				}
+				
+				return total;
+			}
+		
+			// memory size
+			static inline unsigned int Size()
+			{
+				return sizeof(T) * len;
+			}
+		
 			// debug output
 			void Print()
 			{
@@ -195,7 +194,7 @@ namespace Renderer
 				return &elements[0]; 
 			}
 
-        protected:        
+		protected:        
 			// the actual elements of the vector
 			T elements[len];
 
@@ -206,7 +205,7 @@ namespace Renderer
 					elements[i] = vec.elements[i];
 				}
 			}
-    };
+	};
 
 	// 
 	// Renderer::Vector2<typename T>
@@ -237,13 +236,13 @@ namespace Renderer
 	template <typename T> class 
 	Vector3 : public Vector <T, 3>
 	{
-        public:
+		public:
 			// constructors
 			Vector3(){};
 
 			Vector3(const Vector<T, 3> & vec) : Vector<T, 3>(vec) {}
 
-            Vector3(T val) : Vector<T, 3>(val){};
+			Vector3(T val) : Vector<T, 3>(val){};
 
 			Vector3(T x, T y, T z)
 			{
@@ -265,7 +264,7 @@ namespace Renderer
 
 	// defined types for usage
 	typedef Vector3<float> Vector3f;
-  	typedef Vector3<double> Vector3d;
+	typedef Vector3<double> Vector3d;
 	typedef Vector3<unsigned int> Vector3ui;
 
 	// 

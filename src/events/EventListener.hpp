@@ -27,7 +27,7 @@ class EventListener
 
 		EventListener();
 		~EventListener();
-    
+	
 	protected:		
 		bool _should_quit;
 };

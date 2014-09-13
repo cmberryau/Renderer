@@ -21,29 +21,29 @@ namespace Renderer
 	{
 		public:
 			// caches the mesh and prepares it for drawing
-            virtual void SetMesh(MeshType<T> * mesh) = 0;
-        
-            // sets the material
-            void SetMaterial(Material * material)
-            {
-                _material = material;
-            }
+			virtual void SetMesh(MeshType<T> * mesh) = 0;
+		
+			// sets the material
+			void SetMaterial(Material * material)
+			{
+				_material = material;
+			}
 
 			// draws the mesh
 			virtual void Draw(ObjectType<T> * parent_object) = 0;
-        
+		
 			virtual ~MeshRendererType<T>(){};
 
 		protected:
-            MeshRendererType<T>(RenderingContextType<T> * rendering_context)
-            : _rendering_context(rendering_context), _mesh(nullptr)
+			MeshRendererType<T>(RenderingContextType<T> * rendering_context)
+			: _rendering_context(rendering_context), _mesh(nullptr)
 			{
 
 			}
-        
+		
 			MeshType<T> * _mesh;
-            Material * _material;
-            RenderingContextType<T> * _rendering_context;
+			Material * _material;
+			RenderingContextType<T> * _rendering_context;
 	};
 
 	typedef MeshRendererType<float> MeshRenderer;
