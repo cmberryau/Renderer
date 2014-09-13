@@ -14,6 +14,7 @@
 #include <exception>
 #include <memory>
 #include <vector>
+#include <iostream>
 
 namespace Renderer
 {
@@ -21,37 +22,32 @@ namespace Renderer
 	class MeshType
 	{
 		public:
-			MeshType<T>() : _vertices(nullptr), _vertex_count(0),
-							_vertex_normals(nullptr), _vertex_normals_count(0),
-							_vertex_colors(nullptr), _vertex_colors_count(0),
-							_triangles(nullptr), _triangle_count(0)
+			MeshType<T>()
 			{
 
 			}
 
 			~MeshType<T>()
 			{
-				delete _vertices;
-				delete _vertex_normals;
-				delete _vertex_colors;
-				delete _triangles;
+				
 			}
 		
 			void Validate()
 			{
 				// as a baseline, meshes must contain vertices and triangles
 				// if the mesh is missing normals, we will calculate them
-				if (_vertices == nullptr || _triangles == nullptr)
+				if (_vertices.size() == 0 || _triangles.size() == 0)
 				{
 					throw std::exception();
 				}
 
 				// the triangle references must not be outside the vertex buffer
-				for (unsigned int i = 0; i < _triangle_count; ++i)
+				std::vector<Vector3ui>::iterator it;
+				for (it = _triangles.begin(); it != _triangles.end(); ++it)
 				{
 					for (int j = 0; j < 3; j++)
 					{
-						if (_triangles[i][j] > _vertex_count - 1)
+						if ((*it)[j] > _vertices.size() - 1)
 						{
 							throw std::exception();
 						}
@@ -61,12 +57,14 @@ namespace Renderer
 				// validate normals
 				if (!ValidateNormals())
 				{
+					std::cout << "ValidateNormals\n";
 					throw std::exception();
 				}
 
 				// validate the vertex colors
 				if (!ValidateColors())
 				{
+					std::cout << "ValidateColors\n";
 					throw std::exception();
 				}
 			}
@@ -74,143 +72,123 @@ namespace Renderer
 			// vertex related
 			void SetVertices(Vector4<T> * vertices, unsigned int size)
 			{
-				this->_vertices = new Vector4<T>[size];
-
-				if (this->_vertices == nullptr)
-					return;
-
 				for (unsigned int i = 0; i < size; ++i)
 				{
 					if (vertices[i] == nullptr)
-						return;
+					{
+						throw std::exception();
+					}
 
-					this->_vertices[i] = vertices[i];
+					_vertices.push_back(vertices[i]);
 				}
-
-				this->_vertex_count = size;
 			}
 
 			const Vector4<T> * Vertices()
 			{
-				return static_cast<const Vector4<T> *>(_vertices);
+				return static_cast<const Vector4<T> *>(&_vertices[0]);
 			}
 
 			unsigned int VerticesSize()
 			{
-				return _vertex_count * Vector4<T>::Size();
+				return _vertices.size() * Vector4<T>::Size();
 			}
 
 			unsigned int VertexCount()
 			{
-				return _vertex_count;
+				return _vertices.size();
 			}
 
 			// vertex normal related
 			void SetVertexNormals(Vector3<T> * vertex_normals, unsigned int size)
 			{
-				this->_vertex_normals = new Vector3<T>[size];
-
-				if (this->_vertex_normals == nullptr)
-					return;
-
 				for (unsigned int i = 0; i < size; ++i)
 				{
 					if (vertex_normals[i] == nullptr)
-						return;
+					{
+						throw std::exception();
+					}
 
-					this->_vertex_normals[i] = vertex_normals[i];
+					_vertex_normals.push_back(vertex_normals[i]);
 				}
-
-				this->_vertex_normals_count = size;
 			}
 			
 			const Vector3<T> * VertexNormals()
 			{
-				return static_cast<const Vector3<T> *>(_vertex_normals);
+				return static_cast<const Vector3<T> *>(&_vertex_normals[0]);
 			}
 
 			unsigned int VertexNormalsSize()
 			{
-				return _vertex_normals_count * Vector3<T>::Size();
+				return _vertex_normals.size() * Vector3<T>::Size();
 			}
 
 			unsigned int VertexNormalsCount()
 			{
-				return _vertex_normals_count;
+				return _vertex_normals.size();
 			}
 
 			// vertex color related
 			void SetColors(Vector4f * vertex_colors, unsigned int size)
 			{
-				this->_vertex_colors = new Vector4f[size];
-
-				if (this->_vertex_colors == nullptr)
-					return;
-
 				for (unsigned int i = 0; i < size; ++i)
 				{
 					if (vertex_colors[i] == nullptr)
-						return;
+					{
+						throw std::exception();
+					}
 
-					this->_vertex_colors[i] = vertex_colors[i];
+					_vertex_colors.push_back(vertex_colors[i]);
 				}
-
-				this->_vertex_colors_count = size;
 			}
 
 			const Vector4f * Colors()
 			{
-				return static_cast<const Vector4f *>(_vertex_colors);
+				return static_cast<const Vector4f *>(&_vertex_colors[0]);
 			}
 
 			unsigned int ColorsSize()
 			{
-				return _vertex_colors_count * Vector4f::Size();
+				return _vertex_colors.size() * Vector4f::Size();
 			}
 
 			unsigned int ColorsCount()
 			{
-				return _vertex_colors_count;
+				return _vertex_colors.size();
 			}
 
 			// triangle related
 			void SetTriangles(Vector3ui * triangles, unsigned int size)
 			{
-				this->_triangles = new Vector3ui[size];
-
-				if (this->_triangles == nullptr)
-					return;
-
 				for (unsigned int i = 0; i < size; ++i)
 				{
 					if (triangles[i] == nullptr)
-						return;
+					{
+						std::exception();
+					}
 
-					this->_triangles[i] = triangles[i];
+					_triangles.push_back(triangles[i]);
 				}
-
-				this->_triangle_count = size;
 			}
 
 			const Vector3ui * Triangles()
 			{
-				return static_cast<const Vector3ui *>(_triangles);
+				return static_cast<const Vector3ui *>(&_triangles[0]);
 			}
 
 			unsigned int TrianglesSize()
 			{
-				return _triangle_count * Vector3ui::Size();
+				return _triangles.size() * Vector3ui::Size();
 			}
 
 			unsigned int TrianglesCount()
 			{
-				return _triangle_count;
+				return _triangles.size();
 			}
 		
 			// debug output
 			void Print()
 			{
-				for (unsigned int i = 0; i < _vertex_count; ++i)
+				for (unsigned int i = 0; i < _vertices.size(); ++i)
 				{
 					if (_vertices[i] == nullptr)
 					{
@@ -225,22 +203,17 @@ namespace Renderer
 			bool ValidateColors()
 			{
 				// if the mesh does not contain vertex colors, we assign default ones
-				if (_vertex_colors == nullptr)
+				if (_vertex_colors.size() == 0)
 				{
-					Vector4f * default_colors = new Vector4f[_vertex_count];
-					std::unique_ptr<Vector4f> default_colors_unique(default_colors);
-
-					for (unsigned int i = 0; i < _vertex_count; ++i)
+					for (unsigned int i = 0; i < _vertices.size(); ++i)
 					{
-						default_colors[i] = MeshType<T>::kDefaultVertexColor;
+						_vertex_colors.push_back(MeshType<T>::kDefaultVertexColor);
 					}
-
-					this->SetColors(default_colors, _vertex_count);
 				}
 				// there must be a color for each vertex
-				else if (_vertex_count != _vertex_colors_count)
+				else if (_vertices.size() != _vertex_colors.size())  
 				{
-					return false;
+					throw std::exception();
 				}
 
 				return true;
@@ -249,52 +222,38 @@ namespace Renderer
 			bool ValidateNormals()
 			{
 				// if the mesh does not contain vertex normals, we must assign some
-				if (_vertex_normals == nullptr)
+				if (_vertex_normals.size() == 0)
 				{
 					// because we are not provided with any normals, we do not assume to smooth
 					// or guess normals, this could confuse the user and provide unexpected results
-					Vector3<T> * default_normals = new Vector3<T>[_triangle_count * 3];
-					std::unique_ptr<Vector3<T>> default_normals_unique(default_normals);
-
-					Vector4<T> * default_vertices = new Vector4<T>[_triangle_count * 3];
-					std::unique_ptr<Vector4<T>> default_vertices_unique(default_vertices);
-
-					Vector3ui * default_triangles = new Vector3ui[_triangle_count];
-					std::unique_ptr<Vector3ui> default_triangles_unique(default_triangles);
+					std::vector<Vector3<T>> default_normals;			
+					std::vector<Vector4<T>> default_vertices;
+					std::vector<Vector3ui> default_triangles;
 
 					// for each triangle, we generate 3 vertices, with 3 matching normals
 					unsigned int vertex_index = 0;
-					for (unsigned int i = 0; i < _triangle_count; ++i)
+					for (unsigned int i = 0; i < _triangles.size(); ++i)
 					{
+						default_triangles.push_back(Vector3ui(0));
 						for (unsigned int j = 0; j < 3; ++j)
 						{
 							default_triangles[i][j] = vertex_index;
-							default_vertices[vertex_index] = _vertices[_triangles[i][j]];
+							default_vertices.push_back(_vertices[_triangles[i][j]]);
 
 							Vector3<T> v0 = _vertices[_triangles[i][1]].Vec3().Subtract(_vertices[_triangles[i][0]].Vec3());
 							Vector3<T> v1 = _vertices[_triangles[i][2]].Vec3().Subtract(_vertices[_triangles[i][0]].Vec3());
 
-							default_normals[vertex_index] = v0.Cross(v1);
+							default_normals.push_back(v0.Cross(v1));
 							vertex_index++;
 						}
 					}
-
-					delete _triangles;
-					delete _vertices;
 					
 					_triangles = default_triangles;
-					default_triangles_unique.release();
-
 					_vertices = default_vertices;
-					_vertex_count = vertex_index;
-					default_vertices_unique.release();
-
 					_vertex_normals = default_normals;
-					_vertex_normals_count = vertex_index;
-					default_normals_unique.release();
 				}
 				// ensure that the count is correct
-				else if (_vertex_count != _vertex_normals_count)
+				else if (_vertices.size() != _vertex_normals.size())
 				{
 					return false;
 				}
@@ -303,20 +262,16 @@ namespace Renderer
 			}
 
 			// vertices
-			Vector4<T> * _vertices;
-			unsigned int _vertex_count;
+			std::vector <Vector4<T>> _vertices;
 
 			// vertex normals
-			Vector3<T> * _vertex_normals;
-			unsigned int _vertex_normals_count;
+			std::vector<Vector3<T>> _vertex_normals;
 
 			// vertex colors
-			Vector4f * _vertex_colors;
-			unsigned int _vertex_colors_count;
+			std::vector<Vector4f> _vertex_colors;
 
 			// triangles
-			Vector3ui * _triangles;
-			unsigned int _triangle_count;
+			std::vector<Vector3ui> _triangles;
 
 			// default vertex color
 			static const Vector4f kDefaultVertexColor;
