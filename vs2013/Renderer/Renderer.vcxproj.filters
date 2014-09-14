@@ -71,6 +71,9 @@
     <ClCompile Include="..\..\src\utility\util.cpp">
       <Filter>Source Files\utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\application\application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
@@ -147,6 +150,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\utility\util.hpp">
       <Filter>Source Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\application\application.hpp">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

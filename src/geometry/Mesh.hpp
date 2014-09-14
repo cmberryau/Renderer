@@ -211,7 +211,7 @@ namespace Renderer
 				// if the mesh does not contain vertex colors, we assign default ones
 				if (_vertex_colors.size() == 0)
 				{
-					std::vector<Vector4f<T>>::iterator it;
+					std::vector<Vector4<T>>::iterator it;
 					for (it = _vertices.begin(); it != _vertices.end(); ++it)
 					{
 						_vertex_colors.push_back(MeshType<T>::kDefaultVertexColor);
