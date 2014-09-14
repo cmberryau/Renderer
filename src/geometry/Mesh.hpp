@@ -55,17 +55,23 @@ namespace Renderer
 				}
 
 				// validate normals
-				if (!ValidateNormals())
+				try
 				{
-					std::cout << "ValidateNormals\n";
-					throw std::exception();
+					ValidateNormals();
+				}
+				catch (std::exception)
+				{
+					std::cout << "Mesh normals incorrect" << std::endl;
 				}
 
 				// validate the vertex colors
-				if (!ValidateColors())
+				try
 				{
-					std::cout << "ValidateColors\n";
-					throw std::exception();
+					ValidateColors();
+				}
+				catch (std::exception)
+				{
+					std::cout << "Mesh colors incorrect" << std::endl;
 				}
 			}
 
@@ -200,12 +206,13 @@ namespace Renderer
 			}
 
 		protected:
-			bool ValidateColors()
+			void ValidateColors()
 			{
 				// if the mesh does not contain vertex colors, we assign default ones
 				if (_vertex_colors.size() == 0)
 				{
-					for (unsigned int i = 0; i < _vertices.size(); ++i)
+					std::vector<Vector4f<T>>::iterator it;
+					for (it = _vertices.begin(); it != _vertices.end(); ++it)
 					{
 						_vertex_colors.push_back(MeshType<T>::kDefaultVertexColor);
 					}
@@ -215,11 +222,9 @@ namespace Renderer
 				{
 					throw std::exception();
 				}
-
-				return true;
 			}
 
-			bool ValidateNormals()
+			void ValidateNormals()
 			{
 				// if the mesh does not contain vertex normals, we must assign some
 				if (_vertex_normals.size() == 0)
@@ -255,10 +260,8 @@ namespace Renderer
 				// ensure that the count is correct
 				else if (_vertices.size() != _vertex_normals.size())
 				{
-					return false;
+					throw std::exception();
 				}
-
-				return true;
 			}
 
 			// vertices
