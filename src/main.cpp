@@ -36,7 +36,7 @@
 
 using namespace Renderer;
 
-Window * window;
+Window window(640, 480);
 EventListener * event_listener;
 RenderingContext * rendering_context;
 Scene * scene;
@@ -57,16 +57,15 @@ void emscripten_loop()
 
 	rendering_context->EndScene();
 
-	window->Swap();
+	window.Swap();
 }
 
-int main(int argc, char ** argv)
+void entry()
 {
-	window = new Window(640, 480);
 	event_listener = new EventListener();
-	
+
 #ifndef EMSCRIPTEN
-	rendering_context = new OpenGLRenderingContext(window);
+	rendering_context = new OpenGLRenderingContext(&window);
 #else
 	rendering_context = new OpenGLESRenderingContext(window);
 #endif
@@ -77,7 +76,7 @@ int main(int argc, char ** argv)
 	std::string cube_file;
 	std::string cone_file;
 	std::string bunny_file;
-	
+
 #ifdef _WIN32
 	sphere_file = std::string("assets//sphere.obj");
 	cube_file = std::string("assets//cube.obj");
@@ -102,7 +101,7 @@ int main(int argc, char ** argv)
 
 	std::string vertex_source_file;
 	std::string fragment_source_file;
-	
+
 #ifdef _WIN32
 	vertex_source_file = std::string("src//shaders//GLSL//default.vert");
 	fragment_source_file = std::string("src//shaders//GLSL//default.frag");
@@ -115,20 +114,18 @@ int main(int argc, char ** argv)
 #endif
 	std::string vertex_source;
 	std::string fragment_source;
-	
+
 	vertex_source = IO::ReadFile(vertex_source_file);
-	fragment_source = IO::ReadFile(fragment_source_file);	
+	fragment_source = IO::ReadFile(fragment_source_file);
 
 	Shader * test_shader = ShaderFactory::Create(vertex_source, fragment_source, rendering_context);
 
-	Rotator * rotator = new Rotator;
 	Object * sphere_object = new Object();
-	sphere_object->Add(rotator);
 	MeshRenderer * sphere_mesh_renderer = rendering_context->MeshRenderer();
 	Material * sphere_material = new Material(test_shader);
 
 	sphere_mesh_renderer->SetMaterial(sphere_material);
-	sphere_mesh_renderer->SetMesh(sphere_mesh);	
+	sphere_mesh_renderer->SetMesh(sphere_mesh);
 	sphere_object->AddMeshRenderer(sphere_mesh_renderer);
 
 	scene->AddObject(sphere_object);
@@ -137,44 +134,44 @@ int main(int argc, char ** argv)
 	Object * cone_object = new Object();
 	MeshRenderer * cone_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cone_material = new Material(test_shader);
-	
+
 	cone_mesh_renderer->SetMaterial(cone_material);
 	cone_mesh_renderer->SetMesh(cone_mesh);
 	cone_object->AddMeshRenderer(cone_mesh_renderer);
-	
+
 	scene->AddObject(cone_object);
 	cone_object->LocalTransform()->SetPosition(-2.0f, 0.0f, 4.0f);
 
 	Object * cube_object = new Object();
 	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cube_material = new Material(test_shader);
-	 
+
 	cube_mesh_renderer->SetMaterial(cube_material);
 	cube_mesh_renderer->SetMesh(cube_mesh);
 	cube_object->AddMeshRenderer(cube_mesh_renderer);
-	
+
 	scene->AddObject(cube_object);
 	cube_object->LocalTransform()->SetPosition(2.0f, 0.0f, 4.0f);
-	
+
 	Object * bunny_object = new Object();
 	MeshRenderer * bunny_mesh_renderer = rendering_context->MeshRenderer();
 	Material * bunny_material = new Material(test_shader);
-	
+
 	bunny_mesh_renderer->SetMaterial(bunny_material);
 	bunny_mesh_renderer->SetMesh(bunny_mesh);
 	bunny_object->AddMeshRenderer(bunny_mesh_renderer);
-	
+
 	scene->AddObject(bunny_object);
 	bunny_object->LocalTransform()->SetPosition(0.0f, -2.0f, 3.0f);
 	bunny_object->LocalTransform()->SetScale(10.0f, 10.0f, 10.0f);
-	 
+
 	Object * camera_object = new Object();
 	Camera * camera = new Camera(rendering_context);
 	camera_object->Add(camera);
 	scene->AddObject(camera_object);
 
-	rendering_context->SetCamera(camera);	
-	
+	rendering_context->SetCamera(camera);
+
 #ifdef EMSCRIPTEN
 	emscripten_set_main_loop(emscripten_loop, 0, true);
 #endif
@@ -195,26 +192,41 @@ int main(int argc, char ** argv)
 
 		rendering_context->EndScene();
 
-		window->Swap();
-	}
+		window.Swap();
+	}	
 
-	//delete camera; - deleted by object
-	delete camera_object;
-	delete test_shader;
-	delete cube_material;
-	delete cube_mesh;
-	delete sphere_material;
-	delete sphere_mesh;
+	delete bunny_material;
+	delete bunny_mesh_renderer;
+	delete bunny_object;
+	delete bunny_mesh;
+
 	delete cone_material;
-	delete cone_mesh;
-	//delete test_mesh_renderer; - deleted by object
-	delete cube_object;
-	delete sphere_object;
+	delete cone_mesh_renderer;
 	delete cone_object;
+	delete cone_mesh;
+
+	delete cube_material;
+	delete cube_mesh_renderer;
+	delete cube_object;
+	delete cube_mesh;
+
+	delete sphere_material;
+	delete sphere_mesh_renderer;
+	delete sphere_object;
+	delete sphere_mesh;
+	
+	delete test_shader;
+	delete camera_object;
+	
 	delete scene;
 	delete rendering_context;
 	delete event_listener;
-	delete window;
+	//delete window;
+}
+
+int main(int argc, char ** argv)
+{   
+	entry();
 
 #ifdef _WIN32
 	_CrtDumpMemoryLeaks();
