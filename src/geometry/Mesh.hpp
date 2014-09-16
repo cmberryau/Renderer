@@ -14,6 +14,7 @@
 #include <exception>
 #include <memory>
 #include <vector>
+#include <algorithm>
 #include <iostream>
 
 namespace Renderer
@@ -22,15 +23,8 @@ namespace Renderer
 	class MeshType
 	{
 		public:
-			MeshType<T>()
-			{
-
-			}
-
-			~MeshType<T>()
-			{
-				
-			}
+			MeshType<T>() {}
+			~MeshType<T>() {}
 		
 			void Validate()
 			{
@@ -76,17 +70,15 @@ namespace Renderer
 			}
 
 			// vertex related
-			void SetVertices(Vector4<T> * vertices, unsigned int size)
+            void SetVertices(std::vector<Vector4<T>> & vertices)
+            {
+				_vertices.clear();
+				_vertices = vertices;
+            }
+			
+			const std::vector<Vector4<T>> & VerticesVector()
 			{
-				for (unsigned int i = 0; i < size; ++i)
-				{
-					if (vertices[i] == nullptr)
-					{
-						throw std::exception();
-					}
-
-					_vertices.push_back(vertices[i]);
-				}
+				return _vertices;
 			}
 
 			const Vector4<T> * Vertices()
@@ -94,28 +86,26 @@ namespace Renderer
 				return static_cast<const Vector4<T> *>(&_vertices[0]);
 			}
 
-			unsigned int VerticesSize()
+			std::size_t VerticesSize()
 			{
 				return _vertices.size() * Vector4<T>::Size();
 			}
 
-			unsigned int VertexCount()
+			std::size_t VertexCount()
 			{
 				return _vertices.size();
 			}
 
 			// vertex normal related
-			void SetVertexNormals(Vector3<T> * vertex_normals, unsigned int size)
+			void SetVertexNormals(std::vector<Vector3<T>> & vertex_normals)
 			{
-				for (unsigned int i = 0; i < size; ++i)
-				{
-					if (vertex_normals[i] == nullptr)
-					{
-						throw std::exception();
-					}
-
-					_vertex_normals.push_back(vertex_normals[i]);
-				}
+				_vertex_normals.clear();
+				_vertex_normals = vertex_normals;
+            }
+    
+			const std::vector<Vector3<T>> & VertexNormalsVector()
+			{
+				return _vertex_normals;
 			}
 			
 			const Vector3<T> * VertexNormals()
@@ -123,28 +113,26 @@ namespace Renderer
 				return static_cast<const Vector3<T> *>(&_vertex_normals[0]);
 			}
 
-			unsigned int VertexNormalsSize()
+			std::size_t VertexNormalsSize()
 			{
 				return _vertex_normals.size() * Vector3<T>::Size();
 			}
 
-			unsigned int VertexNormalsCount()
+			std::size_t VertexNormalsCount()
 			{
 				return _vertex_normals.size();
 			}
 
 			// vertex color related
-			void SetColors(Vector4f * vertex_colors, unsigned int size)
+			void SetColors(std::vector<Vector4f> & vertex_colors)
 			{
-				for (unsigned int i = 0; i < size; ++i)
-				{
-					if (vertex_colors[i] == nullptr)
-					{
-						throw std::exception();
-					}
+				_vertex_colors.clear();
+				_vertex_colors = vertex_colors;
+			}
 
-					_vertex_colors.push_back(vertex_colors[i]);
-				}
+			const std::vector<Vector4f> & ColorsVector()
+			{
+				return _vertex_colors;
 			}
 
 			const Vector4f * Colors()
@@ -152,28 +140,53 @@ namespace Renderer
 				return static_cast<const Vector4f *>(&_vertex_colors[0]);
 			}
 
-			unsigned int ColorsSize()
+			std::size_t ColorsSize()
 			{
 				return _vertex_colors.size() * Vector4f::Size();
 			}
 
-			unsigned int ColorsCount()
+			std::size_t ColorsCount()
 			{
 				return _vertex_colors.size();
 			}
 
-			// triangle related
-			void SetTriangles(Vector3ui * triangles, unsigned int size)
+			// uv related
+			void SetUVs(std::vector<Vector2<T>> & uvs)
 			{
-				for (unsigned int i = 0; i < size; ++i)
-				{
-					if (triangles[i] == nullptr)
-					{
-						std::exception();
-					}
+				_uvs.clear();
+				_uvs = uvs;
+			}
 
-					_triangles.push_back(triangles[i]);
-				}
+			const std::vector<Vector2<T>> & UVsVector()
+			{
+				return uvs;
+			}
+
+			const Vector2<T> * UVs()
+			{
+				return static_cast<const Vector2<T> *>(&_uvs[0]);
+			}
+
+			std::size_t UVsSize()
+			{
+				return _uvs.size() * Vector2<T>::Size();
+			}
+
+			std::size_t UVsCount()
+			{
+				return _uvs.size();
+			}
+
+			// triangle related
+			void SetTriangles(std::vector<Vector3ui> & triangles)
+			{
+				_triangles.clear();
+				_triangles = triangles;
+			}
+
+			const std::vector<Vector3ui> TrianglesVector()
+			{
+				return _triangles;
 			}
 
 			const Vector3ui * Triangles()
@@ -181,12 +194,12 @@ namespace Renderer
 				return static_cast<const Vector3ui *>(&_triangles[0]);
 			}
 
-			unsigned int TrianglesSize()
+			std::size_t TrianglesSize()
 			{
 				return _triangles.size() * Vector3ui::Size();
 			}
 
-			unsigned int TrianglesCount()
+			std::size_t TrianglesCount()
 			{
 				return _triangles.size();
 			}
@@ -194,15 +207,11 @@ namespace Renderer
 			// debug output
 			void Print()
 			{
-				for (unsigned int i = 0; i < _vertices.size(); ++i)
+				typename std::vector<Vector4<T>>::iterator it;
+				for (it = _vertices.begin(); it != _vertices.end(); ++it)
 				{
-					if (_vertices[i] == nullptr)
-					{
-						throw std::exception();
-					}
-
-					_vertices[i].Print();
-				}
+					(*it).Print();
+				}					
 			}
 
 		protected:
@@ -215,7 +224,7 @@ namespace Renderer
 					for (it = _vertices.begin(); it != _vertices.end(); ++it)
 					{
 						_vertex_colors.push_back(MeshType<T>::kDefaultVertexColor);
-					}
+					}					
 				}
 				// there must be a color for each vertex
 				else if (_vertices.size() != _vertex_colors.size())  
@@ -265,13 +274,16 @@ namespace Renderer
 			}
 
 			// vertices
-			std::vector <Vector4<T>> _vertices;
+			std::vector<Vector4<T>> _vertices;
 
 			// vertex normals
 			std::vector<Vector3<T>> _vertex_normals;
 
 			// vertex colors
 			std::vector<Vector4f> _vertex_colors;
+
+			// uvs
+			std::vector<Vector2<T>> _uvs;
 
 			// triangles
 			std::vector<Vector3ui> _triangles;
