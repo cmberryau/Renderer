@@ -16,46 +16,20 @@
 
 namespace Renderer
 {
-    template <typename T>
-    class SceneType
+    class Scene
     {
-        public:        
-            Camera * MainCamera()
-            {
-                return _main_camera;
-            }
-        
-            void UpdateAndDraw()
-            {
-                for(int i=0; i<objects.size(); i++)
-                {
-                    objects[i]->Update();
-                    objects[i]->Draw();
-                }
-            }
-        
-            void AddObject(ObjectType<T> * object)
-            {
-                objects.push_back(object);
-            }
+        public:
+			Scene();
+			~Scene();
 
-			SceneType<T>() : _main_camera(nullptr)
-			{
-
-			}
-
-            ~SceneType<T>()
-            {
-                
-            }
+			Camera * MainCamera();
+			void UpdateAndDraw();        
+			void AddObject(Object * object);
         
         protected:        
             Camera * _main_camera;
-            std::vector<ObjectType<T> *> objects;
+            std::vector<Object *> _objects;
     };
-    
-    typedef SceneType<float> Scene;
-    typedef SceneType<double> Scened;
 }
 
 #endif // _scene_h
