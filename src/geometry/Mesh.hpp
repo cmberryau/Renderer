@@ -159,7 +159,7 @@ namespace Renderer
 
 			const std::vector<Vector2<T>> & UVsVector()
 			{
-				return uvs;
+				return _uvs;
 			}
 
 			const Vector2<T> * UVs()

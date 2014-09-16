@@ -67,7 +67,7 @@ void entry()
 #ifndef EMSCRIPTEN
 	rendering_context = new OpenGLRenderingContext(&window);
 #else
-	rendering_context = new OpenGLESRenderingContext(window);
+	rendering_context = new OpenGLESRenderingContext(&window);
 #endif
 
 	scene = new Scene();
