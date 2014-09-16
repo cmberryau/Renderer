@@ -72,9 +72,7 @@ namespace Renderer
 			}
 
 			~ObjectType<T>()
-			{
-				delete _mesh_renderer;
-            
+			{            
                 for(int i = 0; i < _addables.size(); i++)
                 {
                     delete _addables[i];
