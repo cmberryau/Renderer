@@ -9,6 +9,18 @@
 #ifndef _application_h
 #define _application_h
 
+#include "windowing/Window.hpp"
+#include "rendering/RenderingContext.hpp"
 
+namespace Renderer
+{
+	class Application
+	{
+		public:
+			Application(Window & window,
+						RenderingContext & rendering_context);
+			~Application();
+	};
+}
 
 #endif // _applcation_h
