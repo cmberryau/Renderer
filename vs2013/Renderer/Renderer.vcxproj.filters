@@ -39,6 +39,9 @@
     <Filter Include="Source Files\rendering\OpenGLES">
       <UniqueIdentifier>{2f8d9f82-579a-4a6c-b1dc-9368c854b6df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\application">
+      <UniqueIdentifier>{b4e0c47f-6c0e-4004-b293-fdf596278a93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\events\EventListener.cpp">
@@ -71,8 +74,14 @@
     <ClCompile Include="..\..\src\utility\util.cpp">
       <Filter>Source Files\utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scene\Scene.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\application\application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\application\ApplicationFactory.cpp">
+      <Filter>Source Files\application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,7 +161,10 @@
       <Filter>Source Files\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\application\application.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\application\ApplicationFactory.hpp">
+      <Filter>Source Files\application</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
