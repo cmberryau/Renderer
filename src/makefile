@@ -12,7 +12,31 @@ else
 	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file shaders/GLSLES/defaultes.vert --embed-file shaders/GLSLES/defaultes.frag --embed-file cube.obj --embed-file cube_n.obj --embed-file sphere.obj --embed-file cone.obj --embed-file bunny.obj --memory-init-file 0
 	CFLAGS=-O2 -std=c++11 -I../src
 	SOURCE_DIR=../src
-	SOURCES=$(wildcard *.cpp) events/EventListener.cpp geometry/MeshFactory.cpp rendering/Material.cpp rendering/ShaderFactory.cpp rendering/OpenGL/OpenGLShader.cpp rendering/OpenGLES/OpenGLESShader.cpp windowing/Window.cpp scene/Scene.cpp utility/IO.cpp utility/util.cpp
+	SOURCES=$(wildcard *.cpp) \ 
+	application/Application.cpp \
+	application/ApplicationFactory.cpp \
+	events/EventListener.cpp \
+	geometry/Mesh.cpp \
+	geometry/MeshFactory.cpp \
+	math/Mathf.cpp \
+	math/Transform.cpp \
+	object/IObjectAddable.cpp \
+	object/Object.cpp \
+	rendering/Camera.cpp \ 
+	rendering/Material.cpp \ 
+	rendering/MeshRenderer.cpp \ 
+	rendering/RenderingContext.cpp \ 
+	rendering/ShaderFactory.cpp \
+	rendering/OpenGL/OpenGLMeshRenderer.cpp \
+	rendering/OpenGL/OpenGLRenderingContext.cpp \
+	rendering/OpenGL/OpenGLShader.cpp \
+	rendering/OpenGLES/OpenGLESMeshRenderer.cpp \
+	rendering/OpenGLES/OpenGLESRenderingContext.cpp \
+	rendering/OpenGLES/OpenGLESShader.cpp \
+	scene/Scene.cpp \
+	utility/IO.cpp \ 
+	utility/Util.cpp
+	windowing/Window.cpp \
 	OBJECTS=$(SOURCES:.cpp=.bc)
 endif
 	EXECUTABLE=renderer.html
