@@ -9,7 +9,7 @@
 #ifndef _matrix_h
 #define _matrix_h
 
-#include "CommonMath.hpp"
+#include "Mathf.hpp"
 #include "Vector.hpp"
 
 //TODO: remove C style output
@@ -185,7 +185,7 @@ namespace Renderer
 				T y2 = y * y;
 				T z2 = z * z;
 				
-				T radians = Math<T>::Deg2Rad(angle);
+				T radians = Mathf::Deg2Rad(angle);
 				
 				T s = sinf(radians);
 				T c = cosf(radians);
