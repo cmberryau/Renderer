@@ -83,6 +83,42 @@
     <ClCompile Include="..\..\src\application\ApplicationFactory.cpp">
       <Filter>Source Files\application</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\geometry\Mesh.cpp">
+      <Filter>Source Files\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLRenderingContext.cpp">
+      <Filter>Source Files\rendering\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.cpp">
+      <Filter>Source Files\rendering\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESRenderingContext.cpp">
+      <Filter>Source Files\rendering\OpenGLES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESMeshRenderer.cpp">
+      <Filter>Source Files\rendering\OpenGLES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\RenderingContext.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\Camera.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp">
+      <Filter>Source Files\rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\math\Transform.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\Object.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\IObjectAddable.cpp">
+      <Filter>Source Files\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\math\Mathf.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
@@ -98,9 +134,6 @@
       <Filter>Source Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Vector.hpp">
-      <Filter>Source Files\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\math\CommonMath.hpp">
       <Filter>Source Files\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\objects\Object.hpp">
@@ -165,6 +198,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\application\ApplicationFactory.hpp">
       <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\math\Mathf.hpp">
+      <Filter>Source Files\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
