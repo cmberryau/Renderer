@@ -8,6 +8,8 @@
 
 #ifdef EMSCRIPTEN
 
+#include "OpenGLESRenderingContext.hpp"
+
 namespace Renderer
 {
 	OpenGLESRenderingContext::OpenGLESRenderingContext(class Window * window)
@@ -38,7 +40,7 @@ namespace Renderer
 		glDepthFunc(GL_LESS);
 			}
 
-	OpenGLESRenderingContext::~OpenGLESRenderingContextType()
+	OpenGLESRenderingContext::~OpenGLESRenderingContext()
 	{
 
 	}

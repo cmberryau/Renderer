@@ -28,12 +28,12 @@ namespace Renderer
 	{
 		public:
 			OpenGLESRenderingContext(class Window * window);
-			~OpenGLESRenderingContextType();
+			~OpenGLESRenderingContext();
 
 			void BeginScene();        
 			void EndScene();
 
-			MeshRenderer * MeshRenderer();        
+			class MeshRenderer * MeshRenderer();        
 			class Shader * Shader();
 
 		protected:
