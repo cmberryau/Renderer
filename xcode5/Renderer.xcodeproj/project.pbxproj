@@ -44,6 +44,9 @@
 		87D8152319696389009A8A62 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152119696389009A8A62 /* Window.cpp */; };
 		87D8152619696392009A8A62 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152419696392009A8A62 /* EventListener.cpp */; };
 		87DE3DBE19C9BF4000D26659 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DBD19C9BF4000D26659 /* Scene.cpp */; };
+		87DE3DC119C9FADD00D26659 /* Mathf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DBF19C9FADD00D26659 /* Mathf.cpp */; };
+		87DE3DC319C9FAE600D26659 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DC219C9FAE600D26659 /* Transform.cpp */; };
+		87DE3DC519C9FB0600D26659 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DC419C9FB0600D26659 /* Transform.cpp */; };
 		87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +85,6 @@
 		878008D519ADD8A300329645 /* MeshFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MeshFactory.hpp; path = geometry/MeshFactory.hpp; sourceTree = "<group>"; };
 		878008D619ADD99700329645 /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = geometry/MeshFactory.cpp; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		87870FD71969DC030040533D /* CommonMath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CommonMath.hpp; path = math/CommonMath.hpp; sourceTree = "<group>"; };
 		8787B0DD194DBEF900F894CA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		879D815919C3456700912C9A /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		879D815A19C3456700912C9A /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
@@ -128,6 +130,10 @@
 		87D8152B196963A3009A8A62 /* RenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RenderingContext.hpp; path = rendering/RenderingContext.hpp; sourceTree = "<group>"; };
 		87D8152E196978C0009A8A62 /* libmathCommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmathCommon.dylib; path = usr/lib/system/libmathCommon.dylib; sourceTree = SDKROOT; };
 		87DE3DBD19C9BF4000D26659 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = scene/Scene.cpp; sourceTree = "<group>"; };
+		87DE3DBF19C9FADD00D26659 /* Mathf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mathf.cpp; path = math/Mathf.cpp; sourceTree = "<group>"; };
+		87DE3DC019C9FADD00D26659 /* Mathf.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Mathf.hpp; path = math/Mathf.hpp; sourceTree = "<group>"; };
+		87DE3DC219C9FAE600D26659 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = math/Transform.cpp; sourceTree = "<group>"; };
+		87DE3DC419C9FB0600D26659 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = math/Transform.cpp; sourceTree = "<group>"; };
 		87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESMeshRenderer.hpp; sourceTree = "<group>"; };
 		87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESRenderingContext.hpp; sourceTree = "<group>"; };
 		87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESShader.cpp; sourceTree = "<group>"; };
@@ -210,7 +216,10 @@
 		87A0B74019599156003F53C6 /* math */ = {
 			isa = PBXGroup;
 			children = (
-				87870FD71969DC030040533D /* CommonMath.hpp */,
+				87DE3DC419C9FB0600D26659 /* Transform.cpp */,
+				87DE3DC219C9FAE600D26659 /* Transform.cpp */,
+				87DE3DBF19C9FADD00D26659 /* Mathf.cpp */,
+				87DE3DC019C9FADD00D26659 /* Mathf.hpp */,
 				87A0B742195A1261003F53C6 /* Matrix.hpp */,
 				87A0B744195A1261003F53C6 /* Transform.hpp */,
 				87A0B746195A1261003F53C6 /* Vector.hpp */,
@@ -533,10 +542,12 @@
 				87468D9B19C9BD35005828CF /* IObjectAddable.cpp in Sources */,
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
+				87DE3DC519C9FB0600D26659 /* Transform.cpp in Sources */,
 				879D815B19C3456700912C9A /* Application.cpp in Sources */,
 				87468DA019C9BD57005828CF /* Camera.cpp in Sources */,
 				87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */,
 				87468D9819C9BD16005828CF /* Mesh.cpp in Sources */,
+				87DE3DC119C9FADD00D26659 /* Mathf.cpp in Sources */,
 				87BB486219C079C000A61967 /* util.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
 				87468DA919C9BD70005828CF /* OpenGLESMeshRenderer.cpp in Sources */,
@@ -546,6 +557,7 @@
 				87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				878008D719ADD99700329645 /* MeshFactory.cpp in Sources */,
+				87DE3DC319C9FAE600D26659 /* Transform.cpp in Sources */,
 				8740816C198FE49E00C97976 /* io.cpp in Sources */,
 				87468DA119C9BD57005828CF /* MeshRenderer.cpp in Sources */,
 				87C75EAF19895C29007B1B38 /* ShaderFactory.cpp in Sources */,
