@@ -106,8 +106,8 @@ void entry()
 	vertex_source_file = std::string("src//shaders//GLSL//default.vert");
 	fragment_source_file = std::string("src//shaders//GLSL//default.frag");
 #elif EMSCRIPTEN
-	vertex_source_file = std::string("/shaders/GLSLES/default.vert");
-	fragment_source_file = std::string("/shaders/GLSLES/default.frag");
+	vertex_source_file = std::string("/shaders/GLSLES/defaultes.vert");
+	fragment_source_file = std::string("/shaders/GLSLES/defaultes.frag");
 #else
 	vertex_source_file = std::string("src/shaders/GLSL/default.vert");
 	fragment_source_file = std::string("src/shaders/GLSL/default.frag");

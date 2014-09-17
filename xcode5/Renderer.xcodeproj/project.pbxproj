@@ -11,8 +11,8 @@
 		873C753D198A7C9000CC151A /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 873C753B198A7C9000CC151A /* Material.cpp */; };
 		8740816C198FE49E00C97976 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8740816A198FE49E00C97976 /* io.cpp */; };
 		87468D9119C9BC73005828CF /* ApplicationFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */; };
-		87468D9519C9BC8C005828CF /* default.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87468D9319C9BC8C005828CF /* default.frag */; };
-		87468D9619C9BC8C005828CF /* default.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87468D9419C9BC8C005828CF /* default.vert */; };
+		87468D9519C9BC8C005828CF /* defaultes.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87468D9319C9BC8C005828CF /* defaultes.frag */; };
+		87468D9619C9BC8C005828CF /* defaultes.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87468D9419C9BC8C005828CF /* defaultes.vert */; };
 		87468D9819C9BD16005828CF /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9719C9BD16005828CF /* Mesh.cpp */; };
 		87468D9B19C9BD35005828CF /* IObjectAddable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9919C9BD35005828CF /* IObjectAddable.cpp */; };
 		87468D9C19C9BD35005828CF /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9A19C9BD35005828CF /* Object.cpp */; };
@@ -66,8 +66,8 @@
 		8740816B198FE49E00C97976 /* io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = io.hpp; path = utility/io.hpp; sourceTree = "<group>"; };
 		87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ApplicationFactory.cpp; sourceTree = "<group>"; };
 		87468D9019C9BC73005828CF /* ApplicationFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ApplicationFactory.hpp; sourceTree = "<group>"; };
-		87468D9319C9BC8C005828CF /* default.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.frag; sourceTree = "<group>"; };
-		87468D9419C9BC8C005828CF /* default.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vert; sourceTree = "<group>"; };
+		87468D9319C9BC8C005828CF /* defaultes.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = defaultes.frag; sourceTree = "<group>"; };
+		87468D9419C9BC8C005828CF /* defaultes.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = defaultes.vert; sourceTree = "<group>"; };
 		87468D9719C9BD16005828CF /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = geometry/Mesh.cpp; sourceTree = "<group>"; };
 		87468D9919C9BD35005828CF /* IObjectAddable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IObjectAddable.cpp; path = objects/IObjectAddable.cpp; sourceTree = "<group>"; };
 		87468D9A19C9BD35005828CF /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = objects/Object.cpp; sourceTree = "<group>"; };
@@ -180,8 +180,8 @@
 		87468D9219C9BC8C005828CF /* GLSLES */ = {
 			isa = PBXGroup;
 			children = (
-				87468D9319C9BC8C005828CF /* default.frag */,
-				87468D9419C9BC8C005828CF /* default.vert */,
+				87468D9319C9BC8C005828CF /* defaultes.frag */,
+				87468D9419C9BC8C005828CF /* defaultes.vert */,
 			);
 			name = GLSLES;
 			path = shaders/GLSLES;
@@ -505,10 +505,10 @@
 				87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */,
 				87BC83A319452C3E00D97C8E /* Images.xcassets in Resources */,
 				87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */,
-				87468D9619C9BC8C005828CF /* default.vert in Resources */,
+				87468D9619C9BC8C005828CF /* defaultes.vert in Resources */,
 				87C224BF19702DC50012E201 /* default.frag in Resources */,
 				870CC6C31985B822008A56E5 /* default.geom in Resources */,
-				87468D9519C9BC8C005828CF /* default.frag in Resources */,
+				87468D9519C9BC8C005828CF /* defaultes.frag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
