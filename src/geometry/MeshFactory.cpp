@@ -124,21 +124,17 @@ namespace Renderer
         MeshFactory::ValidateIntermediateMesh(intermediate_mesh);
         MeshFactory::PrepareIntermediateMesh(intermediate_mesh);
 
-		mesh->SetVertices(&intermediate_mesh.vertices[0],
-        static_cast<unsigned int>(intermediate_mesh.vertices.size()));
-        
-		mesh->SetTriangles(&intermediate_mesh.vertex_indices[0],
-        static_cast<unsigned int>(intermediate_mesh.vertex_indices.size()));
+		mesh->SetVertices(intermediate_mesh.vertices);
+		mesh->SetTriangles(intermediate_mesh.vertex_indices);
         
         if(intermediate_mesh.normals.size() != 0)
         {
-            mesh->SetVertexNormals(&intermediate_mesh.normals[0],
-            static_cast<unsigned int>(intermediate_mesh.normals.size()));
+			mesh->SetVertexNormals(intermediate_mesh.normals);
         }
         
         if(intermediate_mesh.uvs.size() != 0 )
         {
-            
+			mesh->SetUVs(intermediate_mesh.uvs);
         }
         
 		return mesh;

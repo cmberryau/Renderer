@@ -14,52 +14,30 @@
 
 namespace Renderer
 {
-    template <typename T>
-    class MeshRendererType;
+    class MeshRenderer;
+    class Camera;
     
-    template <typename T>
-    class CameraType;
-    
-    template <typename T>
-	class RenderingContextType
+	class RenderingContext
 	{
 		public:
             virtual void BeginScene() = 0;
             virtual void EndScene() = 0;
         
-            virtual MeshRendererType<T> * MeshRenderer() = 0;
+            virtual MeshRenderer * MeshRenderer() = 0;
             virtual Shader * Shader() = 0;
-            void SetCamera(CameraType<T> * camera)
-            {
-                if(camera == nullptr)
-                {
-                    return;
-                }
-                
-                this->_camera = camera;
-            }
+			void SetCamera(Camera * camera);
         
-            CameraType<T> * MainCamera()
-            {
-                return _camera;
-            }
+			Camera * MainCamera();        
+			Window * Window();
         
-            Window * Window()
-            {
-                return _window;
-            }
-        
-			virtual ~RenderingContextType<T>(){}
+			virtual ~RenderingContext(){}
 
 		protected:
-			RenderingContextType<T>(){}
+			RenderingContext(){}
         
 			class Window * _window;
-            CameraType<T> * _camera;
+            Camera * _camera;
 	};
-    
-    typedef RenderingContextType<float> RenderingContext;
-    typedef RenderingContextType<double> RenderingContextd;
 }
 
 #endif // _renderingcontext_h

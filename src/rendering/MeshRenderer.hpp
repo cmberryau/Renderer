@@ -15,39 +15,30 @@
 #include "rendering/Material.hpp"
 
 namespace Renderer
-{
-	template <typename T>
-	class MeshRendererType
+{	
+	class Object;
+
+	class MeshRenderer
 	{
 		public:
 			// caches the mesh and prepares it for drawing
-			virtual void SetMesh(MeshType<T> * mesh) = 0;
+			virtual void SetMesh(Mesh * mesh) = 0;
 		
 			// sets the material
-			void SetMaterial(Material * material)
-			{
-				_material = material;
-			}
+			void SetMaterial(Material * material);
 
 			// draws the mesh
-			virtual void Draw(ObjectType<T> * parent_object) = 0;
+			virtual void Draw(Object * parent_object) = 0;
 		
-			virtual ~MeshRendererType<T>(){};
+			virtual ~MeshRenderer(){};
 
 		protected:
-			MeshRendererType<T>(RenderingContextType<T> * rendering_context)
-			: _rendering_context(rendering_context), _mesh(nullptr)
-			{
-
-			}
+			MeshRenderer(RenderingContext * rendering_context);
 		
-			MeshType<T> * _mesh;
+			Mesh * _mesh;
 			Material * _material;
-			RenderingContextType<T> * _rendering_context;
+			RenderingContext * _rendering_context;
 	};
-
-	typedef MeshRendererType<float> MeshRenderer;
-	typedef MeshRendererType<double> MeshRendererd;
 }
 
 #endif // _mesh_renderer_h

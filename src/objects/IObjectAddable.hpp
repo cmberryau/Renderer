@@ -11,31 +11,20 @@
 
 namespace Renderer
 {
-    template <typename T>
-    class ObjectType;
+    class Object;
     
-    template <typename T>
-    class IObjectAddableType
+    class IObjectAddable
     {
         public:
-            virtual ~IObjectAddableType<T>(){}
-            
-            virtual void Update(ObjectType<T> * parent_object){};
-        
-            void Added(ObjectType<T> * parent_object)
-            {
-                _parent_object = parent_object;
-            };
+			virtual ~IObjectAddable(){};
+			virtual void Update(Object * parent_object){};
+			void Added(Object * parent_object);
         
         protected:
-            IObjectAddableType() : _parent_object(nullptr){}
+            IObjectAddable() : _parent_object(nullptr){}
         
-            ObjectType<T> * _parent_object;
+            Object * _parent_object;
     };
-    
-
-    typedef IObjectAddableType<float> IObjectAddable;
-    typedef IObjectAddableType<double> IObjectAddabled;
 }
 
 #endif // _i_object_addable_h
