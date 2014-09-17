@@ -25,11 +25,64 @@ namespace Renderer
 			~Object();
 			Object();
 
+<<<<<<< HEAD
 			Transform * LocalTransform();
 			void Add(IObjectAddable * object);
 			void AddMeshRenderer(MeshRenderer * mesh_renderer);
 			void Update();        
 			void Draw();
+=======
+            void Add(IObjectAddableType<T> * object)
+            {
+                if(object == nullptr)
+                    return;
+                
+                _addables.push_back(object);
+                object->Added(this);
+            }
+
+			void AddMeshRenderer(MeshRendererType<T> * mesh_renderer)
+			{
+				if (mesh_renderer == nullptr)
+					return;
+
+				_mesh_renderer = mesh_renderer;
+			}
+
+            void Update()
+            {
+                for(int i = 0; i < _addables.size(); i++)
+                {
+                    if(_addables[i] == nullptr)
+                    {
+                        return;
+                    }
+                    
+                    _addables[i]->Update(this);
+                }
+            }
+        
+			void Draw()
+			{
+                if(_mesh_renderer != nullptr)
+                {
+                    _mesh_renderer->Draw(this);
+                }
+			}
+        
+            ObjectType<T>() : _mesh_renderer(nullptr)
+			{
+
+			}
+
+			~ObjectType<T>()
+			{            
+                for(int i = 0; i < _addables.size(); i++)
+                {
+                    delete _addables[i];
+                }
+			}
+>>>>>>> FETCH_HEAD
 
 		protected:
             // required types
