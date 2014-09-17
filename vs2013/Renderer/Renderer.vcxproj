@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\application\application.cpp" />
+    <ClCompile Include="..\..\src\application\ApplicationFactory.cpp" />
     <ClCompile Include="..\..\src\events\EventListener.cpp" />
     <ClCompile Include="..\..\src\geometry\MeshFactory.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
@@ -130,12 +131,14 @@
     <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESShader.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp" />
+    <ClCompile Include="..\..\src\scene\Scene.cpp" />
     <ClCompile Include="..\..\src\utility\io.cpp" />
     <ClCompile Include="..\..\src\utility\util.cpp" />
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\application\application.hpp" />
+    <ClInclude Include="..\..\src\application\ApplicationFactory.hpp" />
     <ClInclude Include="..\..\src\events\EventListener.hpp" />
     <ClInclude Include="..\..\src\geometry\Mesh.hpp" />
     <ClInclude Include="..\..\src\geometry\MeshFactory.hpp" />
