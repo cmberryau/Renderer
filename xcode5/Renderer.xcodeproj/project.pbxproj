@@ -45,7 +45,6 @@
 		87D8152619696392009A8A62 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152419696392009A8A62 /* EventListener.cpp */; };
 		87DE3DBE19C9BF4000D26659 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DBD19C9BF4000D26659 /* Scene.cpp */; };
 		87DE3DC119C9FADD00D26659 /* Mathf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DBF19C9FADD00D26659 /* Mathf.cpp */; };
-		87DE3DC319C9FAE600D26659 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DC219C9FAE600D26659 /* Transform.cpp */; };
 		87DE3DC519C9FB0600D26659 /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DC419C9FB0600D26659 /* Transform.cpp */; };
 		87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */; };
 /* End PBXBuildFile section */
@@ -132,7 +131,6 @@
 		87DE3DBD19C9BF4000D26659 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = scene/Scene.cpp; sourceTree = "<group>"; };
 		87DE3DBF19C9FADD00D26659 /* Mathf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mathf.cpp; path = math/Mathf.cpp; sourceTree = "<group>"; };
 		87DE3DC019C9FADD00D26659 /* Mathf.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Mathf.hpp; path = math/Mathf.hpp; sourceTree = "<group>"; };
-		87DE3DC219C9FAE600D26659 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = math/Transform.cpp; sourceTree = "<group>"; };
 		87DE3DC419C9FB0600D26659 /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = math/Transform.cpp; sourceTree = "<group>"; };
 		87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESMeshRenderer.hpp; sourceTree = "<group>"; };
 		87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESRenderingContext.hpp; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				87DE3DC419C9FB0600D26659 /* Transform.cpp */,
-				87DE3DC219C9FAE600D26659 /* Transform.cpp */,
 				87DE3DBF19C9FADD00D26659 /* Mathf.cpp */,
 				87DE3DC019C9FADD00D26659 /* Mathf.hpp */,
 				87A0B742195A1261003F53C6 /* Matrix.hpp */,
@@ -557,7 +554,6 @@
 				87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				878008D719ADD99700329645 /* MeshFactory.cpp in Sources */,
-				87DE3DC319C9FAE600D26659 /* Transform.cpp in Sources */,
 				8740816C198FE49E00C97976 /* io.cpp in Sources */,
 				87468DA119C9BD57005828CF /* MeshRenderer.cpp in Sources */,
 				87C75EAF19895C29007B1B38 /* ShaderFactory.cpp in Sources */,
