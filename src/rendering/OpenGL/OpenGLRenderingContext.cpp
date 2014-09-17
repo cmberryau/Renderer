@@ -107,9 +107,6 @@ namespace Renderer
 
 	}
 
-	static const int kNumSupportedOpenGLVersions;
-	static const int kSupportedOpenGLVersions[9][2];
-
 	bool OpenGLRenderingContext::CheckForGLError()
 	{
 		GLenum error;

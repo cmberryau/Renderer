@@ -27,11 +27,7 @@ namespace Renderer
 
 	void Scene::UpdateAndDraw()
 	{
-<<<<<<< HEAD
 		for (std::size_t i = 0; i<_objects.size(); ++i)
-=======
-		for (int i = 0; i<_objects.size(); i++)
->>>>>>> FETCH_HEAD
 		{
 			_objects[i]->Update();
 			_objects[i]->Draw();

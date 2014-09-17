@@ -8,11 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		870CC6C31985B822008A56E5 /* default.geom in Resources */ = {isa = PBXBuildFile; fileRef = 870CC6C11985B822008A56E5 /* default.geom */; };
-		870CC6C41985B822008A56E5 /* defaultd.geom in Resources */ = {isa = PBXBuildFile; fileRef = 870CC6C21985B822008A56E5 /* defaultd.geom */; };
-		87295EC11982B58100D6B728 /* defaultd.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87295EBF1982B58100D6B728 /* defaultd.frag */; };
-		87295EC21982B58100D6B728 /* defaultd.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87295EC01982B58100D6B728 /* defaultd.vert */; };
 		873C753D198A7C9000CC151A /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 873C753B198A7C9000CC151A /* Material.cpp */; };
 		8740816C198FE49E00C97976 /* io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8740816A198FE49E00C97976 /* io.cpp */; };
+		87468D9119C9BC73005828CF /* ApplicationFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */; };
+		87468D9519C9BC8C005828CF /* default.frag in Resources */ = {isa = PBXBuildFile; fileRef = 87468D9319C9BC8C005828CF /* default.frag */; };
+		87468D9619C9BC8C005828CF /* default.vert in Resources */ = {isa = PBXBuildFile; fileRef = 87468D9419C9BC8C005828CF /* default.vert */; };
+		87468D9819C9BD16005828CF /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9719C9BD16005828CF /* Mesh.cpp */; };
+		87468D9B19C9BD35005828CF /* IObjectAddable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9919C9BD35005828CF /* IObjectAddable.cpp */; };
+		87468D9C19C9BD35005828CF /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9A19C9BD35005828CF /* Object.cpp */; };
+		87468DA019C9BD57005828CF /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9D19C9BD57005828CF /* Camera.cpp */; };
+		87468DA119C9BD57005828CF /* MeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9E19C9BD57005828CF /* MeshRenderer.cpp */; };
+		87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468D9F19C9BD57005828CF /* RenderingContext.cpp */; };
+		87468DA519C9BD6A005828CF /* OpenGLMeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA319C9BD6A005828CF /* OpenGLMeshRenderer.cpp */; };
+		87468DA619C9BD6A005828CF /* OpenGLRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */; };
+		87468DA919C9BD70005828CF /* OpenGLESMeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */; };
+		87468DAA19C9BD70005828CF /* OpenGLESRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */; };
 		878008D719ADD99700329645 /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878008D619ADD99700329645 /* MeshFactory.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
@@ -33,6 +43,7 @@
 		87C7B47F19516CFC004C5914 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7B47819516CFC004C5914 /* main.cpp */; };
 		87D8152319696389009A8A62 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152119696389009A8A62 /* Window.cpp */; };
 		87D8152619696392009A8A62 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D8152419696392009A8A62 /* EventListener.cpp */; };
+		87DE3DBE19C9BF4000D26659 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87DE3DBD19C9BF4000D26659 /* Scene.cpp */; };
 		87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */; };
 /* End PBXBuildFile section */
 
@@ -48,14 +59,25 @@
 
 /* Begin PBXFileReference section */
 		870CC6C11985B822008A56E5 /* default.geom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = default.geom; path = shaders/GLSL/default.geom; sourceTree = "<group>"; };
-		870CC6C21985B822008A56E5 /* defaultd.geom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.geom; path = shaders/GLSL/defaultd.geom; sourceTree = "<group>"; };
-		87295EBF1982B58100D6B728 /* defaultd.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.frag; path = shaders/GLSL/defaultd.frag; sourceTree = "<group>"; };
-		87295EC01982B58100D6B728 /* defaultd.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = defaultd.vert; path = shaders/GLSL/defaultd.vert; sourceTree = "<group>"; };
 		872F7BD5197975CE00E70464 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Scene.hpp; path = scene/Scene.hpp; sourceTree = "<group>"; };
 		873C753B198A7C9000CC151A /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = rendering/Material.cpp; sourceTree = "<group>"; };
 		873C753C198A7C9000CC151A /* Material.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Material.hpp; path = rendering/Material.hpp; sourceTree = "<group>"; };
 		8740816A198FE49E00C97976 /* io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = io.cpp; path = utility/io.cpp; sourceTree = "<group>"; };
 		8740816B198FE49E00C97976 /* io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = io.hpp; path = utility/io.hpp; sourceTree = "<group>"; };
+		87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ApplicationFactory.cpp; sourceTree = "<group>"; };
+		87468D9019C9BC73005828CF /* ApplicationFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ApplicationFactory.hpp; sourceTree = "<group>"; };
+		87468D9319C9BC8C005828CF /* default.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.frag; sourceTree = "<group>"; };
+		87468D9419C9BC8C005828CF /* default.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = default.vert; sourceTree = "<group>"; };
+		87468D9719C9BD16005828CF /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = geometry/Mesh.cpp; sourceTree = "<group>"; };
+		87468D9919C9BD35005828CF /* IObjectAddable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IObjectAddable.cpp; path = objects/IObjectAddable.cpp; sourceTree = "<group>"; };
+		87468D9A19C9BD35005828CF /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = objects/Object.cpp; sourceTree = "<group>"; };
+		87468D9D19C9BD57005828CF /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = rendering/Camera.cpp; sourceTree = "<group>"; };
+		87468D9E19C9BD57005828CF /* MeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshRenderer.cpp; path = rendering/MeshRenderer.cpp; sourceTree = "<group>"; };
+		87468D9F19C9BD57005828CF /* RenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RenderingContext.cpp; path = rendering/RenderingContext.cpp; sourceTree = "<group>"; };
+		87468DA319C9BD6A005828CF /* OpenGLMeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLMeshRenderer.cpp; path = rendering/OpenGL/OpenGLMeshRenderer.cpp; sourceTree = "<group>"; };
+		87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLRenderingContext.cpp; path = rendering/OpenGL/OpenGLRenderingContext.cpp; sourceTree = "<group>"; };
+		87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESMeshRenderer.cpp; sourceTree = "<group>"; };
+		87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESRenderingContext.cpp; sourceTree = "<group>"; };
 		8756FCCC197465A600A016AD /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = rendering/Camera.hpp; sourceTree = "<group>"; };
 		878008D519ADD8A300329645 /* MeshFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MeshFactory.hpp; path = geometry/MeshFactory.hpp; sourceTree = "<group>"; };
 		878008D619ADD99700329645 /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = geometry/MeshFactory.cpp; sourceTree = "<group>"; };
@@ -105,6 +127,7 @@
 		87D81529196963A3009A8A62 /* MeshRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MeshRenderer.hpp; path = rendering/MeshRenderer.hpp; sourceTree = "<group>"; };
 		87D8152B196963A3009A8A62 /* RenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = RenderingContext.hpp; path = rendering/RenderingContext.hpp; sourceTree = "<group>"; };
 		87D8152E196978C0009A8A62 /* libmathCommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmathCommon.dylib; path = usr/lib/system/libmathCommon.dylib; sourceTree = SDKROOT; };
+		87DE3DBD19C9BF4000D26659 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scene.cpp; path = scene/Scene.cpp; sourceTree = "<group>"; };
 		87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESMeshRenderer.hpp; sourceTree = "<group>"; };
 		87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESRenderingContext.hpp; sourceTree = "<group>"; };
 		87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESShader.cpp; sourceTree = "<group>"; };
@@ -137,6 +160,7 @@
 		872F7BD21979756D00E70464 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				87DE3DBD19C9BF4000D26659 /* Scene.cpp */,
 				872F7BD5197975CE00E70464 /* Scene.hpp */,
 			);
 			name = scene;
@@ -153,9 +177,21 @@
 			name = utility;
 			sourceTree = "<group>";
 		};
+		87468D9219C9BC8C005828CF /* GLSLES */ = {
+			isa = PBXGroup;
+			children = (
+				87468D9319C9BC8C005828CF /* default.frag */,
+				87468D9419C9BC8C005828CF /* default.vert */,
+			);
+			name = GLSLES;
+			path = shaders/GLSLES;
+			sourceTree = "<group>";
+		};
 		875FE5C419C344AB00422B5C /* application */ = {
 			isa = PBXGroup;
 			children = (
+				87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */,
+				87468D9019C9BC73005828CF /* ApplicationFactory.hpp */,
 				879D815A19C3456700912C9A /* Application.hpp */,
 				879D815919C3456700912C9A /* Application.cpp */,
 			);
@@ -165,6 +201,7 @@
 		876EA3F019524A1B00AD06B5 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				87468D9219C9BC8C005828CF /* GLSLES */,
 				87C224BC19702DB80012E201 /* GLSL */,
 			);
 			name = shaders;
@@ -274,9 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				870CC6C11985B822008A56E5 /* default.geom */,
-				870CC6C21985B822008A56E5 /* defaultd.geom */,
-				87295EBF1982B58100D6B728 /* defaultd.frag */,
-				87295EC01982B58100D6B728 /* defaultd.vert */,
 				87C224BD19702DC50012E201 /* default.frag */,
 				87C224BE19702DC50012E201 /* default.vert */,
 			);
@@ -286,6 +320,8 @@
 		87C224C119702E520012E201 /* OpenGL */ = {
 			isa = PBXGroup;
 			children = (
+				87468DA319C9BD6A005828CF /* OpenGLMeshRenderer.cpp */,
+				87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */,
 				87C75EB019895FE7007B1B38 /* OpenGLShader.hpp */,
 				87C75EB119896040007B1B38 /* OpenGLShader.cpp */,
 				87C224C319702E5B0012E201 /* OpenGLMeshRenderer.hpp */,
@@ -317,6 +353,7 @@
 		87CC70A01961B3A1001EDA7D /* geometry */ = {
 			isa = PBXGroup;
 			children = (
+				87468D9719C9BD16005828CF /* Mesh.cpp */,
 				878008D519ADD8A300329645 /* MeshFactory.hpp */,
 				878008D619ADD99700329645 /* MeshFactory.cpp */,
 				87CC70A21961B3BA001EDA7D /* Mesh.hpp */,
@@ -336,6 +373,8 @@
 		87D8151B19696259009A8A62 /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				87468D9919C9BD35005828CF /* IObjectAddable.cpp */,
+				87468D9A19C9BD35005828CF /* Object.cpp */,
 				87B7A53F19864BF0003C9B41 /* IObjectAddable.hpp */,
 				87D8151F19696284009A8A62 /* Object.hpp */,
 			);
@@ -354,6 +393,9 @@
 		87D8152719696398009A8A62 /* rendering */ = {
 			isa = PBXGroup;
 			children = (
+				87468D9D19C9BD57005828CF /* Camera.cpp */,
+				87468D9E19C9BD57005828CF /* MeshRenderer.cpp */,
+				87468D9F19C9BD57005828CF /* RenderingContext.cpp */,
 				87EB985A19B89694006E75C1 /* OpenGLES */,
 				87C224C119702E520012E201 /* OpenGL */,
 				873C753B198A7C9000CC151A /* Material.cpp */,
@@ -371,6 +413,8 @@
 		87EB985A19B89694006E75C1 /* OpenGLES */ = {
 			isa = PBXGroup;
 			children = (
+				87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */,
+				87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */,
 				87EB986319B896B6006E75C1 /* OpenGLESShader.hpp */,
 				87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */,
 				87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */,
@@ -459,13 +503,12 @@
 			files = (
 				87C224C019702DC50012E201 /* default.vert in Resources */,
 				87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */,
-				870CC6C41985B822008A56E5 /* defaultd.geom in Resources */,
-				87295EC11982B58100D6B728 /* defaultd.frag in Resources */,
 				87BC83A319452C3E00D97C8E /* Images.xcassets in Resources */,
 				87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */,
+				87468D9619C9BC8C005828CF /* default.vert in Resources */,
 				87C224BF19702DC50012E201 /* default.frag in Resources */,
-				87295EC21982B58100D6B728 /* defaultd.vert in Resources */,
 				870CC6C31985B822008A56E5 /* default.geom in Resources */,
+				87468D9519C9BC8C005828CF /* default.frag in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,17 +527,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87468DA519C9BD6A005828CF /* OpenGLMeshRenderer.cpp in Sources */,
+				87DE3DBE19C9BF4000D26659 /* Scene.cpp in Sources */,
+				87468DAA19C9BD70005828CF /* OpenGLESRenderingContext.cpp in Sources */,
+				87468D9B19C9BD35005828CF /* IObjectAddable.cpp in Sources */,
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
 				879D815B19C3456700912C9A /* Application.cpp in Sources */,
+				87468DA019C9BD57005828CF /* Camera.cpp in Sources */,
 				87EB986419B896B6006E75C1 /* OpenGLESShader.cpp in Sources */,
+				87468D9819C9BD16005828CF /* Mesh.cpp in Sources */,
 				87BB486219C079C000A61967 /* util.cpp in Sources */,
 				87D8152619696392009A8A62 /* EventListener.cpp in Sources */,
+				87468DA919C9BD70005828CF /* OpenGLESMeshRenderer.cpp in Sources */,
+				87468D9C19C9BD35005828CF /* Object.cpp in Sources */,
 				87C75EB219896040007B1B38 /* OpenGLShader.cpp in Sources */,
+				87468D9119C9BC73005828CF /* ApplicationFactory.cpp in Sources */,
+				87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				878008D719ADD99700329645 /* MeshFactory.cpp in Sources */,
 				8740816C198FE49E00C97976 /* io.cpp in Sources */,
+				87468DA119C9BD57005828CF /* MeshRenderer.cpp in Sources */,
 				87C75EAF19895C29007B1B38 /* ShaderFactory.cpp in Sources */,
+				87468DA619C9BD6A005828CF /* OpenGLRenderingContext.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
