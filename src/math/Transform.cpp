@@ -10,11 +10,11 @@
 
 namespace Renderer
 {
-	Transform::Transform() : _position(1.0f, 1.0f, 1.0f),
-		_rotation(1.0f, 1.0f, 1.0f),
-		_scale(1.0f, 1.0f, 1.0f),
-		_composed_matrix(Matrix4f::Identity()),
-		_normal_matrix(Matrix4f::Identity())
+	Transform::Transform() : _position(0.0f, 0.0f, 0.0f),
+							 _rotation(0.0f, 0.0f, 0.0f),
+							 _scale(1.0f, 1.0f, 1.0f),
+							 _composed_matrix(Matrix4f::Identity()),
+							 _normal_matrix(Matrix4f::Identity())
 
 	{
 
@@ -41,8 +41,8 @@ namespace Renderer
 	void Transform::SetPosition(float x, float y, float z)
 	{
 		Matrix4f translation_matrix = Matrix4f::Translate(-_position[0] + x,
-			-_position[1] + y,
-			-_position[2] + z);
+														  -_position[1] + y,
+														  -_position[2] + z);
 
 		_composed_matrix = _composed_matrix.Multiply(translation_matrix);
 
@@ -61,7 +61,7 @@ namespace Renderer
 
 		for (int i = 0; i<3; i++)
 		{
-			Vector3f rotation_axes(1.0f);
+			Vector3f rotation_axes(0.0f);
 			rotation_axes[i] = 1.0f;
 
 			_rotation[i] = ClampRotation(_rotation[i]);
@@ -83,7 +83,7 @@ namespace Renderer
 
 		for (int i = 0; i<3; i++)
 		{
-			Vector3f rotation_axes(1.0f);
+			Vector3f rotation_axes(0.0f);
 			rotation_axes[i] = 1.0f;
 
 			_rotation[i] = ClampRotation(_rotation[i]);
@@ -133,8 +133,8 @@ namespace Renderer
 	void Transform::SetScale(float x, float y, float z)
 	{
 		Matrix4f scale_matrix = Matrix4f::Scale(-_scale[0] + x,
-			-_scale[1] + y,
-			-_scale[2] + z);
+											    -_scale[1] + y,
+											    -_scale[2] + z);
 
 		_scale[0] = x;
 		_scale[1] = y;
