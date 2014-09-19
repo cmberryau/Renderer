@@ -39,8 +39,8 @@ else
 	geometry/MeshFactory.cpp \
 	math/Mathf.cpp \
 	math/Transform.cpp \
-	object/IObjectAddable.cpp \
-	object/Object.cpp \
+	objects/IObjectAddable.cpp \
+	objects/Object.cpp \
 	rendering/Camera.cpp \
 	rendering/Material.cpp \
 	rendering/MeshRenderer.cpp \
