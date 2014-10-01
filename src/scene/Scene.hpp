@@ -19,7 +19,7 @@ namespace Renderer
     class Scene
     {
         public:
-			Scene();
+			explicit Scene();
 			~Scene();
 
 			Camera * MainCamera();

@@ -25,7 +25,7 @@ class EventListener
 		void ListenForEvents();
 		bool ShouldQuit();
 
-		EventListener();
+		explicit EventListener();
 		~EventListener();
 	
 	protected:		

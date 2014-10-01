@@ -10,13 +10,13 @@
 
 namespace Renderer
 {
-	float Mathf::Rad2Deg(float rad)
+	const float Mathf::Rad2Deg(float rad)
 	{
-		return rad * 57.2957795130823208768;
+		return rad * kDegsinRad;
 	}
 
-	float Mathf::Deg2Rad(float deg)
+	const float Mathf::Deg2Rad(float deg)
 	{
-		return deg * 0.01745329251994329576;
+		return deg * kRadsinDeg;
 	}
 }

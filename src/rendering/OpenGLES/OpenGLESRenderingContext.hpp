@@ -27,7 +27,7 @@ namespace Renderer
 	class OpenGLESRenderingContext : public RenderingContext
 	{
 		public:
-			OpenGLESRenderingContext(class Window * window);
+			explicit OpenGLESRenderingContext(class Window * window);
 			~OpenGLESRenderingContext();
 
 			void BeginScene();        

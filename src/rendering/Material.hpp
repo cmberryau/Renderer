@@ -20,7 +20,7 @@ namespace Renderer
             Shader * Shader();
         
             ~Material();
-            Material(class Shader * shader);
+            explicit Material(class Shader * shader);
         
         protected:
             class Shader * _shader;

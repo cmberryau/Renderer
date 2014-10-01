@@ -33,7 +33,7 @@ namespace Renderer
         
         private:
             ~ShaderFactory(){}
-            ShaderFactory(){};
+            explicit ShaderFactory(){};
     };
 }
 

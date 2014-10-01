@@ -23,7 +23,7 @@ namespace Renderer
     {
         public:
 			~Object();
-			Object();
+			explicit Object();
 
 			Transform * LocalTransform();
 			void Add(IObjectAddable * object);

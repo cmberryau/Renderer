@@ -17,8 +17,8 @@ namespace Renderer
 	class Application
 	{
 		public:
-			Application(Window & window,
-						RenderingContext & rendering_context);
+			explicit Application(Window & window,
+					 RenderingContext & rendering_context);
 			~Application();
 	};
 }

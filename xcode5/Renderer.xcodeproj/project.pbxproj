@@ -164,8 +164,8 @@
 		872F7BD21979756D00E70464 /* scene */ = {
 			isa = PBXGroup;
 			children = (
-				87DE3DBD19C9BF4000D26659 /* Scene.cpp */,
 				872F7BD5197975CE00E70464 /* Scene.hpp */,
+				87DE3DBD19C9BF4000D26659 /* Scene.cpp */,
 			);
 			name = scene;
 			sourceTree = "<group>";
@@ -194,8 +194,8 @@
 		875FE5C419C344AB00422B5C /* application */ = {
 			isa = PBXGroup;
 			children = (
-				87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */,
 				87468D9019C9BC73005828CF /* ApplicationFactory.hpp */,
+				87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */,
 				879D815A19C3456700912C9A /* Application.hpp */,
 				879D815919C3456700912C9A /* Application.cpp */,
 			);
@@ -214,11 +214,11 @@
 		87A0B74019599156003F53C6 /* math */ = {
 			isa = PBXGroup;
 			children = (
-				87DE3DC419C9FB0600D26659 /* Transform.cpp */,
-				87DE3DBF19C9FADD00D26659 /* Mathf.cpp */,
 				87DE3DC019C9FADD00D26659 /* Mathf.hpp */,
+				87DE3DBF19C9FADD00D26659 /* Mathf.cpp */,
 				87A0B742195A1261003F53C6 /* Matrix.hpp */,
 				87A0B744195A1261003F53C6 /* Transform.hpp */,
+				87DE3DC419C9FB0600D26659 /* Transform.cpp */,
 				87A0B746195A1261003F53C6 /* Vector.hpp */,
 			);
 			name = math;
@@ -359,10 +359,10 @@
 		87CC70A01961B3A1001EDA7D /* geometry */ = {
 			isa = PBXGroup;
 			children = (
-				87468D9719C9BD16005828CF /* Mesh.cpp */,
 				878008D519ADD8A300329645 /* MeshFactory.hpp */,
-				878008D619ADD99700329645 /* MeshFactory.cpp */,
+				87468D9719C9BD16005828CF /* Mesh.cpp */,
 				87CC70A21961B3BA001EDA7D /* Mesh.hpp */,
+				878008D619ADD99700329645 /* MeshFactory.cpp */,
 			);
 			name = geometry;
 			sourceTree = "<group>";
@@ -379,10 +379,10 @@
 		87D8151B19696259009A8A62 /* objects */ = {
 			isa = PBXGroup;
 			children = (
-				87468D9919C9BD35005828CF /* IObjectAddable.cpp */,
-				87468D9A19C9BD35005828CF /* Object.cpp */,
 				87B7A53F19864BF0003C9B41 /* IObjectAddable.hpp */,
+				87468D9919C9BD35005828CF /* IObjectAddable.cpp */,
 				87D8151F19696284009A8A62 /* Object.hpp */,
+				87468D9A19C9BD35005828CF /* Object.cpp */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -399,19 +399,19 @@
 		87D8152719696398009A8A62 /* rendering */ = {
 			isa = PBXGroup;
 			children = (
-				87468D9D19C9BD57005828CF /* Camera.cpp */,
-				87468D9E19C9BD57005828CF /* MeshRenderer.cpp */,
-				87468D9F19C9BD57005828CF /* RenderingContext.cpp */,
 				87EB985A19B89694006E75C1 /* OpenGLES */,
 				87C224C119702E520012E201 /* OpenGL */,
-				873C753B198A7C9000CC151A /* Material.cpp */,
 				873C753C198A7C9000CC151A /* Material.hpp */,
+				873C753B198A7C9000CC151A /* Material.cpp */,
 				87C75EAD19895B0E007B1B38 /* ShaderFactory.hpp */,
 				87C75EAE19895C29007B1B38 /* ShaderFactory.cpp */,
 				87C75EAC198959C1007B1B38 /* Shader.hpp */,
 				8756FCCC197465A600A016AD /* Camera.hpp */,
+				87468D9D19C9BD57005828CF /* Camera.cpp */,
 				87D81529196963A3009A8A62 /* MeshRenderer.hpp */,
+				87468D9E19C9BD57005828CF /* MeshRenderer.cpp */,
 				87D8152B196963A3009A8A62 /* RenderingContext.hpp */,
+				87468D9F19C9BD57005828CF /* RenderingContext.cpp */,
 			);
 			name = rendering;
 			sourceTree = "<group>";

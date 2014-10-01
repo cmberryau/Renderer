@@ -25,7 +25,7 @@ namespace Renderer
             int Width();
             int Height();
 			
-			Window(int width, int height);
+			explicit Window(int width, int height);
 			~Window();
 
 			SDL_Window * _sdl_window;

@@ -38,12 +38,12 @@ namespace Renderer
 	class OpenGLRenderingContext : public RenderingContext
 	{
 		public:
-			static const int kNumSupportedOpenGLVersions;
-			static const int kSupportedOpenGLVersions[9][2];
+			static const int kNumSupportedOpenGLVersions = 9;
+            static const int kSupportedOpenGLVersions[9][2];
 
-			OpenGLRenderingContext(class Window * window,
-				int major_version = kSupportedOpenGLVersions[0][0],
-				int minor_version = kSupportedOpenGLVersions[0][1]);
+			explicit OpenGLRenderingContext(class Window * window,
+            int major_version = kSupportedOpenGLVersions[0][0],
+			int minor_version = kSupportedOpenGLVersions[0][1]);
 
 			~OpenGLRenderingContext();
 

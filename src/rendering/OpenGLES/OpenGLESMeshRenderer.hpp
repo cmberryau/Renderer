@@ -25,7 +25,7 @@ namespace Renderer
 		public:
 			~OpenGLESMeshRenderer();
 
-			OpenGLESMeshRenderer(RenderingContext * rendering_context);
+			explicit OpenGLESMeshRenderer(RenderingContext * rendering_context);
         
 			void SetMesh(Mesh * mesh);
 			void GenerateBuffers(Mesh * mesh);

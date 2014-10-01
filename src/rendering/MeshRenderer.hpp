@@ -33,7 +33,7 @@ namespace Renderer
 			virtual ~MeshRenderer(){};
 
 		protected:
-			MeshRenderer(RenderingContext * rendering_context);
+			explicit MeshRenderer(RenderingContext * rendering_context);
 		
 			Mesh * _mesh;
 			Material * _material;

@@ -33,7 +33,7 @@ namespace Renderer
 			virtual ~RenderingContext(){}
 
 		protected:
-			RenderingContext(){}
+			explicit RenderingContext(){}
         
 			class Window * _window;
             Camera * _camera;

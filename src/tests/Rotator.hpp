@@ -16,7 +16,7 @@ namespace Renderer
     class Rotator : public IObjectAddable
     {
         public:
-            Rotator(){}
+            explicit Rotator(){}
             
             void Update(Object * parent_object)
             {

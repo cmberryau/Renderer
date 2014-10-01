@@ -37,7 +37,7 @@ namespace Renderer
             GLuint Program();
         
             ~OpenGLESShader();
-            OpenGLESShader();
+            explicit OpenGLESShader();
         
         protected:
             GLuint _program;

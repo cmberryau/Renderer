@@ -41,7 +41,7 @@ namespace Renderer
             GLuint Program();
         
             ~OpenGLShader();
-            OpenGLShader();
+            explicit OpenGLShader();
         
         protected:
             GLuint _program;

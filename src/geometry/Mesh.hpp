@@ -22,7 +22,7 @@ namespace Renderer
 	class Mesh
 	{
 		public:
-			Mesh() {}
+			explicit Mesh() {}
 			~Mesh() {}
 
 			// validation

@@ -19,7 +19,7 @@ namespace Renderer
 	class Camera : public IObjectAddable
 	{
 		public:
-			Camera(RenderingContext * rendering_context);
+			explicit Camera(RenderingContext * rendering_context);
 			~Camera();
 
 			Matrix4f ViewMatrix();

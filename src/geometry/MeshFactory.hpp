@@ -51,7 +51,7 @@ namespace Renderer
 			static const int kMaxNormalElements;
             static const int kMaxUVElements;
 
-            MeshFactory(){};
+            explicit MeshFactory(){};
             ~MeshFactory(){};
     };
 }

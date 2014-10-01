@@ -21,7 +21,7 @@ namespace Renderer
 			void Added(Object * parent_object);
         
         protected:
-            IObjectAddable() : _parent_object(nullptr){}
+            explicit IObjectAddable() : _parent_object(nullptr){}
         
             Object * _parent_object;
     };

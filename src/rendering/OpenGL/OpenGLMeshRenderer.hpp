@@ -30,7 +30,7 @@ namespace Renderer
 	class OpenGLMeshRenderer : public MeshRenderer
 	{
 		public:
-			OpenGLMeshRenderer(RenderingContext * rendering_context);
+			explicit OpenGLMeshRenderer(RenderingContext * rendering_context);
 			~OpenGLMeshRenderer();
 
 			static bool CheckForGLError();
