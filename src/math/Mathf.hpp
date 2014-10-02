@@ -21,8 +21,8 @@ namespace Renderer
 			static const float Deg2Rad(float deg);
         
         protected:
-            constexpr static const float kDegsinRad = 57.2957795130823208768f;
-            constexpr static const float kRadsinDeg = 0.01745329251994329576f;
+            static const float kDegsinRad;
+            static const float kRadsinDeg;
 	};
 }
 

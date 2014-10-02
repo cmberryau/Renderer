@@ -10,6 +10,9 @@
 
 namespace Renderer
 {
+	const float Mathf::kDegsinRad = 57.2957795130823208768f;
+	const float Mathf::kRadsinDeg = 0.01745329251994329576f;
+
 	const float Mathf::Rad2Deg(float rad)
 	{
 		return rad * kDegsinRad;
