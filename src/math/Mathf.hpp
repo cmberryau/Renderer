@@ -17,8 +17,8 @@ namespace Renderer
 	{
 		public:
 			// static member functions
-			static const float Rad2Deg(float rad);
-			static const float Deg2Rad(float deg);
+			static float Rad2Deg(float rad);
+			static float Deg2Rad(float deg);
         
         protected:
             static const float kDegsinRad;
