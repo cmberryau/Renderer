@@ -28,27 +28,28 @@ namespace Renderer
 	{
 		public:
 			// constructors
-			inline Matrix(){};
+			Matrix() = default;
 
-			inline Matrix(const Matrix &that)
-			{
-				assign(that);
-			}
-
-			inline Matrix(T value)
+			inline explicit Matrix(T value)
 			{
 				for (int i = 0; i < w; i++)
 				{
-					elements[i] = value;
+					elements[i] = Vector<T, h>(value);
 				}
 			}
 
-			inline Matrix(const Vector<T, h> &vector)
+			inline explicit Matrix(const Vector<T, h> &vector)
 			{
 				for(int i = 0; i < w; i++)
 				{
 					elements[i] = vector;
 				}
+			}
+
+			// copy constructor
+			inline Matrix(const Matrix &rhs)
+			{
+				assign(rhs);
 			}
 
 			// static member functions
@@ -122,11 +123,11 @@ namespace Renderer
 		
 		protected:
 		
-			inline void assign(const Matrix &that)
+			inline void assign(const Matrix &rhs)
 			{
 				for (int n=0; n<w; n++)
 				{
-					elements[n] = that.elements[n];
+					elements[n] = rhs.elements[n];
 				}
 			}
 	
@@ -143,12 +144,15 @@ namespace Renderer
 	{
 		public:
 			// constructors
-			Matrix4(){};
-			Matrix4(const Matrix4<T> & that)
+			Matrix4() = default;
+			explicit Matrix4(T value)
 			{
-				this->assign(that);
+				for (int i = 0; i < 4; i++)
+				{
+					elements[i] = Vector4<T>(value);
+				}
 			}
-			Matrix4(const Matrix<T, 4, 4> & that) : Matrix<T, 4, 4> (that){}
+			
 			Matrix4(const Vector4<T> & vector) : Matrix<T, 4, 4> (vector){}
 			Matrix4(const Vector4<T> & v00,
 					const Vector4<T> & v01,
@@ -160,6 +164,14 @@ namespace Renderer
 				this->elements[2] = v02;
 				this->elements[3] = v03;
 			}
+
+			// copy constructor
+			Matrix4(const Matrix4<T> & rhs)
+			{
+				this->assign(rhs);
+			}
+
+			Matrix4(const Matrix<T, 4, 4> & rhs) : Matrix<T, 4, 4>(rhs){}
 
 			// static member funcitons
 			static inline Matrix4<T> Translate(T x, T y, T z)
