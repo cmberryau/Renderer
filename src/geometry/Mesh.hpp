@@ -30,41 +30,41 @@ namespace Renderer
 
 			// vertex related
 			void SetVertices(const std::vector<Vector4f> & vertices);			
-			const std::vector<Vector4f> & VerticesVector();
-			const Vector4f * const Vertices();
-			std::size_t VerticesSize();
-			std::size_t VertexCount();
+			const std::vector<Vector4f> & VerticesVector() const;
+			const Vector4f * const Vertices() const;
+			std::size_t VerticesSize() const;
+			std::size_t VertexCount() const;
 
 			// vertex normal related
 			void SetVertexNormals(const std::vector<Vector3f> & vertex_normals);    
-			const std::vector<Vector3f> & VertexNormalsVector();			
-			const Vector3f * const VertexNormals();
-			std::size_t VertexNormalsSize();
-			std::size_t VertexNormalsCount();
+			const std::vector<Vector3f> & VertexNormalsVector() const;
+			const Vector3f * const VertexNormals() const;
+			std::size_t VertexNormalsSize() const;
+			std::size_t VertexNormalsCount() const;
 
 			// vertex color related
 			void SetColors(const std::vector<Vector4f> & vertex_colors);
-			const std::vector<Vector4f> & ColorsVector();
-			const Vector4f * const Colors();
-			std::size_t ColorsSize();
-			std::size_t ColorsCount();
+			const std::vector<Vector4f> & ColorsVector() const;
+			const Vector4f * const Colors() const;
+			std::size_t ColorsSize() const;
+			std::size_t ColorsCount() const;
 
 			// uv related
 			void SetUVs(const std::vector<Vector2f> & uvs);
-			const std::vector<Vector2f> & UVsVector();
-			const Vector2f * const UVs();
-			std::size_t UVsSize();
-			std::size_t UVsCount();
+			const std::vector<Vector2f> & UVsVector() const;
+			const Vector2f * const UVs() const;
+			std::size_t UVsSize() const;
+			std::size_t UVsCount() const;
 
 			// triangle related
 			void SetTriangles(const std::vector<Vector3ui> & triangles);
-			const std::vector<Vector3ui> & TrianglesVector();
-			const Vector3ui * const Triangles();
-			std::size_t TrianglesSize();
-			std::size_t TrianglesCount();
+			const std::vector<Vector3ui> & TrianglesVector() const;
+			const Vector3ui * const Triangles() const;
+			std::size_t TrianglesSize() const;
+			std::size_t TrianglesCount() const;
 		
 			// debug output
-			void Print();
+			void Print() const;
 
 		protected:
 			void ValidateColors();

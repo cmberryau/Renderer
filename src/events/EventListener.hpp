@@ -23,7 +23,7 @@ class EventListener
 {
 	public:
 		void ListenForEvents();
-		bool ShouldQuit();
+		bool ShouldQuit() const;
 
 		explicit EventListener();
 		~EventListener();

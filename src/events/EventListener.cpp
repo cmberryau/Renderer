@@ -20,7 +20,7 @@ void EventListener::ListenForEvents()
 	}
 }
 
-bool EventListener::ShouldQuit()
+bool EventListener::ShouldQuit() const
 {
 	return _should_quit;
 }

@@ -62,22 +62,22 @@ namespace Renderer
 		_vertices = vertices;
 	}
 
-	const std::vector<Vector4f> & Mesh::VerticesVector()
+	const std::vector<Vector4f> & Mesh::VerticesVector() const
 	{
 		return _vertices;
 	}
 
-	const Vector4f * const Mesh::Vertices()
+	const Vector4f * const Mesh::Vertices() const
 	{
 		return static_cast<const Vector4f *>(&_vertices[0]);
 	}
 
-	std::size_t Mesh::VerticesSize()
+	std::size_t Mesh::VerticesSize() const
 	{
 		return _vertices.size() * Vector4f::Size();
 	}
 
-	std::size_t Mesh::VertexCount()
+	std::size_t Mesh::VertexCount() const
 	{
 		return _vertices.size();
 	}
@@ -89,22 +89,22 @@ namespace Renderer
 		_vertex_normals = vertex_normals;
 	}
 
-	const std::vector<Vector3f> & Mesh::VertexNormalsVector()
+	const std::vector<Vector3f> & Mesh::VertexNormalsVector() const
 	{
 		return _vertex_normals;
 	}
 
-	const Vector3f * const Mesh::VertexNormals()
+	const Vector3f * const Mesh::VertexNormals() const
 	{
 		return static_cast<const Vector3f *>(&_vertex_normals[0]);
 	}
 
-	std::size_t Mesh::VertexNormalsSize()
+	std::size_t Mesh::VertexNormalsSize() const
 	{
 		return _vertex_normals.size() * Vector3f::Size();
 	}
 
-	std::size_t Mesh::VertexNormalsCount()
+	std::size_t Mesh::VertexNormalsCount() const
 	{
 		return _vertex_normals.size();
 	}
@@ -116,22 +116,22 @@ namespace Renderer
 		_vertex_colors = vertex_colors;
 	}
 
-	const std::vector<Vector4f> & Mesh::ColorsVector()
+	const std::vector<Vector4f> & Mesh::ColorsVector() const
 	{
 		return _vertex_colors;
 	}
 
-	const Vector4f * const Mesh::Colors()
+	const Vector4f * const Mesh::Colors() const
 	{
 		return static_cast<const Vector4f * const>(&_vertex_colors[0]);
 	}
 
-	std::size_t Mesh::ColorsSize()
+	std::size_t Mesh::ColorsSize() const
 	{
 		return _vertex_colors.size() * Vector4f::Size();
 	}
 
-	std::size_t Mesh::ColorsCount()
+	std::size_t Mesh::ColorsCount() const
 	{
 		return _vertex_colors.size();
 	}
@@ -143,22 +143,22 @@ namespace Renderer
 		_uvs = uvs;
 	}
 
-	const std::vector<Vector2f> & Mesh::UVsVector()
+	const std::vector<Vector2f> & Mesh::UVsVector() const
 	{
 		return _uvs;
 	}
 
-	const Vector2f * const Mesh::UVs()
+	const Vector2f * const Mesh::UVs() const
 	{
 		return static_cast<const Vector2f *>(&_uvs[0]);
 	}
 
-	std::size_t Mesh::UVsSize()
+	std::size_t Mesh::UVsSize() const
 	{
 		return _uvs.size() * Vector2f::Size();
 	}
 
-	std::size_t Mesh::UVsCount()
+	std::size_t Mesh::UVsCount() const
 	{
 		return _uvs.size();
 	}
@@ -170,30 +170,30 @@ namespace Renderer
 		_triangles = triangles;
 	}
 
-	const std::vector<Vector3ui> & Mesh::TrianglesVector()
+	const std::vector<Vector3ui> & Mesh::TrianglesVector() const
 	{
 		return _triangles;
 	}
 
-	const Vector3ui * const Mesh::Triangles()
+	const Vector3ui * const Mesh::Triangles() const
 	{
 		return static_cast<const Vector3ui *>(&_triangles[0]);
 	}
 
-	std::size_t Mesh::TrianglesSize()
+	std::size_t Mesh::TrianglesSize() const
 	{
 		return _triangles.size() * Vector3ui::Size();
 	}
 
-	std::size_t Mesh::TrianglesCount()
+	std::size_t Mesh::TrianglesCount() const
 	{
 		return _triangles.size();
 	}
 
 	// debug output
-	void Mesh::Print()
+	void Mesh::Print() const
 	{
-		std::vector<Vector4f>::iterator it;
+		std::vector<Vector4f>::const_iterator it;
 		for (it = _vertices.begin(); it != _vertices.end(); ++it)
 		{
 			(*it).Print();
