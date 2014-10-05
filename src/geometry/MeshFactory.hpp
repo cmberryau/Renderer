@@ -31,25 +31,25 @@ namespace Renderer
     class MeshFactory
     {
         public:
-            static Mesh * MeshFromObjFile(std::string & obj_file_path);
-            static Mesh * MeshFromObjSource(std::string & obj_source);
+            static Mesh * MeshFromObjFile(const std::string & obj_file_path);
+			static Mesh * MeshFromObjSource(const std::string & obj_source);
         
         protected:
-            static void ValidateIntermediateMesh(IntermediateMesh & intermediate_mesh);
+            static void ValidateIntermediateMesh(const IntermediateMesh & intermediate_mesh);
             static void PrepareIntermediateMesh(IntermediateMesh & intermediate_mesh);
         
-			static void AppendObjSourceLine(std::string & obj_source_line,
+			static void AppendObjSourceLine(const std::string & obj_source_line,
                                             IntermediateMesh & intermediate_mesh);
         
-			static Vector4f VertexFromObjSource(std::string & obj_vertex_line);
-            static Vector3f NormalFromObjSource(std::string & obj_normal_line);
-            static Vector2f UVFromObjSource(std::string & obj_uv_line);
-			static void TriangleIndexFromObjSource(std::string & obj_vertex_line,
+			static Vector4f VertexFromObjSource(const std::string & obj_vertex_line);
+			static Vector3f NormalFromObjSource(const std::string & obj_normal_line);
+            static Vector2f UVFromObjSource(const std::string & obj_uv_line);
+			static void TriangleIndexFromObjSource(const std::string & obj_vertex_line,
                                                    IntermediateMesh & intermediate_mesh);
         
-            static const int kMaxVertexElements;
-			static const int kMaxNormalElements;
-            static const int kMaxUVElements;
+            static const int kMaxVertexElements = 3;
+			static const int kMaxNormalElements = 3;
+            static const int kMaxUVElements = 2;
 
             explicit MeshFactory(){};
             ~MeshFactory(){};

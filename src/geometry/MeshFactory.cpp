@@ -17,83 +17,8 @@
 #include <locale>
 
 namespace Renderer
-{
-    const int MeshFactory::kMaxVertexElements = 3;
-    const int MeshFactory::kMaxNormalElements = 3;
-    const int MeshFactory::kMaxUVElements = 2;
-    
-    void MeshFactory::ValidateIntermediateMesh(IntermediateMesh & intermediate_mesh)
-    {
-        if(intermediate_mesh.vertex_indices.size() <= 0)
-        {
-            throw std::exception();
-        }
-        
-        if(intermediate_mesh.uv_indices.size() > 0)
-        {
-            if(intermediate_mesh.uv_indices.size() <
-               intermediate_mesh.vertex_indices.size())
-            {
-                throw std::exception();
-            }
-            else if(intermediate_mesh.uv_indices.size() <
-                    intermediate_mesh.vertex_indices.size())
-            {
-                throw std::exception();
-            }
-        }
-        
-        if(intermediate_mesh.normal_indices.size() > 0)
-        {
-            if(intermediate_mesh.normal_indices.size() <
-               intermediate_mesh.vertex_indices.size())
-            {
-                throw std::exception();
-            }
-            else if(intermediate_mesh.normal_indices.size() <
-                    intermediate_mesh.vertex_indices.size())
-            {
-                throw std::exception();
-            }
-        }
-    }
-    
-    void MeshFactory::PrepareIntermediateMesh(IntermediateMesh & intermediate_mesh)
-    {
-        std::vector<Vector4f> vertices;
-        std::vector<Vector3f> normals;
-        std::vector<Vector2f> uvs;
-        
-        std::vector<Vector3ui>::iterator it; int i = 0; int k = 0;
-        for(it = intermediate_mesh.vertex_indices.begin();
-            it != intermediate_mesh.vertex_indices.end(); ++it)
-        {
-            for(int j = 0; j < 3; j++)
-            {
-                vertices.push_back(intermediate_mesh.vertices[intermediate_mesh.vertex_indices[i][j]]);
-                
-                if(intermediate_mesh.normals.size() > 0)
-                {
-                    normals.push_back(intermediate_mesh.normals[intermediate_mesh.normal_indices[i][j]]);
-                }
-            
-                if(intermediate_mesh.uvs.size() > 0)
-                {
-                    uvs.push_back(intermediate_mesh.uvs[intermediate_mesh.uv_indices[i][j]]);
-                }
-                
-                intermediate_mesh.vertex_indices[i][j] = k;
-                ++k;
-            }
-            ++i;
-        }
-        
-        intermediate_mesh.vertices = vertices;
-        intermediate_mesh.normals = normals;
-        intermediate_mesh.uvs = uvs;
-    }
-    
-    Mesh * MeshFactory::MeshFromObjFile(std::string & obj_file_path)
+{   
+    Mesh * MeshFactory::MeshFromObjFile(const std::string & obj_file_path)
     {        
         std::string obj_source = IO::ReadFile(obj_file_path);
         
@@ -102,7 +27,7 @@ namespace Renderer
         return mesh;
     }
     
-    Mesh * MeshFactory::MeshFromObjSource(std::string & obj_source)
+	Mesh * MeshFactory::MeshFromObjSource(const std::string & obj_source)
     {
 		Mesh * mesh = new Mesh();
         
@@ -140,7 +65,78 @@ namespace Renderer
 		return mesh;
     }
     
-	void MeshFactory::AppendObjSourceLine(std::string & obj_source_line,
+	void MeshFactory::ValidateIntermediateMesh(const IntermediateMesh & intermediate_mesh)
+	{
+		if (intermediate_mesh.vertex_indices.size() <= 0)
+		{
+			throw std::exception();
+		}
+
+		if (intermediate_mesh.uv_indices.size() > 0)
+		{
+			if (intermediate_mesh.uv_indices.size() <
+				intermediate_mesh.vertex_indices.size())
+			{
+				throw std::exception();
+			}
+			else if (intermediate_mesh.uv_indices.size() <
+				intermediate_mesh.vertex_indices.size())
+			{
+				throw std::exception();
+			}
+		}
+
+		if (intermediate_mesh.normal_indices.size() > 0)
+		{
+			if (intermediate_mesh.normal_indices.size() <
+				intermediate_mesh.vertex_indices.size())
+			{
+				throw std::exception();
+			}
+			else if (intermediate_mesh.normal_indices.size() <
+				intermediate_mesh.vertex_indices.size())
+			{
+				throw std::exception();
+			}
+		}
+	}
+
+	void MeshFactory::PrepareIntermediateMesh(IntermediateMesh & intermediate_mesh)
+	{
+		std::vector<Vector4f> vertices;
+		std::vector<Vector3f> normals;
+		std::vector<Vector2f> uvs;
+
+		std::vector<Vector3ui>::iterator it; int i = 0; int k = 0;
+		for (it = intermediate_mesh.vertex_indices.begin();
+			it != intermediate_mesh.vertex_indices.end(); ++it)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				vertices.push_back(intermediate_mesh.vertices[intermediate_mesh.vertex_indices[i][j]]);
+
+				if (intermediate_mesh.normals.size() > 0)
+				{
+					normals.push_back(intermediate_mesh.normals[intermediate_mesh.normal_indices[i][j]]);
+				}
+
+				if (intermediate_mesh.uvs.size() > 0)
+				{
+					uvs.push_back(intermediate_mesh.uvs[intermediate_mesh.uv_indices[i][j]]);
+				}
+
+				intermediate_mesh.vertex_indices[i][j] = k;
+				++k;
+			}
+			++i;
+		}
+
+		intermediate_mesh.vertices = vertices;
+		intermediate_mesh.normals = normals;
+		intermediate_mesh.uvs = uvs;
+	}
+
+	void MeshFactory::AppendObjSourceLine(const std::string & obj_source_line,
 										  IntermediateMesh & intermediate_mesh)
 	{
 		if (obj_source_line[0] == 'v')
@@ -174,7 +170,7 @@ namespace Renderer
 		}
 	}
     
-	Vector4f MeshFactory::VertexFromObjSource(std::string & obj_vertex_line)
+	Vector4f MeshFactory::VertexFromObjSource(const std::string & obj_vertex_line)
 	{
         std::locale loc;
         std::vector<std::string> elements = split_string(obj_vertex_line, ' ');
@@ -198,7 +194,7 @@ namespace Renderer
 		return vertex;
 	}
     
-    Vector3f MeshFactory::NormalFromObjSource(std::string & obj_normal_line)
+	Vector3f MeshFactory::NormalFromObjSource(const std::string & obj_normal_line)
     {
         std::locale loc;
         std::vector<std::string> elements = split_string(obj_normal_line, ' ');
@@ -220,7 +216,7 @@ namespace Renderer
 		return normal;
     }
     
-    Vector2f MeshFactory::UVFromObjSource(std::string & obj_uv_line)
+	Vector2f MeshFactory::UVFromObjSource(const std::string & obj_uv_line)
     {
         std::locale loc;
         std::vector<std::string> elements = split_string(obj_uv_line, ' ');
@@ -242,7 +238,7 @@ namespace Renderer
         return uv;
     }
     
-	void MeshFactory::TriangleIndexFromObjSource(std::string & obj_triangle_line,
+	void MeshFactory::TriangleIndexFromObjSource(const std::string & obj_triangle_line,
                                            IntermediateMesh & intermediate_mesh)
 	{
         Vector3ui vertex_index; bool vertex_index_added = false;
