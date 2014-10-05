@@ -10,8 +10,14 @@
 
 namespace Renderer
 {
-	void ApplicationFactory::FromFile(const std::string & file_path)
+	Application ApplicationFactory::FromFile(const std::string & file_path)
 	{
-				
+		// temporary code
+		Window * window = nullptr;
+		RenderingContext * rendering_context = nullptr;
+
+		Application app(*window, *rendering_context);
+
+		return app;
 	}
 }
