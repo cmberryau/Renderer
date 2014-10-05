@@ -16,7 +16,7 @@ namespace Renderer
 	class IO
 	{
 		public:
-            static std::string ReadFile(std::string & file_path);
+			static std::string ReadFile(const std::string & file_path);
 
 		protected:
 			IO();

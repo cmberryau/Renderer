@@ -13,7 +13,7 @@
 
 namespace Renderer
 {
-    std::string IO::ReadFile(std::string & file_path)
+	std::string IO::ReadFile(const std::string & file_path)
 	{
         std::ifstream file_stream(file_path, std::ios_base::in);
 
