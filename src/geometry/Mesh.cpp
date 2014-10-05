@@ -56,7 +56,7 @@ namespace Renderer
 	}
 
 	// vertex related
-	void Mesh::SetVertices(std::vector<Vector4f> & vertices)
+	void Mesh::SetVertices(const std::vector<Vector4f> & vertices)
 	{
 		_vertices.clear();
 		_vertices = vertices;
@@ -67,7 +67,7 @@ namespace Renderer
 		return _vertices;
 	}
 
-	const Vector4f * Mesh::Vertices()
+	const Vector4f * const Mesh::Vertices()
 	{
 		return static_cast<const Vector4f *>(&_vertices[0]);
 	}
@@ -83,7 +83,7 @@ namespace Renderer
 	}
 
 	// vertex normal related
-	void Mesh::SetVertexNormals(std::vector<Vector3f> & vertex_normals)
+	void Mesh::SetVertexNormals(const std::vector<Vector3f> & vertex_normals)
 	{
 		_vertex_normals.clear();
 		_vertex_normals = vertex_normals;
@@ -94,7 +94,7 @@ namespace Renderer
 		return _vertex_normals;
 	}
 
-	const Vector3f * Mesh::VertexNormals()
+	const Vector3f * const Mesh::VertexNormals()
 	{
 		return static_cast<const Vector3f *>(&_vertex_normals[0]);
 	}
@@ -110,7 +110,7 @@ namespace Renderer
 	}
 
 	// vertex color related
-	void Mesh::SetColors(std::vector<Vector4f> & vertex_colors)
+	void Mesh::SetColors(const std::vector<Vector4f> & vertex_colors)
 	{
 		_vertex_colors.clear();
 		_vertex_colors = vertex_colors;
@@ -121,9 +121,9 @@ namespace Renderer
 		return _vertex_colors;
 	}
 
-	const Vector4f * Mesh::Colors()
+	const Vector4f * const Mesh::Colors()
 	{
-		return static_cast<const Vector4f *>(&_vertex_colors[0]);
+		return static_cast<const Vector4f * const>(&_vertex_colors[0]);
 	}
 
 	std::size_t Mesh::ColorsSize()
@@ -137,7 +137,7 @@ namespace Renderer
 	}
 
 	// uv related
-	void Mesh::SetUVs(std::vector<Vector2f> & uvs)
+	void Mesh::SetUVs(const std::vector<Vector2f> & uvs)
 	{
 		_uvs.clear();
 		_uvs = uvs;
@@ -148,7 +148,7 @@ namespace Renderer
 		return _uvs;
 	}
 
-	const Vector2f * Mesh::UVs()
+	const Vector2f * const Mesh::UVs()
 	{
 		return static_cast<const Vector2f *>(&_uvs[0]);
 	}
@@ -164,18 +164,18 @@ namespace Renderer
 	}
 
 	// triangle related
-	void Mesh::SetTriangles(std::vector<Vector3ui> & triangles)
+	void Mesh::SetTriangles(const std::vector<Vector3ui> & triangles)
 	{
 		_triangles.clear();
 		_triangles = triangles;
 	}
 
-	const std::vector<Vector3ui> Mesh::TrianglesVector()
+	const std::vector<Vector3ui> & Mesh::TrianglesVector()
 	{
 		return _triangles;
 	}
 
-	const Vector3ui * Mesh::Triangles()
+	const Vector3ui * const Mesh::Triangles()
 	{
 		return static_cast<const Vector3ui *>(&_triangles[0]);
 	}

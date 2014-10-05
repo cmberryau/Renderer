@@ -29,37 +29,37 @@ namespace Renderer
 			void Validate();
 
 			// vertex related
-			void SetVertices(std::vector<Vector4f> & vertices);			
+			void SetVertices(const std::vector<Vector4f> & vertices);			
 			const std::vector<Vector4f> & VerticesVector();
-			const Vector4f * Vertices();
+			const Vector4f * const Vertices();
 			std::size_t VerticesSize();
 			std::size_t VertexCount();
 
 			// vertex normal related
-			void SetVertexNormals(std::vector<Vector3f> & vertex_normals);    
+			void SetVertexNormals(const std::vector<Vector3f> & vertex_normals);    
 			const std::vector<Vector3f> & VertexNormalsVector();			
-			const Vector3f * VertexNormals();
+			const Vector3f * const VertexNormals();
 			std::size_t VertexNormalsSize();
 			std::size_t VertexNormalsCount();
 
 			// vertex color related
-			void SetColors(std::vector<Vector4f> & vertex_colors);
+			void SetColors(const std::vector<Vector4f> & vertex_colors);
 			const std::vector<Vector4f> & ColorsVector();
-			const Vector4f * Colors();
+			const Vector4f * const Colors();
 			std::size_t ColorsSize();
 			std::size_t ColorsCount();
 
 			// uv related
-			void SetUVs(std::vector<Vector2f> & uvs);
+			void SetUVs(const std::vector<Vector2f> & uvs);
 			const std::vector<Vector2f> & UVsVector();
-			const Vector2f * UVs();
+			const Vector2f * const UVs();
 			std::size_t UVsSize();
 			std::size_t UVsCount();
 
 			// triangle related
-			void SetTriangles(std::vector<Vector3ui> & triangles);
-			const std::vector<Vector3ui> TrianglesVector();
-			const Vector3ui * Triangles();
+			void SetTriangles(const std::vector<Vector3ui> & triangles);
+			const std::vector<Vector3ui> & TrianglesVector();
+			const Vector3ui * const Triangles();
 			std::size_t TrianglesSize();
 			std::size_t TrianglesCount();
 		
@@ -70,19 +70,10 @@ namespace Renderer
 			void ValidateColors();
 			void ValidateNormals();
 
-			// vertices
 			std::vector<Vector4f> _vertices;
-
-			// vertex normals
 			std::vector<Vector3f> _vertex_normals;
-
-			// vertex colors
 			std::vector<Vector4f> _vertex_colors;
-
-			// uvs
 			std::vector<Vector2f> _uvs;
-
-			// triangles
 			std::vector<Vector3ui> _triangles;
 
 			// default vertex color
