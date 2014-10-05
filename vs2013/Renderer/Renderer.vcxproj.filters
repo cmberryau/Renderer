@@ -77,9 +77,6 @@
     <ClCompile Include="..\..\src\scene\Scene.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\application\application.cpp">
-      <Filter>Source Files\application</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\application\ApplicationFactory.cpp">
       <Filter>Source Files\application</Filter>
     </ClCompile>
@@ -118,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\math\Mathf.cpp">
       <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\application\Application.cpp">
+      <Filter>Source Files\application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,14 +193,14 @@
     <ClInclude Include="..\..\src\utility\util.hpp">
       <Filter>Source Files\utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\application\application.hpp">
-      <Filter>Source Files\application</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\application\ApplicationFactory.hpp">
       <Filter>Source Files\application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\math\Mathf.hpp">
       <Filter>Source Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\application\Application.hpp">
+      <Filter>Source Files\application</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

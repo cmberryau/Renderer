@@ -122,7 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\application\application.cpp" />
+    <ClCompile Include="..\..\src\application\Application.cpp" />
     <ClCompile Include="..\..\src\application\ApplicationFactory.cpp" />
     <ClCompile Include="..\..\src\events\EventListener.cpp" />
     <ClCompile Include="..\..\src\geometry\Mesh.cpp" />
@@ -149,7 +149,7 @@
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\application\application.hpp" />
+    <ClInclude Include="..\..\src\application\Application.hpp" />
     <ClInclude Include="..\..\src\application\ApplicationFactory.hpp" />
     <ClInclude Include="..\..\src\events\EventListener.hpp" />
     <ClInclude Include="..\..\src\geometry\Mesh.hpp" />

@@ -99,10 +99,6 @@ void entry()
 	Mesh * cone_mesh = MeshFactory::MeshFromObjFile(cone_file);
 	Mesh * bunny_mesh = MeshFactory::MeshFromObjFile(bunny_file);
 
-	// why is this allowed?
-	const Vector4f * colors_ptr = sphere_mesh->Colors();
-	colors_ptr = nullptr;
-
 	std::string vertex_source_file;
 	std::string fragment_source_file;
 
