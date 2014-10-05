@@ -217,13 +217,13 @@ namespace Renderer
 			Vector2() = default;
 			explicit inline Vector2(T value)
 			{
-				elements[0] = value;
-				elements[1] = value;
+				this->elements[0] = value;
+				this->elements[1] = value;
 			}
 			explicit inline Vector2(T x, T y)
 			{
-				elements[0] = x;
-				elements[1] = y;
+				this->elements[0] = x;
+				this->elements[1] = y;
 			}
 	};
 
@@ -243,15 +243,15 @@ namespace Renderer
 			Vector3() = default;
 			explicit inline Vector3(T value)
 			{
-				elements[0] = value;
-				elements[1] = value;
-				elements[2] = value;
+				this->elements[0] = value;
+				this->elements[1] = value;
+				this->elements[2] = value;
 			}
 			explicit inline Vector3(T x, T y, T z)
 			{
-				elements[0] = x;
-				elements[1] = y;
-				elements[2] = z;
+				this->elements[0] = x;
+				this->elements[1] = y;
+				this->elements[2] = z;
 			}
 
 			// copy constructor
@@ -286,17 +286,17 @@ namespace Renderer
 			Vector4() = default;
 			explicit inline Vector4(T value)
 			{
-				elements[0] = value;
-				elements[1] = value;
-				elements[2] = value;
-				elements[3] = value;
+				this->elements[0] = value;
+				this->elements[1] = value;
+				this->elements[2] = value;
+				this->elements[3] = value;
 			}
 			explicit inline Vector4(T x, T y, T z, T w)
 			{
-				elements[0] = x;
-				elements[1] = y;
-				elements[2] = z;
-				elements[3] = w;
+				this->elements[0] = x;
+				this->elements[1] = y;
+				this->elements[2] = z;
+				this->elements[3] = w;
 			}
 
 			// copy constructor

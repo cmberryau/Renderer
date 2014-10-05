@@ -149,7 +149,7 @@ namespace Renderer
 			{
 				for (int i = 0; i < 4; i++)
 				{
-					elements[i] = Vector4<T>(value);
+					this->elements[i] = Vector4<T>(value);
 				}
 			}
 			
