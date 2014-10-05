@@ -10,8 +10,8 @@
 
 namespace Renderer
 {
-	Application::Application(Window & window,
-							 RenderingContext & rendering_context)
+	Application::Application(const Window & window,
+							 const RenderingContext & rendering_context)
 	{
 
 	}

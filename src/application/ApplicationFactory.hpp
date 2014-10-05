@@ -18,7 +18,11 @@ namespace Renderer
 	class ApplicationFactory
 	{
 		public:
-			static void FromFile(std::string & file_path);
+			static void FromFile(const std::string & file_path);
+
+		private:
+			explicit ApplicationFactory();
+			~ApplicationFactory();
 	};
 }
 

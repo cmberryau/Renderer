@@ -10,10 +10,8 @@
 
 namespace Renderer
 {
-	void ApplicationFactory::FromFile(std::string & file_path)
+	void ApplicationFactory::FromFile(const std::string & file_path)
 	{
-
-
-		return;
+				
 	}
 }
