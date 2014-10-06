@@ -38,6 +38,13 @@ namespace Renderer
 			{
 				assign(rhs);
 			}
+        
+            // assignment operator
+            inline Vector & operator = (const Vector & rhs)
+            {
+                assign(rhs);
+                return *this;
+            }
 		
 			// member functions
 			inline Vector Add(Vector<T, len> vec)
@@ -173,12 +180,6 @@ namespace Renderer
 				}
 
 				printf("\n");
-			}
-
-			inline Vector & operator = (const Vector & vec)
-			{
-				assign(vec);
-				return *this;
 			}
 
 			inline T & operator [] (int n) 

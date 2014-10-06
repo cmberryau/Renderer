@@ -52,6 +52,13 @@ namespace Renderer
 				assign(rhs);
 			}
 
+            // assignment operator
+            inline Matrix<T, w, h> & operator = (const Matrix<T, w, h> & matrix)
+            {
+                assign(matrix);
+                return *this;
+            }
+        
 			// static member functions
 			static inline Matrix<T, w, h> Identity()
 			{
@@ -105,12 +112,6 @@ namespace Renderer
 			}
 	
 			// operators
-			inline Matrix<T, w, h> & operator = (const Matrix<T, w, h> & matrix)
-			{
-				assign(matrix);
-				return *this;
-			}
-
 			inline Vector<T, h> & operator [] (int n) 
 			{
 				return elements[n];
@@ -145,19 +146,27 @@ namespace Renderer
 		public:
 			// constructors
 			Matrix4() = default;
-			explicit Matrix4(T value)
+            
+			inline explicit Matrix4(T value)
 			{
-				for (int i = 0; i < 4; i++)
-				{
-					this->elements[i] = Vector4<T>(value);
-				}
+				this->elements[0] = Vector4<T>(value);
+                this->elements[1] = Vector4<T>(value);
+                this->elements[2] = Vector4<T>(value);
+                this->elements[3] = Vector4<T>(value);
 			}
 			
-			Matrix4(const Vector4<T> & vector) : Matrix<T, 4, 4> (vector){}
-			Matrix4(const Vector4<T> & v00,
-					const Vector4<T> & v01,
-					const Vector4<T> & v02,
-					const Vector4<T> & v03)
+			inline explicit Matrix4(const Vector4<T> & vector)
+            {
+                this->elements[0] = vector;
+                this->elements[1] = vector;
+                this->elements[2] = vector;
+                this->elements[3] = vector;
+            }
+        
+			inline explicit Matrix4(const Vector4<T> & v00,
+                                    const Vector4<T> & v01,
+                                    const Vector4<T> & v02,
+                                    const Vector4<T> & v03)
 			{
 				this->elements[0] = v00;
 				this->elements[1] = v01;
@@ -165,7 +174,7 @@ namespace Renderer
 				this->elements[3] = v03;
 			}
 
-			// copy constructor
+			// copy constructors
 			Matrix4(const Matrix4<T> & rhs)
 			{
 				this->assign(rhs);
