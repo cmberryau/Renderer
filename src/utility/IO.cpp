@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#include "utility/io.hpp"
+#include "utility/IO.hpp"
 
 #include <sstream>
 #include <fstream>

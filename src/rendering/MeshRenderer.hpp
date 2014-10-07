@@ -14,6 +14,8 @@
 #include "objects/Object.hpp"
 #include "rendering/Material.hpp"
 
+#include <memory>
+
 namespace Renderer
 {	
 	class Object;
@@ -22,22 +24,44 @@ namespace Renderer
 	{
 		public:
 			// caches the mesh and prepares it for drawing
-			virtual void SetMesh(Mesh * mesh) = 0;
+			virtual void AddMesh(Mesh * mesh) = 0;
+            virtual void AddMesh(const std::shared_ptr<Mesh> & mesh_ptr) = 0;
 		
 			// sets the material
-			void SetMaterial(Material * material);
+			void AddMaterial(Material * material);
+            void AddMaterial(const std::shared_ptr<Material> & material_ptr);
 
 			// draws the mesh
-			virtual void Draw(Object * parent_object) = 0;
+			virtual void Draw(Object * parent_object) const = 0;
+            virtual void Draw(const Object & parent_object) const = 0;
 		
 			virtual ~MeshRenderer(){};
 
 		protected:
-			explicit MeshRenderer(RenderingContext * rendering_context);
-		
+            explicit MeshRenderer(RenderingContext * rendering_context);
+            explicit MeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
+        
+            const Mesh & GetMesh() const;
+            const Material & GetMaterial() const;
+            const RenderingContext & GetRenderingContext() const;
+        
+            bool HasMesh() const;
+            bool HasMaterial() const;
+            bool HasRenderingContext() const;
+        
+            void SetMesh(const std::shared_ptr<Mesh> & mesh_ptr);
+            void SetMaterial(const std::shared_ptr<Material> & material_ptr);
+            void SetRenderingContext(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
+        
+        //private:
 			Mesh * _mesh;
 			Material * _material;
 			RenderingContext * _rendering_context;
+        
+        private:
+            std::shared_ptr<Mesh> _mesh_ptr;
+            std::shared_ptr<Material> _material_ptr;
+            std::shared_ptr<RenderingContext> _rendering_context_ptr;
 	};
 }
 

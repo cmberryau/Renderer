@@ -7,8 +7,8 @@
 //
 
 #include "MeshFactory.hpp"
-#include "utility/io.hpp"
-#include "utility/util.hpp"
+#include "utility/IO.hpp"
+#include "utility/Util.hpp"
 
 #include <cstring>
 #include <cstdlib>

@@ -26,7 +26,7 @@ namespace Renderer
 			void UpdateAndDraw();        
 			void AddObject(Object * object);
         
-        protected:        
+        private:
             Camera * _main_camera;
             std::vector<Object *> _objects;
     };

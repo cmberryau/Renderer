@@ -18,7 +18,7 @@ namespace Renderer
 		public:
 			static std::string ReadFile(const std::string & file_path);
 
-		protected:
+		private:
 			IO();
 			~IO();
 	};

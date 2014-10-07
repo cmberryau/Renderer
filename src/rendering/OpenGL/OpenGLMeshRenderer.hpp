@@ -31,17 +31,25 @@ namespace Renderer
 	{
 		public:
 			explicit OpenGLMeshRenderer(RenderingContext * rendering_context);
-			~OpenGLMeshRenderer();
+            explicit OpenGLMeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
+			virtual ~OpenGLMeshRenderer();
 
-			static bool CheckForGLError();
-
-			void SetMesh(Mesh * mesh);
-			void GenerateArrays(Mesh * mesh);
-			void CreateShader(Mesh * mesh);
-			void Draw(Object * parent_object);
+			virtual void AddMesh(Mesh * mesh) override;
+            virtual void AddMesh(const std::shared_ptr<Mesh> & mesh_ptr) override;
+        
+			virtual void Draw(Object * parent_object) const override;
+            virtual void Draw(const Object & parent_object) const override;
 		
-		protected:
-		
+        protected:
+            void GenerateArrays(const Mesh * mesh);
+            void CreateShader(const Mesh * mesh);
+        
+            void GenerateArrays(const Mesh & mesh);
+            void CreateShader(const Mesh & mesh);
+        
+            static bool CheckForGLError();
+        
+		private:
 			GLuint _vertex_array_objects[1];
 			GLuint _vertex_element_buffer[1];
 			GLuint _vertex_buffer_objects[1];

@@ -10,7 +10,7 @@
 
 namespace Renderer
 {
-    void Material::Use()
+    void Material::Use() const
     {
         _shader->Use();
     }

@@ -20,12 +20,12 @@ namespace Renderer
 		this->_camera = camera;
 	}
 
-	Camera * RenderingContext::MainCamera()
+	Camera * RenderingContext::MainCamera() const
 	{
 		return _camera;
 	}
 
-	Window * RenderingContext::Window()
+	Window * RenderingContext::Window() const
 	{
 		return _window;
 	}

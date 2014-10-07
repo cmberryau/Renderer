@@ -16,13 +16,13 @@ namespace Renderer
     class Material
     {
         public:
-            void Use();
+            void Use() const;
             Shader * Shader();
         
             ~Material();
             explicit Material(class Shader * shader);
         
-        protected:
+        private:
             class Shader * _shader;
     };
 }

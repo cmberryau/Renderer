@@ -21,7 +21,7 @@
 
 #include "tests/Rotator.hpp"
 
-#include "utility/io.hpp"
+#include "utility/IO.hpp"
 
 // for memory leak detection on windows
 #ifdef _WIN32
@@ -124,8 +124,8 @@ void entry()
 	MeshRenderer * sphere_mesh_renderer = rendering_context->MeshRenderer();
 	Material * sphere_material = new Material(test_shader);
 
-	sphere_mesh_renderer->SetMaterial(sphere_material);
-	sphere_mesh_renderer->SetMesh(sphere_mesh);
+	sphere_mesh_renderer->AddMaterial(sphere_material);
+	sphere_mesh_renderer->AddMesh(sphere_mesh);
 	sphere_object->AddMeshRenderer(sphere_mesh_renderer);
 
 	scene->AddObject(sphere_object);
@@ -135,8 +135,8 @@ void entry()
 	MeshRenderer * cone_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cone_material = new Material(test_shader);
 
-	cone_mesh_renderer->SetMaterial(cone_material);
-	cone_mesh_renderer->SetMesh(cone_mesh);
+	cone_mesh_renderer->AddMaterial(cone_material);
+	cone_mesh_renderer->AddMesh(cone_mesh);
 	cone_object->AddMeshRenderer(cone_mesh_renderer);
 
 	scene->AddObject(cone_object);
@@ -146,8 +146,8 @@ void entry()
 	MeshRenderer * cube_mesh_renderer = rendering_context->MeshRenderer();
 	Material * cube_material = new Material(test_shader);
 
-	cube_mesh_renderer->SetMaterial(cube_material);
-	cube_mesh_renderer->SetMesh(cube_mesh);
+	cube_mesh_renderer->AddMaterial(cube_material);
+	cube_mesh_renderer->AddMesh(cube_mesh);
 	cube_object->AddMeshRenderer(cube_mesh_renderer);
 
 	scene->AddObject(cube_object);
@@ -157,8 +157,8 @@ void entry()
 	MeshRenderer * bunny_mesh_renderer = rendering_context->MeshRenderer();
 	Material * bunny_material = new Material(test_shader);
 
-	bunny_mesh_renderer->SetMaterial(bunny_material);
-	bunny_mesh_renderer->SetMesh(bunny_mesh);
+	bunny_mesh_renderer->AddMaterial(bunny_material);
+	bunny_mesh_renderer->AddMesh(bunny_mesh);
 	bunny_object->AddMeshRenderer(bunny_mesh_renderer);
 
 	scene->AddObject(bunny_object);

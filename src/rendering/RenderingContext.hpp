@@ -27,15 +27,16 @@ namespace Renderer
             virtual Shader * Shader() = 0;
 			void SetCamera(Camera * camera);
         
-			Camera * MainCamera();        
-			Window * Window();
+			Camera * MainCamera() const;
+			Window * Window() const;
         
 			virtual ~RenderingContext(){}
 
 		protected:
 			explicit RenderingContext(){}
         
-			class Window * _window;
+        private:
+            class Window * _window;
             Camera * _camera;
 	};
 }
