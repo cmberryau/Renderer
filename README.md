@@ -3,6 +3,10 @@ renderer
 
 Just making a OpenGL, OpenGLES and DX renderer for some fun and experiments.
 
+This is definitely not meant to be a pretty application, nor a complete piece
+of software showing off my wonderful skills. It's a playground I use for 
+breaking things, experimenting and learning in my spare time.
+
 Works on Win 7, OSX and Web (via emscripten).
 
 If you're interested in running this application, you must ensure that your
