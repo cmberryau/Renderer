@@ -22,13 +22,13 @@
 class EventListener
 {
 	public:
-		void ListenForEvents();
-		bool ShouldQuit() const;
-
 		explicit EventListener();
 		~EventListener();
+
+		void ListenForEvents();
+		bool ShouldQuit() const;
 	
-	protected:		
+	private:
 		bool _should_quit;
 };
 

@@ -9,35 +9,18 @@
 #ifndef _renderingcontext_h
 #define _renderingcontext_h
 
-#include "windowing/Window.hpp"
-#include "rendering/Shader.hpp"
-
 namespace Renderer
-{
-    class MeshRenderer;
-    class Camera;
-    
+{    
 	class RenderingContext
 	{
 		public:
-            virtual void BeginScene() = 0;
-            virtual void EndScene() = 0;
+			virtual void BeginScene() const = 0;
+			virtual void EndScene() const = 0;
+			
+			virtual ~RenderingContext(){};			
         
-            virtual MeshRenderer * MeshRenderer() = 0;
-            virtual Shader * Shader() = 0;
-			void SetCamera(Camera * camera);
-        
-			Camera * MainCamera() const;
-			Window * Window() const;
-        
-			virtual ~RenderingContext(){}
-
-		protected:
-			explicit RenderingContext(){}
-        
-        private:
-            class Window * _window;
-            Camera * _camera;
+        protected:
+			explicit RenderingContext(){};
 	};
 }
 

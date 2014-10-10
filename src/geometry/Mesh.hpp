@@ -70,14 +70,14 @@ namespace Renderer
 			void ValidateColors();
 			void ValidateNormals();
 
+			static const Vector4f kDefaultVertexColor;
+
+		private:
 			std::vector<Vector4f> _vertices;
 			std::vector<Vector3f> _vertex_normals;
 			std::vector<Vector4f> _vertex_colors;
 			std::vector<Vector2f> _uvs;
 			std::vector<Vector3ui> _triangles;
-
-			// default vertex color
-			static const Vector4f kDefaultVertexColor;
 	};
 }
 

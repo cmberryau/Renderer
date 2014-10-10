@@ -12,15 +12,33 @@
 
 namespace Renderer
 {
-	OpenGLESMeshRenderer::~OpenGLESMeshRenderer()
-	{
-
-	}
-
 	OpenGLESMeshRenderer::OpenGLESMeshRenderer(RenderingContext * rendering_context)
 	: MeshRenderer(rendering_context)
 	{
 
+	}
+
+	OpenGLESMeshRenderer::~OpenGLESMeshRenderer()
+	{
+		if (glIsBuffer(&_vertex_position_buffer))
+		{
+			glDeleteBuffers(1, _vertex_position_buffer);
+		}
+
+		if (glIsBuffer(&_vertex_normal_buffer))
+		{
+			glDeleteBuffers(1, _vertex_normal_buffer);
+		}
+
+		if (glIsBuffer(&_vertex_color_buffer))
+		{
+			glDeleteBuffers(1, _vertex_color_buffer);
+		}
+
+		if (glIsBuffer(&_triangle_index_buffer))
+		{
+			glDeleteBuffers(1, _triangle_index_buffer);
+		}
 	}
 
 	void OpenGLESMeshRenderer::SetMesh(Mesh * mesh)

@@ -16,7 +16,6 @@ namespace Renderer
 	class Mathf
 	{
 		public:
-			// static member functions
 			static float Rad2Deg(float rad);
 			static float Deg2Rad(float deg);
         

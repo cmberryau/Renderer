@@ -12,7 +12,7 @@ ifeq ($(OS),Windows_NT)
 	geometry\MeshFactory.cpp \
 	math\Mathf.cpp \
 	math\Transform.cpp \
-	objects\IObjectAddable.cpp \
+	object\ObjectAddable.cpp \
 	objects\Object.cpp \
 	rendering\Camera.cpp \
 	rendering\Material.cpp \
@@ -39,7 +39,7 @@ else
 	geometry/MeshFactory.cpp \
 	math/Mathf.cpp \
 	math/Transform.cpp \
-	objects/IObjectAddable.cpp \
+	object/ObjectAddable.cpp \
 	objects/Object.cpp \
 	rendering/Camera.cpp \
 	rendering/Material.cpp \

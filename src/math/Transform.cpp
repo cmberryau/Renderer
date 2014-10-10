@@ -67,9 +67,9 @@ namespace Renderer
 			_rotation[i] = ClampRotation(_rotation[i]);
 
 			rotation_matrix[i] = Matrix4f::Rotate(_rotation[i],
-				rotation_axes[0],
-				rotation_axes[1],
-				rotation_axes[2]);
+												  rotation_axes[0],
+												  rotation_axes[1],
+												  rotation_axes[2]);
 
 			_normal_matrix = _normal_matrix.Multiply(rotation_matrix[i]);
 			_composed_matrix = _composed_matrix.Multiply(rotation_matrix[i]);
@@ -143,12 +143,12 @@ namespace Renderer
 		_composed_matrix = _composed_matrix.Multiply(scale_matrix);
 	}
 
-	Matrix4f Transform::NormalMatrix()
+	const Matrix4f & Transform::NormalMatrix() const
 	{
 		return _normal_matrix;
 	}
 
-	Matrix4f Transform::ComposedMatrix()
+	const Matrix4f & Transform::ComposedMatrix() const
 	{
 		return _composed_matrix;
 	}

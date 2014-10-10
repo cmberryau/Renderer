@@ -12,10 +12,9 @@ namespace Renderer
 {
     Shader * ShaderFactory::Create(std::string & vertex_shader_source,
                                    std::string & geometry_shader_source,
-                                   std::string & fragment_shader_source,
-                                   RenderingContext * context)
+                                   std::string & fragment_shader_source)
     {
-        Shader * shader = context->Shader();
+		Shader * shader = new OpenGLShader();
         
         shader->Compile(vertex_shader_source,
                         geometry_shader_source,
@@ -25,14 +24,12 @@ namespace Renderer
     }
     
     Shader * ShaderFactory::Create(std::string & vertex_shader_source,
-                                   std::string & fragment_shader_source,
-                                   RenderingContext * context)
+                                   std::string & fragment_shader_source)
     {
         std::string empty_source("");
         
         return Create(vertex_shader_source,
                       empty_source,
-                      fragment_shader_source,
-                      context);
+                      fragment_shader_source);
     }
 }

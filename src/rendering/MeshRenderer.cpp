@@ -9,27 +9,16 @@
 #include "MeshRenderer.hpp"
 
 namespace Renderer
-{
-	void MeshRenderer::AddMaterial(Material * material)
-	{
-		_material = material;
-	}
-    
+{  
     void MeshRenderer::AddMaterial(const std::shared_ptr<Material> & material_ptr)
     {
         _material_ptr = material_ptr;
     }
-
-	MeshRenderer::MeshRenderer(RenderingContext * rendering_context)
-	: _rendering_context(rendering_context), _mesh(nullptr)
-	{
-
-	}
     
     MeshRenderer::MeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr)
     : _rendering_context_ptr(rendering_context_ptr)
     {
-        
+		  
     }
     
     const Mesh & MeshRenderer::GetMesh() const

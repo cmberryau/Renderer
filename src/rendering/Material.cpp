@@ -15,7 +15,7 @@ namespace Renderer
         _shader->Use();
     }
     
-    class Shader * Material::Shader()
+    class Shader * Material::Shader() const
     {
         return _shader;
     }

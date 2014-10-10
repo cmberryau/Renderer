@@ -17,7 +17,7 @@ namespace Renderer
     {
         public:
             void Use() const;
-            Shader * Shader();
+            Shader * Shader() const;
         
             ~Material();
             explicit Material(class Shader * shader);

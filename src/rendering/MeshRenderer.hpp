@@ -24,24 +24,20 @@ namespace Renderer
 	{
 		public:
 			// caches the mesh and prepares it for drawing
-			virtual void AddMesh(Mesh * mesh) = 0;
             virtual void AddMesh(const std::shared_ptr<Mesh> & mesh_ptr) = 0;
 		
 			// sets the material
-			void AddMaterial(Material * material);
             void AddMaterial(const std::shared_ptr<Material> & material_ptr);
 
 			// draws the mesh
-			virtual void Draw(Object * parent_object) const = 0;
-            virtual void Draw(const Object & parent_object) const = 0;
+            virtual void Draw(Object & parent_object) const = 0;
 		
 			virtual ~MeshRenderer(){};
 
 		protected:
-            explicit MeshRenderer(RenderingContext * rendering_context);
             explicit MeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
         
-            const Mesh & GetMesh() const;
+			const Mesh & GetMesh() const;
             const Material & GetMaterial() const;
             const RenderingContext & GetRenderingContext() const;
         
@@ -52,11 +48,6 @@ namespace Renderer
             void SetMesh(const std::shared_ptr<Mesh> & mesh_ptr);
             void SetMaterial(const std::shared_ptr<Material> & material_ptr);
             void SetRenderingContext(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
-        
-        //private:
-			Mesh * _mesh;
-			Material * _material;
-			RenderingContext * _rendering_context;
         
         private:
             std::shared_ptr<Mesh> _mesh_ptr;

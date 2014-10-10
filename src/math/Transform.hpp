@@ -17,25 +17,28 @@ namespace Renderer
     class Transform
     {
         public:
-			Transform();
+			explicit Transform();
 			~Transform();
 
 			void Translate(float x, float y, float z);
 			void SetPosition(float x, float y, float z);
+			const Vector3f & Position() const;
         
 			void Rotate(float x, float y, float z);        
 			void SetRotation(float x, float y, float z);
-        
+			const Vector3f & Rotation() const;
+
+			void Scale(float x, float y, float z);
+			void SetScale(float x, float y, float z);
+			const Vector3f & Scale() const;
+
+			const Matrix4f & NormalMatrix() const;
+			const Matrix4f & ComposedMatrix() const;
+
+		private:
 			double ClampRotation(double rotation);
 			float ClampRotation(float rotation);
 
-			void Scale(float x, float y, float z);        
-			void SetScale(float x, float y, float z);
-
-			Matrix4f NormalMatrix();        
-			Matrix4f ComposedMatrix();
-
-		protected:
 			Vector3f _position;
 			Vector3f _rotation;
             Vector3f _scale;

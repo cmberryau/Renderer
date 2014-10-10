@@ -10,23 +10,23 @@
 #define _camera_h
 
 #include "math/Transform.hpp"
-#include "objects/IObjectAddable.hpp"
+#include "objects/ObjectAddable.hpp"
 #include "rendering/RenderingContext.hpp"
 #include "objects/Object.hpp"
 
 namespace Renderer
 {
-	class Camera : public IObjectAddable
+	class Camera : public ObjectAddable
 	{
 		public:
-			explicit Camera(RenderingContext * rendering_context);
-			~Camera();
+			explicit Camera() : _projection_matrix(1.0f){};
+			~Camera(){};
 
 			Matrix4f ViewMatrix();
-			Matrix4f ProjectionMatrix();
+			const Matrix4f & ProjectionMatrix() const;
         
-        protected:
-            RenderingContext * _rendering_context;
+		private:
+			Matrix4f _projection_matrix;
 	};
 }
 

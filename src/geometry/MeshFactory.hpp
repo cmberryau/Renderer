@@ -31,10 +31,13 @@ namespace Renderer
     class MeshFactory
     {
         public:
-            static Mesh * MeshFromObjFile(const std::string & obj_file_path);
-			static Mesh * MeshFromObjSource(const std::string & obj_source);
+			static std::shared_ptr<Mesh> MeshFromObjFile(const std::string & obj_file_path);
+			static std::shared_ptr<Mesh> MeshFromObjSource(const std::string & obj_source);
         
-        protected:
+        private:
+			explicit MeshFactory(){};
+			~MeshFactory(){};
+
             static void ValidateIntermediateMesh(const IntermediateMesh & intermediate_mesh);
             static void PrepareIntermediateMesh(IntermediateMesh & intermediate_mesh);
         
@@ -50,9 +53,6 @@ namespace Renderer
             static const int kMaxVertexElements = 3;
 			static const int kMaxNormalElements = 3;
             static const int kMaxUVElements = 2;
-
-            explicit MeshFactory(){};
-            ~MeshFactory(){};
     };
 }
 

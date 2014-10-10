@@ -13,15 +13,15 @@ namespace Renderer
 {
     class Object;
     
-    class IObjectAddable
+    class ObjectAddable
     {
         public:
-			virtual ~IObjectAddable(){};
+			virtual ~ObjectAddable(){};
 			virtual void Update(Object * parent_object){};
 			void Added(Object * parent_object);
         
         protected:
-            explicit IObjectAddable() : _parent_object(nullptr){}
+            explicit ObjectAddable() : _parent_object(nullptr){}
         
             Object * _parent_object;
     };

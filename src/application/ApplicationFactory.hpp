@@ -9,16 +9,17 @@
 #ifndef _application_factory_h
 #define _application_factory_h
 
-#include "Application.hpp"
+#include "application/Application.hpp"
 
 #include <string>
+#include <memory>
 
 namespace Renderer
 {
 	class ApplicationFactory
 	{
 		public:
-			static Application FromFile(const std::string & file_path);
+			static std::shared_ptr<Application> FromFile(const std::string & file_path);
 
 		private:
 			explicit ApplicationFactory();

@@ -10,13 +10,16 @@
 
 namespace Renderer
 {
-	Application ApplicationFactory::FromFile(const std::string & file_path)
+	std::shared_ptr<Application> ApplicationFactory::FromFile(const std::string & file_path)
 	{
-		// temporary code
-		Window * window = nullptr;
-		RenderingContext * rendering_context = nullptr;
+		std::string window_name("Renderer");
 
-		Application app(*window, *rendering_context);
+		// temporary code
+		std::shared_ptr<Window> window(new Window(640, 480, window_name));
+		std::shared_ptr<RenderingContext> rendering_context(new OpenGLRenderingContext(*window));
+		std::shared_ptr<EventListener> event_listener(new EventListener());
+
+		std::shared_ptr<Application> app(new Application(window, rendering_context, event_listener));
 
 		return app;
 	}

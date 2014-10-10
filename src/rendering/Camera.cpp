@@ -10,24 +10,13 @@
 
 namespace Renderer
 {
-	Camera::Camera(RenderingContext * rendering_context)
-		: _rendering_context(rendering_context)
-	{
-
-	}
-
-	Camera::~Camera()
-	{
-
-	}
-
 	Matrix4f Camera::ViewMatrix()
 	{
-		return this->_parent_object->LocalTransform()->ComposedMatrix();
+		return this->_parent_object->LocalTransform().ComposedMatrix();
 	}
 
-	Matrix4f Camera::ProjectionMatrix()
+	const Matrix4f & Camera::ProjectionMatrix() const
 	{
-		return Matrix4f::Perspective(75.0f, 1.33f, 1.0f, 500.0f);
+		return _projection_matrix;
 	}
 }

@@ -8,66 +8,90 @@
 
 #include "OpenGLRenderingContext.hpp"
 
+#include <algorithm>
+
 namespace Renderer
 {
-	//const int OpenGLRenderingContext::kNumSupportedOpenGLVersions = 9;
-	const int OpenGLRenderingContext::kSupportedOpenGLVersions[9][2] = { { 4, 4 }, { 4, 3 }, { 4, 2 },
-	{ 4, 1 }, { 4, 0 }, { 3, 3 },
-	{ 3, 2 }, { 3, 1 }, { 3, 0 } };
-
-	OpenGLRenderingContext::OpenGLRenderingContext(class Window * window,
-		int major_version,
-		int minor_version)
+	void OpenGLRenderingContext::Init(const Window & window,
+									  int desired_major_version,
+									  int desired_minor_version)
 	{
-		if (window == nullptr)
+		if (!!_sdl_gl_context)
 		{
-			throw std::exception();
+			throw std::runtime_error("Tried to Init a OpenGLRenderingContext twice");
 		}
 
-		// ensure that the requested OpenGL version is supported
-		int requested_major_version = major_version;
-		int requested_minor_version = minor_version;
+		_supported_opengl_versions.push_back(OpenGLVersion(4, 4));
+		_supported_opengl_versions.push_back(OpenGLVersion(4, 1));		
 
-		int i = 0;
-		for (i = 0; i<kNumSupportedOpenGLVersions; i++)
+		// first attempt to match the passed values, if any
+		std::vector<OpenGLVersion>::iterator it;
+		if (desired_major_version != 0 && !desired_minor_version != 0)
 		{
-			if (kSupportedOpenGLVersions[i][0] == requested_major_version &&
-				kSupportedOpenGLVersions[i][1] == requested_minor_version)
+			OpenGLVersion desired_version(desired_major_version, desired_minor_version);
+			it = std::find(_supported_opengl_versions.begin(),
+						   _supported_opengl_versions.end(), desired_version);
+
+			if (it != _supported_opengl_versions.end())
 			{
-				break;
+				_sdl_gl_context = CreateSDLContext(window, desired_version);
+
+				if (!!_sdl_gl_context)
+				{
+					if (CurrentOpenGLVersion() == desired_version)
+					{
+						SetupDefaultGLAttributes();
+						return;
+					}
+					else
+					{
+						throw std::runtime_error("SDL returned incorrect OpenGL version");
+					}
+				}
 			}
 		}
 
-		// if it's not, just go from the top
-		if (i == kNumSupportedOpenGLVersions)
+		// run through the supported versions if that does not work out
+		for (it = _supported_opengl_versions.begin();
+			 it != _supported_opengl_versions.end();
+			 ++it)
 		{
-			requested_major_version = kSupportedOpenGLVersions[0][0];
-			requested_minor_version = kSupportedOpenGLVersions[0][1];
+			_sdl_gl_context = CreateSDLContext(window, *it);
+
+			if (!!_sdl_gl_context)
+			{
+				if (CurrentOpenGLVersion() == *it)
+				{
+					SetupDefaultGLAttributes();
+					return;
+				}
+				else
+				{
+					throw std::runtime_error("SDL returned incorrect OpenGL version");
+				}
+			}
 		}
 
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE); // required for osx
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, requested_major_version);
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, requested_minor_version);
+		throw std::runtime_error("Unable to find supported OpenGL context");
+	}
 
-		_sdl_gl_context = SDL_GL_CreateContext(window->_sdl_window);
+	std::unique_ptr<SDL_GLContext, OpenGLRenderingContext::SDL_GLContextDeleter> 
+	OpenGLRenderingContext::CreateSDLContext(const Window & window, const OpenGLVersion & version_to_create)
+	{
+		// required for osx
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-		// run through the other supported versions if requested/top version fails
-		i = 0;
-		while (_sdl_gl_context == nullptr && i < kNumSupportedOpenGLVersions)
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, version_to_create._major);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, version_to_create._minor);
+
+		SDL_GLContext sdl_context = SDL_GL_CreateContext(window.GetSDLWindow());		
+
+		if (sdl_context == nullptr)
 		{
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE); // required for osx
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, kSupportedOpenGLVersions[i][0]);
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, kSupportedOpenGLVersions[i][1]);
-
-			_sdl_gl_context = SDL_GL_CreateContext(window->_sdl_window);
-
-			i++;
+			throw std::runtime_error("Unable to create SDL OpenGL context");
 		}
 
-		if (_sdl_gl_context == nullptr)
-		{
-			throw std::exception();
-		}
+		std::unique_ptr<SDL_GLContext, SDL_GLContextDeleter> sdl_context_ptr(&sdl_context);
 
 		CheckForGLError();
 
@@ -78,18 +102,35 @@ namespace Renderer
 		{
 			throw std::exception("glewInit failed!\n");
 		}
-#endif
 
-		GLint actual_major_version = -1;
-		GLint actual_minor_version = -1;
+		// glewInit() throws 1280 error always, known bug
+		try
+		{
+			CheckForGLError();
+		}
+		catch (std::exception e)
+		{
+			// just swallow the exception
+		}
+#endif	
+		
+		return sdl_context_ptr;
+	}
 
-		glGetIntegerv(GL_MAJOR_VERSION, &actual_major_version);
+	OpenGLRenderingContext::OpenGLVersion OpenGLRenderingContext::CurrentOpenGLVersion() const
+	{
+		GLint major_version = -1;
+		GLint minor_version = -1;
+
+		glGetIntegerv(GL_MAJOR_VERSION, &major_version);
+		glGetIntegerv(GL_MINOR_VERSION, &minor_version);
 		CheckForGLError();
-		glGetIntegerv(GL_MINOR_VERSION, &actual_minor_version);
-		CheckForGLError();
 
-		fprintf(stdout, "OpenGL version: %d.%d\n", actual_major_version, actual_minor_version);
+		return OpenGLVersion(major_version, minor_version);
+	}
 
+	void OpenGLRenderingContext::SetupDefaultGLAttributes()
+	{
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 		glEnable(GL_CULL_FACE);
@@ -102,41 +143,33 @@ namespace Renderer
 		CheckForGLError();
 	}
 
-	OpenGLRenderingContext::~OpenGLRenderingContext()
+	bool OpenGLRenderingContext::IsReady() const
 	{
-
+		return !!_sdl_gl_context;
 	}
 
-	bool OpenGLRenderingContext::CheckForGLError()
+	OpenGLRenderingContext::OpenGLRenderingContext(const Window & window)
 	{
-		GLenum error;
-		error = glGetError();
-		if (error != GL_NO_ERROR)
+		Init(window);
+	}
+
+	OpenGLRenderingContext::OpenGLRenderingContext(const Window & window,
+												   int desired_major_version,
+												   int desired_minor_version)
+	{
+		Init(window, desired_major_version, desired_minor_version);
+	}
+
+	void OpenGLRenderingContext::BeginScene() const
+	{
+		if (IsReady())
 		{
-			fprintf(stderr, "OpenGL error: %d\n", error);
-			return true;
-		}
-
-		return false;
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		}		
 	}
 
-	void OpenGLRenderingContext::BeginScene()
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	}
-
-	void OpenGLRenderingContext::EndScene()
+	void OpenGLRenderingContext::EndScene() const
 	{
 
-	}
-
-	class MeshRenderer * OpenGLRenderingContext::MeshRenderer()
-	{
-		return new OpenGLMeshRenderer(this);
-	}
-
-	class Shader * OpenGLRenderingContext::Shader()
-	{
-		return new OpenGLShader();
 	}
 }

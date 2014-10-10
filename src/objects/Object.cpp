@@ -9,60 +9,19 @@
 #include "Object.hpp"
 
 namespace Renderer
-{
-	Object::~Object()
+{	
+	Transform & Object::LocalTransform()
 	{
-		for (std::size_t i = 0; i < _addables.size(); ++i)
-		{
-			delete _addables[i];
-		}
+		return _transform;
 	}
 
-	Object::Object() : _mesh_renderer(nullptr)
+	void Object::Update() const
 	{
 
 	}
 
-	Transform * Object::LocalTransform()
+	void Object::Draw() const
 	{
-		return &_transform;
-	}
-
-	void Object::Add(IObjectAddable * object)
-	{
-		if (object == nullptr)
-			return;
-
-		_addables.push_back(object);
-		object->Added(this);
-	}
-
-	void Object::AddMeshRenderer(MeshRenderer * mesh_renderer)
-	{
-		if (mesh_renderer == nullptr)
-			return;
-
-		_mesh_renderer = mesh_renderer;
-	}
-
-	void Object::Update()
-	{
-		for (std::size_t i = 0; i < _addables.size(); ++i)
-		{
-			if (_addables[i] == nullptr)
-			{
-				return;
-			}
-
-			_addables[i]->Update(this);
-		}
-	}
-
-	void Object::Draw()
-	{
-		if (_mesh_renderer != nullptr)
-		{
-			_mesh_renderer->Draw(this);
-		}
+		
 	}
 }

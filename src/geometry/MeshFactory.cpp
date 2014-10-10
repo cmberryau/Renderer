@@ -18,19 +18,15 @@
 
 namespace Renderer
 {   
-    Mesh * MeshFactory::MeshFromObjFile(const std::string & obj_file_path)
+	std::shared_ptr<Mesh> MeshFactory::MeshFromObjFile(const std::string & obj_file_path)
     {        
         std::string obj_source = IO::ReadFile(obj_file_path);
         
-		Mesh * mesh = MeshFactory::MeshFromObjSource(obj_source);
-        
-        return mesh;
+		return MeshFactory::MeshFromObjSource(obj_source);
     }
     
-	Mesh * MeshFactory::MeshFromObjSource(const std::string & obj_source)
-    {
-		Mesh * mesh = new Mesh();
-        
+	std::shared_ptr<Mesh> MeshFactory::MeshFromObjSource(const std::string & obj_source)
+    {        
         IntermediateMesh intermediate_mesh;
         
         std::vector<std::string> lines = split_string(obj_source, '\n');
@@ -48,6 +44,8 @@ namespace Renderer
         
         MeshFactory::ValidateIntermediateMesh(intermediate_mesh);
         MeshFactory::PrepareIntermediateMesh(intermediate_mesh);
+
+		std::shared_ptr<Mesh> mesh(new Mesh());
 
 		mesh->SetVertices(intermediate_mesh.vertices);
 		mesh->SetTriangles(intermediate_mesh.vertex_indices);

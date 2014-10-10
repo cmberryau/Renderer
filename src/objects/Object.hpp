@@ -10,10 +10,6 @@
 #define _object_h
 
 #include "math/Transform.hpp"
-#include "geometry/Mesh.hpp"
-#include "rendering/MeshRenderer.hpp"
-#include "rendering/Camera.hpp"
-#include "objects/IObjectAddable.hpp"
 
 #include <vector>
 
@@ -22,24 +18,16 @@ namespace Renderer
     class Object
     {
         public:
-			~Object();
-			explicit Object();
+			explicit Object(){};
+			~Object(){};
+			
+			Transform & LocalTransform();
 
-			Transform * LocalTransform();
-			void Add(IObjectAddable * object);
-			void AddMeshRenderer(MeshRenderer * mesh_renderer);
-			void Update();        
-			void Draw();
+			void Update() const;        
+			void Draw() const;
 
-		protected:
-            // required types
+		private:
             Transform _transform;
-        
-            // concrete types
-			MeshRenderer * _mesh_renderer;
-        
-            // generically addable types
-            std::vector<IObjectAddable *> _addables;        
     };
 }
 

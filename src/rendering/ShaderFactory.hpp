@@ -24,16 +24,14 @@ namespace Renderer
         public:
             static Shader * Create(std::string & vertex_shader_source,
                                    std::string & geometry_shader_source,
-                                   std::string & fragment_shader_source,
-                                   RenderingContext * context);
+                                   std::string & fragment_shader_source);
         
             static Shader * Create(std::string & vertex_shader_source,
-                                   std::string & fragment_shader_source,
-                                   RenderingContext * context);
+                                   std::string & fragment_shader_source);
         
         private:
-            ~ShaderFactory(){}
-            explicit ShaderFactory(){};
+			explicit ShaderFactory();
+			~ShaderFactory();
     };
 }
 

@@ -8,6 +8,8 @@
 
 #include "EventListener.hpp"
 
+#include <stdexcept>
+
 void EventListener::ListenForEvents()
 {
 	SDL_Event event;
@@ -27,7 +29,10 @@ bool EventListener::ShouldQuit() const
 
 EventListener::EventListener() : _should_quit(false)
 {
-
+	if (SDL_Init(SDL_INIT_EVENTS) != 0)
+	{
+		throw std::runtime_error("SDL failed to initialize events");
+	}
 }
 
 EventListener::~EventListener()
