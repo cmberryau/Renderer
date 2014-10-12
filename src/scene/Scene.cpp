@@ -10,11 +10,6 @@
 
 namespace Renderer
 {
-	const Camera & Scene::MainCamera() const
-	{
-		return *_main_camera;
-	}
-
 	void Scene::UpdateAndDraw()
 	{
 		for (_objects_it = _objects.begin();
@@ -29,5 +24,15 @@ namespace Renderer
 	void Scene::AddObject(std::shared_ptr<Object> & object)
 	{
 		_objects.push_back(object);
+	}
+
+	const Camera & Scene::MainCamera()
+	{
+		return _main_camera;
+	}
+
+	void Scene::SetMainCamera(std::shared_ptr<Camera> & camera)
+	{
+		_main_camera = camera;
 	}
 }
