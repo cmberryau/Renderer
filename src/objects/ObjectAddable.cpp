@@ -10,13 +10,18 @@
 
 namespace Renderer
 {
-	ObjectAddable::ObjectAddable(Object & object) : _parent_object(object)
+	ObjectAddable::ObjectAddable()
 	{
 
 	}
 
+	void ObjectAddable::Added(std::shared_ptr<Object> parent_object)
+	{
+		_parent_object = parent_object;
+	}
+
 	const Object & ObjectAddable::Parent() const
 	{
-		return _parent_object;
+		return *_parent_object;
 	}
 }

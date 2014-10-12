@@ -10,31 +10,23 @@
 
 namespace Renderer
 {
-	Scene::Scene()
+	const Camera & Scene::MainCamera() const
 	{
-
-	}
-
-	Scene::~Scene()
-	{
-
-	}
-
-	Camera * Scene::MainCamera()
-	{
-		return _main_camera;
+		return *_main_camera;
 	}
 
 	void Scene::UpdateAndDraw()
 	{
-		for (std::size_t i = 0; i<_objects.size(); ++i)
+		for (_objects_it = _objects.begin();
+			 _objects_it != _objects.end();
+			 ++_objects_it)
 		{
-			_objects[i]->Update();
-			_objects[i]->Draw();
+			(*_objects_it)->Update();
+			(*_objects_it)->Draw();
 		}
 	}
 
-	void Scene::AddObject(Object * object)
+	void Scene::AddObject(std::shared_ptr<Object> & object)
 	{
 		_objects.push_back(object);
 	}

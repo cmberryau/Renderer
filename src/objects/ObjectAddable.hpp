@@ -9,12 +9,12 @@
 #ifndef _i_object_addable_h
 #define _i_object_addable_h
 
-#include "objects/Object.hpp"
-
 #include <memory>
 
 namespace Renderer
-{    
+{   
+	class Object;
+
     class ObjectAddable
     {
         public:
@@ -22,18 +22,16 @@ namespace Renderer
         
             // called on each frame
 			virtual void Update(Object & parent_object){};
-        
-            // called when the ObjectAddable is
-            virtual void Added(Object & parent_object){};
+			
+			// object will call this when ObjectAddable is added
+            virtual void Added(std::shared_ptr<Object> parent_object) final;
         
         protected:
-			explicit ObjectAddable(Object & parent);
+			explicit ObjectAddable();
 			const Object & Parent() const;
 
 		private:
-			explicit ObjectAddable();
-
-			Object & _parent_object;
+			std::shared_ptr<Object> _parent_object;
     };
 }
 

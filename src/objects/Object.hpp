@@ -10,6 +10,8 @@
 #define _object_h
 
 #include "math/Transform.hpp"
+#include "objects/ObjectAddable.hpp"
+#include "rendering/MeshRenderer.hpp"
 
 #include <vector>
 
@@ -18,16 +20,25 @@ namespace Renderer
     class Object
     {
         public:
-			explicit Object(){};
+			explicit Object();
 			~Object(){};
 			
-			const Transform & LocalTransform() const;
+			void Update();
+			void Draw();
 
-			void Update();        
-			void Draw() const;
+			void Add(std::shared_ptr<ObjectAddable> & addable);
+			void AddMeshRenderer(std::shared_ptr<MeshRenderer> & mesh_renderer);
+
+			const Transform & LocalTransform() const;
 
 		private:
             Transform _transform;
+
+			std::shared_ptr<Object> _this;
+			std::vector<std::shared_ptr<ObjectAddable>> _children;
+			std::vector<std::shared_ptr<ObjectAddable>>::iterator _children_it;
+
+			std::shared_ptr<MeshRenderer> _mesh_renderer;
     };
 }
 

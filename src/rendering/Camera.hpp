@@ -18,8 +18,7 @@ namespace Renderer
 	class Camera : public ObjectAddable
 	{
 		public:
-			explicit Camera(Object & parent,
-							float fov,
+			explicit Camera(float fov,
 							float aspect_ratio,
 							float zfar,
 							float znear);

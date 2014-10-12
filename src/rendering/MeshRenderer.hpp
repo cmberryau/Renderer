@@ -11,7 +11,6 @@
 
 #include "rendering/RenderingContext.hpp"
 #include "geometry/Mesh.hpp"
-#include "objects/Object.hpp"
 #include "rendering/Material.hpp"
 
 #include <memory>

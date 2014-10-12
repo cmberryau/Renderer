@@ -19,16 +19,18 @@ namespace Renderer
     class Scene
     {
         public:
-			explicit Scene();
-			~Scene();
+			explicit Scene(){};
+			~Scene(){};
+			
+			void UpdateAndDraw();
+			void AddObject(std::shared_ptr<Object> & object);
 
-			Camera * MainCamera();
-			void UpdateAndDraw();        
-			void AddObject(Object * object);
+			const Camera & MainCamera() const;
         
         private:
-            Camera * _main_camera;
-            std::vector<Object *> _objects;
+            std::shared_ptr<Camera> _main_camera;
+			std::vector<std::shared_ptr<Object>> _objects;
+			std::vector<std::shared_ptr<Object>>::iterator _objects_it;
     };
 }
 

@@ -19,7 +19,7 @@ namespace Renderer
     {
         public:
 			explicit Material(std::shared_ptr<class Shader> shader);
-			~Material();
+			~Material(){};
 
 			void Use() const;
 			const Shader & GetShader() const;

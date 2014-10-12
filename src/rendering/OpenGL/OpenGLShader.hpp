@@ -28,6 +28,7 @@ namespace Renderer
             void Compile(std::string & vertex_shader_source,
                          std::string & geometry_shader_source,
                          std::string & fragment_shader_source) override;
+
             void Use() override;
 
             GLuint Program();

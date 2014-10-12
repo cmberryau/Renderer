@@ -24,9 +24,4 @@ namespace Renderer
 	{
 
 	}
-
-	Material::~Material()
-	{
-
-	}
 }
