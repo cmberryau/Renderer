@@ -9,15 +9,18 @@
 #ifndef _application_h
 #define _application_h
 
-#ifdef EMSCRIPTEN
-#include <SDL/SDL.h>
-#else
-#include <SDL2/SDL.h>
+#ifdef EMSCRIPTEN 
+#include <emscripten.h>
 #endif
 
+// systems
 #include "windowing/Window.hpp"
 #include "events/EventListener.hpp"
 #include "rendering/OpenGL/OpenGLRenderingContext.hpp"
+
+// content
+#include "scene/Scene.hpp"
+#include "rendering/Camera.hpp"
 
 #include <memory>
 

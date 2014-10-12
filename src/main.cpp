@@ -15,10 +15,6 @@
 #include <crtdbg.h>
 #endif
 
-#ifdef EMSCRIPTEN 
-#include <emscripten.h>
-#endif
-
 using namespace Renderer;
 
 void entry()

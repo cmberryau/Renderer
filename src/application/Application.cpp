@@ -27,6 +27,9 @@ namespace Renderer
 
 	void Application::Run()
 	{
+		Scene scene;		
+		Camera main_camera(75.0f, 1.33f, 1.0f, 500.0f);
+
 		while (true)
 		{
 			_event_listener->ListenForEvents();
@@ -37,6 +40,8 @@ namespace Renderer
 			}			
 
 			_rendering_context->BeginScene();
+
+			scene.UpdateAndDraw();
 
 			_rendering_context->EndScene();
 
