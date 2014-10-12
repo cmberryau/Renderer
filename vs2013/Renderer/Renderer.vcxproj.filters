@@ -62,17 +62,11 @@
     <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp">
       <Filter>Source Files\rendering</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\utility\io.cpp">
-      <Filter>Source Files\utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\geometry\MeshFactory.cpp">
       <Filter>Source Files\geometry</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESShader.cpp">
       <Filter>Source Files\rendering\OpenGLES</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\utility\util.cpp">
-      <Filter>Source Files\utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\scene\Scene.cpp">
       <Filter>Source Files\scene</Filter>
@@ -118,6 +112,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\application\Application.cpp">
       <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\IO.cpp">
+      <Filter>Source Files\utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\Util.cpp">
+      <Filter>Source Files\utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +175,6 @@
     <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp">
       <Filter>Source Files\rendering</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utility\io.hpp">
-      <Filter>Source Files\utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\geometry\MeshFactory.hpp">
       <Filter>Source Files\geometry</Filter>
     </ClInclude>
@@ -190,9 +187,6 @@
     <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESShader.hpp">
       <Filter>Source Files\rendering\OpenGLES</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utility\util.hpp">
-      <Filter>Source Files\utility</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\application\ApplicationFactory.hpp">
       <Filter>Source Files\application</Filter>
     </ClInclude>
@@ -201,6 +195,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\application\Application.hpp">
       <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\IO.hpp">
+      <Filter>Source Files\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\Util.hpp">
+      <Filter>Source Files\utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
