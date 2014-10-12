@@ -14,7 +14,7 @@ namespace Renderer
 				   float aspect_ratio,
 				   float zfar,
 				   float znear) :
-				   _projection_matrix(Matrix4f::Perspective(fov, aspect_ratio, znear, zfar)),
+				   _projection_matrix(Matrix4f::Perspective(fov, aspect_ratio, zfar, znear)),
 				   _view_matrix(Matrix4f::Identity()),
 				   _fov(fov), _aspect_ratio(aspect_ratio), _zfar(zfar), _znear(znear)
 	{
