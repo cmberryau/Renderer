@@ -15,7 +15,7 @@ namespace Renderer
 		return _transform;
 	}
 
-	void Object::Update() const
+	void Object::Update()
 	{
 
 	}

@@ -37,11 +37,6 @@ namespace Renderer
 		_sdl_window_ptr = std::move(sdl_window_ptr);
 	}
 
-	Window::~Window()
-	{
-		
-	}
-
 	void Window::Swap()
 	{
 		SDL_GL_SwapWindow(_sdl_window_ptr.get());

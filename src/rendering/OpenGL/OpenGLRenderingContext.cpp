@@ -26,7 +26,7 @@ namespace Renderer
 
 		// first attempt to match the passed values, if any
 		std::vector<OpenGLVersion>::iterator it;
-		if (desired_major_version != 0 && !desired_minor_version != 0)
+		if (desired_major_version != 0 && desired_minor_version != 0)
 		{
 			OpenGLVersion desired_version(desired_major_version, desired_minor_version);
 			it = std::find(_supported_opengl_versions.begin(),

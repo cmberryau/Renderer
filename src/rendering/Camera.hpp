@@ -19,14 +19,15 @@ namespace Renderer
 	class Camera : public ObjectAddable
 	{
 		public:
-			explicit Camera() : _projection_matrix(1.0f){};
+            explicit Camera() : _projection_matrix(1.0f), _view_matrix(Matrix4f::Identity()){};
 			~Camera(){};
 
-			Matrix4f ViewMatrix();
+			const Matrix4f & ViewMatrix() const;
 			const Matrix4f & ProjectionMatrix() const;
         
 		private:
 			Matrix4f _projection_matrix;
+            Matrix4f _view_matrix;
 	};
 }
 

@@ -10,9 +10,9 @@
 
 namespace Renderer
 {
-	Matrix4f Camera::ViewMatrix()
+	const Matrix4f & Camera::ViewMatrix() const
 	{
-		return this->_parent_object->LocalTransform().ComposedMatrix();
+        return _view_matrix;
 	}
 
 	const Matrix4f & Camera::ProjectionMatrix() const

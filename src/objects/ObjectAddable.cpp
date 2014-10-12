@@ -7,11 +7,3 @@
 //
 
 #include "ObjectAddable.hpp"
-
-namespace Renderer
-{
-	void ObjectAddable::Added(Object * parent_object)
-	{
-		_parent_object = parent_object;
-	}
-}

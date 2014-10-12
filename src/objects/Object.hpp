@@ -23,7 +23,7 @@ namespace Renderer
 			
 			Transform & LocalTransform();
 
-			void Update() const;        
+			void Update();        
 			void Draw() const;
 
 		private:

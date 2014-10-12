@@ -24,7 +24,7 @@ namespace Renderer
 	{
 		public:
 			explicit Window(int width, int height, const std::string & name);
-			~Window();
+            ~Window(){};
 
 			void Swap();
             int Width() const;

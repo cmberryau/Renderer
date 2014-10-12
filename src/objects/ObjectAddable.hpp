@@ -9,6 +9,8 @@
 #ifndef _i_object_addable_h
 #define _i_object_addable_h
 
+#include <memory>
+
 namespace Renderer
 {
     class Object;
@@ -17,13 +19,15 @@ namespace Renderer
     {
         public:
 			virtual ~ObjectAddable(){};
-			virtual void Update(Object * parent_object){};
-			void Added(Object * parent_object);
+        
+            // called on each frame
+			virtual void Update(Object & parent_object){};
+        
+            // called when the ObjectAddable is
+            virtual void Added(Object & parent_object){};
         
         protected:
-            explicit ObjectAddable() : _parent_object(nullptr){}
-        
-            Object * _parent_object;
+            explicit ObjectAddable();
     };
 }
 
