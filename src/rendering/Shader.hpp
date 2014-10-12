@@ -10,6 +10,7 @@
 #define _shader_h
 
 #include <string>
+#include <memory>
 
 namespace Renderer
 {
@@ -18,17 +19,17 @@ namespace Renderer
         public:
             virtual void Use() = 0;
         
-            virtual Shader * Compile(std::string & vertex_shader_source,
-                                     std::string & fragment_shader_source) = 0;
+            virtual void Compile(std::string & vertex_shader_source,
+                                   std::string & fragment_shader_source) = 0;
         
-            virtual Shader * Compile(std::string & vertex_shader_source,
-                                     std::string & geometry_shader_source,
-                                     std::string & fragment_shader_source) = 0;
+            virtual void Compile(std::string & vertex_shader_source,
+                                 std::string & geometry_shader_source,
+                                 std::string & fragment_shader_source) = 0;
         
             virtual ~Shader(){}
         
         protected:
-            Shader(){};
+            explicit Shader(){};
     };
 }
 

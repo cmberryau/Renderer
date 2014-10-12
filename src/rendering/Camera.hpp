@@ -10,24 +10,27 @@
 #define _camera_h
 
 #include "math/Transform.hpp"
-#include "objects/ObjectAddable.hpp"
-#include "rendering/RenderingContext.hpp"
 #include "objects/Object.hpp"
+#include "objects/ObjectAddable.hpp"
 
 namespace Renderer
 {
 	class Camera : public ObjectAddable
 	{
 		public:
-            explicit Camera() : _projection_matrix(1.0f), _view_matrix(Matrix4f::Identity()){};
+			explicit Camera(Object & parent,
+							float fov,
+							float aspect_ratio,
+							float zfar,
+							float znear);
 			~Camera(){};
 
 			const Matrix4f & ViewMatrix() const;
 			const Matrix4f & ProjectionMatrix() const;
-        
+
 		private:
-			Matrix4f _projection_matrix;
-            Matrix4f _view_matrix;
+			Matrix4f _projection_matrix, _view_matrix;
+			float _fov, _aspect_ratio, _zfar, _znear;
 	};
 }
 

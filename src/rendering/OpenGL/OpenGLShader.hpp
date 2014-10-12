@@ -18,18 +18,19 @@ namespace Renderer
 {
     class OpenGLShader : public Shader
     {
-        public:
-            OpenGLShader * Compile(std::string & vertex_shader_source,
-                                   std::string & fragment_shader_source);
+        public:			
+			explicit OpenGLShader();
+			~OpenGLShader();
+
+            void Compile(std::string & vertex_shader_source,
+                         std::string & fragment_shader_source) override;
         
-            OpenGLShader * Compile(std::string & vertex_shader_source,
-                                   std::string & geometry_shader_source,
-                                   std::string & fragment_shader_source);
-            void Use();
+            void Compile(std::string & vertex_shader_source,
+                         std::string & geometry_shader_source,
+                         std::string & fragment_shader_source) override;
+            void Use() override;
+
             GLuint Program();
-        
-            ~OpenGLShader();
-            explicit OpenGLShader();
         
         protected:
             GLuint _program;

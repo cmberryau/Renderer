@@ -15,17 +15,17 @@
 
 namespace Renderer
 {
-    OpenGLShader * OpenGLShader::Compile(std::string & vertex_shader_source,
-                                         std::string & fragment_shader_source)
+    void OpenGLShader::Compile(std::string & vertex_shader_source,
+                               std::string & fragment_shader_source)
 	{
         std::string empty_source("");
         
-        return this->Compile(vertex_shader_source, empty_source, fragment_shader_source);
+        this->Compile(vertex_shader_source, empty_source, fragment_shader_source);
     }
     
-    OpenGLShader * OpenGLShader::Compile(std::string & vertex_shader_source,
-                                         std::string & geometry_shader_source,
-                                         std::string & fragment_shader_source)
+    void OpenGLShader::Compile(std::string & vertex_shader_source,
+							   std::string & geometry_shader_source,
+							   std::string & fragment_shader_source)
 	{
         std::vector<std::string> sources = {
                                             vertex_shader_source,
@@ -111,8 +111,6 @@ namespace Renderer
         {
             fprintf(stderr, "%d\n", error);
         }
-
-        return this;
     }
     
     void OpenGLShader::Use()

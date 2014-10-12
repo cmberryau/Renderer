@@ -10,24 +10,23 @@
 
 namespace Renderer
 {
-    void Material::Use() const
-    {
-        _shader->Use();
-    }
-    
-    class Shader * Material::Shader() const
-    {
-        return _shader;
-    }
-    
-    Material::~Material()
-    {
-        
-    }
-    
-    Material::Material(class Shader * shader)
-    :_shader(shader)
-    {
-        
-    }
+	void Material::Use() const
+	{
+		_shader->Use();
+	}
+
+	const Shader & Material::GetShader() const
+	{
+		return *_shader;
+	}
+
+	Material::Material(std::shared_ptr<Shader> shader) : _shader(shader)
+	{
+
+	}
+
+	Material::~Material()
+	{
+
+	}
 }

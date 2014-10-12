@@ -10,7 +10,7 @@
 
 namespace Renderer
 {	
-	Transform & Object::LocalTransform()
+	const Transform & Object::LocalTransform() const
 	{
 		return _transform;
 	}

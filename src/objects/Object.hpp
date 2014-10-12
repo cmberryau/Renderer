@@ -21,7 +21,7 @@ namespace Renderer
 			explicit Object(){};
 			~Object(){};
 			
-			Transform & LocalTransform();
+			const Transform & LocalTransform() const;
 
 			void Update();        
 			void Draw() const;

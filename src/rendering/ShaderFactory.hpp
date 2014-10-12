@@ -16,18 +16,19 @@
 #include "OpenGLES/OpenGLESShader.hpp"
 
 #include <string>
+#include <memory>
 
 namespace Renderer
 {
     class ShaderFactory
     {
         public:
-            static Shader * Create(std::string & vertex_shader_source,
-                                   std::string & geometry_shader_source,
-                                   std::string & fragment_shader_source);
+            static std::shared_ptr<Shader> Create(std::string & vertex_shader_source,
+												  std::string & geometry_shader_source,
+												  std::string & fragment_shader_source);
         
-            static Shader * Create(std::string & vertex_shader_source,
-                                   std::string & fragment_shader_source);
+			static std::shared_ptr<Shader> Create(std::string & vertex_shader_source,
+												  std::string & fragment_shader_source);
         
         private:
 			explicit ShaderFactory();

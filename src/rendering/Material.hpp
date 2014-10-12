@@ -11,19 +11,21 @@
 
 #include "Shader.hpp"
 
+#include <memory>
+
 namespace Renderer
 {
     class Material
     {
         public:
-            void Use() const;
-            Shader * Shader() const;
-        
-            ~Material();
-            explicit Material(class Shader * shader);
+			explicit Material(std::shared_ptr<class Shader> shader);
+			~Material();
+
+			void Use() const;
+			const Shader & GetShader() const;
         
         private:
-            class Shader * _shader;
+			std::shared_ptr<Shader> _shader;
     };
 }
 

@@ -81,15 +81,17 @@ namespace Renderer
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(GetMesh().VerticesSize()));
         glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(GetMesh().VerticesSize() + GetMesh().VertexNormalsSize()));
         
-		OpenGLShader * opengl_shader = static_cast<OpenGLShader *>(GetMaterial().Shader());
+		throw std::exception();
+
+		//OpenGLShader * opengl_shader = static_cast<OpenGLShader *>(GetMaterial().GetShader());
         
-        _model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
-        _normal_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "normal_matrix");
-        _projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
+        //_model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
+        //_normal_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "normal_matrix");
+        //_projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
         
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glEnableVertexAttribArray(2);
+        //glEnableVertexAttribArray(0);
+        //glEnableVertexAttribArray(1);
+        //glEnableVertexAttribArray(2);
     }
 
     void OpenGLMeshRenderer::Draw(Object & parent_object) const

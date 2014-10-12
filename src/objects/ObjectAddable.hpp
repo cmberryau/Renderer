@@ -9,12 +9,12 @@
 #ifndef _i_object_addable_h
 #define _i_object_addable_h
 
+#include "objects/Object.hpp"
+
 #include <memory>
 
 namespace Renderer
-{
-    class Object;
-    
+{    
     class ObjectAddable
     {
         public:
@@ -27,7 +27,13 @@ namespace Renderer
             virtual void Added(Object & parent_object){};
         
         protected:
-            explicit ObjectAddable();
+			explicit ObjectAddable(Object & parent);
+			const Object & Parent() const;
+
+		private:
+			explicit ObjectAddable();
+
+			Object & _parent_object;
     };
 }
 

@@ -10,9 +10,22 @@
 
 namespace Renderer
 {
+	Camera::Camera(Object & parent,
+				   float fov,
+				   float aspect_ratio,
+				   float zfar,
+				   float znear) : 
+				   ObjectAddable(parent),
+				   _projection_matrix(Matrix4f::Perspective(fov, aspect_ratio, znear, zfar)),
+				   _view_matrix(Matrix4f::Identity()),
+				   _fov(fov), _aspect_ratio(aspect_ratio), _zfar(zfar), _znear(znear)
+	{
+
+	}
+
 	const Matrix4f & Camera::ViewMatrix() const
 	{
-        return _view_matrix;
+        return Parent().LocalTransform().ComposedMatrix();
 	}
 
 	const Matrix4f & Camera::ProjectionMatrix() const
