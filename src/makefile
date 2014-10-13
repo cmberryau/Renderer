@@ -6,6 +6,7 @@ ifeq ($(OS),Windows_NT)
 	CFLAGS=-O2 -std=c++11 -I..\src
 	SOURCE_DIR=..\src
 	SOURCES=$(wildcard *.cpp) application\Application.cpp \
+	application\EmscriptenApplication.cpp \
 	application\ApplicationFactory.cpp \
 	events\EventListener.cpp \
 	geometry\Mesh.cpp \
@@ -35,6 +36,7 @@ else
 	SOURCE_DIR=../src
 	SOURCES=$(wildcard *.cpp) application/Application.cpp \
 	application/ApplicationFactory.cpp \
+	application/EmscriptenApplication.cpp \
 	events/EventListener.cpp \
 	geometry/Mesh.cpp \
 	geometry/MeshFactory.cpp \

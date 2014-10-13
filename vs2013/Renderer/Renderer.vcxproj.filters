@@ -122,6 +122,9 @@
     <ClCompile Include="..\..\src\rendering\OpenGL\OpenGLCommon.cpp">
       <Filter>Source Files\rendering\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\application\EmscriptenApplication.cpp">
+      <Filter>Source Files\application</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLCommon.hpp">
       <Filter>Source Files\rendering\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\application\EmscriptenApplication.hpp">
+      <Filter>Source Files\application</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

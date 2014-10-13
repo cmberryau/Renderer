@@ -19,7 +19,11 @@ using namespace Renderer;
 
 void entry()
 {
-	std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("sup"));
+#ifdef EMSCRIPTEN
+	std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("ems"));
+#else
+	std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("other"));
+#endif
 
 	app->Start();
 }

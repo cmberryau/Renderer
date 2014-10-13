@@ -9,10 +9,6 @@
 #ifndef _application_h
 #define _application_h
 
-#ifdef EMSCRIPTEN 
-#include <emscripten.h>
-#endif
-
 // systems
 #include "windowing/Window.hpp"
 #include "events/EventListener.hpp"
@@ -37,13 +33,17 @@ namespace Renderer
 			explicit Application(std::shared_ptr<Window> window,
                                  std::shared_ptr<RenderingContext> rendering_context,
                                  std::shared_ptr<EventListener> event_listener);
-			~Application();
+			virtual ~Application();
 
-			void Start();
-        
+			virtual void Start();
+
         protected:
             void MainLoop();
             void End();
+
+			Window & GetWindow();
+			EventListener & GetEventListener();
+			RenderingContext & GetRenderingContext();
 
 		private:
 			std::shared_ptr<Window> _window;

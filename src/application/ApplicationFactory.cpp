@@ -8,6 +8,10 @@
 
 #include "ApplicationFactory.hpp"
 
+#ifdef EMSCRIPTEN
+#include "application/EmscriptenApplication.hpp"
+#endif
+
 namespace Renderer
 {
 	std::shared_ptr<Application> ApplicationFactory::FromFile(const std::string & file_path)
@@ -23,7 +27,12 @@ namespace Renderer
 #endif
 		std::shared_ptr<EventListener> event_listener(new EventListener());
 
+#ifdef EMSCRIPTEN
+		std::shared_ptr<Application> app(new EmscriptenApplication(window, rendering_context, event_listener));
+#else
 		std::shared_ptr<Application> app(new Application(window, rendering_context, event_listener));
+#endif
+		
 
 		return app;
 	}
