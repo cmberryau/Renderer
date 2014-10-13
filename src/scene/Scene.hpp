@@ -25,7 +25,7 @@ namespace Renderer
 			void UpdateAndDraw();
 			void AddObject(std::shared_ptr<Object> & object);
 
-			std::shared_ptr<Camera> & MainCamera();
+			const std::shared_ptr<Camera> & MainCamera() const;
 			void SetMainCamera(std::shared_ptr<Camera> & camera);
         
         private:

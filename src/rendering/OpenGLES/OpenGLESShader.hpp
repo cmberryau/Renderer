@@ -12,34 +12,29 @@
 #define _opengles_shader_h
 
 #include "rendering/Shader.hpp"
-
-// glew is needed on windows for shader compilation
-#ifdef _WIN32
-#include <gl/glew.h>
-#else
-#define GL_GLEXT_PROTOTYPES 1
-#endif
-
-#include <SDL2/SDL_opengles2.h>
+#include "rendering/OpenGLES/OpenGLESCommon.hpp"
 
 namespace Renderer
 {
     class OpenGLESShader : public Shader
     {
         public:
-            OpenGLESShader * Compile(std::string & vertex_shader_source,
-                                     std::string & fragment_shader_source);
-        
-            OpenGLESShader * Compile(std::string & vertex_shader_source,
-                                     std::string & geometry_shader_source,
-                                     std::string & fragment_shader_source);
-            void Use();
-            GLuint Program();
-        
-            ~OpenGLESShader();
             explicit OpenGLESShader();
+            ~OpenGLESShader();
         
-        protected:
+        
+            void Compile(std::string & vertex_shader_source,
+                         std::string & fragment_shader_source) override;
+            
+            void Compile(std::string & vertex_shader_source,
+                         std::string & geometry_shader_source,
+                         std::string & fragment_shader_source) override;
+        
+            void Use() override;
+            
+            const GLuint Program() const;
+        
+        private:
             GLuint _program;
     };
 }

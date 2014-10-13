@@ -21,6 +21,11 @@
 // content
 #include "scene/Scene.hpp"
 #include "rendering/Camera.hpp"
+#include "geometry/MeshFactory.hpp"
+#include "rendering/ShaderFactory.hpp"
+
+// utility
+#include "utility/IO.hpp"
 
 #include <memory>
 
@@ -30,16 +35,22 @@ namespace Renderer
 	{
 		public:
 			explicit Application(std::shared_ptr<Window> window,
-			std::shared_ptr<RenderingContext> rendering_context,
-			std::shared_ptr<EventListener> event_listener);
+                                 std::shared_ptr<RenderingContext> rendering_context,
+                                 std::shared_ptr<EventListener> event_listener);
 			~Application();
 
-			void Run();
+			void Start();
+        
+        protected:
+            void MainLoop();
+            void End();
 
 		private:
 			std::shared_ptr<Window> _window;
 			std::shared_ptr<EventListener> _event_listener;
-			std::shared_ptr<RenderingContext> _rendering_context;			
+			std::shared_ptr<RenderingContext> _rendering_context;
+        
+            std::unique_ptr<Scene> _scene;
 	};
 }
 

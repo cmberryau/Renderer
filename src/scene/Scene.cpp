@@ -17,7 +17,7 @@ namespace Renderer
 			 ++_objects_it)
 		{
 			(*_objects_it)->Update();
-			(*_objects_it)->Draw();
+			(*_objects_it)->Draw(*this);
 		}
 	}
 
@@ -26,7 +26,7 @@ namespace Renderer
 		_objects.push_back(object);
 	}
 
-	const Camera & Scene::MainCamera()
+	const std::shared_ptr<Camera> & Scene::MainCamera() const
 	{
 		return _main_camera;
 	}

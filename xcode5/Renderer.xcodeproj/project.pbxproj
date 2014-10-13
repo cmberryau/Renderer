@@ -27,6 +27,7 @@
 		878008D719ADD99700329645 /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878008D619ADD99700329645 /* MeshFactory.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
+		878A8FAF19EC23AB004AF9A4 /* OpenGLESCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */; };
 		879D815B19C3456700912C9A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879D815919C3456700912C9A /* Application.cpp */; };
 		87BB486219C079C000A61967 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87BB486019C079C000A61967 /* Util.cpp */; };
 		87BC838B19452C3E00D97C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC838A19452C3E00D97C8E /* Cocoa.framework */; };
@@ -89,6 +90,8 @@
 		878008D619ADD99700329645 /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = geometry/MeshFactory.cpp; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		8787B0DD194DBEF900F894CA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESCommon.cpp; sourceTree = "<group>"; };
+		878A8FAE19EC23AB004AF9A4 /* OpenGLESCommon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESCommon.hpp; sourceTree = "<group>"; };
 		879D815919C3456700912C9A /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		879D815A19C3456700912C9A /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
 		87A0B742195A1261003F53C6 /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Matrix.hpp; path = math/Matrix.hpp; sourceTree = "<group>"; };
@@ -329,12 +332,12 @@
 			children = (
 				875D419A19E3433C00DD832C /* OpenGLCommon.hpp */,
 				875D419919E3433C00DD832C /* OpenGLCommon.cpp */,
+				87C224C319702E5B0012E201 /* OpenGLMeshRenderer.hpp */,
 				87468DA319C9BD6A005828CF /* OpenGLMeshRenderer.cpp */,
+				87C224C519702E5B0012E201 /* OpenGLRenderingContext.hpp */,
 				87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */,
 				87C75EB019895FE7007B1B38 /* OpenGLShader.hpp */,
 				87C75EB119896040007B1B38 /* OpenGLShader.cpp */,
-				87C224C319702E5B0012E201 /* OpenGLMeshRenderer.hpp */,
-				87C224C519702E5B0012E201 /* OpenGLRenderingContext.hpp */,
 			);
 			name = OpenGL;
 			sourceTree = "<group>";
@@ -363,9 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				878008D519ADD8A300329645 /* MeshFactory.hpp */,
+				878008D619ADD99700329645 /* MeshFactory.cpp */,
 				87468D9719C9BD16005828CF /* Mesh.cpp */,
 				87CC70A21961B3BA001EDA7D /* Mesh.hpp */,
-				878008D619ADD99700329645 /* MeshFactory.cpp */,
 			);
 			name = geometry;
 			sourceTree = "<group>";
@@ -422,12 +425,14 @@
 		87EB985A19B89694006E75C1 /* OpenGLES */ = {
 			isa = PBXGroup;
 			children = (
+				878A8FAE19EC23AB004AF9A4 /* OpenGLESCommon.hpp */,
+				878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */,
+				87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */,
 				87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */,
+				87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */,
 				87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */,
 				87EB986319B896B6006E75C1 /* OpenGLESShader.hpp */,
 				87EB986219B896B6006E75C1 /* OpenGLESShader.cpp */,
-				87EB986019B896B6006E75C1 /* OpenGLESMeshRenderer.hpp */,
-				87EB986119B896B6006E75C1 /* OpenGLESRenderingContext.hpp */,
 			);
 			name = OpenGLES;
 			path = rendering/OpenGLES;
@@ -539,6 +544,7 @@
 				87468DA519C9BD6A005828CF /* OpenGLMeshRenderer.cpp in Sources */,
 				87DE3DBE19C9BF4000D26659 /* Scene.cpp in Sources */,
 				87468DAA19C9BD70005828CF /* OpenGLESRenderingContext.cpp in Sources */,
+				878A8FAF19EC23AB004AF9A4 /* OpenGLESCommon.cpp in Sources */,
 				87D8152319696389009A8A62 /* Window.cpp in Sources */,
 				875C4B3919E7025300417CA0 /* ObjectAddable.cpp in Sources */,
 				875D419B19E3433C00DD832C /* OpenGLCommon.cpp in Sources */,

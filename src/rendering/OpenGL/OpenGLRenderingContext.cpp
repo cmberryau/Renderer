@@ -88,7 +88,7 @@ namespace Renderer
 
 		if (sdl_context == nullptr)
 		{
-			throw std::runtime_error("Unable to create SDL OpenGL context");
+            return nullptr;
 		}
 
 		std::unique_ptr<SDL_GLContext, SDL_GLContextDeleter> sdl_context_ptr(&sdl_context);

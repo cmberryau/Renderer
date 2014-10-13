@@ -74,7 +74,7 @@ namespace Renderer
 
 			// member functions
 
-			inline Matrix<T, w, h> Multiply(Matrix<T, w, h> factor)
+			const inline Matrix<T, w, h> Multiply(Matrix<T, w, h> factor) const
 			{
 				Matrix<T, w, h> result(0);
 

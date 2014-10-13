@@ -12,13 +12,14 @@ ifeq ($(OS),Windows_NT)
 	geometry\MeshFactory.cpp \
 	math\Mathf.cpp \
 	math\Transform.cpp \
-	object\ObjectAddable.cpp \
+	objects\ObjectAddable.cpp \
 	objects\Object.cpp \
 	rendering\Camera.cpp \
 	rendering\Material.cpp \
 	rendering\MeshRenderer.cpp \
 	rendering\RenderingContext.cpp \
 	rendering\ShaderFactory.cpp \
+	rendering\OpenGLES\OpenGLESCommon.cpp \
 	rendering\OpenGLES\OpenGLESMeshRenderer.cpp \
 	rendering\OpenGLES\OpenGLESRenderingContext.cpp \
 	rendering\OpenGLES\OpenGLESShader.cpp \
@@ -39,13 +40,14 @@ else
 	geometry/MeshFactory.cpp \
 	math/Mathf.cpp \
 	math/Transform.cpp \
-	object/ObjectAddable.cpp \
+	objects/ObjectAddable.cpp \
 	objects/Object.cpp \
 	rendering/Camera.cpp \
 	rendering/Material.cpp \
 	rendering/MeshRenderer.cpp \
 	rendering/RenderingContext.cpp \
 	rendering/ShaderFactory.cpp \
+	rendering/OpenGLES/OpenGLESCommon.cpp \
 	rendering/OpenGLES/OpenGLESMeshRenderer.cpp \
 	rendering/OpenGLES/OpenGLESRenderingContext.cpp \
 	rendering/OpenGLES/OpenGLESShader.cpp \

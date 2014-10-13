@@ -1,20 +1,20 @@
 //
-//  OpenGLCommon.cpp
+//  OpenGLESCommon.cpp
 //  Renderer
 //
-//  Created by Christopher Berry on 6/10/2014.
+//  Created by Christopher Berry on 13/10/2014.
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
-#ifndef EMSCRIPTEN
+#ifdef EMSCRIPTEN
 
-#include "OpenGLCommon.hpp"
+#include "OpenGLESCommon.hpp"
 #include <stdexcept>
 #include <string>
 
 namespace Renderer
 {
-	void CheckForGLError()
+	void CheckForGLESError()
 	{
 		GLenum error_code = glGetError();
 		if (error_code != GL_NO_ERROR)

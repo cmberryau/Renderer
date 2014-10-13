@@ -21,7 +21,7 @@ void entry()
 {
 	std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("sup"));
 
-	app->Run();
+	app->Start();
 }
 
 int main(int argc, char ** argv)

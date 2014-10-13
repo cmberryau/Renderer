@@ -18,6 +18,7 @@
 namespace Renderer
 {	
 	class Object;
+    class Scene;
 
 	class MeshRenderer
 	{
@@ -29,7 +30,7 @@ namespace Renderer
             void AddMaterial(const std::shared_ptr<Material> & material_ptr);
 
 			// draws the mesh
-            virtual void Draw(Object & parent_object) const = 0;
+            virtual void Draw(Object & parent_object, const Scene & scene) const = 0;
 		
 			virtual ~MeshRenderer(){};
 

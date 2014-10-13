@@ -31,9 +31,9 @@ namespace Renderer
 
             void Use() override;
 
-            GLuint Program();
+            const GLuint Program() const;
         
-        protected:
+        private:
             GLuint _program;
     };
 }

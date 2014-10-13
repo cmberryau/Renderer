@@ -10,7 +10,7 @@
 
 namespace Renderer
 {	
-	Object::Object() : _this(std::shared_ptr<Object>(this))
+	Object::Object()
 	{
 
 	}
@@ -25,9 +25,9 @@ namespace Renderer
 		}
 	}
 
-	void Object::Draw()
+	void Object::Draw(const Scene & scene)
 	{
-		_mesh_renderer->Draw(*this);
+		_mesh_renderer->Draw(*this, scene);
 	}
 
 	void Object::Add(std::shared_ptr<ObjectAddable> & addable)

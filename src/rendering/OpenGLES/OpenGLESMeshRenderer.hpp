@@ -14,24 +14,26 @@
 #include "rendering/MeshRenderer.hpp"
 #include "rendering/Camera.hpp"
 #include "rendering/OpenGLES/OpenGLESShader.hpp"
+#include "rendering/OpenGLES/OpenGLESCommon.hpp"
 
-#include <SDL2/SDL_opengles2.h>
 #include <iostream>
 
 namespace Renderer
 {
 	class OpenGLESMeshRenderer : public MeshRenderer
 	{
-		public:
-			explicit OpenGLESMeshRenderer(RenderingContext * rendering_context);
-			~OpenGLESMeshRenderer();			
-        
-			void SetMesh(Mesh * mesh);
-			void GenerateBuffers(Mesh * mesh);
-			void SetupShader(Mesh * mesh);        
-			void Draw(Object * parent_object);
+        public:
+            explicit OpenGLESMeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
+            virtual ~OpenGLESMeshRenderer();
+            
+            virtual void AddMesh(const std::shared_ptr<Mesh> & mesh_ptr) override;
+            virtual void Draw(Object & parent_object, const Scene & scene) const override;
+            
+        protected:
+            void GenerateArrays(const Mesh & mesh);
+            void CreateShader(const Mesh & mesh);
 
-		protected:
+		private:
 			GLuint _vertex_position_buffer;
 			GLuint _vertex_normal_buffer;
 			GLuint _vertex_color_buffer;

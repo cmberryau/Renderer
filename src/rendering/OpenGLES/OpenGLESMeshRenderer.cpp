@@ -9,17 +9,19 @@
 #ifdef EMSCRIPTEN
 
 #include "OpenGLESMeshRenderer.hpp"
+#include "scene/Scene.hpp"
 
 namespace Renderer
 {
-	OpenGLESMeshRenderer::OpenGLESMeshRenderer(RenderingContext * rendering_context)
-	: MeshRenderer(rendering_context)
-	{
-
-	}
+    OpenGLESMeshRenderer::OpenGLESMeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr)
+    : MeshRenderer(rendering_context_ptr)
+    {
+        
+    }
 
 	OpenGLESMeshRenderer::~OpenGLESMeshRenderer()
 	{
+        /*
 		if (glIsBuffer(&_vertex_position_buffer))
 		{
 			glDeleteBuffers(1, _vertex_position_buffer);
@@ -39,64 +41,72 @@ namespace Renderer
 		{
 			glDeleteBuffers(1, _triangle_index_buffer);
 		}
+        */
 	}
 
-	void OpenGLESMeshRenderer::SetMesh(Mesh * mesh)
-	{
-		if (mesh == nullptr)
-		{
-			throw std::exception();
-		}
+    void OpenGLESMeshRenderer::AddMesh(const std::shared_ptr<Mesh> & mesh_ptr)
+    {
+        if(HasMesh())
+        {
+            throw std::runtime_error("Multiple meshes on a single MeshRenderer are not supported yet");
+        }
+        
+        // attempt to validate the mesh first
+        try {
+            mesh_ptr->Validate();
+        } catch (std::exception e) {
+            throw std::runtime_error("Mesh failed to validate");
+        }
+        
+        SetMesh(mesh_ptr);
+        
+        // upload resources to opengl and prepare shader
+        GenerateArrays(GetMesh());
+        CreateShader(GetMesh());
+    }
 
-		mesh->Validate();
-		this->_mesh = mesh;
-
-		this->GenerateBuffers(mesh);
-		this->SetupShader(mesh);
-	}
-
-	void OpenGLESMeshRenderer::GenerateBuffers(Mesh * mesh)
+	void OpenGLESMeshRenderer::GenerateArrays(const Mesh & mesh)
 	{
 		glGenBuffers(1, &_vertex_position_buffer);
 		glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
-		glBufferData(GL_ARRAY_BUFFER, mesh->VerticesSize(), mesh->Vertices(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, mesh.VerticesSize(), mesh.Vertices(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		glGenBuffers(1, &_vertex_normal_buffer);
 		glBindBuffer(GL_ARRAY_BUFFER, _vertex_normal_buffer);
-		glBufferData(GL_ARRAY_BUFFER, mesh->VertexNormalsSize(), mesh->VertexNormals(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, mesh.VertexNormalsSize(), mesh.VertexNormals(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		glGenBuffers(1, &_vertex_color_buffer);
 		glBindBuffer(GL_ARRAY_BUFFER, _vertex_color_buffer);
-		glBufferData(GL_ARRAY_BUFFER, mesh->ColorsSize(), mesh->Colors(), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, mesh.ColorsSize(), mesh.Colors(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		glGenBuffers(1, &_triangle_index_buffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _triangle_index_buffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->TrianglesSize(), mesh->Triangles(), GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.TrianglesSize(), mesh.Triangles(), GL_STATIC_DRAW);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
-	void OpenGLESMeshRenderer::SetupShader(Mesh * mesh)
+	void OpenGLESMeshRenderer::CreateShader(const Mesh & mesh)
 	{
-		this->_material->Use();
+        GetMaterial().Use();
 
-		OpenGLESShader * opengles_shader = dynamic_cast<OpenGLESShader *>(this->_material->Shader());
+		const OpenGLESShader * opengles_shader = static_cast<const OpenGLESShader *>(GetMaterial().GetShader());
 
 		_model_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "model_matrix");
 		_normal_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "normal_matrix");
 		_projection_matrix_uniform = glGetUniformLocation(opengles_shader->Program(), "projection_matrix");
 	}
 
-	void OpenGLESMeshRenderer::Draw(Object * parent_object)
+	void OpenGLESMeshRenderer::Draw(Object & parent_object, const Scene & scene) const
 	{
-		if (this->_mesh == nullptr)
-		{
-			throw std::exception();
-		}
-
-		this->_material->Use();
+        if(!HasMesh())
+        {
+            return;
+        }
+        
+        GetMaterial().Use();
 
 		glBindBuffer(GL_ARRAY_BUFFER, _vertex_position_buffer);
 		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
@@ -113,12 +123,12 @@ namespace Renderer
 		glEnableVertexAttribArray(2);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-		glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, this->_rendering_context->MainCamera()->ProjectionMatrix());
-		glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->NormalMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
-		glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object->LocalTransform()->ComposedMatrix().Multiply(this->_rendering_context->MainCamera()->ViewMatrix()));
+        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, scene.MainCamera()->ProjectionMatrix());
+        glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().NormalMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
+        glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().ComposedMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _triangle_index_buffer);
-		glDrawElements(GL_TRIANGLES, this->_mesh->TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
+		glDrawElements(GL_TRIANGLES, GetMesh().TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 }

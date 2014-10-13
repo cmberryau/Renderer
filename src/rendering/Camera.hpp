@@ -24,6 +24,8 @@ namespace Renderer
 							float znear);
 			~Camera(){};
 
+            virtual void Update(Object & parent_object) override;
+        
 			const Matrix4f & ViewMatrix() const;
 			const Matrix4f & ProjectionMatrix() const;
 

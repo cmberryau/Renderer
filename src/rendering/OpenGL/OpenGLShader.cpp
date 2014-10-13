@@ -107,7 +107,7 @@ namespace Renderer
         glUseProgram(_program);
     }
     
-    GLuint OpenGLShader::Program()
+    const GLuint OpenGLShader::Program() const
     {
         return _program;
     }

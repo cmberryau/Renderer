@@ -14,7 +14,11 @@ namespace Renderer
                                    std::string & geometry_shader_source,
                                    std::string & fragment_shader_source)
     {
+#ifndef EMSCRIPTEN
 		std::shared_ptr<Shader> shader(new OpenGLShader());
+#else
+        std::shared_ptr<Shader> shader(new OpenGLESShader());
+#endif
         
         shader->Compile(vertex_shader_source,
                         geometry_shader_source,

@@ -17,6 +17,8 @@
 
 namespace Renderer
 {
+    class Scene;
+    
     class Object
     {
         public:
@@ -24,7 +26,7 @@ namespace Renderer
 			~Object(){};
 			
 			void Update();
-			void Draw();
+			void Draw(const Scene & scene);
 
 			void Add(std::shared_ptr<ObjectAddable> & addable);
 			void AddMeshRenderer(std::shared_ptr<MeshRenderer> & mesh_renderer);
@@ -34,10 +36,8 @@ namespace Renderer
 		private:
             Transform _transform;
 
-			std::shared_ptr<Object> _this;
 			std::vector<std::shared_ptr<ObjectAddable>> _children;
 			std::vector<std::shared_ptr<ObjectAddable>>::iterator _children_it;
-
 			std::shared_ptr<MeshRenderer> _mesh_renderer;
     };
 }

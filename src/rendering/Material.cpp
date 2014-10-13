@@ -15,9 +15,9 @@ namespace Renderer
 		_shader->Use();
 	}
 
-	const Shader & Material::GetShader() const
+	const Shader * Material::GetShader() const
 	{
-		return *_shader;
+		return _shader.get();
 	}
 
 	Material::Material(std::shared_ptr<Shader> shader) : _shader(shader)

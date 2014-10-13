@@ -11,10 +11,10 @@
 #ifndef _opengles_renderingcontext_h
 #define _opengles_renderingcontext_h
 
+#include "windowing/Window.hpp"
 #include "rendering/RenderingContext.hpp"
 #include "rendering/OpenGLES/OpenGLESMeshRenderer.hpp"
-
-#include <SDL2/SDL_opengles2.h>
+#include "rendering/OpenGLES/OpenGLESCommon.hpp"
 
 #ifdef _DEBUG
 #include <stdio.h>
@@ -27,18 +27,12 @@ namespace Renderer
 	class OpenGLESRenderingContext : public RenderingContext
 	{
 		public:
-			explicit OpenGLESRenderingContext(class Window * window);
+			explicit OpenGLESRenderingContext(const Window & window);
 			~OpenGLESRenderingContext();
 
-			void BeginScene();        
-			void EndScene();
-
-			class MeshRenderer * MeshRenderer();        
-			class Shader * Shader();
-
-		protected:
-			SDL_GLContext _sdl_gl_context;
-	}; 
+            virtual void BeginScene() const override;
+            virtual void EndScene() const override;
+	};
 }
 
 #endif // _opengles_renderingcontext_h

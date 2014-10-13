@@ -7,6 +7,7 @@
 //
 
 #include "OpenGLMeshRenderer.hpp"
+#include "scene/Scene.hpp"
 
 namespace Renderer
 {   
@@ -80,21 +81,19 @@ namespace Renderer
         glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(GetMesh().VerticesSize()));
         glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(GetMesh().VerticesSize() + GetMesh().VertexNormalsSize()));
-        
-		throw std::exception();
 
-		//OpenGLShader * opengl_shader = static_cast<OpenGLShader *>(GetMaterial().GetShader());
+		const OpenGLShader * opengl_shader = static_cast<const OpenGLShader *>(GetMaterial().GetShader());
         
-        //_model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
-        //_normal_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "normal_matrix");
-        //_projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
+        _model_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "model_matrix");
+        _normal_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "normal_matrix");
+        _projection_matrix_uniform = glGetUniformLocation(opengl_shader->Program(), "projection_matrix");
         
-        //glEnableVertexAttribArray(0);
-        //glEnableVertexAttribArray(1);
-        //glEnableVertexAttribArray(2);
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        glEnableVertexAttribArray(2);
     }
 
-    void OpenGLMeshRenderer::Draw(Object & parent_object) const
+    void OpenGLMeshRenderer::Draw(Object & parent_object, const Scene & scene) const
     {
 		if(!HasMesh())
         {
@@ -103,11 +102,9 @@ namespace Renderer
 
 		GetMaterial().Use();
         
-		throw std::exception();
-
-        //glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, GetRenderingContext().MainCamera()->ProjectionMatrix());
-        //glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform()->NormalMatrix().Multiply(GetRenderingContext().MainCamera()->ViewMatrix()));
-		//glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform()->ComposedMatrix().Multiply(GetRenderingContext().MainCamera()->ViewMatrix()));
+        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, scene.MainCamera()->ProjectionMatrix());
+        glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().NormalMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
+		glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().ComposedMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
         
         glBindVertexArray(_vertex_array_objects);
         glDrawElements(GL_TRIANGLES, static_cast<GLint>(GetMesh().TrianglesCount() * 3), GL_UNSIGNED_INT, NULL);

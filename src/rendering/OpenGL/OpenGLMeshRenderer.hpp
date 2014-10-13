@@ -27,7 +27,7 @@ namespace Renderer
 			virtual ~OpenGLMeshRenderer();
 
             virtual void AddMesh(const std::shared_ptr<Mesh> & mesh_ptr) override;        
-            virtual void Draw(Object & parent_object) const override;
+            virtual void Draw(Object & parent_object, const Scene & scene) const override;
 		
         protected:
             void GenerateArrays(const Mesh & mesh);

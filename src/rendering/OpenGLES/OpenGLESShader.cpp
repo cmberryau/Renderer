@@ -8,23 +8,22 @@
 
 #ifdef EMSCRIPTEN
 
-#include "OpenGLESShader.hpp"
-
-#include <stdio.h>
+#include <iostream>
 #include <memory>
-#include <exception>
 #include <vector>
+
+#include "OpenGLESShader.hpp"
 
 namespace Renderer
 {
-    OpenGLESShader * OpenGLESShader::Compile(std::string & vertex_shader_source,
+    void OpenGLESShader::Compile(std::string & vertex_shader_source,
                                              std::string & geometry_shader_source,
                                              std::string & fragment_shader_source)
 	{
         return this->Compile(vertex_shader_source, fragment_shader_source);
     }
     
-    OpenGLESShader * OpenGLESShader::Compile(std::string & vertex_shader_source,
+    void OpenGLESShader::Compile(std::string & vertex_shader_source,
                                              std::string & fragment_shader_source)
 	{
         std::vector<std::string> sources = {
@@ -58,12 +57,10 @@ namespace Renderer
                 GLsizei log_length;
                 glGetShaderiv(shaders[i], GL_INFO_LOG_LENGTH, &log_length);
                 
-                GLchar * shader_log = new GLchar[log_length + 1];
-                std::unique_ptr<GLchar> shader_log_unique(shader_log);
+                std::unique_ptr<GLchar> shader_log(new GLchar[log_length + 1]);
+                glGetShaderInfoLog(shaders[i], log_length, &log_length, shader_log.get());
                 
-                glGetShaderInfoLog(shaders[i], log_length, &log_length, shader_log);
-                
-                printf("%s\n", shader_log);
+                std::cout << shader_log.get() << std::endl;
                 
                 throw std::exception();
             }
@@ -85,14 +82,12 @@ namespace Renderer
             GLsizei log_length;
             glGetShaderiv(_program, GL_INFO_LOG_LENGTH, &log_length);
             
-            GLchar * shader_log = new GLchar[log_length + 1];
-            std::unique_ptr<GLchar> shader_log_unique(shader_log);
+            std::unique_ptr<GLchar> shader_log(new GLchar[log_length + 1]);
+            glGetShaderInfoLog(_program, log_length, &log_length, shader_log.get());
             
-            glGetShaderInfoLog(_program, log_length, &log_length, shader_log);
+            std::cout << shader_log.get() << std::endl;
             
-            printf("%s\n", shader_log);
-            
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 2; i++)
             {
                 if(shaders[i] != -1)
                 {
@@ -103,14 +98,7 @@ namespace Renderer
             throw std::exception();
         }
         
-        GLenum error;
-        error = glGetError();
-        if(error != GL_NO_ERROR)
-        {
-            fprintf(stderr, "%d\n", error);
-        }
-        
-        return this;
+        CheckForGLESError();
     }
     
     void OpenGLESShader::Use()
@@ -118,7 +106,7 @@ namespace Renderer
 		glUseProgram(_program);
     }
     
-    GLuint OpenGLESShader::Program()
+    const GLuint OpenGLESShader::Program() const
     {
         return _program;
     }
