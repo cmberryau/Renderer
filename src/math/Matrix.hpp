@@ -12,7 +12,6 @@
 #include "Mathf.hpp"
 #include "Vector.hpp"
 
-//TODO: remove C style output
 #include <stdio.h>
 
 namespace Renderer
@@ -263,8 +262,7 @@ namespace Renderer
 
 				return matrix;
 			}
-		
-			// todo : specialize for doubles
+            
 			static inline Matrix4<T> Perspective(T vertical_fov, T aspect_ratio, T znear, T zfar)
 			{
 				float top = znear * tan(Mathf::Deg2Rad(0.5f * vertical_fov));

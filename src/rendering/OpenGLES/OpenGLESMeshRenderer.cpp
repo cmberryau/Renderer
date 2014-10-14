@@ -123,9 +123,9 @@ namespace Renderer
 		glEnableVertexAttribArray(2);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, scene.MainCamera()->ProjectionMatrix());
-        glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().NormalMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
-        glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().ComposedMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
+        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, scene.MainCamera().ProjectionMatrix());
+        glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().NormalMatrix().Multiply(scene.MainCamera().ViewMatrix()));
+        glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().ComposedMatrix().Multiply(scene.MainCamera().ViewMatrix()));
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _triangle_index_buffer);
 		glDrawElements(GL_TRIANGLES, GetMesh().TrianglesCount() * 3, GL_UNSIGNED_INT, NULL);

@@ -21,17 +21,17 @@ namespace Renderer
 			virtual ~ObjectAddable(){};
         
             // called on each frame
-			virtual void Update(Object & parent_object){};
+			virtual void Update(){};
 			
 			// object will call this when ObjectAddable is added
-            virtual void Added(std::shared_ptr<Object> parent_object) final;
+            virtual void Added(Object * parent_object) final;
         
         protected:
 			explicit ObjectAddable();
 			const Object & Parent() const;
 
 		private:
-			std::shared_ptr<Object> _parent_object;
+			Object * _parent_object;
     };
 }
 

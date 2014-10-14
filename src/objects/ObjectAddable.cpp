@@ -15,7 +15,7 @@ namespace Renderer
 
 	}
 
-	void ObjectAddable::Added(std::shared_ptr<Object> parent_object)
+	void ObjectAddable::Added(Object * parent_object)
 	{
 		_parent_object = parent_object;
 	}

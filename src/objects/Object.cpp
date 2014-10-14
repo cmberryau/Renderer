@@ -21,7 +21,7 @@ namespace Renderer
 			 _children_it != _children.end();
 			 ++_children_it)
 		{
-			(*_children_it)->Update(*this);
+			(*_children_it)->Update();
 		}
 	}
 
@@ -30,14 +30,14 @@ namespace Renderer
 		_mesh_renderer->Draw(*this, scene);
 	}
 
-	void Object::Add(std::shared_ptr<ObjectAddable> & addable)
+	void Object::Add(std::unique_ptr<ObjectAddable> & addable)
 	{
-		_children.push_back(addable);
+        _children.push_back(std::move(addable));
 	}
 
-	void Object::AddMeshRenderer(std::shared_ptr<MeshRenderer> & mesh_renderer)
+	void Object::AddMeshRenderer(std::unique_ptr<MeshRenderer> & mesh_renderer)
 	{
-		_mesh_renderer = mesh_renderer;
+        _mesh_renderer = std::move(mesh_renderer);
 	}
 
 	const Transform & Object::LocalTransform() const

@@ -10,13 +10,12 @@
 
 namespace Renderer
 {  
-    void MeshRenderer::AddMaterial(const std::shared_ptr<Material> & material_ptr)
+    void MeshRenderer::AddMaterial(std::shared_ptr<Material> material_ptr)
     {
         _material_ptr = material_ptr;
     }
     
-    MeshRenderer::MeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr)
-    : _rendering_context_ptr(rendering_context_ptr)
+    MeshRenderer::MeshRenderer()
     {
 		  
     }
@@ -31,11 +30,6 @@ namespace Renderer
         return *_material_ptr;
     }
     
-    const RenderingContext & MeshRenderer::GetRenderingContext() const
-    {
-        return *_rendering_context_ptr;
-    }
-    
     bool MeshRenderer::HasMesh() const
     {
         return !!_mesh_ptr;
@@ -46,11 +40,6 @@ namespace Renderer
         return !!_material_ptr;
     }
     
-    bool MeshRenderer::HasRenderingContext() const
-    {
-        return !!_rendering_context_ptr;
-    }
-    
     void MeshRenderer::SetMesh(const std::shared_ptr<Mesh> & mesh_ptr)
     {
         _mesh_ptr = mesh_ptr;
@@ -59,10 +48,5 @@ namespace Renderer
     void MeshRenderer::SetMaterial(const std::shared_ptr<Material> & material_ptr)
     {
         _material_ptr = material_ptr;
-    }
-    
-    void MeshRenderer::SetRenderingContext(const std::shared_ptr<RenderingContext> & rendering_context_ptr)
-    {
-        _rendering_context_ptr = rendering_context_ptr;
     }
 }

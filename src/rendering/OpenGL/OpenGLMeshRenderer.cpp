@@ -11,8 +11,7 @@
 
 namespace Renderer
 {   
-    OpenGLMeshRenderer::OpenGLMeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr)
-    : MeshRenderer(rendering_context_ptr)
+    OpenGLMeshRenderer::OpenGLMeshRenderer()
     {
         
     }
@@ -35,7 +34,7 @@ namespace Renderer
 		}
 	}
     
-    void OpenGLMeshRenderer::AddMesh(const std::shared_ptr<Mesh> & mesh_ptr)
+    void OpenGLMeshRenderer::AddMesh(std::shared_ptr<Mesh>  mesh_ptr)
     {
         if(HasMesh())
         {
@@ -102,9 +101,9 @@ namespace Renderer
 
 		GetMaterial().Use();
         
-        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, scene.MainCamera()->ProjectionMatrix());
-        glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().NormalMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
-		glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().ComposedMatrix().Multiply(scene.MainCamera()->ViewMatrix()));
+        glUniformMatrix4fv(_projection_matrix_uniform, 1, GL_FALSE, scene.MainCamera().ProjectionMatrix());
+        glUniformMatrix4fv(_normal_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().NormalMatrix().Multiply(scene.MainCamera().ViewMatrix()));
+		glUniformMatrix4fv(_model_matrix_uniform, 1, GL_FALSE, parent_object.LocalTransform().ComposedMatrix().Multiply(scene.MainCamera().ViewMatrix()));
         
         glBindVertexArray(_vertex_array_objects);
         glDrawElements(GL_TRIANGLES, static_cast<GLint>(GetMesh().TrianglesCount() * 3), GL_UNSIGNED_INT, NULL);

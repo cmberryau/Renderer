@@ -28,17 +28,18 @@ namespace Renderer
 			void Update();
 			void Draw(const Scene & scene);
 
-			void Add(std::shared_ptr<ObjectAddable> & addable);
-			void AddMeshRenderer(std::shared_ptr<MeshRenderer> & mesh_renderer);
+			void Add(std::unique_ptr<ObjectAddable> & addable);
+			void AddMeshRenderer(std::unique_ptr<MeshRenderer> & mesh_renderer);
 
 			const Transform & LocalTransform() const;
 
 		private:
             Transform _transform;
 
-			std::vector<std::shared_ptr<ObjectAddable>> _children;
-			std::vector<std::shared_ptr<ObjectAddable>>::iterator _children_it;
-			std::shared_ptr<MeshRenderer> _mesh_renderer;
+			std::vector<std::unique_ptr<ObjectAddable>> _children;
+			std::vector<std::unique_ptr<ObjectAddable>>::iterator _children_it;
+        
+			std::unique_ptr<MeshRenderer> _mesh_renderer;
     };
 }
 

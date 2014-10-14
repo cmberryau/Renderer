@@ -24,6 +24,7 @@
 		87468DAA19C9BD70005828CF /* OpenGLESRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */; };
 		875C4B3919E7025300417CA0 /* ObjectAddable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875C4B3719E7025300417CA0 /* ObjectAddable.cpp */; };
 		875D419B19E3433C00DD832C /* OpenGLCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875D419919E3433C00DD832C /* OpenGLCommon.cpp */; };
+		877EBB0A19ED18CE00702CF4 /* EmscriptenApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 877EBB0819ED18CE00702CF4 /* EmscriptenApplication.cpp */; };
 		878008D719ADD99700329645 /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878008D619ADD99700329645 /* MeshFactory.cpp */; };
 		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
@@ -86,6 +87,8 @@
 		875C4B3819E7025300417CA0 /* ObjectAddable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjectAddable.hpp; path = objects/ObjectAddable.hpp; sourceTree = "<group>"; };
 		875D419919E3433C00DD832C /* OpenGLCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLCommon.cpp; path = rendering/OpenGL/OpenGLCommon.cpp; sourceTree = "<group>"; };
 		875D419A19E3433C00DD832C /* OpenGLCommon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLCommon.hpp; path = rendering/OpenGL/OpenGLCommon.hpp; sourceTree = "<group>"; };
+		877EBB0819ED18CE00702CF4 /* EmscriptenApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EmscriptenApplication.cpp; sourceTree = "<group>"; };
+		877EBB0919ED18CE00702CF4 /* EmscriptenApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EmscriptenApplication.hpp; sourceTree = "<group>"; };
 		878008D519ADD8A300329645 /* MeshFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MeshFactory.hpp; path = geometry/MeshFactory.hpp; sourceTree = "<group>"; };
 		878008D619ADD99700329645 /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = geometry/MeshFactory.cpp; sourceTree = "<group>"; };
 		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 			children = (
 				87468D9019C9BC73005828CF /* ApplicationFactory.hpp */,
 				87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */,
+				877EBB0919ED18CE00702CF4 /* EmscriptenApplication.hpp */,
+				877EBB0819ED18CE00702CF4 /* EmscriptenApplication.cpp */,
 				879D815A19C3456700912C9A /* Application.hpp */,
 				879D815919C3456700912C9A /* Application.cpp */,
 			);
@@ -561,6 +566,7 @@
 				87468D9C19C9BD35005828CF /* Object.cpp in Sources */,
 				87C75EB219896040007B1B38 /* OpenGLShader.cpp in Sources */,
 				87468D9119C9BC73005828CF /* ApplicationFactory.cpp in Sources */,
+				877EBB0A19ED18CE00702CF4 /* EmscriptenApplication.cpp in Sources */,
 				87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				878008D719ADD99700329645 /* MeshFactory.cpp in Sources */,

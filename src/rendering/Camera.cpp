@@ -21,9 +21,9 @@ namespace Renderer
 
 	}
     
-    void Camera::Update(Object & parent_object)
+    void Camera::Update()
     {
-        _view_matrix = parent_object.LocalTransform().ComposedMatrix();
+        _view_matrix = Parent().LocalTransform().ComposedMatrix();
     }
     
 	const Matrix4f & Camera::ViewMatrix() const

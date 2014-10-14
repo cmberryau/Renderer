@@ -33,7 +33,7 @@ namespace Renderer
 			static EmscriptenApplication & Instance();
 
 		private:
-			static std::unique_ptr<EmscriptenApplication> _instance;
+			static EmscriptenApplication * _instance;
 	};
 }
 

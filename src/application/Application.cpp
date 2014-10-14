@@ -13,9 +13,9 @@ namespace Renderer
 	Application::Application(std::shared_ptr<Window> window,
                              std::shared_ptr<RenderingContext> rendering_context,
                              std::shared_ptr<EventListener> event_listener) :
-		_window(window),
-		_event_listener(event_listener),
-		_rendering_context(rendering_context)				
+                             _window(window),
+                             _event_listener(event_listener),
+                             _rendering_context(rendering_context)				
 	{
 
 	}
@@ -29,6 +29,8 @@ namespace Renderer
 	{
         std::unique_ptr<Scene> scene(new Scene());
         _scene = std::move(scene);
+        
+        
         
 		while (true)
 		{

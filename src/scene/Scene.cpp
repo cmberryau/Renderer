@@ -21,18 +21,18 @@ namespace Renderer
 		}
 	}
 
-	void Scene::AddObject(std::shared_ptr<Object> & object)
+	void Scene::AddObject(std::unique_ptr<Object> & object)
 	{
-		_objects.push_back(object);
+		_objects.push_back(std::move(object));
 	}
 
-	const std::shared_ptr<Camera> & Scene::MainCamera() const
+	const Camera & Scene::MainCamera() const
 	{
-		return _main_camera;
+		return *_main_camera;
 	}
 
-	void Scene::SetMainCamera(std::shared_ptr<Camera> & camera)
+	void Scene::SetMainCamera(std::unique_ptr<Camera> & camera)
 	{
-		_main_camera = camera;
+        _main_camera = std::move(camera);
 	}
 }

@@ -28,14 +28,14 @@ namespace Renderer
 		EmscriptenApplication::Instance().GetWindow().Swap();
 	}
 
-	std::unique_ptr<EmscriptenApplication> EmscriptenApplication::_instance = nullptr;
+	EmscriptenApplication * EmscriptenApplication::_instance = nullptr;
 
 	EmscriptenApplication::EmscriptenApplication(std::shared_ptr<Window> window,
 												 std::shared_ptr<RenderingContext> rendering_context,
 												 std::shared_ptr<EventListener> event_listener) :
 												 Application(window, rendering_context, event_listener)
 	{
-		EmscriptenApplication::_instance = std::unique_ptr<EmscriptenApplication>(this);
+        EmscriptenApplication::_instance = this;
 	}
 
 	void EmscriptenApplication::Start()
@@ -44,7 +44,7 @@ namespace Renderer
 	}
 
 	EmscriptenApplication & EmscriptenApplication::Instance()
-	{
+	{        
 		return *_instance;
 	}
 }

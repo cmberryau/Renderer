@@ -9,7 +9,6 @@
 #ifndef _vector_h
 #define _vector_h
 
-//TODO: remove C style output
 #include <stdio.h>
 
 namespace Renderer

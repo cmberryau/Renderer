@@ -23,15 +23,15 @@ namespace Renderer
 			~Scene(){};
 			
 			void UpdateAndDraw();
-			void AddObject(std::shared_ptr<Object> & object);
+			void AddObject(std::unique_ptr<Object> & object);
 
-			const std::shared_ptr<Camera> & MainCamera() const;
-			void SetMainCamera(std::shared_ptr<Camera> & camera);
+			const Camera & MainCamera() const;
+			void SetMainCamera(std::unique_ptr<Camera> & camera);
         
         private:
-            std::shared_ptr<Camera> _main_camera;
-			std::vector<std::shared_ptr<Object>> _objects;
-			std::vector<std::shared_ptr<Object>>::iterator _objects_it;
+            std::unique_ptr<Camera> _main_camera;
+			std::vector<std::unique_ptr<Object>> _objects;
+			std::vector<std::unique_ptr<Object>>::iterator _objects_it;
     };
 }
 
