@@ -11,7 +11,7 @@
 		87304D2319ED68E700515ECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2219ED68E700515ECE /* main.m */; };
 		87304D2619ED68E700515ECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2519ED68E700515ECE /* AppDelegate.m */; };
 		87304D2919ED68E700515ECE /* Renderer_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2719ED68E700515ECE /* Renderer_iOS.xcdatamodeld */; };
-		87304D2C19ED68E700515ECE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2B19ED68E700515ECE /* ViewController.m */; };
+		87304D2C19ED68E700515ECE /* RendererViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2B19ED68E700515ECE /* RendererViewController.m */; };
 		87304D2F19ED68E700515ECE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87304D2D19ED68E700515ECE /* Main.storyboard */; };
 		87304D3119ED68E700515ECE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87304D3019ED68E700515ECE /* Images.xcassets */; };
 		87304D3419ED68E700515ECE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87304D3219ED68E700515ECE /* LaunchScreen.xib */; };
@@ -38,7 +38,7 @@
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
 		878A8FAF19EC23AB004AF9A4 /* OpenGLESCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */; };
 		879D815B19C3456700912C9A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879D815919C3456700912C9A /* Application.cpp */; };
-		87A041F619ED767800440E84 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A041F519ED767800440E84 /* OpenGLES.framework */; };
+		87A041F819ED785800440E84 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A041F719ED785800440E84 /* GLKit.framework */; };
 		87BB486219C079C000A61967 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87BB486019C079C000A61967 /* Util.cpp */; };
 		87BC838B19452C3E00D97C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC838A19452C3E00D97C8E /* Cocoa.framework */; };
 		87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839319452C3E00D97C8E /* InfoPlist.strings */; };
@@ -86,8 +86,8 @@
 		87304D2419ED68E700515ECE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		87304D2519ED68E700515ECE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		87304D2819ED68E700515ECE /* Renderer_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Renderer_iOS.xcdatamodel; sourceTree = "<group>"; };
-		87304D2A19ED68E700515ECE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		87304D2B19ED68E700515ECE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		87304D2A19ED68E700515ECE /* RendererViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RendererViewController.h; sourceTree = "<group>"; };
+		87304D2B19ED68E700515ECE /* RendererViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RendererViewController.m; sourceTree = "<group>"; };
 		87304D2E19ED68E700515ECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87304D3019ED68E700515ECE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		87304D3319ED68E700515ECE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 		879D815919C3456700912C9A /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		879D815A19C3456700912C9A /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
 		87A041F519ED767800440E84 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		87A041F719ED785800440E84 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
 		87A0B742195A1261003F53C6 /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Matrix.hpp; path = math/Matrix.hpp; sourceTree = "<group>"; };
 		87A0B744195A1261003F53C6 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = math/Transform.hpp; sourceTree = "<group>"; };
 		87A0B746195A1261003F53C6 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = math/Vector.hpp; sourceTree = "<group>"; };
@@ -182,7 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87A041F619ED767800440E84 /* OpenGLES.framework in Frameworks */,
+				87A041F819ED785800440E84 /* GLKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,8 +229,8 @@
 			children = (
 				87304D2419ED68E700515ECE /* AppDelegate.h */,
 				87304D2519ED68E700515ECE /* AppDelegate.m */,
-				87304D2A19ED68E700515ECE /* ViewController.h */,
-				87304D2B19ED68E700515ECE /* ViewController.m */,
+				87304D2A19ED68E700515ECE /* RendererViewController.h */,
+				87304D2B19ED68E700515ECE /* RendererViewController.m */,
 				87304D2D19ED68E700515ECE /* Main.storyboard */,
 				87304D3019ED68E700515ECE /* Images.xcassets */,
 				87304D3219ED68E700515ECE /* LaunchScreen.xib */,
@@ -354,6 +355,7 @@
 		87BC838919452C3E00D97C8E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				87A041F719ED785800440E84 /* GLKit.framework */,
 				87A041F519ED767800440E84 /* OpenGLES.framework */,
 				87304D4919ED6A9100515ECE /* UIKit.framework */,
 				87304D4719ED6A8B00515ECE /* Foundation.framework */,
@@ -702,7 +704,7 @@
 			files = (
 				87304D2619ED68E700515ECE /* AppDelegate.m in Sources */,
 				87304D2919ED68E700515ECE /* Renderer_iOS.xcdatamodeld in Sources */,
-				87304D2C19ED68E700515ECE /* ViewController.m in Sources */,
+				87304D2C19ED68E700515ECE /* RendererViewController.m in Sources */,
 				87304D2319ED68E700515ECE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
