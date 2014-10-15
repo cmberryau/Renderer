@@ -20,7 +20,7 @@ namespace Renderer
 		_parent_object = parent_object;
 	}
 
-	const Object & ObjectAddable::Parent() const
+    Object & ObjectAddable::Parent()
 	{
 		return *_parent_object;
 	}

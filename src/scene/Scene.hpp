@@ -26,10 +26,11 @@ namespace Renderer
 			void AddObject(std::unique_ptr<Object> & object);
 
 			const Camera & MainCamera() const;
-			void SetMainCamera(std::unique_ptr<Camera> & camera);
+			void SetMainCamera(Camera * camera);
         
         private:
-            std::unique_ptr<Camera> _main_camera;
+            Camera * _main_camera;
+        
 			std::vector<std::unique_ptr<Object>> _objects;
 			std::vector<std::unique_ptr<Object>>::iterator _objects_it;
     };

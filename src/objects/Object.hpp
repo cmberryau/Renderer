@@ -31,7 +31,7 @@ namespace Renderer
 			void Add(std::unique_ptr<ObjectAddable> & addable);
 			void AddMeshRenderer(std::unique_ptr<MeshRenderer> & mesh_renderer);
 
-			const Transform & LocalTransform() const;
+            Transform & LocalTransform();
 
 		private:
             Transform _transform;

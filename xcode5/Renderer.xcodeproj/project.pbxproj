@@ -39,6 +39,8 @@
 		878A8FAF19EC23AB004AF9A4 /* OpenGLESCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */; };
 		879D815B19C3456700912C9A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879D815919C3456700912C9A /* Application.cpp */; };
 		87A041F819ED785800440E84 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A041F719ED785800440E84 /* GLKit.framework */; };
+		87A041FB19EE646D00440E84 /* Spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A041F919EE646D00440E84 /* Spinner.cpp */; };
+		87A041FC19EE646D00440E84 /* Spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A041F919EE646D00440E84 /* Spinner.cpp */; };
 		87BB486219C079C000A61967 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87BB486019C079C000A61967 /* Util.cpp */; };
 		87BC838B19452C3E00D97C8E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC838A19452C3E00D97C8E /* Cocoa.framework */; };
 		87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839319452C3E00D97C8E /* InfoPlist.strings */; };
@@ -130,6 +132,8 @@
 		879D815A19C3456700912C9A /* Application.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Application.hpp; sourceTree = "<group>"; };
 		87A041F519ED767800440E84 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		87A041F719ED785800440E84 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		87A041F919EE646D00440E84 /* Spinner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Spinner.cpp; sourceTree = "<group>"; };
+		87A041FA19EE646D00440E84 /* Spinner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Spinner.hpp; sourceTree = "<group>"; };
 		87A0B742195A1261003F53C6 /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Matrix.hpp; path = math/Matrix.hpp; sourceTree = "<group>"; };
 		87A0B744195A1261003F53C6 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = math/Transform.hpp; sourceTree = "<group>"; };
 		87A0B746195A1261003F53C6 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = math/Vector.hpp; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 		87B7A54019865245003C9B41 /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				87A041FA19EE646D00440E84 /* Spinner.hpp */,
+				87A041F919EE646D00440E84 /* Spinner.cpp */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 				87304D2919ED68E700515ECE /* Renderer_iOS.xcdatamodeld in Sources */,
 				87304D2C19ED68E700515ECE /* RendererViewController.m in Sources */,
 				87304D2319ED68E700515ECE /* main.m in Sources */,
+				87A041FC19EE646D00440E84 /* Spinner.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +750,7 @@
 				87468D9119C9BC73005828CF /* ApplicationFactory.cpp in Sources */,
 				877EBB0A19ED18CE00702CF4 /* EmscriptenApplication.cpp in Sources */,
 				87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */,
+				87A041FB19EE646D00440E84 /* Spinner.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				878008D719ADD99700329645 /* MeshFactory.cpp in Sources */,
 				8740816C198FE49E00C97976 /* IO.cpp in Sources */,

@@ -23,10 +23,10 @@ namespace Renderer
 	class OpenGLESMeshRenderer : public MeshRenderer
 	{
         public:
-            explicit OpenGLESMeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr);
+            explicit OpenGLESMeshRenderer();
             virtual ~OpenGLESMeshRenderer();
             
-            virtual void AddMesh(const std::shared_ptr<Mesh> & mesh_ptr) override;
+            virtual void AddMesh(std::shared_ptr<Mesh> mesh_ptr) override;
             virtual void Draw(Object & parent_object, const Scene & scene) const override;
             
         protected:

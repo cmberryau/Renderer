@@ -27,6 +27,7 @@ ifeq ($(OS),Windows_NT)
 	scene\Scene.cpp \
 	utility\IO.cpp \
 	utility\Util.cpp \
+	tests\Spinner.cpp \
 	windowing\Window.cpp
 	OBJECTS=$(SOURCES:.cpp=.bc)
 else
@@ -56,6 +57,7 @@ else
 	scene/Scene.cpp \
 	utility/IO.cpp \
 	utility/Util.cpp \
+	tests/Spinner.cpp \
 	windowing/Window.cpp
 	OBJECTS=$(SOURCES:.cpp=.bc)
 endif

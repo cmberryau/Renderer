@@ -19,6 +19,7 @@
 #include "rendering/Camera.hpp"
 #include "geometry/MeshFactory.hpp"
 #include "rendering/ShaderFactory.hpp"
+#include "tests/Spinner.hpp"
 
 // utility
 #include "utility/IO.hpp"
@@ -41,9 +42,12 @@ namespace Renderer
             void MainLoop();
             void End();
 
+            Scene & GetScene();
 			Window & GetWindow();
 			EventListener & GetEventListener();
 			RenderingContext & GetRenderingContext();
+        
+            void SetScene(std::unique_ptr<Scene> & scene);
 
 		private:
 			std::shared_ptr<Window> _window;

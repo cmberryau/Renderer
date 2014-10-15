@@ -31,8 +31,8 @@ namespace Renderer
 		return *_main_camera;
 	}
 
-	void Scene::SetMainCamera(std::unique_ptr<Camera> & camera)
+	void Scene::SetMainCamera(Camera * camera)
 	{
-        _main_camera = std::move(camera);
+        _main_camera = camera;
 	}
 }

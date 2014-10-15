@@ -28,7 +28,7 @@ namespace Renderer
         
         protected:
 			explicit ObjectAddable();
-			const Object & Parent() const;
+            Object & Parent();
 
 		private:
 			Object * _parent_object;

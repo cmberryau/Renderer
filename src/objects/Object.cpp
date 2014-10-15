@@ -27,11 +27,15 @@ namespace Renderer
 
 	void Object::Draw(const Scene & scene)
 	{
-		_mesh_renderer->Draw(*this, scene);
+        if(!!_mesh_renderer)
+        {
+            _mesh_renderer->Draw(*this, scene);
+        }        
 	}
 
 	void Object::Add(std::unique_ptr<ObjectAddable> & addable)
 	{
+        addable->Added(this);
         _children.push_back(std::move(addable));
 	}
 
@@ -40,7 +44,7 @@ namespace Renderer
         _mesh_renderer = std::move(mesh_renderer);
 	}
 
-	const Transform & Object::LocalTransform() const
+	Transform & Object::LocalTransform()
 	{
 		return _transform;
 	}

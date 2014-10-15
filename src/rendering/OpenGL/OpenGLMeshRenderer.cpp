@@ -94,7 +94,7 @@ namespace Renderer
 
     void OpenGLMeshRenderer::Draw(Object & parent_object, const Scene & scene) const
     {
-		if(!HasMesh())
+		if(!HasMesh() || !HasMaterial())
         {
             return;
         }

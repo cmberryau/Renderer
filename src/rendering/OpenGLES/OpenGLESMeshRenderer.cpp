@@ -13,8 +13,7 @@
 
 namespace Renderer
 {
-    OpenGLESMeshRenderer::OpenGLESMeshRenderer(const std::shared_ptr<RenderingContext> & rendering_context_ptr)
-    : MeshRenderer(rendering_context_ptr)
+    OpenGLESMeshRenderer::OpenGLESMeshRenderer()
     {
         
     }
@@ -44,7 +43,7 @@ namespace Renderer
         */
 	}
 
-    void OpenGLESMeshRenderer::AddMesh(const std::shared_ptr<Mesh> & mesh_ptr)
+    void OpenGLESMeshRenderer::AddMesh(std::shared_ptr<Mesh> mesh_ptr)
     {
         if(HasMesh())
         {
@@ -101,7 +100,7 @@ namespace Renderer
 
 	void OpenGLESMeshRenderer::Draw(Object & parent_object, const Scene & scene) const
 	{
-        if(!HasMesh())
+        if(!HasMesh() || !HasMaterial())
         {
             return;
         }

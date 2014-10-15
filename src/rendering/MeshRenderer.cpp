@@ -9,15 +9,15 @@
 #include "MeshRenderer.hpp"
 
 namespace Renderer
-{  
-    void MeshRenderer::AddMaterial(std::shared_ptr<Material> material_ptr)
-    {
-        _material_ptr = material_ptr;
-    }
-    
+{
     MeshRenderer::MeshRenderer()
     {
 		  
+    }
+    
+    void MeshRenderer::AddMaterial(std::shared_ptr<Material> material_ptr)
+    {
+        _material_ptr = material_ptr;
     }
     
     const Mesh & MeshRenderer::GetMesh() const
