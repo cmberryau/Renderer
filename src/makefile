@@ -2,7 +2,7 @@ CC=emcc
 
 ifeq ($(OS),Windows_NT)
 	LIBRARIES=..\emscripten\libs\libSDL2.a
-	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file shaders\GLSLES\defaultes.vert --embed-file shaders\GLSLES\defaultes.frag --embed-file cube.obj --embed-file cube_n.obj --embed-file sphere.obj --embed-file cone.obj --embed-file bunny.obj --memory-init-file 0
+	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file application.xml --embed-file shaders\GLSLES\defaultes.vert --embed-file shaders\GLSLES\defaultes.frag --embed-file cube.obj --embed-file cube_n.obj --embed-file sphere.obj --embed-file cone.obj --embed-file bunny.obj --memory-init-file 0
 	CFLAGS=-O2 -std=c++11 -I..\src
 	SOURCE_DIR=..\src
 	SOURCES=$(wildcard *.cpp) application\Application.cpp \
@@ -32,7 +32,7 @@ ifeq ($(OS),Windows_NT)
 	OBJECTS=$(SOURCES:.cpp=.bc)
 else
 	LIBRARIES=../emscripten/libs/libSDL2.a
-	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file shaders/GLSLES/defaultes.vert --embed-file shaders/GLSLES/defaultes.frag --embed-file cube.obj --embed-file cube_n.obj --embed-file sphere.obj --embed-file cone.obj --embed-file bunny.obj --memory-init-file 0
+	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file application.xml --embed-file shaders/GLSLES/defaultes.vert --embed-file shaders/GLSLES/defaultes.frag --embed-file cube.obj --embed-file cube_n.obj --embed-file sphere.obj --embed-file cone.obj --embed-file bunny.obj --memory-init-file 0
 	CFLAGS=-O2 -std=c++11 -I../src
 	SOURCE_DIR=../src
 	SOURCES=$(wildcard *.cpp) application/Application.cpp \

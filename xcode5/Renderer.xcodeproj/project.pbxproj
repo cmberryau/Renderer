@@ -81,6 +81,10 @@
 
 /* Begin PBXFileReference section */
 		870CC6C11985B822008A56E5 /* default.geom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = default.geom; path = shaders/GLSL/default.geom; sourceTree = "<group>"; };
+		8716042319F121C900420AAF /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		8716042419F121C900420AAF /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
+		8716042519F121C900420AAF /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
+		8716042619F121C900420AAF /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
 		872F7BD5197975CE00E70464 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Scene.hpp; path = scene/Scene.hpp; sourceTree = "<group>"; };
 		87304D1E19ED68E700515ECE /* Renderer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Renderer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87304D2119ED68E700515ECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,6 +223,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8716042119F121C900420AAF /* rapidxml */ = {
+			isa = PBXGroup;
+			children = (
+				8716042319F121C900420AAF /* rapidxml.hpp */,
+				8716042419F121C900420AAF /* rapidxml_iterators.hpp */,
+				8716042519F121C900420AAF /* rapidxml_print.hpp */,
+				8716042619F121C900420AAF /* rapidxml_utils.hpp */,
+			);
+			name = rapidxml;
+			path = utility/rapidxml;
+			sourceTree = "<group>";
+		};
 		872F7BD21979756D00E70464 /* scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +289,7 @@
 		87408169198FE49700C97976 /* utility */ = {
 			isa = PBXGroup;
 			children = (
+				8716042119F121C900420AAF /* rapidxml */,
 				87BB486119C079C000A61967 /* Util.hpp */,
 				87BB486019C079C000A61967 /* Util.cpp */,
 				8740816B198FE49E00C97976 /* IO.hpp */,
