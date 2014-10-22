@@ -100,7 +100,8 @@ namespace Renderer
 
     void Application::End()
     {
-        _scene.reset();        
+        _scene.reset();
+        
         exit(0);
     }
 

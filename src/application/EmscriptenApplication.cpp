@@ -51,16 +51,12 @@ namespace Renderer
         GetScene().SetMainCamera(camera_raw);
         GetScene().AddObject(camera_object);
         
-#ifdef EMSCRIPTEN
-        std::string cube_file_path("cube.obj");
-#else
         std::string cube_file_path("assets/cube.obj");
-#endif
         std::shared_ptr<Mesh> cube_mesh = MeshFactory::MeshFromObjFile(cube_file_path);
         
 #ifdef EMSCRIPTEN
-        std::string vertex_shader_path("/shaders/GLSLES/defaultes.vert");
-        std::string fragment_shader_path("/shaders/GLSLES/defaultes.frag");
+        std::string vertex_shader_path("src/shaders/GLSLES/defaultes.vert");
+        std::string fragment_shader_path("src/shaders/GLSLES/defaultes.frag");
 #else
         std::string vertex_shader_path("src/shaders/GLSL/default.vert");
         std::string fragment_shader_path("src/shaders/GLSL/default.frag");

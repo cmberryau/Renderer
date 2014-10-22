@@ -19,7 +19,7 @@ using namespace Renderer;
 
 void entry()
 {
-    std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("application.xml"));
+    std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("assets/application.xml"));
 
 	app->Start();
 }

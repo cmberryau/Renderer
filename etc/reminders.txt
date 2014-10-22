@@ -1,0 +1,14 @@
+re: boost compile
+
+split a fat static library into seperate thin libraries
+xcrun --sdl (macosx|iphoneos|iphonesimulator) lipo source. -thin \
+ (architecture e.g i386) -o target.a
+
+split a library up into compiled code (.o files)
+ar -x target.a
+
+combine compiled code (.o files) into a library together:
+xcrun --sdk (macosx|iphoneos|iphonesimulator) ar crus target.a source(s).o
+
+combine multiple static libraries into a single one
+xcrun --sdk (macosx|iphoneos|iphonesimulator) lipo -create source(s).a -o target.a 
