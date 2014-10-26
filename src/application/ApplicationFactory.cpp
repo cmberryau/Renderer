@@ -17,17 +17,6 @@ namespace Renderer
 {
 	std::shared_ptr<Application> ApplicationFactory::FromFile(const std::string & file_path)
     {
-        std::string content = IO::ReadFile(file_path);
-        
-        rapidxml::xml_document<> xml_doc;
-        xml_doc.parse<0>(&content[0]);
-        
-        for(rapidxml::xml_node<> * node = xml_doc.first_node();
-            node; node = node->next_sibling())
-        {
-            std::cout << node->name();
-        }
-        
         std::string window_name("Renderer");
         
         // temporary code
@@ -44,6 +33,20 @@ namespace Renderer
 #else
         std::shared_ptr<Application> app(new Application(window, rendering_context, event_listener));
 #endif
+        
+        std::string content = IO::ReadFile(file_path);
+        
+        rapidxml::xml_document<> doc;
+        doc.parse<0>(&content[0]);
+        
+        auto root_node = doc.first_node("Application");
+        if(root_node)
+        {
+            for(auto * node = root_node->first_node("Scene"); node; node = node->next_sibling())
+            {
+                
+            }
+        }
         
 		return app;
 	}

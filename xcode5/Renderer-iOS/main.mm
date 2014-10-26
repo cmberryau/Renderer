@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+
 int main(int argc, char * argv[]) {
+    //NSMutableDictionary *playInfo = [NSMutableDictionary dictionaryWithDictionary:[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo];
+    
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

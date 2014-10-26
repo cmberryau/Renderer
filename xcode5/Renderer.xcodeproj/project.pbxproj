@@ -30,6 +30,7 @@
 		87468DA619C9BD6A005828CF /* OpenGLRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */; };
 		87468DA919C9BD70005828CF /* OpenGLESMeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */; };
 		87468DAA19C9BD70005828CF /* OpenGLESRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */; };
+		874CA7DA19F8F320003AF016 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 874CA7D919F8F31F003AF016 /* MediaPlayer.framework */; };
 		875C4B3919E7025300417CA0 /* ObjectAddable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875C4B3719E7025300417CA0 /* ObjectAddable.cpp */; };
 		875D419B19E3433C00DD832C /* OpenGLCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875D419919E3433C00DD832C /* OpenGLCommon.cpp */; };
 		877EBB0A19ED18CE00702CF4 /* EmscriptenApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 877EBB0819ED18CE00702CF4 /* EmscriptenApplication.cpp */; };
@@ -115,6 +116,7 @@
 		87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLRenderingContext.cpp; path = rendering/OpenGL/OpenGLRenderingContext.cpp; sourceTree = "<group>"; };
 		87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESMeshRenderer.cpp; sourceTree = "<group>"; };
 		87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESRenderingContext.cpp; sourceTree = "<group>"; };
+		874CA7D919F8F31F003AF016 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		8756FCCC197465A600A016AD /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = rendering/Camera.hpp; sourceTree = "<group>"; };
 		875C4B3719E7025300417CA0 /* ObjectAddable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjectAddable.cpp; path = objects/ObjectAddable.cpp; sourceTree = "<group>"; };
 		875C4B3819E7025300417CA0 /* ObjectAddable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjectAddable.hpp; path = objects/ObjectAddable.hpp; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				874CA7DA19F8F320003AF016 /* MediaPlayer.framework in Frameworks */,
 				87A7F83C19F7C3A20073656B /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +383,7 @@
 		87BC838C19452C3E00D97C8E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				874CA7D919F8F31F003AF016 /* MediaPlayer.framework */,
 				87A7F83B19F7C3A20073656B /* boost.framework */,
 				87BC838D19452C3E00D97C8E /* AppKit.framework */,
 				87BC838E19452C3E00D97C8E /* CoreData.framework */,

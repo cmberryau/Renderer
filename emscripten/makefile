@@ -35,7 +35,7 @@ else
 	ASSET_DIR=../assets
 	SHADERS_DIR=../src/shaders
 	SOURCE_DIR=../src
-	LIBRARIES=../emscripten/libs/libSDL2.a
+	LIBRARIES=libs/libSDL2.a
 	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file $(ASSET_DIR) --embed-file $(SHADERS_DIR) --memory-init-file 0
 	CFLAGS=-O2 -std=c++11 -I../src
 	SOURCES=$(wildcard *.cpp) \
@@ -80,5 +80,5 @@ clean:
 ifeq ($(OS),Windows_NT)
 		del *.bc *.html *.js *.map *.mem
 else
-		rm *.bc *.html *.js *.map *.mem
+		rm ../*/*.bc *.html *.js *.map *.mem
 endif
