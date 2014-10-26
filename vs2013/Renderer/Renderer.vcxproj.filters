@@ -42,6 +42,12 @@
     <Filter Include="Source Files\application">
       <UniqueIdentifier>{b4e0c47f-6c0e-4004-b293-fdf596278a93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\utility\rapidxml">
+      <UniqueIdentifier>{b56ac05a-cd88-413d-9355-3d81fc051a25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tests">
+      <UniqueIdentifier>{2e3b40bf-fbb4-4ba1-bf71-bca52dc424ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\events\EventListener.cpp">
@@ -124,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\application\EmscriptenApplication.cpp">
       <Filter>Source Files\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\Spinner.cpp">
+      <Filter>Source Files\tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +222,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\application\EmscriptenApplication.hpp">
       <Filter>Source Files\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml.hpp">
+      <Filter>Source Files\utility\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_iterators.hpp">
+      <Filter>Source Files\utility\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_print.hpp">
+      <Filter>Source Files\utility\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_utils.hpp">
+      <Filter>Source Files\utility\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tests\Spinner.hpp">
+      <Filter>Source Files\tests</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

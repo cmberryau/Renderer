@@ -66,7 +66,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)..\src\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProgramFiles)\boost_1_56_0\;$(SolutionDir)..\src\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,6 +146,7 @@
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
     <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp" />
     <ClCompile Include="..\..\src\scene\Scene.cpp" />
+    <ClCompile Include="..\..\src\tests\Spinner.cpp" />
     <ClCompile Include="..\..\src\utility\IO.cpp" />
     <ClCompile Include="..\..\src\utility\Util.cpp" />
     <ClCompile Include="..\..\src\windowing\Window.cpp" />
@@ -177,7 +178,12 @@
     <ClInclude Include="..\..\src\rendering\Shader.hpp" />
     <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp" />
     <ClInclude Include="..\..\src\scene\Scene.hpp" />
+    <ClInclude Include="..\..\src\tests\Spinner.hpp" />
     <ClInclude Include="..\..\src\utility\IO.hpp" />
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml.hpp" />
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_print.hpp" />
+    <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\..\src\utility\Util.hpp" />
     <ClInclude Include="..\..\src\windowing\Window.hpp" />
   </ItemGroup>
