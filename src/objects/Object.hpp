@@ -23,6 +23,7 @@ namespace Renderer
     {
         public:
 			explicit Object();
+			explicit Object(std::string name);
 			~Object(){};
 			
 			void Update();
@@ -35,6 +36,7 @@ namespace Renderer
 
 		private:
             Transform _transform;
+			std::string _name;
 
 			std::vector<std::unique_ptr<ObjectAddable>> _children;
 			std::vector<std::unique_ptr<ObjectAddable>>::iterator _children_it;

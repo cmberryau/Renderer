@@ -11,6 +11,13 @@
 namespace Renderer
 {	
 	Object::Object()
+	: _name("UnnamedObject")
+	{
+
+	}
+
+	Object::Object(std::string name)
+	: _name(name)
 	{
 
 	}

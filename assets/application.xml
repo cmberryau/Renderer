@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Application>
     <Scene name="sup">
-        <Object name="test cube">
+
+        <Object>
             <Mesh path="assets/cube.obj"/>
+            <Object name="test sphere">
+                <Mesh path="assets/sphere.obj"/>
+                <Object name="test cone">
+                    <Mesh path="assets/cone.obj"/>
+                </Object>
+            </Object>
         </Object>
+
+        <Object name="test sphere number 2">
+            <Mesh path="assets/sphere.obj"/>
+            <Object name="test cube">
+                <Mesh path="assets/cube.obj"/>
+            </Object>
+        </Object>
+
+        <Object name="test cone">
+            <Mesh path="assets/cone.obj"/>
+        </Object>
+
     </Scene>
 </Application>
