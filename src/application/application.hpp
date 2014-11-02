@@ -40,7 +40,6 @@ namespace Renderer
 
         protected:
             void MainLoop();
-            void End();
 
             Scene & GetScene();
 			Window & GetWindow();

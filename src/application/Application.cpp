@@ -74,36 +74,30 @@ namespace Renderer
         
         _scene->AddObject(cube_object);
         
-		while (true)
-		{
-			MainLoop();
-		}
+		MainLoop();
 	}
     
 	void Application::MainLoop()
 	{
-		_event_listener->ListenForEvents();
-
-		if (_event_listener->ShouldQuit())
+		while (true)
 		{
-			End();
+			_event_listener->ListenForEvents();
+
+			if (_event_listener->ShouldQuit())
+			{
+				return;
+			}
+
+			_rendering_context->BeginScene();
+
+			_scene->UpdateAndDraw();
+
+			_rendering_context->EndScene();
+
+			_window->Swap();
 		}
 
-		_rendering_context->BeginScene();
-
-		_scene->UpdateAndDraw();
-
-		_rendering_context->EndScene();
-
-		_window->Swap();
 	}
-
-    void Application::End()
-    {
-        _scene.reset();
-        
-        exit(0);
-    }
 
     Scene & Application::GetScene()
     {

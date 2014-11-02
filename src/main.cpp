@@ -17,16 +17,13 @@
 
 using namespace Renderer;
 
-void entry()
-{
-    std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("assets/application.xml"));
-
-	app->Start();
-}
-
 int main(int argc, char ** argv)
 {
-	entry();
+	{
+		std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("assets/application.xml"));
+
+		app->Start();
+	}
 
 #ifdef _WIN32
 	_CrtDumpMemoryLeaks();

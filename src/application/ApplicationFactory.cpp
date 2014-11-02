@@ -39,8 +39,8 @@ namespace Renderer
         auto app = std::make_shared<EmscriptenApplication>(window, rendering_context, event_listener);
 #else
 		auto app = std::make_shared<Application>(window, rendering_context, event_listener);
-#endif
-        
+#endif     
+
         auto content = IO::ReadFile(file_path);
         
         rapidxml::xml_document<> doc;
