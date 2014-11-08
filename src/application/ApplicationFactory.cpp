@@ -75,7 +75,8 @@ namespace Renderer
 		{
 			object_name = std::string(object_node->first_attribute(kNameAttribute.c_str())->value());
 		}
-		auto object_ptr = std::make_unique<Object>(object_name);
+		//auto object_ptr = std::make_unique<Object>(object_name);
+        auto object_ptr = std::unique_ptr<Object>(new Object(object_name));
 		
 		// add the object components
 		for (auto component_node = object_node->first_node();
