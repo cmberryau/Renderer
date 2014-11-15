@@ -19,18 +19,10 @@ namespace Renderer
 {
 	class ApplicationFactory
 	{
-		public:
+        public:
 			static std::shared_ptr<Application> FromFile(const std::string & file_path);
 
 		private:
-			static const std::string kApplicationTag;
-			static const std::string kSceneTag;
-			static const std::string kObjectTag;
-			static const std::string kMeshTag;
-
-			static const std::string kNameAttribute;
-			static const std::string kPathAttribute;
-
 			static void ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
 											 std::vector<std::unique_ptr<Object>> & objects);
 

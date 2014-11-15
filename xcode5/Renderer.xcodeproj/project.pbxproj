@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		870CC6C31985B822008A56E5 /* default.geom in Resources */ = {isa = PBXBuildFile; fileRef = 870CC6C11985B822008A56E5 /* default.geom */; };
+		871C69221A0EDC6800DAE63E /* ObjectFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 871C69201A0EDC6800DAE63E /* ObjectFactory.cpp */; };
+		871C69231A0EDC6800DAE63E /* ObjectFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 871C69201A0EDC6800DAE63E /* ObjectFactory.cpp */; };
+		871C69261A0EE84400DAE63E /* ApplicationXML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 871C69241A0EE84400DAE63E /* ApplicationXML.cpp */; };
+		871C69271A0EE84400DAE63E /* ApplicationXML.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 871C69241A0EE84400DAE63E /* ApplicationXML.cpp */; };
 		87304D2319ED68E700515ECE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2219ED68E700515ECE /* main.mm */; };
 		87304D2619ED68E700515ECE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2519ED68E700515ECE /* AppDelegate.m */; };
 		87304D2919ED68E700515ECE /* Renderer_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 87304D2719ED68E700515ECE /* Renderer_iOS.xcdatamodeld */; };
@@ -84,6 +88,10 @@
 		8716042419F121C900420AAF /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
 		8716042519F121C900420AAF /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
 		8716042619F121C900420AAF /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
+		871C69201A0EDC6800DAE63E /* ObjectFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjectFactory.cpp; path = objects/ObjectFactory.cpp; sourceTree = "<group>"; };
+		871C69211A0EDC6800DAE63E /* ObjectFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjectFactory.hpp; path = objects/ObjectFactory.hpp; sourceTree = "<group>"; };
+		871C69241A0EE84400DAE63E /* ApplicationXML.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ApplicationXML.cpp; sourceTree = "<group>"; };
+		871C69251A0EE84400DAE63E /* ApplicationXML.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ApplicationXML.hpp; sourceTree = "<group>"; };
 		872F7BD5197975CE00E70464 /* Scene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Scene.hpp; path = scene/Scene.hpp; sourceTree = "<group>"; };
 		87304D1E19ED68E700515ECE /* Renderer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Renderer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87304D2119ED68E700515ECE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -307,6 +315,8 @@
 		875FE5C419C344AB00422B5C /* application */ = {
 			isa = PBXGroup;
 			children = (
+				871C69241A0EE84400DAE63E /* ApplicationXML.cpp */,
+				871C69251A0EE84400DAE63E /* ApplicationXML.hpp */,
 				87468D9019C9BC73005828CF /* ApplicationFactory.hpp */,
 				87468D8F19C9BC73005828CF /* ApplicationFactory.cpp */,
 				877EBB0919ED18CE00702CF4 /* EmscriptenApplication.hpp */,
@@ -509,6 +519,8 @@
 		87D8151B19696259009A8A62 /* objects */ = {
 			isa = PBXGroup;
 			children = (
+				871C69201A0EDC6800DAE63E /* ObjectFactory.cpp */,
+				871C69211A0EDC6800DAE63E /* ObjectFactory.hpp */,
 				875C4B3819E7025300417CA0 /* ObjectAddable.hpp */,
 				875C4B3719E7025300417CA0 /* ObjectAddable.cpp */,
 				87D8151F19696284009A8A62 /* Object.hpp */,
@@ -728,7 +740,9 @@
 			files = (
 				87304D2619ED68E700515ECE /* AppDelegate.m in Sources */,
 				87304D2919ED68E700515ECE /* Renderer_iOS.xcdatamodeld in Sources */,
+				871C69271A0EE84400DAE63E /* ApplicationXML.cpp in Sources */,
 				87304D2C19ED68E700515ECE /* RendererViewController.m in Sources */,
+				871C69231A0EDC6800DAE63E /* ObjectFactory.cpp in Sources */,
 				87304D2319ED68E700515ECE /* main.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,6 +767,7 @@
 				875C4B3919E7025300417CA0 /* ObjectAddable.cpp in Sources */,
 				875D419B19E3433C00DD832C /* OpenGLCommon.cpp in Sources */,
 				873C753D198A7C9000CC151A /* Material.cpp in Sources */,
+				871C69261A0EE84400DAE63E /* ApplicationXML.cpp in Sources */,
 				87DE3DC519C9FB0600D26659 /* Transform.cpp in Sources */,
 				879D815B19C3456700912C9A /* Application.cpp in Sources */,
 				87468DA019C9BD57005828CF /* Camera.cpp in Sources */,
@@ -768,6 +783,7 @@
 				877EBB0A19ED18CE00702CF4 /* EmscriptenApplication.cpp in Sources */,
 				87468DA219C9BD57005828CF /* RenderingContext.cpp in Sources */,
 				87A041FB19EE646D00440E84 /* Spinner.cpp in Sources */,
+				871C69221A0EDC6800DAE63E /* ObjectFactory.cpp in Sources */,
 				87C7B47F19516CFC004C5914 /* main.cpp in Sources */,
 				878008D719ADD99700329645 /* MeshFactory.cpp in Sources */,
 				8740816C198FE49E00C97976 /* IO.cpp in Sources */,

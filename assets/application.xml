@@ -3,7 +3,26 @@
     <Scene name="sup">
 
         <Object>
-            <Mesh path="assets/cube.obj"/>
+            <Transform>
+                <Translation>
+                    <x>0.0</x>
+                    <y>0.0</y>
+                    <z>4.0</z>
+                </Translation>
+                <Rotation>
+                    <x>0.0</x>
+                    <y>0.0</y>
+                    <z>0.0</z>                    
+                </Rotation>
+                <Scale>
+                    <x>1.0</x>
+                    <y>1.0</y>
+                    <z>1.0</z>                    
+                </Scale>
+            </Transform>
+            <Mesh path="assets/cube.obj">
+                <Path>assets/cube.obj</Path>
+            </Mesh>
             <Object name="test sphere">
                 <Mesh path="assets/sphere.obj"/>
                 <Object name="test cone">
