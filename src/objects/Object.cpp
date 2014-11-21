@@ -11,19 +11,25 @@
 namespace Renderer
 {	
 	Object::Object()
-	: _name("UnnamedObject")
+	: _name("Unnamed")
 	{
 
-	}
+    }
 
-	Object::Object(std::string name)
+	Object::Object(std::string & name)
 	: _name(name)
 	{
 
 	}
+    
+    Object::Object(std::string & name, Transform & transform)
+    : _name(name), _transform(transform)
+    {
+        
+    }
 
 	void Object::Update()
-	{		
+	{
 		for (_children_it = _children.begin();
 			 _children_it != _children.end();
 			 ++_children_it)

@@ -25,6 +25,7 @@ namespace Renderer
             static const std::string kRotationTag;
             static const std::string kScaleTag;
             static const std::string kPathTag;
+            static const std::string kNameTag;
             static const std::string kXTag;
             static const std::string kYTag;
             static const std::string kZTag;

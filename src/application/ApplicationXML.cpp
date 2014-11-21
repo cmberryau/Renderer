@@ -19,6 +19,7 @@ namespace Renderer
     const std::string ApplicationXML::kRotationTag = "Rotation";
     const std::string ApplicationXML::kScaleTag = "Scale";
     const std::string ApplicationXML::kPathTag = "Path";
+    const std::string ApplicationXML::kNameTag = "Name";
     const std::string ApplicationXML::kXTag = "x";
     const std::string ApplicationXML::kYTag = "y";
     const std::string ApplicationXML::kZTag = "z";

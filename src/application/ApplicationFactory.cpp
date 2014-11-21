@@ -40,6 +40,7 @@ namespace Renderer
         rapidxml::xml_document<> doc;
         doc.parse<0>(&content[0]);
 
+        std::vector<std::unique_ptr<Scene>> scenes;
 		std::vector<std::unique_ptr<Object>> objects;
 
         auto root_node = doc.first_node(ApplicationXML::kApplicationTag.c_str());

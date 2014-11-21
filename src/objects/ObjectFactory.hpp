@@ -21,6 +21,9 @@ namespace Renderer
             static std::unique_ptr<Object> ObjectFromXMLNode(rapidxml::xml_node<> * object_node);
         
         private:
+            static std::shared_ptr<Mesh> ProcessMeshXMLNode(rapidxml::xml_node<> * mesh_node);
+            static Transform ProcessTransformXMLNode(rapidxml::xml_node<> * transform_node);
+        
             explicit ObjectFactory();
             ~ObjectFactory();
     };

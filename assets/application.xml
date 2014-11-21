@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Application>
-    <Scene name="sup">
-
+    <Scene>
         <Object>
+            <Name>test cube</Name>
             <Transform>
                 <Translation>
                     <x>0.0</x>
@@ -12,35 +12,47 @@
                 <Rotation>
                     <x>0.0</x>
                     <y>0.0</y>
-                    <z>0.0</z>                    
+                    <z>0.0</z>
                 </Rotation>
                 <Scale>
                     <x>1.0</x>
                     <y>1.0</y>
-                    <z>1.0</z>                    
+                    <z>1.0</z>
                 </Scale>
             </Transform>
-            <Mesh path="assets/cube.obj">
+            <Mesh>
                 <Path>assets/cube.obj</Path>
             </Mesh>
-            <Object name="test sphere">
-                <Mesh path="assets/sphere.obj"/>
-                <Object name="test cone">
-                    <Mesh path="assets/cone.obj"/>
+            <Object>
+                <Name>test sphere</Name>
+                <Path>assets/sphere.obj</Path>
+                <Object>
+                    <Name>test cone</Name>
+                    <Mesh>
+                        <Path>assets/cone.obj</Path>
+                    </Mesh>
                 </Object>
             </Object>
         </Object>
 
-        <Object name="test sphere number 2">
-            <Mesh path="assets/sphere.obj"/>
-            <Object name="test cube">
-                <Mesh path="assets/cube.obj"/>
+        <Object>
+            <Name>test sphere number 2</Name>
+            <Mesh>
+                <Path>assets/sphere.obj</Path>
+            </Mesh>
+            <Object>
+                <Name>test cube number 2</Name>
+                <Mesh>
+                    <Path>assets/cube.obj</Path>
+                </Mesh>
             </Object>
         </Object>
 
-        <Object name="test cone">
-            <Mesh path="assets/cone.obj"/>
+        <Object>
+            <Name>test cone number 2</Name>
+            <Mesh>
+                <Path>assets/cone.obj</Path>
+            </Mesh>
         </Object>
-
     </Scene>
 </Application>

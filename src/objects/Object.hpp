@@ -23,7 +23,8 @@ namespace Renderer
     {
         public:
 			explicit Object();
-			explicit Object(std::string name);
+			explicit Object(std::string & name);
+            explicit Object(std::string & name, Transform & transform);
 			~Object(){};
 			
 			void Update();

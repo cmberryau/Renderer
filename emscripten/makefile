@@ -44,6 +44,7 @@ else
 	SOURCES=$(wildcard *.cpp) \
 	$(SOURCE_DIR)/main.cpp \
 	$(SOURCE_DIR)/application/Application.cpp \
+	$(SOURCE_DIR)/application/ApplicationXML.cpp \
 	$(SOURCE_DIR)/application/ApplicationFactory.cpp \
 	$(SOURCE_DIR)/application/EmscriptenApplication.cpp \
 	$(SOURCE_DIR)/events/EventListener.cpp \
@@ -52,6 +53,7 @@ else
 	$(SOURCE_DIR)/math/Mathf.cpp \
 	$(SOURCE_DIR)/math/Transform.cpp \
 	$(SOURCE_DIR)/objects/ObjectAddable.cpp \
+	$(SOURCE_DIR)/objects/ObjectFactory.cpp \
 	$(SOURCE_DIR)/objects/Object.cpp \
 	$(SOURCE_DIR)/rendering/Camera.cpp \
 	$(SOURCE_DIR)/rendering/Material.cpp \

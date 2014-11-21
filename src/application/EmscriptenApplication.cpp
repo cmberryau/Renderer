@@ -16,11 +16,6 @@ namespace Renderer
 	{
 		EmscriptenApplication::Instance().GetEventListener().ListenForEvents();
 
-		if(EmscriptenApplication::Instance().GetEventListener().ShouldQuit())
-		{
-			EmscriptenApplication::Instance().End();
-		}
-
 		EmscriptenApplication::Instance().GetRenderingContext().BeginScene();
 
         EmscriptenApplication::Instance().GetScene().UpdateAndDraw();

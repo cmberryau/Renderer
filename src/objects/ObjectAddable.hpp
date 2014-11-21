@@ -1,5 +1,5 @@
 //
-//  IObjectAddable.hpp
+//  ObjectAddable.hpp
 //  Renderer
 //
 //  Created by Christopher Berry on 28/07/2014.

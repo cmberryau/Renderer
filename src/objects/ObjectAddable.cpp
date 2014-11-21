@@ -1,5 +1,5 @@
 //
-//  IObjectAddable.cpp
+//  ObjectAddable.cpp
 //  Renderer
 //
 //  Created by Christopher Berry on 17/10/2014.
