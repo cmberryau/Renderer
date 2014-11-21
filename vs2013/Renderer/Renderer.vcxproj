@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\application\Application.cpp" />
     <ClCompile Include="..\..\src\application\ApplicationFactory.cpp" />
+    <ClCompile Include="..\..\src\application\ApplicationXML.cpp" />
     <ClCompile Include="..\..\src\application\EmscriptenApplication.cpp" />
     <ClCompile Include="..\..\src\events\EventListener.cpp" />
     <ClCompile Include="..\..\src\geometry\Mesh.cpp" />
@@ -133,6 +134,7 @@
     <ClCompile Include="..\..\src\math\Transform.cpp" />
     <ClCompile Include="..\..\src\objects\Object.cpp" />
     <ClCompile Include="..\..\src\objects\ObjectAddable.cpp" />
+    <ClCompile Include="..\..\src\objects\ObjectFactory.cpp" />
     <ClCompile Include="..\..\src\rendering\Camera.cpp" />
     <ClCompile Include="..\..\src\rendering\Material.cpp" />
     <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
@@ -154,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\application\Application.hpp" />
     <ClInclude Include="..\..\src\application\ApplicationFactory.hpp" />
+    <ClInclude Include="..\..\src\application\ApplicationXML.hpp" />
     <ClInclude Include="..\..\src\application\EmscriptenApplication.hpp" />
     <ClInclude Include="..\..\src\events\EventListener.hpp" />
     <ClInclude Include="..\..\src\geometry\Mesh.hpp" />
@@ -164,6 +167,7 @@
     <ClInclude Include="..\..\src\math\Vector.hpp" />
     <ClInclude Include="..\..\src\objects\Object.hpp" />
     <ClInclude Include="..\..\src\objects\ObjectAddable.hpp" />
+    <ClInclude Include="..\..\src\objects\ObjectFactory.hpp" />
     <ClInclude Include="..\..\src\rendering\Camera.hpp" />
     <ClInclude Include="..\..\src\rendering\Material.hpp" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp" />
