@@ -34,18 +34,15 @@
 		87468DA619C9BD6A005828CF /* OpenGLRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */; };
 		87468DA919C9BD70005828CF /* OpenGLESMeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */; };
 		87468DAA19C9BD70005828CF /* OpenGLESRenderingContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */; };
-		874CA7DA19F8F320003AF016 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 874CA7D919F8F31F003AF016 /* MediaPlayer.framework */; };
 		875C4B3919E7025300417CA0 /* ObjectAddable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875C4B3719E7025300417CA0 /* ObjectAddable.cpp */; };
 		875D419B19E3433C00DD832C /* OpenGLCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 875D419919E3433C00DD832C /* OpenGLCommon.cpp */; };
 		877EBB0A19ED18CE00702CF4 /* EmscriptenApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 877EBB0819ED18CE00702CF4 /* EmscriptenApplication.cpp */; };
 		878008D719ADD99700329645 /* MeshFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878008D619ADD99700329645 /* MeshFactory.cpp */; };
-		8781E88E19519977005CC999 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8781E88D19519977005CC999 /* SDL2.framework */; };
 		8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8787B0DD194DBEF900F894CA /* OpenGL.framework */; };
 		878A8FAF19EC23AB004AF9A4 /* OpenGLESCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */; };
 		879D815B19C3456700912C9A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879D815919C3456700912C9A /* Application.cpp */; };
 		87A041FB19EE646D00440E84 /* Spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A041F919EE646D00440E84 /* Spinner.cpp */; };
-		87A7F83A19F7C29E0073656B /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A7F83919F7C29E0073656B /* boost.framework */; };
-		87A7F83C19F7C3A20073656B /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A7F83B19F7C3A20073656B /* boost.framework */; };
+		87B123AD1B5F97B900EF16B5 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B123AC1B5F97B900EF16B5 /* SDL2.framework */; };
 		87BB486219C079C000A61967 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87BB486019C079C000A61967 /* Util.cpp */; };
 		87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839319452C3E00D97C8E /* InfoPlist.strings */; };
 		87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839919452C3E00D97C8E /* Credits.rtf */; };
@@ -83,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		870BC2CB1B5E6E3400FA092C /* Renderer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Renderer-Prefix.pch"; sourceTree = "<group>"; };
 		870CC6C11985B822008A56E5 /* default.geom */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = default.geom; path = shaders/GLSL/default.geom; sourceTree = "<group>"; };
 		8716042319F121C900420AAF /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
 		8716042419F121C900420AAF /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 		87468DA419C9BD6A005828CF /* OpenGLRenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLRenderingContext.cpp; path = rendering/OpenGL/OpenGLRenderingContext.cpp; sourceTree = "<group>"; };
 		87468DA719C9BD70005828CF /* OpenGLESMeshRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESMeshRenderer.cpp; sourceTree = "<group>"; };
 		87468DA819C9BD70005828CF /* OpenGLESRenderingContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESRenderingContext.cpp; sourceTree = "<group>"; };
-		874CA7D919F8F31F003AF016 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		8756FCCC197465A600A016AD /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = rendering/Camera.hpp; sourceTree = "<group>"; };
 		875C4B3719E7025300417CA0 /* ObjectAddable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ObjectAddable.cpp; path = objects/ObjectAddable.cpp; sourceTree = "<group>"; };
 		875C4B3819E7025300417CA0 /* ObjectAddable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ObjectAddable.hpp; path = objects/ObjectAddable.hpp; sourceTree = "<group>"; };
@@ -134,7 +131,6 @@
 		877EBB0919ED18CE00702CF4 /* EmscriptenApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EmscriptenApplication.hpp; sourceTree = "<group>"; };
 		878008D519ADD8A300329645 /* MeshFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = MeshFactory.hpp; path = geometry/MeshFactory.hpp; sourceTree = "<group>"; };
 		878008D619ADD99700329645 /* MeshFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshFactory.cpp; path = geometry/MeshFactory.cpp; sourceTree = "<group>"; };
-		8781E88D19519977005CC999 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
 		8787B0DD194DBEF900F894CA /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenGLESCommon.cpp; sourceTree = "<group>"; };
 		878A8FAE19EC23AB004AF9A4 /* OpenGLESCommon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpenGLESCommon.hpp; sourceTree = "<group>"; };
@@ -145,8 +141,7 @@
 		87A0B742195A1261003F53C6 /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Matrix.hpp; path = math/Matrix.hpp; sourceTree = "<group>"; };
 		87A0B744195A1261003F53C6 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = math/Transform.hpp; sourceTree = "<group>"; };
 		87A0B746195A1261003F53C6 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = math/Vector.hpp; sourceTree = "<group>"; };
-		87A7F83919F7C29E0073656B /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = /Library/Frameworks/boost/osx/boost.framework; sourceTree = "<absolute>"; };
-		87A7F83B19F7C3A20073656B /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = /Library/Frameworks/boost/ios/boost.framework; sourceTree = "<absolute>"; };
+		87B123AC1B5F97B900EF16B5 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
 		87BB486019C079C000A61967 /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Util.cpp; path = utility/Util.cpp; sourceTree = "<group>"; };
 		87BB486119C079C000A61967 /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Util.hpp; path = utility/Util.hpp; sourceTree = "<group>"; };
 		87BC838719452C3E00D97C8E /* Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +150,6 @@
 		87BC838F19452C3E00D97C8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		87BC839219452C3E00D97C8E /* Renderer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Renderer-Info.plist"; sourceTree = "<group>"; };
 		87BC839419452C3E00D97C8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		87BC839819452C3E00D97C8E /* Renderer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Renderer-Prefix.pch"; sourceTree = "<group>"; };
 		87BC839A19452C3E00D97C8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		87BC83A219452C3E00D97C8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		87BC83A819452C3E00D97C8E /* RendererTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RendererTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,8 +189,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				874CA7DA19F8F320003AF016 /* MediaPlayer.framework in Frameworks */,
-				87A7F83C19F7C3A20073656B /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87A7F83A19F7C29E0073656B /* boost.framework in Frameworks */,
-				8781E88E19519977005CC999 /* SDL2.framework in Frameworks */,
+				87B123AD1B5F97B900EF16B5 /* SDL2.framework in Frameworks */,
 				8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,8 +384,6 @@
 		87BC838C19452C3E00D97C8E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				874CA7D919F8F31F003AF016 /* MediaPlayer.framework */,
-				87A7F83B19F7C3A20073656B /* boost.framework */,
 				87BC838D19452C3E00D97C8E /* AppKit.framework */,
 				87BC838E19452C3E00D97C8E /* CoreData.framework */,
 				87BC838F19452C3E00D97C8E /* Foundation.framework */,
@@ -417,7 +406,7 @@
 			children = (
 				87BC839219452C3E00D97C8E /* Renderer-Info.plist */,
 				87BC839319452C3E00D97C8E /* InfoPlist.strings */,
-				87BC839819452C3E00D97C8E /* Renderer-Prefix.pch */,
+				870BC2CB1B5E6E3400FA092C /* Renderer-Prefix.pch */,
 				87BC839919452C3E00D97C8E /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -500,8 +489,7 @@
 		87D0A95019F7BF4C0095D794 /* OSX */ = {
 			isa = PBXGroup;
 			children = (
-				87A7F83919F7C29E0073656B /* boost.framework */,
-				8781E88D19519977005CC999 /* SDL2.framework */,
+				87B123AC1B5F97B900EF16B5 /* SDL2.framework */,
 				8787B0DD194DBEF900F894CA /* OpenGL.framework */,
 			);
 			name = OSX;
@@ -1048,10 +1036,13 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/boost/osx",
+					/Users/cmb/Desktop/Renderer/lib/osx/boost/1.58/framework,
+					/Users/cmb/Desktop/Renderer/lib/osx/sdl/2.0.3,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Renderer/Renderer-Prefix.pch";
 				INFOPLIST_FILE = "Renderer/Renderer-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/**",
@@ -1074,10 +1065,13 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/boost/osx",
+					/Users/cmb/Desktop/Renderer/lib/osx/boost/1.58/framework,
+					/Users/cmb/Desktop/Renderer/lib/osx/sdl/2.0.3,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Renderer/Renderer-Prefix.pch";
 				INFOPLIST_FILE = "Renderer/Renderer-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/**",
