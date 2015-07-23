@@ -42,7 +42,7 @@
 		878A8FAF19EC23AB004AF9A4 /* OpenGLESCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 878A8FAD19EC23AB004AF9A4 /* OpenGLESCommon.cpp */; };
 		879D815B19C3456700912C9A /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879D815919C3456700912C9A /* Application.cpp */; };
 		87A041FB19EE646D00440E84 /* Spinner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87A041F919EE646D00440E84 /* Spinner.cpp */; };
-		87B123AD1B5F97B900EF16B5 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B123AC1B5F97B900EF16B5 /* SDL2.framework */; };
+		87A583B21B60FC8A00B4FD31 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A583B11B60FC8A00B4FD31 /* SDL2.framework */; };
 		87BB486219C079C000A61967 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87BB486019C079C000A61967 /* Util.cpp */; };
 		87BC839519452C3E00D97C8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839319452C3E00D97C8E /* InfoPlist.strings */; };
 		87BC839B19452C3E00D97C8E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 87BC839919452C3E00D97C8E /* Credits.rtf */; };
@@ -141,7 +141,7 @@
 		87A0B742195A1261003F53C6 /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Matrix.hpp; path = math/Matrix.hpp; sourceTree = "<group>"; };
 		87A0B744195A1261003F53C6 /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = math/Transform.hpp; sourceTree = "<group>"; };
 		87A0B746195A1261003F53C6 /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Vector.hpp; path = math/Vector.hpp; sourceTree = "<group>"; };
-		87B123AC1B5F97B900EF16B5 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
+		87A583B11B60FC8A00B4FD31 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../lib/osx/sdl/2.0.3/SDL2.framework; sourceTree = "<group>"; };
 		87BB486019C079C000A61967 /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Util.cpp; path = utility/Util.cpp; sourceTree = "<group>"; };
 		87BB486119C079C000A61967 /* Util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Util.hpp; path = utility/Util.hpp; sourceTree = "<group>"; };
 		87BC838719452C3E00D97C8E /* Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renderer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,7 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B123AD1B5F97B900EF16B5 /* SDL2.framework in Frameworks */,
+				87A583B21B60FC8A00B4FD31 /* SDL2.framework in Frameworks */,
 				8787B0DE194DBEF900F894CA /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,7 +489,7 @@
 		87D0A95019F7BF4C0095D794 /* OSX */ = {
 			isa = PBXGroup;
 			children = (
-				87B123AC1B5F97B900EF16B5 /* SDL2.framework */,
+				87A583B11B60FC8A00B4FD31 /* SDL2.framework */,
 				8787B0DD194DBEF900F894CA /* OpenGL.framework */,
 			);
 			name = OSX;
@@ -1042,7 +1042,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Renderer/Renderer-Prefix.pch";
 				INFOPLIST_FILE = "Renderer/Renderer-Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "${PROJECT_DIR}/../lib/osx/sdl/current/";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks/**",
