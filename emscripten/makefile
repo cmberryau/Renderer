@@ -4,9 +4,9 @@ ifeq ($(OS),Windows_NT)
 	ASSET_DIR=..\assets
 	SHADERS_DIR=..\src\shaders
 	SOURCE_DIR=..\src
-	LIBRARIES=libs\libSDL2.a
+	LIBRARIES=..\lib\emscripten\sdl2\current\libs\libSDL2.a
 	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file $(ASSET_DIR) --embed-file $(SHADERS_DIR) --memory-init-file 0
-	CFLAGS=-O2 -std=c++11 -I ..\src
+	CFLAGS=-O2 -std=c++11 -I ..\src -I ../lib/emscripten/sdl2/current/include
 	SOURCES=$(wildcard *.cpp) \
 	$(SOURCE_DIR)\main.cpp \
 	$(SOURCE_DIR)\application\ApplicationXML.cpp \
@@ -39,9 +39,9 @@ else
 	ASSET_DIR=../assets
 	SHADERS_DIR=../src/shaders
 	SOURCE_DIR=../src
-	LIBRARIES=libs/libSDL2.a
+	LIBRARIES=../lib/emscripten/sdl2/current/libs/libSDL2.a
 	LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file $(ASSET_DIR) --embed-file $(SHADERS_DIR) --memory-init-file 0
-	CFLAGS=-O2 -std=c++11 -I ../src
+	CFLAGS=-O2 -std=c++11 -I ../src -I ../lib/emscripten/sdl2/current/include
 	SOURCES=$(wildcard *.cpp) \
 	$(SOURCE_DIR)/main.cpp \
 	$(SOURCE_DIR)/application/ApplicationXML.cpp \
