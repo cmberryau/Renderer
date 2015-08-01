@@ -1,1 +1,2 @@
-!*.a
+# all files should be unignored for the lib folder
+!*.*
