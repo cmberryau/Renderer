@@ -7,6 +7,8 @@
 //
 
 #include "OpenGLRenderingContext.hpp"
+#include "utility/IO.hpp"
+#include "rendering/ShaderFactory.hpp"
 
 #include <algorithm>
 
@@ -140,6 +142,14 @@ namespace Renderer
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
+		// hacked in default material creation
+		std::string vertex_shader_path("src/shaders/GLSL/default.vert");
+		std::string fragment_shader_path("src/shaders/GLSL/default.frag");
+		std::string vertex_shader_source = IO::ReadFile(vertex_shader_path);
+		std::string fragment_shader_source = IO::ReadFile(fragment_shader_path);
+		_default_shader = ShaderFactory::Create(vertex_shader_source, fragment_shader_source);
+		_default_material = std::make_shared<Material>(_default_shader);
+
 		CheckForGLError();
 	}
 
@@ -171,5 +181,15 @@ namespace Renderer
 	void OpenGLRenderingContext::EndScene() const
 	{
 
+	}
+
+	std::unique_ptr<MeshRenderer> OpenGLRenderingContext::CreateMeshRenderer() const
+	{
+		return std::unique_ptr<MeshRenderer>(new OpenGLMeshRenderer());
+	}
+
+	std::shared_ptr<Material> OpenGLRenderingContext::DefaultMaterial() const
+	{
+		return _default_material;
 	}
 }

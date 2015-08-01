@@ -39,10 +39,7 @@ namespace Renderer
         auto content = IO::ReadFile(file_path);
         
         rapidxml::xml_document<> doc;
-        doc.parse<0>(&content[0]);
-
-        std::vector<std::unique_ptr<Scene>> scenes;
-		std::vector<std::unique_ptr<Object>> objects;
+        doc.parse<0>(&content[0]);		
 
         auto root_node = doc.first_node(ApplicationXML::kApplicationTag.c_str());
 
@@ -56,20 +53,25 @@ namespace Renderer
 				auto scene = ProcessSceneXMLNode(scene_node);
 
 				// create objects for scene
-                for(auto object_node = scene_node->first_node(ApplicationXML::kObjectTag.c_str());
-					object_node; object_node = object_node->next_sibling())
-                {
-					ProcessObjectXMLNode(object_node, objects);
-                }
+				auto objects = CreateSceneObjects(scene_node);
 
 				// add objects to scene
 				for (auto &object : objects)
 				{
+					if (object->HasMesh())
+					{
+						auto mesh_renderer = rendering_context->CreateMeshRenderer();
+						mesh_renderer->AddMaterial(rendering_context->DefaultMaterial());
+
+						object->AddMeshRenderer(mesh_renderer);
+					}
+
+					std::unique_ptr<ObjectAddable> spinner(new Spinner());
+					object->Add(spinner);
 					scene->AddObject(object);
 				}
 
-				// add scene to the collection of scenes
-				scenes.push_back(std::move(scene));
+				app->AddScene(scene);
             }
         }
         
@@ -82,6 +84,20 @@ namespace Renderer
 		auto scene_ptr = SceneFactory::SceneFromXMLNode(scene_node);
 
 		return scene_ptr;
+	}
+
+	// processes the objects of a scene
+	std::vector<std::unique_ptr<Object>> ApplicationFactory::CreateSceneObjects(rapidxml::xml_node<> * scene_node)
+	{
+		std::vector<std::unique_ptr<Object>> objects;
+
+		for (auto object_node = scene_node->first_node(ApplicationXML::kObjectTag.c_str());
+			object_node; object_node = object_node->next_sibling())
+		{
+			ProcessObjectXMLNode(object_node, objects);
+		}
+
+		return objects;
 	}
 
 	// processes a xml node that refers to an object

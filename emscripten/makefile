@@ -33,6 +33,7 @@ $(SOURCE_DIR)/rendering/OpenGLES/OpenGLESMeshRenderer.cpp \
 $(SOURCE_DIR)/rendering/OpenGLES/OpenGLESRenderingContext.cpp \
 $(SOURCE_DIR)/rendering/OpenGLES/OpenGLESShader.cpp \
 $(SOURCE_DIR)/scene/Scene.cpp \
+$(SOURCE_DIR)/scene/SceneFactory.cpp \
 $(SOURCE_DIR)/utility/IO.cpp \
 $(SOURCE_DIR)/utility/Util.cpp \
 $(SOURCE_DIR)/tests/Spinner.cpp \

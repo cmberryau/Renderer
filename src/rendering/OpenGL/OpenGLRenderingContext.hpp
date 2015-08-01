@@ -31,10 +31,12 @@ namespace Renderer
 			explicit OpenGLRenderingContext(const Window & window,
 											int desired_major_version,
 											int desired_minor_version);
-			virtual ~OpenGLRenderingContext(){};
+			virtual ~OpenGLRenderingContext() override {};
 			
 			virtual void BeginScene() const override;
 			virtual void EndScene() const override;
+			virtual std::unique_ptr<MeshRenderer> CreateMeshRenderer() const override;
+			virtual std::shared_ptr<Material> DefaultMaterial() const override;
 
 		protected:
 			bool IsReady() const;
@@ -80,6 +82,9 @@ namespace Renderer
 
 			std::vector<OpenGLVersion> _supported_opengl_versions;
 			std::unique_ptr<SDL_GLContext, SDL_GLContextDeleter> _sdl_gl_context;
+
+			std::shared_ptr<Shader> _default_shader;
+			std::shared_ptr<Material> _default_material;
 	};
 }
 

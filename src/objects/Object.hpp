@@ -27,10 +27,13 @@ namespace Renderer
             explicit Object(std::string & name, Transform & transform);
 			~Object(){};
 			
+			bool HasMesh();
+
 			void Update();
 			void Draw(const Scene & scene);
 
 			void Add(std::unique_ptr<ObjectAddable> & addable);
+			void AddMesh(std::shared_ptr<Mesh> & mesh);
 			void AddMeshRenderer(std::unique_ptr<MeshRenderer> & mesh_renderer);
 
             Transform & LocalTransform();
@@ -42,6 +45,7 @@ namespace Renderer
 			std::vector<std::unique_ptr<ObjectAddable>> _children;
 			std::vector<std::unique_ptr<ObjectAddable>>::iterator _children_it;
         
+			std::shared_ptr<Mesh> _mesh;
 			std::unique_ptr<MeshRenderer> _mesh_renderer;
     };
 }

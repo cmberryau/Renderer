@@ -24,7 +24,7 @@ namespace Renderer
 
 		private:
 			static std::unique_ptr<Scene> ProcessSceneXMLNode(rapidxml::xml_node<> * scene_node);
-
+			static std::vector<std::unique_ptr<Object>> CreateSceneObjects(rapidxml::xml_node<> * scene_node);
 			static void ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
 											 std::vector<std::unique_ptr<Object>> & objects);			
 

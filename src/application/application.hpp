@@ -38,13 +38,15 @@ namespace Renderer
 
 			virtual void Start();			
 
+			void AddScene(std::unique_ptr<Scene> & scene);
+
         protected:
             void MainLoop();
-            Scene & GetScene();
-			void SetScene(std::unique_ptr<Scene> & scene);
+
+			Scene & GetScene();
 			Window & GetWindow();
 			EventListener & GetEventListener();
-			RenderingContext & GetRenderingContext();			
+			RenderingContext & GetRenderingContext();
 
 		private:
 			std::shared_ptr<Window> _window;

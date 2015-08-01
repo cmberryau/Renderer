@@ -45,6 +45,11 @@ namespace Renderer
         }
         
         auto object_ptr = std::unique_ptr<Object>(new Object(name, transform));
+
+		if (!!mesh_ptr)
+		{
+			object_ptr->AddMesh(mesh_ptr);
+		}		
         
         return object_ptr;
     }
@@ -83,18 +88,21 @@ namespace Renderer
         for(auto transform_element_node = transform_node->first_node();
             transform_element_node; transform_element_node = transform_element_node->next_sibling())
         {
-            // translation
-            if(ApplicationXML::kTranslationTag.compare(transform_element_node->name()) == 0)
+            // position
+            if(ApplicationXML::kPositionTag.compare(transform_element_node->name()) == 0)
             {
-				transform.Translate(ProcessVector3XMLNode(transform_element_node));
+				auto vec3f = ProcessVector3XMLNode(transform_element_node);
+				transform.SetPosition(vec3f);
             } // rotation
             else if(ApplicationXML::kRotationTag.compare(transform_element_node->name()) == 0)
             {
-				transform.Rotate(ProcessVector3XMLNode(transform_element_node));
+				auto vec3f = ProcessVector3XMLNode(transform_element_node);
+				transform.SetRotation(vec3f);
             } // scale
             else if(ApplicationXML::kScaleTag.compare(transform_element_node->name()) == 0)
             {
-				transform.Scale(ProcessVector3XMLNode(transform_element_node));
+				auto vec3f = ProcessVector3XMLNode(transform_element_node);
+				transform.SetScale(vec3f);
             }
         }
 

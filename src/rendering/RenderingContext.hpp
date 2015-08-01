@@ -9,15 +9,20 @@
 #ifndef _renderingcontext_h
 #define _renderingcontext_h
 
+#include "rendering/MeshRenderer.hpp"
+
 namespace Renderer
 {    
 	class RenderingContext
 	{
 		public:
+			virtual ~RenderingContext(){};
+
 			virtual void BeginScene() const = 0;
 			virtual void EndScene() const = 0;
-			
-			virtual ~RenderingContext(){};			
+
+			virtual std::unique_ptr<MeshRenderer> CreateMeshRenderer() const = 0;
+			virtual std::shared_ptr<Material> DefaultMaterial() const = 0;
         
         protected:
 			explicit RenderingContext(){};

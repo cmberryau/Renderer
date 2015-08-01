@@ -28,10 +28,16 @@ namespace Renderer
 	{
 		public:
 			explicit OpenGLESRenderingContext(const Window & window);
-			~OpenGLESRenderingContext();
+			virtual ~OpenGLESRenderingContext() override {};
 
-            virtual void BeginScene() const override;
-            virtual void EndScene() const override;
+			virtual void BeginScene() const override;
+			virtual void EndScene() const override;
+			virtual std::unique_ptr<MeshRenderer> CreateMeshRenderer() const override;
+			virtual std::shared_ptr<Material> DefaultMaterial() const override;
+
+		private:
+			std::shared_ptr<Shader> _default_shader;
+			std::shared_ptr<Material> _default_material;
 	};
 }
 

@@ -34,7 +34,7 @@ namespace Renderer
 		}
 	}
     
-    void OpenGLMeshRenderer::AddMesh(std::shared_ptr<Mesh>  mesh_ptr)
+    void OpenGLMeshRenderer::AddMesh(std::shared_ptr<Mesh> mesh_ptr)
     {
         if(HasMesh())
         {

@@ -28,6 +28,11 @@ namespace Renderer
         
     }
 
+	bool Object::HasMesh()
+	{
+		return !!_mesh;
+	}
+
 	void Object::Update()
 	{
 		for (_children_it = _children.begin();
@@ -52,9 +57,19 @@ namespace Renderer
         _children.push_back(std::move(addable));
 	}
 
+	void Object::AddMesh(std::shared_ptr<Mesh> & mesh)
+	{
+		_mesh = mesh;
+	}
+
 	void Object::AddMeshRenderer(std::unique_ptr<MeshRenderer> & mesh_renderer)
 	{
         _mesh_renderer = std::move(mesh_renderer);
+
+		if (!!_mesh)
+		{
+			_mesh_renderer->AddMesh(_mesh);
+		}
 	}
 
 	Transform & Object::LocalTransform()

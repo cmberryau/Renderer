@@ -4,11 +4,11 @@
         <Object>
             <Name>test cube</Name>
             <Transform>
-                <Translation>
+                <Position>
                     <x>0.0</x>
                     <y>0.0</y>
                     <z>4.0</z>
-                </Translation>
+                </Position>
                 <Rotation>
                     <x>0.0</x>
                     <y>0.0</y>

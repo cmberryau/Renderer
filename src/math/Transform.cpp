@@ -43,6 +43,11 @@ namespace Renderer
 		_composed_matrix = _composed_matrix.Multiply(translation_matrix);
 	}
 
+	void Transform::SetPosition(Vector3f & position)
+	{
+		this->SetPosition(position[0], position[1], position[2]);
+	}
+
 	void Transform::SetPosition(float x, float y, float z)
 	{
 		Matrix4f translation_matrix = Matrix4f::Translate(-_position[0] + x,
@@ -84,6 +89,11 @@ namespace Renderer
 			_normal_matrix = _normal_matrix.Multiply(rotation_matrix[i]);
 			_composed_matrix = _composed_matrix.Multiply(rotation_matrix[i]);
 		}
+	}
+
+	void Transform::SetRotation(Vector3f & rotation)
+	{
+		this->SetRotation(rotation[0], rotation[1], rotation[2]);
 	}
 
 	void Transform::SetRotation(float x, float y, float z)
@@ -145,11 +155,14 @@ namespace Renderer
 		_composed_matrix = _composed_matrix.Multiply(scale_matrix);
 	}
 
+	void Transform::SetScale(Vector3f & scale)
+	{
+		this->SetScale(scale[0], scale[1], scale[2]);
+	}
+
 	void Transform::SetScale(float x, float y, float z)
 	{
-		Matrix4f scale_matrix = Matrix4f::Scale(-_scale[0] + x,
-											    -_scale[1] + y,
-											    -_scale[2] + z);
+		Matrix4f scale_matrix = Matrix4f::Scale(x, y, z);
 
 		_scale[0] = x;
 		_scale[1] = y;
