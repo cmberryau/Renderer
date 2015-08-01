@@ -2,12 +2,12 @@ CC=emcc
 EMSCRIPTEN_SDL_VER=7
 EXECUTABLE=renderer.html
 
-ASSET_DIR=../assets
-SHADERS_DIR=../src/shaders
+ASSET_DIR=..\assets
+SHADERS_DIR=..\src\shaders
 SOURCE_DIR=../src
 LIBRARIES=../lib/emscripten/sdl2/$(EMSCRIPTEN_SDL_VER)/libs/libSDL2.a
-LDFLAGS=-s DEMANGLE_SUPPORT=1 --embed-file $(ASSET_DIR) --embed-file $(SHADERS_DIR) --memory-init-file 0
-CFLAGS=-O2 -std=c++11 -I ../src -I ../lib/emscripten/sdl2/$(EMSCRIPTEN_SDL_VER)/include
+LDFLAGS=-g4 -s DEMANGLE_SUPPORT=1 --embed-file $(ASSET_DIR) --embed-file $(SHADERS_DIR) --memory-init-file 0
+CFLAGS=-g4 -std=c++11 -I ../src -I ../lib/emscripten/sdl2/$(EMSCRIPTEN_SDL_VER)/include
 SOURCES=$(wildcard *.cpp) \
 $(SOURCE_DIR)/main.cpp \
 $(SOURCE_DIR)/application/ApplicationXML.cpp \

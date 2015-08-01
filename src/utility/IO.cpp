@@ -22,6 +22,7 @@ namespace Renderer
             std::string error_msg("File ");
             error_msg += file_path;
             error_msg += " could not be found or accessed.";
+
             throw std::runtime_error(error_msg);
         }
         
