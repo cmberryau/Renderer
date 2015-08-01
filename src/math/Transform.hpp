@@ -20,14 +20,17 @@ namespace Renderer
 			explicit Transform();
 			~Transform();
 
+			void Translate(Vector3f & translation);
 			void Translate(float x, float y, float z);
 			void SetPosition(float x, float y, float z);
 			const Vector3f & Position() const;
         
+			void Rotate(Vector3f & rotate);
 			void Rotate(float x, float y, float z);        
 			void SetRotation(float x, float y, float z);
 			const Vector3f & Rotation() const;
 
+			void Scale(Vector3f & scale);
 			void Scale(float x, float y, float z);
 			void SetScale(float x, float y, float z);
 			const Vector3f & Scale() const;

@@ -23,6 +23,7 @@ namespace Renderer
         private:
             static std::shared_ptr<Mesh> ProcessMeshXMLNode(rapidxml::xml_node<> * mesh_node);
             static Transform ProcessTransformXMLNode(rapidxml::xml_node<> * transform_node);
+			static Vector3f ObjectFactory::ProcessVector3XMLNode(rapidxml::xml_node<> * vector_node);
         
             explicit ObjectFactory();
             ~ObjectFactory();

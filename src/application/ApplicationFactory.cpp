@@ -69,7 +69,7 @@ namespace Renderer
 				}
 
 				// add scene to the collection of scenes
-				//scenes.push_back(std::move(scene));
+				scenes.push_back(std::move(scene));
             }
         }
         

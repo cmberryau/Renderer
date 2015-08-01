@@ -25,6 +25,11 @@ namespace Renderer
 
 	}
 
+	void Transform::Translate(Vector3f & translation)
+	{
+		this->Translate(translation[0], translation[1], translation[2]);
+	}
+
 	void Transform::Translate(float x, float y, float z)
 	{
 		Matrix4f translation_matrix;
@@ -49,6 +54,11 @@ namespace Renderer
 		_position[0] = x;
 		_position[1] = y;
 		_position[2] = z;
+	}
+
+	void Transform::Rotate(Vector3f & rotation)
+	{
+		this->Rotate(rotation[0], rotation[1], rotation[2]);
 	}
 
 	void Transform::Rotate(float x, float y, float z)
@@ -117,6 +127,11 @@ namespace Renderer
 			clamped += 360.0;
 
 		return clamped;
+	}
+
+	void Transform::Scale(Vector3f & scale)
+	{
+		this->Scale(scale[0], scale[1], scale[2]);
 	}
 
 	void Transform::Scale(float x, float y, float z)

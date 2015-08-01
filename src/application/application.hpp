@@ -36,23 +36,20 @@ namespace Renderer
                                  std::shared_ptr<EventListener> event_listener);
 			virtual ~Application();
 
-			virtual void Start();
-
-			void SetScene(std::unique_ptr<Scene> & scene);
+			virtual void Start();			
 
         protected:
             void MainLoop();
-
             Scene & GetScene();
+			void SetScene(std::unique_ptr<Scene> & scene);
 			Window & GetWindow();
 			EventListener & GetEventListener();
-			RenderingContext & GetRenderingContext();                 
+			RenderingContext & GetRenderingContext();			
 
 		private:
 			std::shared_ptr<Window> _window;
 			std::shared_ptr<EventListener> _event_listener;
-			std::shared_ptr<RenderingContext> _rendering_context;
-        
+			std::shared_ptr<RenderingContext> _rendering_context;        
             std::unique_ptr<Scene> _scene;
 	};
 }

@@ -86,18 +86,53 @@ namespace Renderer
             // translation
             if(ApplicationXML::kTranslationTag.compare(transform_element_node->name()) == 0)
             {
-                
+				transform.Translate(ProcessVector3XMLNode(transform_element_node));
             } // rotation
             else if(ApplicationXML::kRotationTag.compare(transform_element_node->name()) == 0)
             {
-                
+				transform.Rotate(ProcessVector3XMLNode(transform_element_node));
             } // scale
             else if(ApplicationXML::kScaleTag.compare(transform_element_node->name()) == 0)
             {
-                
+				transform.Scale(ProcessVector3XMLNode(transform_element_node));
             }
         }
-        
+
         return transform;
     }
+
+	Vector3f ObjectFactory::ProcessVector3XMLNode(rapidxml::xml_node<> * vector_node)
+	{
+		Vector3f vector;
+
+		for (auto axis_node = vector_node->first_node();
+			axis_node; axis_node = axis_node->next_sibling())
+		{
+			if (ApplicationXML::kXTag.compare(axis_node->name()) == 0)
+			{
+				if (axis_node->value() != nullptr)
+				{
+					vector[0] = std::stof(axis_node->value());
+				}
+			}
+
+			if (ApplicationXML::kYTag.compare(axis_node->name()) == 0)
+			{
+				if (axis_node->value() != nullptr)
+				{
+					vector[1] = std::stof(axis_node->value());
+				}
+			}
+
+			if (ApplicationXML::kZTag.compare(axis_node->name()) == 0)
+			{
+				if (axis_node->value() != nullptr)
+				{
+					vector[2] = std::stof(axis_node->value());
+				}
+			}
+		}
+
+		return vector;
+	}
 }

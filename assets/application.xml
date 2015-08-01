@@ -23,36 +23,6 @@
             <Mesh>
                 <Path>assets/cube.obj</Path>
             </Mesh>
-            <Object>
-                <Name>test sphere</Name>
-                <Path>assets/sphere.obj</Path>
-                <Object>
-                    <Name>test cone</Name>
-                    <Mesh>
-                        <Path>assets/cone.obj</Path>
-                    </Mesh>
-                </Object>
-            </Object>
-        </Object>
-
-        <Object>
-            <Name>test sphere number 2</Name>
-            <Mesh>
-                <Path>assets/sphere.obj</Path>
-            </Mesh>
-            <Object>
-                <Name>test cube number 2</Name>
-                <Mesh>
-                    <Path>assets/cube.obj</Path>
-                </Mesh>
-            </Object>
-        </Object>
-
-        <Object>
-            <Name>test cone number 2</Name>
-            <Mesh>
-                <Path>assets/cone.obj</Path>
-            </Mesh>
         </Object>
     </Scene>
 </Application>
