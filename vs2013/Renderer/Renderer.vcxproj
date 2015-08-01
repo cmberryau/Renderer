@@ -157,6 +157,7 @@
     <ClCompile Include="..\..\src\rendering\Camera.cpp" />
     <ClCompile Include="..\..\src\rendering\Material.cpp" />
     <ClCompile Include="..\..\src\rendering\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESCommon.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESMeshRenderer.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESRenderingContext.cpp" />
     <ClCompile Include="..\..\src\rendering\OpenGLES\OpenGLESShader.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="..\..\src\rendering\Camera.hpp" />
     <ClInclude Include="..\..\src\rendering\Material.hpp" />
     <ClInclude Include="..\..\src\rendering\MeshRenderer.hpp" />
+    <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESCommon.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESMeshRenderer.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESRenderingContext.hpp" />
     <ClInclude Include="..\..\src\rendering\OpenGLES\OpenGLESShader.hpp" />
@@ -211,6 +213,9 @@
     <ClInclude Include="..\..\src\utility\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\..\src\utility\Util.hpp" />
     <ClInclude Include="..\..\src\windowing\Window.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\src\utility\rapidxml\rapid_xml_license.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

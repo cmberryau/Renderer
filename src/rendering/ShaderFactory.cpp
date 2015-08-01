@@ -11,8 +11,8 @@
 namespace Renderer
 {
 	std::shared_ptr<Shader> ShaderFactory::Create(std::string & vertex_shader_source,
-                                   std::string & geometry_shader_source,
-                                   std::string & fragment_shader_source)
+											      std::string & geometry_shader_source,
+											      std::string & fragment_shader_source)
     {
 #ifndef EMSCRIPTEN
 		std::shared_ptr<Shader> shader(new OpenGLShader());
@@ -28,7 +28,7 @@ namespace Renderer
     }
     
 	std::shared_ptr<Shader> ShaderFactory::Create(std::string & vertex_shader_source,
-                                   std::string & fragment_shader_source)
+											      std::string & fragment_shader_source)
     {
         std::string empty_source("");
         
