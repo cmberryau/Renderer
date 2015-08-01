@@ -19,15 +19,19 @@ using namespace Renderer;
 
 int main(int argc, char ** argv)
 {
-	{
-		std::shared_ptr<Application> app = ApplicationFactory::FromFile(std::string("assets/application.xml"));
+#ifdef _WIN32
+	_CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
+	_CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
 
+	auto debug_flags = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+	debug_flags |= _CRTDBG_LEAK_CHECK_DF;
+	_CrtSetDbgFlag(debug_flags);
+#endif
+
+	{
+		auto app = ApplicationFactory::FromFile(std::string("assets/application.xml"));
 		app->Start();
 	}
-
-#ifdef _WIN32
-	_CrtDumpMemoryLeaks();
-#endif
 
 	return 0;
 }

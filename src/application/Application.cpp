@@ -96,7 +96,6 @@ namespace Renderer
 
 			_window->Swap();
 		}
-
 	}
 
     Scene & Application::GetScene()

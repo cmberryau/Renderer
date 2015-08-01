@@ -19,8 +19,8 @@ namespace Renderer
 {
 	std::shared_ptr<Application> ApplicationFactory::FromFile(const std::string & file_path)
     {
-        std::string window_name("Renderer");
-        
+        std::string window_name("Renderer");       
+
         // temporary code		
 		auto window = std::make_shared<Window>(640, 480, window_name);
 #ifndef EMSCRIPTEN
@@ -68,8 +68,8 @@ namespace Renderer
 					scene->AddObject(object);
 				}
 
-				// add scecne to the collection of scenes
-				scenes.push_back(std::move(scene));
+				// add scene to the collection of scenes
+				//scenes.push_back(std::move(scene));
             }
         }
         
