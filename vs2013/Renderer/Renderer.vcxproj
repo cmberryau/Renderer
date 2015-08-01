@@ -167,6 +167,7 @@
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp" />
     <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp" />
     <ClCompile Include="..\..\src\scene\Scene.cpp" />
+    <ClCompile Include="..\..\src\scene\SceneFactory.cpp" />
     <ClCompile Include="..\..\src\tests\Spinner.cpp" />
     <ClCompile Include="..\..\src\utility\IO.cpp" />
     <ClCompile Include="..\..\src\utility\Util.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="..\..\src\rendering\Shader.hpp" />
     <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp" />
     <ClInclude Include="..\..\src\scene\Scene.hpp" />
+    <ClInclude Include="..\..\src\scene\SceneFactory.hpp" />
     <ClInclude Include="..\..\src\tests\Spinner.hpp" />
     <ClInclude Include="..\..\src\utility\IO.hpp" />
     <ClInclude Include="..\..\src\utility\rapidxml\rapidxml.hpp" />

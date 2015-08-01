@@ -23,8 +23,10 @@ namespace Renderer
 			static std::shared_ptr<Application> FromFile(const std::string & file_path);
 
 		private:
+			static std::unique_ptr<Scene> ProcessSceneXMLNode(rapidxml::xml_node<> * scene_node);
+
 			static void ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
-											 std::vector<std::unique_ptr<Object>> & objects);
+											 std::vector<std::unique_ptr<Object>> & objects);			
 
 			explicit ApplicationFactory();
 			~ApplicationFactory();

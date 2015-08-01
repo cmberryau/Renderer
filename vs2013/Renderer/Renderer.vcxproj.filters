@@ -140,6 +140,9 @@
     <ClCompile Include="..\..\src\objects\ObjectFactory.cpp">
       <Filter>Source Files\objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\scene\SceneFactory.cpp">
+      <Filter>Source Files\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\events\EventListener.hpp">
@@ -249,6 +252,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\objects\ObjectFactory.hpp">
       <Filter>Source Files\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\scene\SceneFactory.hpp">
+      <Filter>Source Files\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

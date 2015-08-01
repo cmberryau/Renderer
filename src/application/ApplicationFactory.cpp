@@ -9,6 +9,7 @@
 #include "ApplicationFactory.hpp"
 #include "ApplicationXML.hpp"
 #include "objects/ObjectFactory.hpp"
+#include "scene/SceneFactory.hpp"
 
 #ifdef EMSCRIPTEN
 #include "application/EmscriptenApplication.hpp"
@@ -44,23 +45,46 @@ namespace Renderer
 		std::vector<std::unique_ptr<Object>> objects;
 
         auto root_node = doc.first_node(ApplicationXML::kApplicationTag.c_str());
+
         if(root_node)
         {
+			// iterate through scenes
             for(auto scene_node = root_node->first_node(ApplicationXML::kSceneTag.c_str());
 				scene_node; scene_node = scene_node->next_sibling())
             {
+				// create scene
+				auto scene = ProcessSceneXMLNode(scene_node);
+
+				// create objects for scene
                 for(auto object_node = scene_node->first_node(ApplicationXML::kObjectTag.c_str());
 					object_node; object_node = object_node->next_sibling())
                 {
 					ProcessObjectXMLNode(object_node, objects);
                 }
+
+				// add objects to scene
+				for (auto &object : objects)
+				{
+					scene->AddObject(object);
+				}
+
+				// add scecne to the collection of scenes
+				scenes.push_back(std::move(scene));
             }
         }
         
 		return app;
 	}
 
-	// processes an xml node that refers to an object
+	// processes a xml node that refers to a scene
+	std::unique_ptr<Scene> ApplicationFactory::ProcessSceneXMLNode(rapidxml::xml_node<> * scene_node)
+	{
+		auto scene_ptr = SceneFactory::SceneFromXMLNode(scene_node);
+
+		return scene_ptr;
+	}
+
+	// processes a xml node that refers to an object
 	void ApplicationFactory::ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
 												  std::vector<std::unique_ptr<Object>> & objects)
 	{

@@ -22,8 +22,7 @@ namespace Renderer
 		}
 
 		// the triangle references must not be outside the vertex buffer
-		std::vector<Vector3ui>::iterator it;
-		for (it = _triangles.begin(); it != _triangles.end(); ++it)
+		for (auto it = _triangles.begin(); it != _triangles.end(); ++it)
 		{
 			for (int j = 0; j < 3; j++)
 			{
@@ -193,8 +192,7 @@ namespace Renderer
 	// debug output
 	void Mesh::Print() const
 	{
-		std::vector<Vector4f>::const_iterator it;
-		for (it = _vertices.begin(); it != _vertices.end(); ++it)
+		for (auto it = _vertices.begin(); it != _vertices.end(); ++it)
 		{
 			(*it).Print();
 		}
@@ -205,8 +203,7 @@ namespace Renderer
 		// if the mesh does not contain vertex colors, we assign default ones
 		if (_vertex_colors.size() == 0)
 		{
-			std::vector<Vector4f>::iterator it;
-			for (it = _vertices.begin(); it != _vertices.end(); ++it)
+			for (auto it = _vertices.begin(); it != _vertices.end(); ++it)
 			{
 				_vertex_colors.push_back(Mesh::kDefaultVertexColor);
 			}

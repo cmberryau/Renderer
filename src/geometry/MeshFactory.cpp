@@ -30,8 +30,7 @@ namespace Renderer
         IntermediateMesh intermediate_mesh;
         
         std::vector<std::string> lines = split_string(obj_source, '\n');
-        std::vector<std::string>::iterator it;
-        for(it = lines.begin(); it != lines.end(); ++it)
+        for(auto it = lines.begin(); it != lines.end(); ++it)
         {
 			MeshFactory::AppendObjSourceLine(*it, intermediate_mesh);
         }
@@ -105,8 +104,8 @@ namespace Renderer
 		std::vector<Vector3f> normals;
 		std::vector<Vector2f> uvs;
 
-		std::vector<Vector3ui>::iterator it; int i = 0; int k = 0;
-		for (it = intermediate_mesh.vertex_indices.begin();
+		int i = 0; int k = 0;
+		for (auto it = intermediate_mesh.vertex_indices.begin();
 			it != intermediate_mesh.vertex_indices.end(); ++it)
 		{
 			for (int j = 0; j < 3; j++)
