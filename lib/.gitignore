@@ -1,2 +1,4 @@
-# all files should be unignored for the lib folder
+# all potentially relevant files should be unignored for the lib folder
 !*.*
+
+.DS_Store
