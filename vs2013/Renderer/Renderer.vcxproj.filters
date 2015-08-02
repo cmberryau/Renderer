@@ -65,9 +65,6 @@
     <ClCompile Include="..\..\src\application\Application.cpp">
       <Filter>Source Files\application</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\scene\SceneFactory.cpp">
-      <Filter>Source Files\scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\scene\Scene.cpp">
       <Filter>Source Files\scene</Filter>
     </ClCompile>
@@ -156,9 +153,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\application\Application.hpp">
       <Filter>Source Files\application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\scene\SceneFactory.hpp">
-      <Filter>Source Files\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\scene\Scene.hpp">
       <Filter>Source Files\scene</Filter>

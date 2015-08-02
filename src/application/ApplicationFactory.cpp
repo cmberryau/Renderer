@@ -9,10 +9,12 @@
 #include "ApplicationFactory.hpp"
 #include "ApplicationXML.hpp"
 #include "objects/ObjectFactory.hpp"
-#include "scene/SceneFactory.hpp"
 
 #ifdef EMSCRIPTEN
 #include "application/EmscriptenApplication.hpp"
+#include "rendering/OpenGLES/OpenGLESRenderingContext.hpp"
+#else
+#include "rendering/OpenGL/OpenGLRenderingContext.hpp"
 #endif
 
 namespace Renderer
@@ -23,16 +25,13 @@ namespace Renderer
 
         // temporary code		
 		auto window = std::make_shared<Window>(640, 480, window_name);
-#ifndef EMSCRIPTEN
-        auto rendering_context = std::make_shared<OpenGLRenderingContext>(*window);
-#else
-		auto rendering_context = std::make_shared<OpenGLESRenderingContext>(*window);
-#endif
-        auto event_listener = std::make_shared<EventListener>();
-        
+		auto event_listener = std::make_shared<EventListener>();
+
 #ifdef EMSCRIPTEN
-        auto app = std::make_shared<EmscriptenApplication>(window, rendering_context, event_listener);
+		auto rendering_context = std::make_shared<OpenGLESRenderingContext>(*window);        
+		auto app = std::make_shared<EmscriptenApplication>(window, rendering_context, event_listener);
 #else
+		auto rendering_context = std::make_shared<OpenGLRenderingContext>(*window);
 		auto app = std::make_shared<Application>(window, rendering_context, event_listener);
 #endif
 
@@ -81,9 +80,7 @@ namespace Renderer
 	// processes a xml node that refers to a scene
 	std::unique_ptr<Scene> ApplicationFactory::ProcessSceneXMLNode(rapidxml::xml_node<> * scene_node)
 	{
-		auto scene_ptr = SceneFactory::SceneFromXMLNode(scene_node);
-
-		return scene_ptr;
+		return std::unique_ptr<Scene>(new Scene());
 	}
 
 	// processes the objects of a scene

@@ -10,7 +10,6 @@
 
 #include "OpenGLESRenderingContext.hpp"
 #include "utility/IO.hpp"
-#include "rendering/ShaderFactory.hpp"
 
 namespace Renderer
 {

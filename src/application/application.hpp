@@ -12,13 +12,12 @@
 // systems
 #include "windowing/Window.hpp"
 #include "events/EventListener.hpp"
-#include "rendering/OpenGL/OpenGLRenderingContext.hpp"
+#include "rendering/RenderingContext.hpp"
 
 // content
 #include "scene/Scene.hpp"
 #include "rendering/Camera.hpp"
 #include "geometry/MeshFactory.hpp"
-#include "rendering/ShaderFactory.hpp"
 #include "tests/Spinner.hpp"
 
 // utility

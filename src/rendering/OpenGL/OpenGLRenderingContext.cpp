@@ -8,7 +8,6 @@
 
 #include "OpenGLRenderingContext.hpp"
 #include "utility/IO.hpp"
-#include "rendering/ShaderFactory.hpp"
 
 #include <algorithm>
 
