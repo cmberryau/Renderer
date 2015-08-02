@@ -31,7 +31,7 @@ namespace Renderer
 		std::string fragment_shader_path("src/shaders/GLSLES/defaultes.frag");
 		std::string vertex_shader_source = IO::ReadFile(vertex_shader_path);
 		std::string fragment_shader_source = IO::ReadFile(fragment_shader_path);
-		_default_shader = ShaderFactory::Create(vertex_shader_source, fragment_shader_source);
+		_default_shader = CreateShader(vertex_shader_source, fragment_shader_source);
 		_default_material = std::make_shared<Material>(_default_shader);
     }
 
@@ -53,6 +53,24 @@ namespace Renderer
 	std::shared_ptr<Material> OpenGLESRenderingContext::DefaultMaterial() const
 	{
 		return _default_material;
+	}
+
+	std::shared_ptr<Shader> OpenGLESRenderingContext::CreateShader(std::string & vertex_source,
+																   std::string & fragment_source) const
+	{
+		std::shared_ptr<Shader> shader(new OpenGLESShader());
+		shader->Compile(vertex_source, fragment_source);
+
+		return shader;
+	}
+
+	std::shared_ptr<Shader> OpenGLESRenderingContext::CreateShader(std::string & vertex_source,
+																   std::string & geometry_source,
+																   std::string & fragment_source) const
+	{
+		throw std::runtime_error(std::string("OpenGL ES does not support Geometry shaders"));
+
+		return nullptr;
 	}
 }
 

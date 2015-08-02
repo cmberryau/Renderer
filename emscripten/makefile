@@ -27,7 +27,6 @@ $(SOURCE_DIR)/rendering/Camera.cpp \
 $(SOURCE_DIR)/rendering/Material.cpp \
 $(SOURCE_DIR)/rendering/MeshRenderer.cpp \
 $(SOURCE_DIR)/rendering/RenderingContext.cpp \
-$(SOURCE_DIR)/rendering/ShaderFactory.cpp \
 $(SOURCE_DIR)/rendering/OpenGLES/OpenGLESCommon.cpp \
 $(SOURCE_DIR)/rendering/OpenGLES/OpenGLESMeshRenderer.cpp \
 $(SOURCE_DIR)/rendering/OpenGLES/OpenGLESRenderingContext.cpp \

@@ -23,6 +23,13 @@ namespace Renderer
 
 			virtual std::unique_ptr<MeshRenderer> CreateMeshRenderer() const = 0;
 			virtual std::shared_ptr<Material> DefaultMaterial() const = 0;
+
+			virtual std::shared_ptr<Shader> CreateShader(std::string & vertex_source,
+														 std::string & fragment_source) const = 0;
+
+			virtual std::shared_ptr<Shader> CreateShader(std::string & vertex_source,
+													     std::string & geometry_source,
+													     std::string & fragment_source) const = 0;
         
         protected:
 			explicit RenderingContext(){};

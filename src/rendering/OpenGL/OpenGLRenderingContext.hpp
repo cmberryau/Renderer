@@ -37,6 +37,11 @@ namespace Renderer
 			virtual void EndScene() const override;
 			virtual std::unique_ptr<MeshRenderer> CreateMeshRenderer() const override;
 			virtual std::shared_ptr<Material> DefaultMaterial() const override;
+			virtual std::shared_ptr<Shader> CreateShader(std::string & vertex_source,
+														 std::string & fragment_source) const override;
+			virtual std::shared_ptr<Shader> CreateShader(std::string & vertex_source,
+														 std::string & geometry_source,
+														 std::string & fragment_source) const override;
 
 		protected:
 			bool IsReady() const;

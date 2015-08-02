@@ -104,9 +104,6 @@
     <ClCompile Include="..\..\src\rendering\RenderingContext.cpp">
       <Filter>Source Files\rendering</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\rendering\ShaderFactory.cpp">
-      <Filter>Source Files\rendering</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\rendering\Camera.cpp">
       <Filter>Source Files\rendering</Filter>
     </ClCompile>
@@ -209,9 +206,6 @@
       <Filter>Source Files\rendering</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\Shader.hpp">
-      <Filter>Source Files\rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\rendering\ShaderFactory.hpp">
       <Filter>Source Files\rendering</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\rendering\OpenGL\OpenGLMeshRenderer.hpp">

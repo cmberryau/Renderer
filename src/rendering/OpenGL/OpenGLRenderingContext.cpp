@@ -147,7 +147,7 @@ namespace Renderer
 		std::string fragment_shader_path("src/shaders/GLSL/default.frag");
 		std::string vertex_shader_source = IO::ReadFile(vertex_shader_path);
 		std::string fragment_shader_source = IO::ReadFile(fragment_shader_path);
-		_default_shader = ShaderFactory::Create(vertex_shader_source, fragment_shader_source);
+		_default_shader = CreateShader(vertex_shader_source, fragment_shader_source);
 		_default_material = std::make_shared<Material>(_default_shader);
 
 		CheckForGLError();
@@ -191,5 +191,24 @@ namespace Renderer
 	std::shared_ptr<Material> OpenGLRenderingContext::DefaultMaterial() const
 	{
 		return _default_material;
+	}
+
+	std::shared_ptr<Shader> OpenGLRenderingContext::CreateShader(std::string & vertex_source,
+															     std::string & fragment_source) const
+	{
+		std::shared_ptr<Shader> shader(new OpenGLShader());
+		shader->Compile(vertex_source, fragment_source);
+
+		return shader;
+	}
+
+	std::shared_ptr<Shader> OpenGLRenderingContext::CreateShader(std::string & vertex_source,
+															     std::string & geometry_source,
+															     std::string & fragment_source) const
+	{
+		std::shared_ptr<Shader> shader(new OpenGLShader());
+		shader->Compile(vertex_source, geometry_source, fragment_source);
+
+		return shader;
 	}
 }
