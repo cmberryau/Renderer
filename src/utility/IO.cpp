@@ -18,14 +18,14 @@ namespace Renderer
         std::ifstream file_stream(file_path, std::ios_base::in);
 
         if(!file_stream.good())
-        {
+        {		
             std::string error_msg("File ");
             error_msg += file_path;
             error_msg += " could not be found or accessed.";
 
             throw std::runtime_error(error_msg);
-        }
-        
+        }       
+
 		std::stringstream content;
 		content << file_stream.rdbuf();
 

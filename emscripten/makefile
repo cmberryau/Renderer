@@ -2,8 +2,8 @@ CC=emcc
 EMSCRIPTEN_SDL_VER=7
 EXECUTABLE=renderer.html
 
-ASSET_DIR=..\assets
-SHADERS_DIR=..\src\shaders
+ASSET_DIR=../assets
+SHADERS_DIR=../src/shaders
 SOURCE_DIR=../src
 LIBRARIES=../lib/emscripten/sdl2/$(EMSCRIPTEN_SDL_VER)/libs/libSDL2.a
 LDFLAGS=-g4 -s DEMANGLE_SUPPORT=1 --embed-file $(ASSET_DIR) --embed-file $(SHADERS_DIR) --memory-init-file 0

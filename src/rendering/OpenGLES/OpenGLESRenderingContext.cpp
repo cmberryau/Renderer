@@ -27,12 +27,12 @@ namespace Renderer
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
-		std::string vertex_shader_path("/shaders/GLSL/default.vert");
-		std::string fragment_shader_path("/shaders/GLSL/default.frag");
-		//std::string vertex_shader_source = IO::ReadFile(vertex_shader_path);
-		//std::string fragment_shader_source = IO::ReadFile(fragment_shader_path);
-		//_default_shader = ShaderFactory::Create(vertex_shader_source, fragment_shader_source);
-		//_default_material = std::make_shared<Material>(_default_shader);
+		std::string vertex_shader_path("src/shaders/GLSLES/defaultes.vert");
+		std::string fragment_shader_path("src/shaders/GLSLES/defaultes.frag");
+		std::string vertex_shader_source = IO::ReadFile(vertex_shader_path);
+		std::string fragment_shader_source = IO::ReadFile(fragment_shader_path);
+		_default_shader = ShaderFactory::Create(vertex_shader_source, fragment_shader_source);
+		_default_material = std::make_shared<Material>(_default_shader);
     }
 
 	void OpenGLESRenderingContext::BeginScene() const
