@@ -85,8 +85,8 @@
     <LibraryPath>$(SolutionDir)..\lib\win\sdl2\2.0.3\lib\x64\;$(SolutionDir)..\lib\win\glew\1.12.0\lib\Release\x64\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)..\lib\win\sdl2\2.0.12\include\;$(SolutionDir)..\lib\win\glew\1.12.0\include\;$(SolutionDir)..\src\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)..\lib\win\sdl2\2.0.12\lib\x86\;$(SolutionDir)..\lib\win\glew\1.12.0\lib\Release\Win32\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)..\lib\win\sdl2\2.0.12\include\;$(SolutionDir)..\lib\win\glew\2.1.0\include\;$(SolutionDir)..\src\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\lib\win\sdl2\2.0.12\lib\x86\;$(SolutionDir)..\lib\win\glew\2.1.0\lib\Release\Win32\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
