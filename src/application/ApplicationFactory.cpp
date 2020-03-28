@@ -38,7 +38,7 @@ namespace Renderer
         auto content = IO::ReadFile(file_path);
         
         rapidxml::xml_document<> doc;
-        doc.parse<0>(&content[0]);		
+		doc.parse<0>(&content[0]);
 
         auto root_node = doc.first_node(ApplicationXML::kApplicationTag.c_str());
 
@@ -55,8 +55,9 @@ namespace Renderer
 				auto objects = CreateSceneObjects(scene_node);
 
 				// add objects to scene
-				for (auto &object : objects)
+				for (auto & object : objects)
 				{
+					// if the object has a mesh, give it a mesh renderer
 					if (object->HasMesh())
 					{
 						auto mesh_renderer = rendering_context->CreateMeshRenderer();
@@ -65,8 +66,6 @@ namespace Renderer
 						object->AddMeshRenderer(mesh_renderer);
 					}
 
-					std::unique_ptr<ObjectAddable> spinner(new Spinner());
-					object->Add(spinner);
 					scene->AddObject(object);
 				}
 
@@ -97,20 +96,60 @@ namespace Renderer
 		return objects;
 	}
 
-	// processes a xml node that refers to an object
+	// processes a xml node that refers to an object at the top level
 	void ApplicationFactory::ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
 												  std::vector<std::unique_ptr<Object>> & objects)
 	{
-        auto object_ptr = ObjectFactory::ObjectFromXMLNode(object_node);
-
-		// add it to the vector of objects
-		objects.push_back(std::move(object_ptr));
+        auto object = ObjectFactory::ObjectFromXMLNode(object_node);
 
 		// process any child objects
 		for (auto child_node = object_node->first_node(ApplicationXML::kObjectTag.c_str());
 			child_node; child_node = child_node->next_sibling())
 		{
-			ProcessObjectXMLNode(child_node, objects);
+			ProcessObjectXMLNode(child_node, object);
+		}
+
+		// add it to the vector of objects
+		objects.push_back(std::move(object));
+	}
+
+	// processes a xml node that refers to an object at a non top level
+	void ApplicationFactory::ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
+												  std::unique_ptr<Object> & parent)
+	{
+		auto object = ObjectFactory::ObjectFromXMLNode(object_node);		
+
+		// process any child objects
+		for (auto child_node = object_node->first_node(ApplicationXML::kObjectTag.c_str());
+			child_node; child_node = child_node->next_sibling())
+		{
+			ProcessObjectXMLNode(child_node, object);
+		}
+
+		// parent the newly created object
+		parent->AddChild(object);
+	}
+
+	// postprocesses passed objects
+	void ApplicationFactory::PostProcessObjectsRecursive(std::vector<std::unique_ptr<Object>> & parents)
+	{
+		for (auto & parent : parents)
+		{
+			PostProcessObjectRecursive(parent);
+		}
+	}
+
+	// postprocesses an individual object and all it's children
+	void ApplicationFactory::PostProcessObjectRecursive(std::unique_ptr<Object> & object)
+	{
+		if (object->GetChildCount() > 0)
+		{
+			std::vector<std::unique_ptr<Object>> & children = object->GetChildren();
+
+		//	for (auto & child : children)
+		//	{
+		//		PostProcessObjectRecursive(child);
+		//	}
 		}
 	}
 }

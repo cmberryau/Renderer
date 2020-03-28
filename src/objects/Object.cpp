@@ -35,12 +35,12 @@ namespace Renderer
 
 	void Object::Update()
 	{
-		for (_children_it = _children.begin();
-			 _children_it != _children.end();
-			 ++_children_it)
-		{
-			(*_children_it)->Update();
-		}
+		//for (auto child = _children.begin();
+		//	child != _children.end();
+		//	++child)
+		//{
+		//	(*child)->Update();
+		//}
 	}
 
 	void Object::Draw(const Scene & scene)
@@ -51,10 +51,19 @@ namespace Renderer
         }        
 	}
 
-	void Object::Add(std::unique_ptr<ObjectAddable> & addable)
+	void Object::AddChild(std::unique_ptr<Object> & object)
 	{
-        addable->Added(this);
-        _children.push_back(std::move(addable));
+		_children.push_back(std::move(object));
+	}
+
+	std::size_t Object::GetChildCount()
+	{
+		return _children.size();
+	}
+
+	std::vector<std::unique_ptr<Object>> & Object::GetChildren()
+	{
+		return _children;
 	}
 
 	void Object::AddMesh(std::shared_ptr<Mesh> & mesh)

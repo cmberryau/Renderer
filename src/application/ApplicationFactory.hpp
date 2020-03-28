@@ -26,8 +26,12 @@ namespace Renderer
 			static std::unique_ptr<Scene> ProcessSceneXMLNode(rapidxml::xml_node<> * scene_node);
 			static std::vector<std::unique_ptr<Object>> CreateSceneObjects(rapidxml::xml_node<> * scene_node);
 			static void ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
-											 std::vector<std::unique_ptr<Object>> & objects);			
-
+											 std::vector<std::unique_ptr<Object>> & objects);
+			static void ProcessObjectXMLNode(rapidxml::xml_node<> * object_node,
+											 std::unique_ptr<Object> & parent);
+			static void PostProcessObjectsRecursive(std::vector<std::unique_ptr<Object>> & parents);
+			static void PostProcessObjectRecursive(std::unique_ptr<Object> & object);
+			
 			explicit ApplicationFactory();
 			~ApplicationFactory();
 	};

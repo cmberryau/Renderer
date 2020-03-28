@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef EMSCRIPTEN
+
 #include "OpenGLMeshRenderer.hpp"
 #include "scene/Scene.hpp"
 
@@ -109,3 +111,5 @@ namespace Renderer
         glDrawElements(GL_TRIANGLES, static_cast<GLint>(GetMesh().TrianglesCount() * 3), GL_UNSIGNED_INT, NULL);
     }
 }
+
+#endif // !EMSCRIPTEN

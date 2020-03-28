@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Christopher Berry. All rights reserved.
 //
 
+#ifndef EMSCRIPTEN
+
 #include "OpenGLRenderingContext.hpp"
 #include "utility/IO.hpp"
 
@@ -211,3 +213,5 @@ namespace Renderer
 		return shader;
 	}
 }
+
+#endif // !EMSCRIPTEN
